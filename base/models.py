@@ -32,21 +32,7 @@ class Favorite(models.Model):
     product_id = models.ForeignKey(Product)
 
 
-# class Movie(models.Model):
-#     title = models.CharField(max_length=255)
-#     production_year = models.PositiveIntegerField()
-#     director = models.CharField(max_length=255)
-#     leading_actor = models.CharField(max_length=255)
-#     day_of_view = models.DateField()
-#     review_score = models.PositiveIntegerField(choices=SCORE_CHOICES)
-#     streaming_site = models.URLField(max_length=200, null=False, blank=True)
-
-# from django.db import models
-
-# class Album(models.Model):
-#     name = models.CharField(max_length=255)
-#     artist = models.CharField(max_length=255)
-#     artist_link = models.ForeignKey('Artist', null=True)
-
-# class Artist(models.Model):
-#     name = models.CharField(max_length=255)
+"""
+-change the database settings in setting.py because the default is sqlite
+-make a DATABASE in postgres
+"""
