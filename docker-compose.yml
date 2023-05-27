@@ -1,0 +1,15 @@
+services:
+  server:
+    build:
+      context: .
+    
+  dev-db:
+    image: postgres:15
+    restart: always
+    ports:
+      - "5438:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=devpostgres
+    volumes:
+      - "./dev-db:/var/lib/postgresql"
