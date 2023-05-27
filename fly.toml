@@ -1,0 +1,22 @@
+# fly.toml app configuration file generated for oriori on 2023-05-27T14:53:53+09:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "oriori"
+primary_region = "nrt"
+console_command = "/code/manage.py shell"
+
+[env]
+  PORT = "8000"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[statics]]
+  guest_path = "/code/static"
+  url_prefix = "/static/"
