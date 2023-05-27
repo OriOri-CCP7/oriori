@@ -12,8 +12,8 @@ def hello(request):
 # Views for user's data
 @api_view(['GET'])
 def getUserData(request):
-  query_parameter = request.query_params.get('username')
-  user = Users.objects.get(username=query_parameter)
+  query_parameter = request.query_params.get('uuid')
+  user = Users.objects.get(uuid=query_parameter)
   serializer = UsersSerializer(user, many=False)
   return Response(serializer.data)
 

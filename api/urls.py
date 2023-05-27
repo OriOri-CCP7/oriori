@@ -5,4 +5,5 @@
 #     path('', views.hello),
 #     path('user/<str:username>/', views.getUserData)
 # ]
-# NOTE TO SELF - Find out if this file is even necessary
+
+# NICOLE NOTE TO SELF - Find out if this file is even necessary
