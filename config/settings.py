@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'django.contrib.gis', # for using postGIS
+    'base', # necessary for migration to work
 ]
 
 MIDDLEWARE = [
@@ -82,7 +84,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',#this should be changed to postgresql
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',#this should be changed to postgresql 'django.db.backends.postgresql'
         'NAME': os.getenv('DB_NAME'), # BASE_DIR / 'db.sqlite3',
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
