@@ -13,8 +13,8 @@ def hello(request):
 @api_view(['GET'])
 def getUserData(request):
   query_parameter = request.query_params.get('uuid')
-  user = Users.objects.get(uuid=query_parameter)
-  serializer = UsersSerializer(user, many=False)
+  user = Users.objects.get(uuid = query_parameter)
+  serializer = UsersSerializer(user, many = False)
   return Response(serializer.data)
 
 @api_view(['POST'])
@@ -30,3 +30,5 @@ def editUserData(request, uuid):
   user.username = request.data.get('username', user.username)
   user.email = request.data.get('email', user.email)
   user.location_id = request.data.get('location_id', user.location_id)
+  user.save()
+  return Response(user)
