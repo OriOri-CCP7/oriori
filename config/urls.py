@@ -21,8 +21,10 @@ from ..api import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.hello),
-    path('api/user/<str:uuid>/', views.getUserData),
+    path('api/user/<str:username>/', views.getUserData),
     path('api/newUser/', views.addNewUser),
     path('api/editedUser/<str:uuid>/', views.editUserData),
-    path('api/location/<str:name>', views.getLocationData),
+    path('api/user/favorites', views.getUserFavorites),
+    path('api/user/newFavorite', views.addNewFavorite),
+    path('api/user/favorites/deletion', views.removeFavorite),
 ]
