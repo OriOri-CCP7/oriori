@@ -92,3 +92,33 @@ def deleteProductData(request, name):
   product = Product.objects.get(product_name=name)
   product.delete()
   return Response("Product Deleted")
+
+# Views for Store data
+@api_view(['GET'])
+def getStoreData(request):
+  query_parameter = request.query_params.get('name')
+  store = Store.objects.get(name=query_parameter)
+  serializer = StoreSerializer(store)
+  return Response(serializer)
+
+@api_view(['POST'])
+def addNewStore(request):
+  serializer = StoreSerializer(data=request.data)
+  if serializer.is_valid():
+    serializer.save()
+  return Response(serializer.data)
+
+@api_view(['PATCH'])
+def editStoreData(request, name):
+  store = Store.objects.get(name=name)
+  store.name = request.data.get('name', store.name)
+  store.location_id = request.data.get('location_id', store.location_id)
+  store.coordinates = request.data.get('coordinates', store.coordinates)
+  store.save()
+  return Response(store)
+
+@api_view(['DELETE'])
+def deleteStoreData(request, name):
+  store = Store.objects.get(name=name)
+  store.delete()
+  return Response("Store Deleted")
