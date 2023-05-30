@@ -11,5 +11,6 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=devpostgres
+      - POSTGRES_DB=oriori
     volumes:
       - "./dev-db:/var/lib/postgresql"

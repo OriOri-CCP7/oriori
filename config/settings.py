@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'django.contrib.gis', # for using postGIS
     'base', # necessary for migration to work
 ]
 
@@ -87,7 +86,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db(engine='django.contrib.gis.db.backends.postgis')
+    'default': env.db()
 }
 
 
