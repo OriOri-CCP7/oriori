@@ -1,5 +1,5 @@
-# from django.db import models
-from django.contrib.gis.db import models
+from django.db import models
+# from django.contrib.gis.db import models
 # Create your models here.
 
 class Location(models.Model):
@@ -9,7 +9,7 @@ class Location(models.Model):
 class Store(models.Model):
     name = models.CharField(max_length=255)
     location_id = models.ForeignKey(Location, on_delete=models.CASCADE)
-    coordinates = models.PointField(srid=4326) # ID for goggle 4326 PointField(srid=4326)
+    # coordinates = models.PointField(srid=4326) # ID for goggle 4326 PointField(srid=4326)
 
 
 class User(models.Model):
@@ -31,8 +31,3 @@ class Favorite(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
 
-
-"""
--change the database settings in setting.py because the default is sqlite
--make a DATABASE in postgres
-"""
