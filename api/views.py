@@ -1,15 +1,15 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from ..base.models import User
-from ..base.models import Favorite
-from ..base.models import Location
-from ..base.models import Store
-from ..base.models import Product
-from ..base.serializers import UserSerializer
-from ..base.serializers import FavoriteSerializer
-from ..base.serializers import LocationSerializer
-from ..base.serializers import StoreSerializer
-from ..base.serializers import ProductSerializer
+from base.models import User
+from base.models import Favorite
+from base.models import Location
+from base.models import Store
+from base.models import Product
+from base.serializers import UserSerializer
+from base.serializers import FavoriteSerializer
+from base.serializers import LocationSerializer
+from base.serializers import StoreSerializer
+from base.serializers import ProductSerializer
 
 # Create your views here.
 
