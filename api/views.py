@@ -20,8 +20,8 @@ def hello(request):
 # Views for User data
 @api_view(['GET'])
 def getUserData(request):
-  query_parameter = request.query_params.get('username')
-  user = User.objects.get(username=query_parameter)
+  query_parameter = request.query_params.get('id')
+  user = User.objects.get(pk=query_parameter)
   serializer = UserSerializer(user, many=False)
   return Response(serializer.data)
 
@@ -33,8 +33,8 @@ def addNewUser(request):
   return Response(serializer.data)
 
 @api_view(['PATCH'])
-def editUserData(request, uuid):
-  user = User.objects.get(uuid = uuid)
+def editUserData(request, id):
+  user = User.objects.get(id=id)
   user.username = request.data.get('username', user.username)
   user.email = request.data.get('email', user.email)
   user.location_id = request.data.get('location_id', user.location_id)
@@ -64,8 +64,8 @@ def removeFavorite(request, pk):
 # Views for Product data
 @api_view(['GET'])
 def getProductData(request):
-  query_parameter = request.query_params.get('name')
-  product = Product.objects.get(product_name=query_parameter)
+  query_parameter = request.query_params.get('id')
+  product = Product.objects.get(id=query_parameter)
   serializer = ProductSerializer(product)
   return Response(serializer)
 
@@ -77,8 +77,8 @@ def addNewProduct(request):
   return Response(serializer.data)
 
 @api_view(['PATCH'])
-def editProductData(request, name):
-  product = Product.objects.get(product_name=name)
+def editProductData(request, pk):
+  product = Product.objects.get(pk=id)
   product.product_name = request.data.get('product_name', product.product_name)
   product.store_id = request.data.get('store_id', product.store_id)
   product.start_date = request.data.get('start_date', product.start_date)
@@ -88,8 +88,8 @@ def editProductData(request, name):
   return Response(product)
 
 @api_view(['DELETE'])
-def deleteProductData(request, name):
-  product = Product.objects.get(product_name=name)
+def deleteProductData(request, id):
+  product = Product.objects.get(pk=id)
   product.delete()
   return Response("Product Deleted")
 
@@ -109,8 +109,8 @@ def addNewStore(request):
   return Response(serializer.data)
 
 @api_view(['PATCH'])
-def editStoreData(request, name):
-  store = Store.objects.get(name=name)
+def editStoreData(request, id):
+  store = Store.objects.get(pk=id)
   store.name = request.data.get('name', store.name)
   store.location_id = request.data.get('location_id', store.location_id)
   store.coordinates = request.data.get('coordinates', store.coordinates)
@@ -118,7 +118,7 @@ def editStoreData(request, name):
   return Response(store)
 
 @api_view(['DELETE'])
-def deleteStoreData(request, name):
-  store = Store.objects.get(name=name)
+def deleteStoreData(request, id):
+  store = Store.objects.get(pk=id)
   store.delete()
   return Response("Store Deleted")
