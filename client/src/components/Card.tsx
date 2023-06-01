@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
-type = Props = {
+type Props = {
     className: string, 
     productName: string,
     offerStart: {
