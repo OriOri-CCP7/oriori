@@ -64,25 +64,38 @@ def deleteUser(request, uuid):
   user.delete()
   return Response("User Deleted")
 
-# # Views for Favorites data
-# @api_view(['GET'])
-# def getUserFavorites(request):
-#   favorites = Favorite.objects.select_related('users_set')
-#   serializer = FavoriteSerializer(favorites, many=True)
-#   return Response(serializer.data)
+# Views for Favorites data
+@api_view(['GET'])
+def getUserFavorites(request, id):
+  try:
+    favorites = Favorite.objects.filter(user_id=id)
+    serializer = FavoriteSerializer(favorites, many=True)
+    return Response(serializer.data)
+  except:
+    return Response(serializer.errors)
 
-# @api_view(['POST'])
-# def addNewFavorite(request):
-#   serializer = FavoriteSerializer(data=request.data)
-#   if serializer.is_valid():
-#     serializer.save()
-#   return Response(serializer.data)
+@api_view(['POST'])
+def addNewFavorite(request, id):
+  try:
+    product_id = request.data.get('product_id')
+    user = User.objects.get(id=id)
+    product = Product.objects.get(id=product_id)
+    favorite = Favorite.objects.create(user=user, product=product)
+    serializer = FavoriteSerializer(favorite)
+    return Response(serializer.data)
+  except: 
+    return Response(serializer.errors)
 
-# @api_view(['DELETE'])
-# def removeFavorite(request, pk):
-#   favorite = Favorite.objects.get(pk=pk)
-#   favorite.delete()
-#   return Response("Favorite Deleted")
+@api_view(['DELETE'])
+def removeFavorite(request, id):
+  try:
+    user = User.objects.get(id=id)
+    favorite_id = request.data.get('favorite_id')
+    favorite = Favorite.objects.get(id=favorite_id, user=user)
+    favorite.delete()
+    return Response("Favorite Deleted")
+  except Exception as e:
+    return Response({'error': str(e)})
 
 # Views for Product data
 @api_view(['GET'])
