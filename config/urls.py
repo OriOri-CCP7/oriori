@@ -15,24 +15,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.hello),
+    path('api/users/', views.getAllUsers),
     path('api/user/<int:id>/', views.getUserData),
-    path('api/newUser/', views.addNewUser),
-    path('api/editedUser/', views.editUserData),
-    path('api/user/favorites/', views.getUserFavorites),
-    path('api/user/newFavorite/', views.addNewFavorite),
-    path('api/user/favorites/deletion/', views.removeFavorite),
-    path('api/product/<int:id>/', views.getProductData),
-    path('api/newProduct/', views.addNewProduct),
-    path('api/editedProduct/<int:id>/', views.editProductData),
-    path('api/product/deletion/', views.deleteProductData),
-    path('api/store/<int:id>/', views.getStoreData),
-    path('api/newStore/', views.addNewStore),
-    path('api/editedStore/<int:id>/', views.editStoreData),
-    path('api/store/deletion', views.deleteStoreData),
+    # path('api/newUser/', views.addNewUser),
+    # path('api/editedUser/', views.editUserData),
+    # path('api/user/favorites/', views.getUserFavorites),
+    # path('api/user/newFavorite/', views.addNewFavorite),
+    # path('api/user/favorites/deletion/', views.removeFavorite),
+    # path('api/product/<int:id>/', views.getProductData),
+    # path('api/newProduct/', views.addNewProduct),
+    # path('api/editedProduct/<int:id>/', views.editProductData),
+    # path('api/product/deletion/', views.deleteProductData),
+    # path('api/store/<int:id>/', views.getStoreData),
+    # path('api/newStore/', views.addNewStore),
+    # path('api/editedStore/<int:id>/', views.editStoreData),
+    # path('api/store/deletion/', views.deleteStoreData),
+    path('api/newLocation/', views.addLocation),
 ]

@@ -19,18 +19,29 @@ def hello(request):
 
 # Views for User data
 @api_view(['GET'])
-def getUserData(request):
-  query_parameter = request.query_params.get('id')
-  user = User.objects.get(pk=query_parameter)
-  serializer = UserSerializer(user, many=False)
+def getAllUsers(request):
+  user = User.objects.all()
+  serializer = UserSerializer(user, many=True)
   return Response(serializer.data)
+
+@api_view(['GET'])
+def getUserData(request):
+  try: 
+    query_parameter = request.query_params.get('id')
+    user = User.objects.get(id=query_parameter)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+  except:
+    return Response(serializer.errors)
 
 @api_view(['POST'])
 def addNewUser(request):
   serializer = UserSerializer(data=request.data)
   if serializer.is_valid():
     serializer.save()
-  return Response(serializer.data)
+    return Response(serializer.data)
+  else: 
+    return Response(serializer.errors)
 
 @api_view(['PATCH'])
 def editUserData(request, id):
@@ -122,3 +133,11 @@ def deleteStoreData(request, id):
   store = Store.objects.get(pk=id)
   store.delete()
   return Response("Store Deleted")
+
+# #####################
+@api_view(['POST'])
+def addLocation(request):
+  serializer = LocationSerializer(data=request.data)
+  if serializer.is_valid():
+    serializer.save()
+  return Response(serializer.data)
