@@ -58,6 +58,12 @@ def editUserData(request, uuid):
   except Exception as e:
     return Response({'error': str(e)})
 
+@api_view(['DELETE'])
+def deleteUser(request, uuid):
+  user = User.objects.get(uuid=uuid)
+  user.delete()
+  return Response("User Deleted")
+
 # # Views for Favorites data
 # @api_view(['GET'])
 # def getUserFavorites(request):

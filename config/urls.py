@@ -25,6 +25,7 @@ urlpatterns = [
     path('api/user/<str:uuid>/', views.getUserData),
     path('api/newUser/', views.addNewUser),
     path('api/editedUser/<str:uuid>/', views.editUserData),
+    path('api/deletion/<str:uuid>/', views.deleteUser),
     # path('api/user/favorites/', views.getUserFavorites),
     # path('api/user/newFavorite/', views.addNewFavorite),
     # path('api/user/favorites/deletion/', views.removeFavorite),
