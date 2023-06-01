@@ -25,10 +25,9 @@ def getAllUsers(request):
   return Response(serializer.data)
 
 @api_view(['GET'])
-def getUserData(request):
+def getUserData(request, uuid):
   try: 
-    query_parameter = request.query_params.get('id')
-    user = User.objects.get(id=query_parameter)
+    user = User.objects.get(uuid=uuid)
     serializer = UserSerializer(user)
     return Response(serializer.data)
   except:
@@ -44,97 +43,103 @@ def addNewUser(request):
     return Response(serializer.errors)
 
 @api_view(['PATCH'])
-def editUserData(request, id):
-  user = User.objects.get(id=id)
-  user.username = request.data.get('username', user.username)
-  user.email = request.data.get('email', user.email)
-  user.location_id = request.data.get('location_id', user.location_id)
-  user.save()
-  return Response(user)
+def editUserData(request, uuid):
+  try:
+    user = User.objects.get(uuid=uuid)
+    user.username = request.data.get('username', user.username)
+    user.email = request.data.get('email', user.email)
+    prefecture = request.data.get('prefecture')
+    if prefecture:
+      location = Location.objects.get(prefecture=prefecture)
+      user.location_id = location.id
+    user.save()
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+  except Exception as e:
+    return Response({'error': str(e)})
 
-# Views for Favorites data
-@api_view(['GET'])
-def getUserFavorites(request):
-  favorites = Favorite.objects.select_related('users_set')
-  serializer = FavoriteSerializer(favorites, many=True)
-  return Response(serializer.data)
+# # Views for Favorites data
+# @api_view(['GET'])
+# def getUserFavorites(request):
+#   favorites = Favorite.objects.select_related('users_set')
+#   serializer = FavoriteSerializer(favorites, many=True)
+#   return Response(serializer.data)
 
-@api_view(['POST'])
-def addNewFavorite(request):
-  serializer = FavoriteSerializer(data=request.data)
-  if serializer.is_valid():
-    serializer.save()
-  return Response(serializer.data)
+# @api_view(['POST'])
+# def addNewFavorite(request):
+#   serializer = FavoriteSerializer(data=request.data)
+#   if serializer.is_valid():
+#     serializer.save()
+#   return Response(serializer.data)
 
-@api_view(['DELETE'])
-def removeFavorite(request, pk):
-  favorite = Favorite.objects.get(pk=pk)
-  favorite.delete()
-  return Response("Favorite Deleted")
+# @api_view(['DELETE'])
+# def removeFavorite(request, pk):
+#   favorite = Favorite.objects.get(pk=pk)
+#   favorite.delete()
+#   return Response("Favorite Deleted")
 
-# Views for Product data
-@api_view(['GET'])
-def getProductData(request):
-  query_parameter = request.query_params.get('id')
-  product = Product.objects.get(id=query_parameter)
-  serializer = ProductSerializer(product)
-  return Response(serializer)
+# # Views for Product data
+# @api_view(['GET'])
+# def getProductData(request):
+#   query_parameter = request.query_params.get('id')
+#   product = Product.objects.get(id=query_parameter)
+#   serializer = ProductSerializer(product)
+#   return Response(serializer)
 
-@api_view(['POST'])
-def addNewProduct(request):
-  serializer = ProductSerializer(data=request.data)
-  if serializer.is_valid():
-    serializer.save()
-  return Response(serializer.data)
+# @api_view(['POST'])
+# def addNewProduct(request):
+#   serializer = ProductSerializer(data=request.data)
+#   if serializer.is_valid():
+#     serializer.save()
+#   return Response(serializer.data)
 
-@api_view(['PATCH'])
-def editProductData(request, pk):
-  product = Product.objects.get(pk=id)
-  product.product_name = request.data.get('product_name', product.product_name)
-  product.store_id = request.data.get('store_id', product.store_id)
-  product.start_date = request.data.get('start_date', product.start_date)
-  product.end_date = request.data.get('end_date', product.end_date)
-  product.sources = request.data.get('sources', product.sources)
-  product.save()
-  return Response(product)
+# @api_view(['PATCH'])
+# def editProductData(request, pk):
+#   product = Product.objects.get(pk=id)
+#   product.product_name = request.data.get('product_name', product.product_name)
+#   product.store_id = request.data.get('store_id', product.store_id)
+#   product.start_date = request.data.get('start_date', product.start_date)
+#   product.end_date = request.data.get('end_date', product.end_date)
+#   product.sources = request.data.get('sources', product.sources)
+#   product.save()
+#   return Response(product)
 
-@api_view(['DELETE'])
-def deleteProductData(request, id):
-  product = Product.objects.get(pk=id)
-  product.delete()
-  return Response("Product Deleted")
+# @api_view(['DELETE'])
+# def deleteProductData(request, id):
+#   product = Product.objects.get(pk=id)
+#   product.delete()
+#   return Response("Product Deleted")
 
-# Views for Store data
-@api_view(['GET'])
-def getStoreData(request):
-  query_parameter = request.query_params.get('name')
-  store = Store.objects.get(name=query_parameter)
-  serializer = StoreSerializer(store)
-  return Response(serializer)
+# # Views for Store data
+# @api_view(['GET'])
+# def getStoreData(request):
+#   query_parameter = request.query_params.get('name')
+#   store = Store.objects.get(name=query_parameter)
+#   serializer = StoreSerializer(store)
+#   return Response(serializer)
 
-@api_view(['POST'])
-def addNewStore(request):
-  serializer = StoreSerializer(data=request.data)
-  if serializer.is_valid():
-    serializer.save()
-  return Response(serializer.data)
+# @api_view(['POST'])
+# def addNewStore(request):
+#   serializer = StoreSerializer(data=request.data)
+#   if serializer.is_valid():
+#     serializer.save()
+#   return Response(serializer.data)
 
-@api_view(['PATCH'])
-def editStoreData(request, id):
-  store = Store.objects.get(pk=id)
-  store.name = request.data.get('name', store.name)
-  store.location_id = request.data.get('location_id', store.location_id)
-  store.coordinates = request.data.get('coordinates', store.coordinates)
-  store.save()
-  return Response(store)
+# @api_view(['PATCH'])
+# def editStoreData(request, id):
+#   store = Store.objects.get(pk=id)
+#   store.name = request.data.get('name', store.name)
+#   store.location_id = request.data.get('location_id', store.location_id)
+#   store.coordinates = request.data.get('coordinates', store.coordinates)
+#   store.save()
+#   return Response(store)
 
-@api_view(['DELETE'])
-def deleteStoreData(request, id):
-  store = Store.objects.get(pk=id)
-  store.delete()
-  return Response("Store Deleted")
+# @api_view(['DELETE'])
+# def deleteStoreData(request, id):
+#   store = Store.objects.get(pk=id)
+#   store.delete()
+#   return Response("Store Deleted")
 
-# #####################
 @api_view(['POST'])
 def addLocation(request):
   serializer = LocationSerializer(data=request.data)
