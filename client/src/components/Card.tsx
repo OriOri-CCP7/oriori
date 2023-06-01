@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import './Card.css';
 
 type  Props = {
@@ -15,12 +15,23 @@ type  Props = {
 
 const Card :React.FC<Props> = ({className, img_url, productName, offerStart, offerEnd, favoriteNumber, onClick}) => {
 
-    const handleStartDate = () => {}
-    const handleEndDate = () => {}
+    // const handleStartDate = () => {}
+    // const handleEndDate = () => {}
     const handleFavorite = () => {
-        setCounter(counter + 1);
+        // fixme: how do we check if user has favour the card already or not?
+        if(!addLove){
+            setCounter(counter + 1);
+            setAddLove(true);
+        } else {
+            setCounter(counter - 1);
+            setAddLove(false);
+        }
+        
+        
     }
-    const [ counter, setCounter ] = useState(125);
+    const [ counter, setCounter ] = useState<number>(favoriteNumber);
+
+    const [ addLove, setAddLove ] = useState<boolean>(false)
     return (
         <div>
             <div className="cardName">
@@ -37,8 +48,13 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
                     {`Offer end in : ${offerEnd}`}
                 </div>
                 <div className="favoriteNumber">
-                    <a onClick={handleFavorite}>{counter}</a>
-                    {`❤️ ${favoriteNumber}`}
+                    <button
+                    className="favoriteAdd"
+                    onClick={handleFavorite}
+                    >{`❤️ ${counter}`}
+                    </button>
+                   
+                    
                 </div>
             </div>
         </div>

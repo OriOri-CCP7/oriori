@@ -1,16 +1,14 @@
 import React from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {useRoutes} from 'react-router-dom';
 import Testpage from '../src/pages/TestsPage';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/testpage" element={<Testpage></Testpage>}></Route>
-      </Routes>
-    </div>
-  );
+  let element = useRoutes([
+    {path: '/testpage', element: <Testpage />},
+]);
+  return element;
+  
 }
 
 export default App;
