@@ -84,39 +84,50 @@ def deleteUser(request, uuid):
 #   favorite.delete()
 #   return Response("Favorite Deleted")
 
-# # Views for Product data
-# @api_view(['GET'])
-# def getProductData(request):
-#   query_parameter = request.query_params.get('id')
-#   product = Product.objects.get(id=query_parameter)
-#   serializer = ProductSerializer(product)
-#   return Response(serializer)
+# Views for Product data
+@api_view(['GET'])
+def getProductData(request, id):
+  try:
+    product = Product.objects.get(pk=id)
+    serializer = ProductSerializer(product)
+    return Response(serializer.data)
+  except:
+    return Response(serializer.errors)
 
-# @api_view(['POST'])
-# def addNewProduct(request):
-#   serializer = ProductSerializer(data=request.data)
-#   if serializer.is_valid():
-#     serializer.save()
-#   return Response(serializer.data)
+@api_view(['POST'])
+def addNewProduct(request):
+  serializer = ProductSerializer(data=request.data)
+  if serializer.is_valid():
+    serializer.save()
+    return Response(serializer.data)
+  else: 
+    return Response(serializer.errors)
 
-# @api_view(['PATCH'])
-# def editProductData(request, pk):
-#   product = Product.objects.get(pk=id)
-#   product.product_name = request.data.get('product_name', product.product_name)
-#   product.store_id = request.data.get('store_id', product.store_id)
-#   product.start_date = request.data.get('start_date', product.start_date)
-#   product.end_date = request.data.get('end_date', product.end_date)
-#   product.sources = request.data.get('sources', product.sources)
-#   product.save()
-#   return Response(product)
+@api_view(['PATCH'])
+def editProductData(request, id):
+  try:
+    product = Product.objects.get(pk=id)
+    product.product_name = request.data.get('product_name', product.product_name)
+    store = request.data.get('store')
+    if store:
+      store = Store.objects.get(store=store)
+      product.store_id = store.id
+    product.start_date = request.data.get('start_date', product.start_date)
+    product.end_date = request.data.get('end_date', product.end_date)
+    product.sources = request.data.get('sources', product.sources)
+    product.save()
+    serializer = ProductSerializer(product)
+    return Response(serializer.data)
+  except Exception as e:
+    return Response({'error': str(e)})
 
-# @api_view(['DELETE'])
-# def deleteProductData(request, id):
-#   product = Product.objects.get(pk=id)
-#   product.delete()
-#   return Response("Product Deleted")
+@api_view(['DELETE'])
+def deleteProductData(request, id):
+  product = Product.objects.get(pk=id)
+  product.delete()
+  return Response("Product Deleted")
 
-# # Views for Store data
+# Views for Store data
 @api_view(['GET'])
 def getStoreData(request, id):
   try:
