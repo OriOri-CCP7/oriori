@@ -117,34 +117,44 @@ def deleteUser(request, uuid):
 #   return Response("Product Deleted")
 
 # # Views for Store data
-# @api_view(['GET'])
-# def getStoreData(request):
-#   query_parameter = request.query_params.get('name')
-#   store = Store.objects.get(name=query_parameter)
-#   serializer = StoreSerializer(store)
-#   return Response(serializer)
+@api_view(['GET'])
+def getStoreData(request, id):
+  try:
+    store = Store.objects.get(pk=id)
+    serializer = StoreSerializer(store)
+    return Response(serializer.data)
+  except:   
+    return Response(serializer.errors)
 
-# @api_view(['POST'])
-# def addNewStore(request):
-#   serializer = StoreSerializer(data=request.data)
-#   if serializer.is_valid():
-#     serializer.save()
-#   return Response(serializer.data)
+@api_view(['POST'])
+def addNewStore(request):
+  serializer = StoreSerializer(data=request.data)
+  if serializer.is_valid():
+    serializer.save()
+    return Response(serializer.data)
+  else: 
+    return Response(serializer.errors)
 
-# @api_view(['PATCH'])
-# def editStoreData(request, id):
-#   store = Store.objects.get(pk=id)
-#   store.name = request.data.get('name', store.name)
-#   store.location_id = request.data.get('location_id', store.location_id)
-#   store.coordinates = request.data.get('coordinates', store.coordinates)
-#   store.save()
-#   return Response(store)
+@api_view(['PATCH'])
+def editStoreData(request, id):
+  try:
+    store = Store.objects.get(pk=id)
+    store.name = request.data.get('name', store.name)
+    prefecture = request.data.get('prefecture')
+    if prefecture:
+      location = Location.objects.get(prefecture=prefecture)
+      store.location_id = location.id
+    store.save()
+    serializer = StoreSerializer(store)
+    return Response(serializer.data)
+  except Exception as e:
+    return Response({'error': str(e)})
 
-# @api_view(['DELETE'])
-# def deleteStoreData(request, id):
-#   store = Store.objects.get(pk=id)
-#   store.delete()
-#   return Response("Store Deleted")
+@api_view(['DELETE'])
+def deleteStoreData(request, id):
+  store = Store.objects.get(pk=id)
+  store.delete()
+  return Response("Store Deleted")
 
 @api_view(['POST'])
 def addLocation(request):
