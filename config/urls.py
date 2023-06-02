@@ -15,9 +15,30 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('api.urls')),
+    path('', views.hello),
+    path('api/users/', views.getAllUsers),
+    path('api/user/<str:uuid>/', views.getUserData),
+    path('api/newUser/', views.addNewUser),
+    path('api/editedUser/<str:uuid>/', views.editUserData),
+    path('api/deletion/<str:uuid>/', views.deleteUser),
+    path('api/<int:id>/favorites/', views.getUserFavorites),
+    path('api/<int:id>/newFavorite/', views.addNewFavorite),
+    path('api/<int:id>/favorites/deletion/', views.removeFavorite),
+    path('api/product/<int:id>/', views.getProductDataById),
+    path('api/product/<str:uuid>/favorites/', views.getProductDataByUser),
+    path('api/<str:prefecture>/products/', views.getProductDataByPrefecture),
+    path('api/newProduct/', views.addNewProduct),
+    path('api/editedProduct/<int:id>/', views.editProductData),
+    path('api/product/deletion/<int:id>/', views.deleteProductData),
+    path('api/store/<int:id>/', views.getStoreDatabyId),
+    path('api/<str:prefecture>/stores/', views.getStoreDatabyPrefecture),
+    path('api/newStore/', views.addNewStore),
+    path('api/editedStore/<int:id>/', views.editStoreData),
+    path('api/store/deletion/<int:id>/', views.deleteStoreData),
+    path('api/newLocation/', views.addLocation),
 ]
