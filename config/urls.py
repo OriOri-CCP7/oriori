@@ -36,6 +36,7 @@ urlpatterns = [
     path('api/editedProduct/<int:id>/', views.editProductData),
     path('api/product/deletion/<int:id>/', views.deleteProductData),
     path('api/store/<int:id>/', views.getStoreDatabyId),
+    path('api/<str:prefecture>/stores/', views.getStoreDatabyPrefecture),
     path('api/newStore/', views.addNewStore),
     path('api/editedStore/<int:id>/', views.editStoreData),
     path('api/store/deletion/<int:id>/', views.deleteStoreData),

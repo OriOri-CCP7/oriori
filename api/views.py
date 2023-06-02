@@ -169,6 +169,15 @@ def getStoreDatabyId(request, id):
     return Response(serializer.data)
   except:   
     return Response(serializer.errors)
+  
+@api_view(['GET'])
+def getStoreDatabyPrefecture(request, prefecture):
+  try:
+    stores = Store.objects.filter(location__prefecture=prefecture)
+    serializer = StoreSerializer(stores, many=True)
+    return Response(serializer.data)
+  except:   
+    return Response(serializer.errors)
 
 @api_view(['POST'])
 def addNewStore(request):
