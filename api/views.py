@@ -99,13 +99,33 @@ def removeFavorite(request, id):
 
 # Views for Product data
 @api_view(['GET'])
-def getProductData(request, id):
+def getProductDataById(request, id):
   try:
     product = Product.objects.get(pk=id)
-    serializer = ProductSerializer(product)
+    serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
+  
+@api_view(['GET'])
+def getProductDataByUser(request, uuid):
+  try:
+    user = User.objects.get(uuid=uuid)
+    favorites = Product.objects.filter(favorite__user_id=user)
+    serializer = ProductSerializer(favorites, many=True)
+    return Response(serializer.data)
+  except:
+    return Response(serializer.errors)
+  
+@api_view(['GET'])
+def getProductDataByPrefecture(request, prefecture):
+  try:
+    stores = Store.objects.filter(location__prefecture=prefecture)
+    products = Product.objects.filter(store__in=stores)
+    serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
+  except Exception as e:
+    return Response({'error': str(e)})
 
 @api_view(['POST'])
 def addNewProduct(request):
@@ -142,7 +162,7 @@ def deleteProductData(request, id):
 
 # Views for Store data
 @api_view(['GET'])
-def getStoreData(request, id):
+def getStoreDatabyId(request, id):
   try:
     store = Store.objects.get(pk=id)
     serializer = StoreSerializer(store)
