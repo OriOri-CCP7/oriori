@@ -15,9 +15,9 @@ const Testpage = () => {
 
         <Card productName="Stevenson Beer since 1932 special favour with decomposed snail" img_url="" offerStart="2023-06-04" offerEnd="2023-06-06" className="" onClick={() => {}} favoriteNumber={22}></Card>
 
-        <Card productName="SnowBall Winter Special with Extra sakura" img_url="" offerStart="2023-06-04" offerEnd="TBA" className="" onClick={() => {}} favoriteNumber={889}></Card>
+        <Card productName="SnowBall Winter Special with Extra sakura" img_url="" offerStart="2023-06-04" offerEnd="null" className="" onClick={() => {}} favoriteNumber={889}></Card>
 
-        <Card productName="EyesBall Soup with witches hair favour" img_url="" offerStart="TBA" offerEnd="TBA" className="" onClick={() => {}} favoriteNumber={1999}></Card>
+        <Card productName="EyesBall Soup with witches hair favour" img_url="" offerStart="null" offerEnd="null" className="" onClick={() => {}} favoriteNumber={1999}></Card>
         </div>
 
         </>

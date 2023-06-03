@@ -44,45 +44,56 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
 
     const [ offerEnds, setOfferEnds ] = useState<string>(offerEnd);
     const [ offerStarts, setOfferStarts ] = useState<string>(offerStart);
+    if(offerEnds === "null" || offerEnds === "undefined"){
+        setOfferEnds("2123-06-29");
+    }
+    if(offerStarts === "undefined" || offerStarts === "null"){
+        setOfferStarts(`${timeYear}-${timeMonth}-${timeDate}`)
+    }
+    const offerEndDate: Date = new Date(offerEnds)
+    const offerStartDate: Date = new Date(offerStarts);
+        
+    const currentDate: Date = new Date();
+    const oneDay: number = 24 * 60 * 60 * 1000;
+    const diffInEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - currentDate.getTime()) / oneDay));
+    const diffInStartDays: number = Math.round(Math.abs((offerStartDate.getTime() - currentDate.getTime()) / oneDay));
+    const diffInStartAndEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - offerStartDate.getTime()) / oneDay));
     useEffect(() => {
         
-        if(offerEnds === "TBA" || offerEnds === undefined){
-            setOfferEnds("2123-06-03");
-        }
-        if(offerStarts === undefined || offerStarts === "TBA"){
-            setOfferStarts(`${timeYear}-${timeMonth}-${timeDate}`)
-        }
-        const offerEndDate: Date = new Date(offerEnds)
-        const offerStartDate: Date = new Date(offerStarts);
-        const currentDate: Date = new Date();
-        const oneDay: number = 24 * 60 * 60 * 1000;
-        const diffInEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - currentDate.getTime()) / oneDay));
-        const diffInStartDays: number = Math.round(Math.abs((offerStartDate.getTime() - currentDate.getTime()) / oneDay));
-        const diffInStartAndEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - offerStartDate.getTime()) / oneDay));
-        console.log("🤡", productName);
-        console.log("🙀", offerEnds);
-        console.log("💗", offerStarts);
-        console.log("😆",diffInEndDays);
-        console.log("🥵",diffInStartDays);
-        console.log("👿",diffInStartAndEndDays);
-        if(diffInEndDays <= 7){
-            if(diffInStartAndEndDays <= 3){
-                setBgcolor(freshItemBgcolor);
-                setAvailableMessage(availability[3].text);
-            } else {
+        
+        
+        console.log("🤡 productName:", productName);
+        console.log("👋 offerEndDate:", offerEndDate);
+        console.log("💚 offerStartDat:", offerStartDate);
+        console.log("🙀 offerEnds:", offerEnds);
+        console.log("💗 offerStarts:", offerStarts);
+        console.log("😆 diffInEndDays:",diffInEndDays);
+        console.log("🥵 diffInStartDays:",diffInStartDays);
+        console.log("👿 diffInStartAndEndDays:",diffInStartAndEndDays);
+        if(diffInEndDays <= 7){ 
+            
+                // if there are conflicting end period and starting period
+                // The fresh period should prevail
+                // setBgcolor(freshItemBgcolor); 
+                // setAvailableMessage(availability[3].text);
+            
+            
                 setBgcolor(lastDayBgcolor);
                 setAvailableMessage(availability[1].text);
-            }
-        } else if (diffInStartDays <=3){
-            setBgcolor(freshItemBgcolor);
-            setAvailableMessage(availability[3].text)
-        } else {
+             
+        } else if (diffInEndDays >7) {
+            if(diffInStartAndEndDays >= 3){
+                setBgcolor(freshItemBgcolor); 
+                setAvailableMessage(availability[3].text);
+            }else {
             
 
             setBgcolor(normalBgcolor);
             setAvailableMessage(availability[2].text);
         }
-    }, [])
+    }
+}, []);
+
     const normalBgcolor = "grey";
     const freshItemBgcolor = "paleturquoise";
     const lastDayBgcolor = "red";
