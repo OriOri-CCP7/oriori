@@ -17,4 +17,4 @@ RUN set -ex && \
 COPY . /code
 
 EXPOSE 8000
-CMD ["waitress-serve", "--port=8000", "--threads=2", "config.wsgi:application"]
+CMD ["python", "manage.py", "collectstatic", "--noinput", "&&", "waitress-serve", "--port=8000", "--threads=2", "config.wsgi:application"]
