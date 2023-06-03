@@ -4,6 +4,10 @@ services:
       context: .
     ports:
       - "8000:8000"
+    environment:
+      - SECRET_KEY=django-insecure-i@_@)5*_*zmnnj-n$04n_@*$=07a-#=0sh=$e8mj@9k=#hm8#m
+      - DEBUG=False
+      - DATABASE_URL=postgres://postgres:devpostgres@dev-db:5432/oriori
     
   dev-db:
     image: postgres:15
