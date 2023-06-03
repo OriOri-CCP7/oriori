@@ -1,6 +1,6 @@
 [
   {
-    "model": ".Product",
+    "model": "base.Product",
     "pk": 1,
     "fields": {
       "product_name": "Setouchi Lemon Cake Frappuccino",
@@ -11,7 +11,7 @@
     }
   },
   {
-    "model": ".Product",
+    "model": "base.Product",
     "pk": 2,
     "fields": {
       "product_name": "Oreo McFlurry",
@@ -22,7 +22,7 @@
     }
   },
   {
-    "model": ".Product",
+    "model": "base.Product",
     "pk": 3,
     "fields": {
       "product_name": "Sakura Something Frappuccino",
@@ -33,7 +33,7 @@
     }
   },
   {
-    "model": ".Product",
+    "model": "base.Product",
     "pk": 4,
     "fields": {
       "product_name": "Matcha Black Thunder",
@@ -44,7 +44,7 @@
     }
   },
   {
-    "model": ".Product",
+    "model": "base.Product",
     "pk": 5,
     "fields": {
       "product_name": "Red Shiso Ramen",

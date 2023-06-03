@@ -1,40 +1,40 @@
 [
   {
-    "model": ".User",
+    "model": "base.User",
     "pk": 1,
     "fields": {
       "username": "ikuno815",
-      "email": "username@domain.com",
+      "email": "username@domainbase.com",
       "uuid": "def456",
       "location": 14
     }
   },
   {
-    "model": ".User",
+    "model": "base.User",
     "pk": 2,
     "fields": {
       "username": "kappanjoe",
-      "email": "fake@emailaddress.com",
+      "email": "fake@emailaddressbase.com",
       "uuid": "abc123",
       "location": 5
     }
   },
   {
-    "model": ".User",
+    "model": "base.User",
     "pk": 3,
     "fields": {
       "username": "nikobatzi1990",
-      "email": "email@provider.com",
+      "email": "email@providerbase.com",
       "uuid": "xyz987",
       "location": 14
     }
   },
   {
-    "model": ".User",
+    "model": "base.User",
     "pk": 4,
     "fields": {
       "username": "sirrorsmoore1975",
-      "email": "address@mail.com",
+      "email": "address@mailbase.com",
       "uuid": "lmn012",
       "location": 13
     }

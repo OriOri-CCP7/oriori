@@ -1,6 +1,6 @@
 [
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 1,
     "fields": {
       "country": "Japan",
@@ -8,7 +8,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 2,
     "fields": {
       "country": "Japan",
@@ -16,7 +16,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 3,
     "fields": {
       "country": "Japan",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 4,
     "fields": {
       "country": "Japan",
@@ -32,7 +32,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 5,
     "fields": {
       "country": "Japan",
@@ -40,7 +40,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 6,
     "fields": {
       "country": "Japan",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 7,
     "fields": {
       "country": "Japan",
@@ -56,7 +56,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 8,
     "fields": {
       "country": "Japan",
@@ -64,7 +64,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 9,
     "fields": {
       "country": "Japan",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 10,
     "fields": {
       "country": "Japan",
@@ -80,7 +80,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 11,
     "fields": {
       "country": "Japan",
@@ -88,7 +88,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 12,
     "fields": {
       "country": "Japan",
@@ -96,7 +96,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 13,
     "fields": {
       "country": "Japan",
@@ -104,7 +104,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 14,
     "fields": {
       "country": "Japan",
@@ -112,7 +112,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 15,
     "fields": {
       "country": "Japan",
@@ -120,7 +120,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 16,
     "fields": {
       "country": "Japan",
@@ -128,7 +128,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 17,
     "fields": {
       "country": "Japan",
@@ -136,7 +136,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 18,
     "fields": {
       "country": "Japan",
@@ -144,7 +144,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 19,
     "fields": {
       "country": "Japan",
@@ -152,7 +152,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 20,
     "fields": {
       "country": "Japan",
@@ -160,7 +160,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 21,
     "fields": {
       "country": "Japan",
@@ -168,7 +168,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 22,
     "fields": {
       "country": "Japan",
@@ -176,7 +176,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 23,
     "fields": {
       "country": "Japan",
@@ -184,7 +184,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 24,
     "fields": {
       "country": "Japan",
@@ -192,7 +192,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 25,
     "fields": {
       "country": "Japan",
@@ -200,7 +200,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 26,
     "fields": {
       "country": "Japan",
@@ -208,7 +208,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 27,
     "fields": {
       "country": "Japan",
@@ -216,7 +216,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 28,
     "fields": {
       "country": "Japan",
@@ -224,7 +224,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 29,
     "fields": {
       "country": "Japan",
@@ -232,7 +232,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 30,
     "fields": {
       "country": "Japan",
@@ -240,7 +240,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 31,
     "fields": {
       "country": "Japan",
@@ -248,7 +248,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 32,
     "fields": {
       "country": "Japan",
@@ -256,7 +256,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 33,
     "fields": {
       "country": "Japan",
@@ -264,7 +264,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 34,
     "fields": {
       "country": "Japan",
@@ -272,7 +272,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 35,
     "fields": {
       "country": "Japan",
@@ -280,7 +280,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 36,
     "fields": {
       "country": "Japan",
@@ -288,7 +288,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 37,
     "fields": {
       "country": "Japan",
@@ -296,7 +296,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 38,
     "fields": {
       "country": "Japan",
@@ -304,7 +304,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 39,
     "fields": {
       "country": "Japan",
@@ -312,7 +312,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 40,
     "fields": {
       "country": "Japan",
@@ -320,7 +320,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 41,
     "fields": {
       "country": "Japan",
@@ -328,7 +328,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 42,
     "fields": {
       "country": "Japan",
@@ -336,7 +336,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 43,
     "fields": {
       "country": "Japan",
@@ -344,7 +344,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 44,
     "fields": {
       "country": "Japan",
@@ -352,7 +352,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 45,
     "fields": {
       "country": "Japan",
@@ -360,7 +360,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 46,
     "fields": {
       "country": "Japan",
@@ -368,7 +368,7 @@
     }
   },
   {
-    "model": ".Location",
+    "model": "base.Location",
     "pk": 47,
     "fields": {
       "country": "Japan",

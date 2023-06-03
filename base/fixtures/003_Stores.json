@@ -1,6 +1,6 @@
 [
   {
-    "model": ".Store",
+    "model": "base.Store",
     "pk": 1,
     "fields": {
       "name": "No Store",
