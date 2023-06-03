@@ -1,7 +1,7 @@
 .cardName {
     margin: 20px;
     padding: 20px;
-    background-color:paleturquoise;
+    /* background-color:paleturquoise; */
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,9 @@
     border: none;
     cursor: pointer;
     text-decoration: underline;
-    display: inline;
+    /* display: inline; */
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: 'flex-end';
 }
