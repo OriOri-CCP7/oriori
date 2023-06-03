@@ -1,5 +1,5 @@
 export {};
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
 import auth from '../firebase.config';
 import { 
@@ -55,10 +55,29 @@ const UserContext = createContext<{
     return signOut(auth);
   };
 
+  useEffect(() => {
+    const authenticationState = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        const authenticatedUser: User = {
+          username: '',
+          email: '',
+          password: '',
+          uuid: currentUser.uid,
+        };
+        setUser(authenticatedUser);
+      }
+    });
+
+    return () => {
+      authenticationState();
+    }
+  }, []);
+
   return <UserContext.Provider value={{ signup, login, logout, user }}>
     { children }
   </UserContext.Provider>
 }
+
 
 export const UserAuth = () => {
   return useContext(UserContext);
