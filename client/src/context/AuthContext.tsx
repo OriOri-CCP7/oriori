@@ -18,7 +18,7 @@ interface User {
 };
 
 const UserContext = createContext<{
-  signup: (username: string, email: string, password: string) => Promise<void>;
+  signup: (username: string, email: string, password: string) => Promise<UserCredential>;
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
   user: User;
@@ -40,10 +40,10 @@ const UserContext = createContext<{
       password: password,
       uuid: null,
     };
-
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     newUserInfo.uuid = newUser.user.uid;
-    // AXIOS REQUEST TO PYTHON SERVER HERE
+    await axios.post('api/newUser/', newUserInfo);
+    return newUser;
   };
 
   const login = async (email: string, password: string) => {
