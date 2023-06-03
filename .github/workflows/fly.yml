@@ -9,7 +9,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
+      
+      - name: Setup Node 20.2.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.2.0
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+        
+      - name: Install Dependencies & Build Client
+        working-directory: ./client
+        run: |
+          npm ci
+          npm run build
+      
+      - name: Setup Fly.io
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      
+      - name: Deploy to Fly.io
+        run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
