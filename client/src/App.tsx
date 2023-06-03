@@ -4,10 +4,10 @@ import Testpage from '../src/pages/TestsPage';
 import './App.css';
 
 function App() {
-  let element = useRoutes([
-    {path: '/testpage', element: <Testpage />},
-]);
-  return element;
+  
+  return (
+    <Testpage />
+  )
   
 }
 
