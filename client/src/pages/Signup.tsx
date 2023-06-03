@@ -25,7 +25,7 @@ const Signup: React.FC<Props> = () => {
 
   return (
     <>
-
+      <form></form>
     </>
   );
 };
