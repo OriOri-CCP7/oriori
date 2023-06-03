@@ -22,4 +22,4 @@ console_command = "/code/manage.py shell"
   url_prefix = "/static/"
 
 [deploy]
-  release_command = "python manage.py migrate --noinput"
+  release_command = "sh fly.sh"
