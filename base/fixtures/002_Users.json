@@ -1,22 +1,42 @@
 [
   {
-    "username": "ikuno815",
-    "email": "username@domain.com",
-    "uuid": "def456"
+    "model": ".User",
+    "pk": 1,
+    "fields": {
+      "username": "ikuno815",
+      "email": "username@domain.com",
+      "uuid": "def456",
+      "location": 14
+    }
   },
   {
-    "username": "kappanjoe",
-    "email": "fake@emailaddress.com",
-    "uuid": "abc123"
+    "model": ".User",
+    "pk": 2,
+    "fields": {
+      "username": "kappanjoe",
+      "email": "fake@emailaddress.com",
+      "uuid": "abc123",
+      "location": 5
+    }
   },
   {
-    "username": "nikobatzi1990",
-    "email": "email@provider.com",
-    "uuid": "xyz987"
+    "model": ".User",
+    "pk": 3,
+    "fields": {
+      "username": "nikobatzi1990",
+      "email": "email@provider.com",
+      "uuid": "xyz987",
+      "location": 14
+    }
   },
   {
-    "username": "sirrorsmoore1975",
-    "email": "address@mail.com",
-    "uuid": "lmn012"
+    "model": ".User",
+    "pk": 4,
+    "fields": {
+      "username": "sirrorsmoore1975",
+      "email": "address@mail.com",
+      "uuid": "lmn012",
+      "location": 13
+    }
   }
 ]

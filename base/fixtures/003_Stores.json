@@ -1,6 +1,10 @@
 [
   {
-    "name": "No Store",
-    "location": "1"
+    "model": ".Store",
+    "pk": 1,
+    "fields": {
+      "name": "No Store",
+      "location": "1"
+    }
   }
 ]

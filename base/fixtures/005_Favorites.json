@@ -1,30 +1,58 @@
 [
   {
-    "user": "1",
-    "product": "1"
+    "model": ".Favorite",
+    "pk": 1,
+    "fields": {
+      "user": "1",
+      "product": "1"
+    }
   },
   {
-    "user": "1",
-    "product": "2"
+    "model": ".Favorite",
+    "pk": 2,
+    "fields": {
+      "user": "1",
+      "product": "2"
+    }
   },
   {
-    "user": "1",
-    "product": "3"
+    "model": ".Favorite",
+    "pk": 3,
+    "fields": {
+      "user": "1",
+      "product": "3"
+    }
   },
   {
-    "user": "1",
-    "product": "4"
+    "model": ".Favorite",
+    "pk": 4,
+    "fields": {
+      "user": "1",
+      "product": "4"
+    }
   },
   {
-    "user": "1",
-    "product": "5"
+    "model": ".Favorite",
+    "pk": 5,
+    "fields": {
+      "user": "1",
+      "product": "5"
+    }
   },
   {
-    "user": "2",
-    "product": "3"
+    "model": ".Favorite",
+    "pk": 6,
+    "fields": {
+      "user": "2",
+      "product": "3"
+    }
   },
   {
-    "user": "2",
-    "product": "5"
+    "model": ".Favorite",
+    "pk": 7,
+    "fields": {
+      "user": "2",
+      "product": "5"
+    }
   }
 ]

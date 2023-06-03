@@ -1,37 +1,57 @@
 [
   {
-    "product_name": "Setouchi Lemon Cake Frappuccino",
-    "store": "1",
-    "start_date": "2023-05-31",
-    "end_date": "2023-06-14",
-    "sources": "http://www.starbucks.co.jp"
+    "model": ".Product",
+    "pk": 1,
+    "fields": {
+      "product_name": "Setouchi Lemon Cake Frappuccino",
+      "store": "1",
+      "start_date": "2023-05-31",
+      "end_date": "2023-06-14",
+      "sources": "http://www.starbucks.co.jp"
+    }
   },
   {
-    "product_name": "Oreo McFlurry",
-    "store": "1",
-    "start_date": "2023-05-31",
-    "end_date": "2025-01-01",
-    "sources": "http://www.starbucks.co.jp"
+    "model": ".Product",
+    "pk": 2,
+    "fields": {
+      "product_name": "Oreo McFlurry",
+      "store": "1",
+      "start_date": "2023-05-31",
+      "end_date": "2025-01-01",
+      "sources": "http://www.starbucks.co.jp"
+    }
   },
   {
-    "product_name": "Sakura Something Frappuccino",
-    "store": "1",
-    "start_date": "2023-03-31",
-    "end_date": "2023-04-14",
-    "sources": "http://www.starbucks.co.jp"
+    "model": ".Product",
+    "pk": 3,
+    "fields": {
+      "product_name": "Sakura Something Frappuccino",
+      "store": "1",
+      "start_date": "2023-03-31",
+      "end_date": "2023-04-14",
+      "sources": "http://www.starbucks.co.jp"
+    }
   },
   {
-    "product_name": "Matcha Black Thunder",
-    "store": "1",
-    "start_date": "2023-05-31",
-    "end_date": "2025-01-01",
-    "sources": "http://www.starbucks.co.jp"
+    "model": ".Product",
+    "pk": 4,
+    "fields": {
+      "product_name": "Matcha Black Thunder",
+      "store": "1",
+      "start_date": "2023-05-31",
+      "end_date": "2025-01-01",
+      "sources": "http://www.starbucks.co.jp"
+    }
   },
   {
-    "product_name": "Red Shiso Ramen",
-    "store": "1",
-    "start_date": "2023-05-31",
-    "end_date": "2025-01-01",
-    "sources": "http://www.starbucks.co.jp"
+    "model": ".Product",
+    "pk": 5,
+    "fields": {
+      "product_name": "Red Shiso Ramen",
+      "store": "1",
+      "start_date": "2023-05-31",
+      "end_date": "2025-01-01",
+      "sources": "http://www.starbucks.co.jp"
+    }
   }
 ]
