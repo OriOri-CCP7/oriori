@@ -1,27 +1,46 @@
 export {};
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 import axios from 'axios';
 import auth from '../firebase.config';
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
   signOut,
-  onAuthStateChanged 
+  onAuthStateChanged,
+  UserCredential 
 } from 'firebase/auth';
 
-const UserContext = createContext();
+interface User {
+  username: string, 
+  email: string, 
+  password: string, 
+  uuid: string | unknown
+};
 
-export const AuthContextProvider = ({children}) => {
-  const [user, setUser] = useState({});
+const UserContext = createContext<{
+  signup: (username: string, email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<UserCredential>;
+  logout: () => Promise<void>;
+  user: User;
+} | null>(null);
+  
+
+  export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
+    const [user, setUser] = useState<User>({
+      username: '',
+      email: '',
+      password: '',
+      uuid: null,
+    });
 
   const signup = async (username: string, email: string, password: string) => {
-    let newUserInfo: {username: string, email: string, password: string, uuid: string | unknown}
-    newUserInfo = {
+    let newUserInfo: User = {
       username: username,
       email: email,
       password: password,
-      uuid: null
+      uuid: null,
     };
+
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     newUserInfo.uuid = newUser.user.uid;
     // AXIOS REQUEST TO PYTHON SERVER HERE
@@ -37,7 +56,7 @@ export const AuthContextProvider = ({children}) => {
   };
 
   return <UserContext.Provider value={{ signup, login, logout, user }}>
-    {children}
+    { children }
   </UserContext.Provider>
 }
 
