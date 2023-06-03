@@ -1,5 +1,7 @@
 import './Navbar.css';
 import { useNavigate } from 'react-router-dom';
+import { HomeIcon, HeartIcon, FireIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+
 
 function Navbar() {
   const navigate = useNavigate();
@@ -7,16 +9,18 @@ function Navbar() {
     <div className='nav'>
       <ul>
             <li>
-              <button onClick={() => navigate('/')} className="menu-title">Home</button>
+              <HomeIcon className='home-icon' 
+              onClick={() => navigate('/')}
+              />
             </li>
             <li>
-              <button onClick={() => navigate('/favorite')} className="menu-title">Favorite</button>
+              <HeartIcon className='heart-icon' onClick={() => navigate('/favorite')}/>
             </li>
             <li>
-              <button onClick={() => navigate('/popular')} className="menu-title">Popular</button>
+              <FireIcon className='popular-icon' onClick={() => navigate('/popular')} />
             </li>
             <li>
-              <button onClick={() => navigate('/search')} className="menu-title">Search</button>
+              <MagnifyingGlassIcon className='search-icon' onClick={() => navigate('/search')}/>
             </li>
         </ul>
     </div>

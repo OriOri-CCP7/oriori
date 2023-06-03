@@ -2,6 +2,30 @@
     box-sizing: border-box;
 }
 
+li {
+    margin-bottom: 10px;
+}
+
+.home-icon {
+    width: 40%;
+    fill:#33b45e;
+}
+
+.heart-icon {
+    width: 40%;
+    fill: #d22e64;
+}
+
+.popular-icon {
+    width: 40%;
+    fill: #ff6600
+}
+
+.search-icon {
+    width: 40%;
+}
+
+
 body {
     margin: 0;
     display: flex;
@@ -20,11 +44,6 @@ body {
     justify-content: space-around;
 }
 
-.menu-title {
-    font-size: 1rem;
-    word-wrap: break-all;
-}
-
 .nav ul {
     padding: auto;
     margin: 0;
@@ -39,19 +58,7 @@ body {
     align-items: center;
     width: 25%;
     padding:0;
-    margin:0;
     border-right: 1px solid #fff;
-}
-
-.nav button {
-    background-color: #fff;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    color: inherit;
-    text-decoration: none;
-    height: 100%;
     display: flex;
     align-items: stretch;
-    padding: .25rem;
 }
