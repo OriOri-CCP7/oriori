@@ -1,4 +1,3 @@
-export {};
 import React, { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import "./Signup.css";
@@ -23,7 +22,7 @@ const Signup: React.FC<Props> = () => {
         console.log("🤬", error);
       }
   };
-  
+
   return (
     <>
 

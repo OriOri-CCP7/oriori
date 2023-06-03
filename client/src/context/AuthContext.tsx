@@ -1,4 +1,3 @@
-export {};
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
 import auth from '../firebase.config';
@@ -77,7 +76,6 @@ const UserContext = createContext<{
     { children }
   </UserContext.Provider>
 }
-
 
 export const UserAuth = () => {
   return useContext(UserContext);
