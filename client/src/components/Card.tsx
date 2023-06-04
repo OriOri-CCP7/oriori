@@ -57,7 +57,7 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
     console.log("💚 offerStartDate:", offerStartDate);
     console.log("🙀 offerEnds:", offerEnds, "day");
     console.log("💗 offerStarts:", offerStarts, "day");
-    console.log("😆 diffInEndDays:",diffInEndDays, "day" );
+    console.log("😆 diffInEndDays:",diffInEndDays, "days");
     console.log("🥵 diffInStartDays:",diffInStartDays, "day");
     console.log("👿 diffInStartAndEndDays:",diffInStartAndEndDays, "day");
     const normalBgcolor = "grey";
