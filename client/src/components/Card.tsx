@@ -15,11 +15,11 @@ type  Props = {
 }
 
 const availability = [
-    {value:0, text:"Not Yet Available"},
+    {value:0, text:"Coming Soon"},
     {value:1, text:"Fresh Item!"},
     {value:2, text:"Available Now!"},
     {value:3, text:"Ending Soon"},
-    {value:4, text:"No Longer Available"}
+    {value:4, text:"Expired"}
 ]
 
 const Card :React.FC<Props> = ({className, img_url, productName, offerStart, offerEnd, favoriteNumber, onClick}) => {
@@ -79,30 +79,31 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
     useEffect(() => {
         // handle card color
         // Is it the promotion period yet? is it within the promotion period? is it outside the promotion period?
-        if(current.getTime() - offerStartDate.getTime() > 0){
-            // setIsPromotionPeriod(false);
-            setBgcolor(normalBgcolor);
-            setAvailableMessage(availability[0].text);
-        } else if (current.getTime() - offerStartDate.getTime() < 0 && current.getTime() - offerEndDate.getTime() > 0) {
-            if(diffInEndDays <=3){
-                // setIsPromotionPeriod(true);
-                setBgcolor(freshItemBgcolor);
-                setAvailableMessage(availability[1].text);
+        
+        // if(current.getTime() - offerStartDate.getTime() > 0){
+        //     // setIsPromotionPeriod(false);
+        //     setBgcolor(normalBgcolor);
+        //     setAvailableMessage(availability[0].text);
+        // } else if (current.getTime() - offerStartDate.getTime() < 0 && current.getTime() - offerEndDate.getTime() > 0) {
+        //     if(diffInEndDays <=3){
+        //         // setIsPromotionPeriod(true);
+        //         setBgcolor(freshItemBgcolor);
+        //         setAvailableMessage(availability[1].text);
                 
-            } else if (diffInStartDays <=7){
-                // setIsPromotionPeriod(true);
-                setBgcolor(lastDayBgcolor);
-                setAvailableMessage(availability[3].text);
-            }else {
-                // setIsPromotionPeriod(true);
-                setBgcolor(normalBgcolor);
-                setAvailableMessage(availability[2].text);
-            }
-        } else if (current.getTime() - offerEndDate.getTime() > 0){
-            // setIsPromotionPeriod(false);
-            setBgcolor(normalBgcolor);
-            setAvailableMessage(availability[4].text);
-        }
+        //     } else if (diffInStartDays <=7){
+        //         // setIsPromotionPeriod(true);
+        //         setBgcolor(lastDayBgcolor);
+        //         setAvailableMessage(availability[3].text);
+        //     }else {
+        //         // setIsPromotionPeriod(true);
+        //         setBgcolor(normalBgcolor);
+        //         setAvailableMessage(availability[2].text);
+        //     }
+        // } else if (current.getTime() - offerEndDate.getTime() > 0){
+        //     // setIsPromotionPeriod(false);
+        //     setBgcolor(normalBgcolor);
+        //     setAvailableMessage(availability[4].text);
+        // }
         // if(diffInEndDays <= 7){ 
             
         //     // if there are conflicting end period and starting period
