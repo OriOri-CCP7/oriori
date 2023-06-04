@@ -79,53 +79,24 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
     useEffect(() => {
         // handle card color
         // Is it the promotion period yet? is it within the promotion period? is it outside the promotion period?
+        if(diffInStartAndEndDays< 11){
+            if(diffInStartAndEndDays < 1){
+                // grey, 1 x red, grey 
+                // no middle grey, no green
+                // 1 block only - current day = red
+            } else if (diffInStartAndEndDays < 8 ){
+                // grey, 1-7x red, grey
+                // no middle grey, no green
+                // 7 block only
+            } else { 
+                //(diffInStartAndEndDays < 11)
+                // grey, 1-3x green, 7x red, grey
+                // might overlap with green, when green does overlap with red, red prevail
+            }
+        } else if (diffInStartAndEndDays >= 11){
+            // grey, 3x green, any number of grey, 7x red, grey
+        }
         
-        // if(current.getTime() - offerStartDate.getTime() > 0){
-        //     // setIsPromotionPeriod(false);
-        //     setBgcolor(normalBgcolor);
-        //     setAvailableMessage(availability[0].text);
-        // } else if (current.getTime() - offerStartDate.getTime() < 0 && current.getTime() - offerEndDate.getTime() > 0) {
-        //     if(diffInEndDays <=3){
-        //         // setIsPromotionPeriod(true);
-        //         setBgcolor(freshItemBgcolor);
-        //         setAvailableMessage(availability[1].text);
-                
-        //     } else if (diffInStartDays <=7){
-        //         // setIsPromotionPeriod(true);
-        //         setBgcolor(lastDayBgcolor);
-        //         setAvailableMessage(availability[3].text);
-        //     }else {
-        //         // setIsPromotionPeriod(true);
-        //         setBgcolor(normalBgcolor);
-        //         setAvailableMessage(availability[2].text);
-        //     }
-        // } else if (current.getTime() - offerEndDate.getTime() > 0){
-        //     // setIsPromotionPeriod(false);
-        //     setBgcolor(normalBgcolor);
-        //     setAvailableMessage(availability[4].text);
-        // }
-        // if(diffInEndDays <= 7){ 
-            
-        //     // if there are conflicting end period and starting period
-        //     // The fresh period should prevail
-        //     // setBgcolor(freshItemBgcolor); 
-        //     // setAvailableMessage(availability[3].text);
-            
-            
-        //     setBgcolor(lastDayBgcolor);
-        //     setAvailableMessage(availability[1].text);
-            
-        // } else if (diffInEndDays >7) {
-        //     if(diffInStartAndEndDays >= 3){
-        //         setBgcolor(freshItemBgcolor); 
-        //         setAvailableMessage(availability[3].text);
-        //     }else {
-                
-                
-        //         setBgcolor(normalBgcolor);
-        //         setAvailableMessage(availability[2].text);
-        //     }
-        // }
 
     }, []);
     
