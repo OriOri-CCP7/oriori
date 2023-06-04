@@ -6,7 +6,7 @@ const Testpage = () => {
     return (
         <>
         <div>
-        <Card productName="StarFat: JK style rule breaking Latte" img_url="" offerStart="2023-06-30" offerEnd="2023-07-31" className="" onClick={() => {}} favoriteNumber={0}></Card>
+        <Card productName="StarFat: JK style rule breaking Latte" img_url="https://i.ibb.co/NnGtqMb/PSU-Unkonwn-Unit-basic04.png" offerStart="2023-06-30" offerEnd="2023-07-31" className="" onClick={() => {}} favoriteNumber={0}></Card>
         
         <Card productName="StarFat: Double Split Banana Latte" img_url="" offerStart="2023-06-01" offerEnd="2023-06-05" className="" onClick={() => {}} favoriteNumber={10}></Card>
         

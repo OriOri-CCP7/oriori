@@ -35,17 +35,23 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
 }
  */
     const time :Date = new Date();
-    const [timeYear, setTimeYear] = useState<string>(time.getFullYear().toString())
-    // let timeYear: string = time.getFullYear().toString();
-    const [timeMonth,setTimeMonth] = useState<string>((time.getMonth() + 101).toString().substring(1))
-    //let timeMonth: string = (time.getMonth() + 1).toString();
-    // let timeDate: string = time.getDate().toString();
-    const [timeDate, setTimeDate] = useState<string>((time.getDate() + 100).toString().substring(1))
-
+    const timeYear: number = time.getFullYear();
+    const timeMonth: string = (time.getMonth() + 101).toString().substring(1);
+    const timeDate:string = (time.getDate() + 100).toString().substring(1);
+    
     const [ offerEnds, setOfferEnds ] = useState<string>(offerEnd);
     const [ offerStarts, setOfferStarts ] = useState<string>(offerStart);
+    
+    // const [timeYear, setTimeYear] = useState<string>(time.getFullYear().toString())
+    // let timeYear: string = time.getFullYear().toString();
+    // const [timeMonth,setTimeMonth] = useState<string>((time.getMonth() + 101).toString().substring(1))
+    //let timeMonth: string = (time.getMonth() + 1).toString();
+    // let timeDate: string = time.getDate().toString();
+    // const [timeDate, setTimeDate] = useState<string>((time.getDate() + 100).toString().substring(1));
+
+    
     if(offerEnds === "null" || offerEnds === "undefined"){
-        setOfferEnds("2123-06-29");
+        setOfferEnds(`${(timeYear + 100).toString()}-${timeMonth}-${timeDate}`);
     }
     if(offerStarts === "undefined" || offerStarts === "null"){
         setOfferStarts(`${timeYear}-${timeMonth}-${timeDate}`)
@@ -58,18 +64,21 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
     const diffInEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - currentDate.getTime()) / oneDay));
     const diffInStartDays: number = Math.round(Math.abs((offerStartDate.getTime() - currentDate.getTime()) / oneDay));
     const diffInStartAndEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - offerStartDate.getTime()) / oneDay));
+
+    console.log("🤡 productName:", productName);
+    console.log("👋 offerEndDate:", offerEndDate);
+    console.log("💚 offerStartDat:", offerStartDate);
+    console.log("🙀 offerEnds:", offerEnds);
+    console.log("💗 offerStarts:", offerStarts);
+    console.log("😆 diffInEndDays:",diffInEndDays);
+    console.log("🥵 diffInStartDays:",diffInStartDays);
+    console.log("👿 diffInStartAndEndDays:",diffInStartAndEndDays);
+    
     useEffect(() => {
         
         
         
-        console.log("🤡 productName:", productName);
-        console.log("👋 offerEndDate:", offerEndDate);
-        console.log("💚 offerStartDat:", offerStartDate);
-        console.log("🙀 offerEnds:", offerEnds);
-        console.log("💗 offerStarts:", offerStarts);
-        console.log("😆 diffInEndDays:",diffInEndDays);
-        console.log("🥵 diffInStartDays:",diffInStartDays);
-        console.log("👿 diffInStartAndEndDays:",diffInStartAndEndDays);
+        
         if(diffInEndDays <= 7){ 
             
                 // if there are conflicting end period and starting period
@@ -124,14 +133,11 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
         
 
     // }
-    const [ counter, setCounter ] = useState<number>(favoriteNumber);
-
-    const [ addLove, setAddLove ] = useState<boolean>(false);
-
     // const [ isLastWeek, setIsLastWeek ] = useState<boolean>(false);
-
+    
+    const [ counter, setCounter ] = useState<number>(favoriteNumber);
+    const [ addLove, setAddLove ] = useState<boolean>(false);
     const [ availableMessage, setAvailableMessage ] = useState<string>(availability[0].text)
-
     const [ bgcolor, setBgcolor ] = useState<string>("");
     
     const styles = {
@@ -144,7 +150,7 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
             style={styles}
             >
                 <div className="imageURL">
-                    <img src={img_url} alt={img_url} />
+                    { (img_url) ? <><img src={img_url} alt={img_url} /></> : <></> }
                 </div>
                 <div className="productName">
                     {productName}
