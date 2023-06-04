@@ -33,6 +33,7 @@ const UserContext = createContext<{
     });
 
   const signup = async (username: string, email: string, password: string) => {
+    console.log('🤪', auth);
     let newUserInfo: User = {
       username: username,
       email: email,
