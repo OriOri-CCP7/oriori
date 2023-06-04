@@ -24,45 +24,54 @@ const availability = [
 
 const Card :React.FC<Props> = ({className, img_url, productName, offerStart, offerEnd, favoriteNumber, onClick}) => {
 
-    const time :Date = new Date();
-    const timeYear: number = time.getFullYear();
-    const timeMonth: string = (time.getMonth() + 101).toString().substring(1);
-    const timeDate:string = (time.getDate() + 100).toString().substring(1);
     
+    const current :Date = new Date();
+    const currentYear: number = current.getFullYear();
+    const currentMonth: string = (current.getMonth() + 101).toString().substring(1);
+    const currentDate:string = (current.getDate() + 100).toString().substring(1);
     const [ offerEnds, setOfferEnds ] = useState<string>(offerEnd);
     const [ offerStarts, setOfferStarts ] = useState<string>(offerStart);
-    
-    if(offerEnds === "null" || offerEnds === "undefined"){
-        setOfferEnds(`${(timeYear + 100).toString()}-${timeMonth}-${timeDate}`);
-    }
-    if(offerStarts === "undefined" || offerStarts === "null"){
-        setOfferStarts(`${timeYear}-${timeMonth}-${timeDate}`)
-    }
-    const offerEndDate: Date = new Date(offerEnds)
-    const offerStartDate: Date = new Date(offerStarts);
+    useEffect(()=> {
+        if(offerEnds === "null" || offerEnds === "undefined"){
+            setOfferEnds(`${(currentYear + 100).toString()}-${currentMonth}-${currentDate}`);
+        }
+        if(offerStarts === "undefined" || offerStarts === "null"){
+            setOfferStarts(`${currentYear}-${currentMonth}-${currentDate}`)
+        }
         
-    // For card color
-    const currentDate: Date = new Date();
+    }, []);
+    
+    
+    // For card color 
+    const offerEndDate: Date = new Date(offerEnds);
+    const offerStartDate: Date = new Date(offerStarts);
     const oneDay: number = 24 * 60 * 60 * 1000;
-    const diffInEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - currentDate.getTime()) / oneDay));
-    const diffInStartDays: number = Math.round(Math.abs((offerStartDate.getTime() - currentDate.getTime()) / oneDay));
-    const diffInStartAndEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - offerStartDate.getTime()) / oneDay));
+    const diffInEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - current.getTime()) / oneDay));
+    const diffInStartDays: number = Math.round(Math.abs((offerStartDate.getTime() - current.getTime()) / oneDay));
+    const diffInStartAndEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - offerStartDate.getTime()) / oneDay)); // promotion period date
+
+    
 
     console.log("🤡 productName:", productName);
     console.log("👋 offerEndDate:", offerEndDate);
-    console.log("💚 offerStartDat:", offerStartDate);
-    console.log("🙀 offerEnds:", offerEnds);
-    console.log("💗 offerStarts:", offerStarts);
-    console.log("😆 diffInEndDays:",diffInEndDays);
-    console.log("🥵 diffInStartDays:",diffInStartDays);
-    console.log("👿 diffInStartAndEndDays:",diffInStartAndEndDays);
+    console.log("💚 offerStartDate:", offerStartDate);
+    console.log("🙀 offerEnds:", offerEnds, "day");
+    console.log("💗 offerStarts:", offerStarts, "day");
+    console.log("😆 diffInEndDays:",diffInEndDays, "day" );
+    console.log("🥵 diffInStartDays:",diffInStartDays, "day");
+    console.log("👿 diffInStartAndEndDays:",diffInStartAndEndDays, "day");
     const normalBgcolor = "grey";
     const freshItemBgcolor = "paleturquoise";
     const lastDayBgcolor = "red";
     const [ bgcolor, setBgcolor ] = useState<string>(normalBgcolor);
-    const [isPromotion, setIsPromotion] = useState<boolean>(false);
+    // const [isPromotionPeriod, setIsPromotionPeriod] = useState<boolean>(false);
     const [isStartThreeDays, setIsStartThreeDays ] = useState<boolean>(false);
     const [isLastWeek, setIsLastWeek] = useState<boolean>(false); 
+
+    // if(diffInEndDays > 0){ // when this is not zero
+    //     setIsPromotionPeriod(true);
+    //     setIsLastWeek(true);
+    // }
 
     const styles = {
         backgroundColor: bgcolor
@@ -70,28 +79,27 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
     useEffect(() => {
         // handle card color
         // Is it the promotion period yet? is it within the promotion period? is it outside the promotion period?
-        if(currentDate.getTime() > offerStartDate.getTime()){
-            setIsPromotion(false);
+        if(current.getTime() - offerStartDate.getTime() > 0){
+            // setIsPromotionPeriod(false);
             setBgcolor(normalBgcolor);
             setAvailableMessage(availability[0].text);
-        } else if (currentDate.getTime() <= offerStartDate.getTime() && currentDate.getTime() >= offerEndDate.getTime()){
+        } else if (current.getTime() - offerStartDate.getTime() < 0 && current.getTime() - offerEndDate.getTime() > 0) {
             if(diffInEndDays <=3){
-                setIsPromotion(true);
+                // setIsPromotionPeriod(true);
                 setBgcolor(freshItemBgcolor);
                 setAvailableMessage(availability[1].text);
+                
             } else if (diffInStartDays <=7){
-                setIsPromotion(true);
+                // setIsPromotionPeriod(true);
                 setBgcolor(lastDayBgcolor);
                 setAvailableMessage(availability[3].text);
-            } else if (currentDate.getTime()){
-
-            } else {
-                setIsPromotion(true);
+            }else {
+                // setIsPromotionPeriod(true);
                 setBgcolor(normalBgcolor);
                 setAvailableMessage(availability[2].text);
             }
-        } else if (currentDate.getTime() > offerEndDate.getTime()){
-            setIsPromotion(false);
+        } else if (current.getTime() - offerEndDate.getTime() > 0){
+            // setIsPromotionPeriod(false);
             setBgcolor(normalBgcolor);
             setAvailableMessage(availability[4].text);
         }
