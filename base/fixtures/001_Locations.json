@@ -1,0 +1,378 @@
+[
+  {
+    "model": "base.Location",
+    "pk": 1,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Hokkaido"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 2,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Aomori"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 3,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Iwate"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 4,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Miyagi"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 5,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Akita"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 6,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Yamagata"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 7,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Fukushima"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 8,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Ibaraki"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 9,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Tochigi"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 10,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Gunma"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 11,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Saitama"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 12,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Chiba"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 13,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Tokyo"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 14,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Kanagawa"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 15,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Niigata"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 16,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Toyama"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 17,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Ishikawa"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 18,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Fukui"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 19,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Yamanashi"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 20,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Nagano"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 21,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Gifu"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 22,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Shizuoka"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 23,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Aichi"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 24,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Mie"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 25,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Shiga"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 26,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Kyoto"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 27,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Osaka"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 28,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Hyogo"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 29,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Nara"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 30,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Wakayama"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 31,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Tottori"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 32,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Shimane"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 33,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Okayama"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 34,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Hiroshima"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 35,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Yamaguchi"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 36,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Tokushima"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 37,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Kagawa"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 38,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Ehime"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 39,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Kochi"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 40,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Fukuoka"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 41,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Saga"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 42,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Nagasaki"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 43,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Kumamoto"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 44,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Oita"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 45,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Miyazaki"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 46,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Kagoshima"
+    }
+  },
+  {
+    "model": "base.Location",
+    "pk": 47,
+    "fields": {
+      "country": "Japan",
+      "prefecture": "Okinawa"
+    }
+  }
+]
