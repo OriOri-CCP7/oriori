@@ -15,12 +15,13 @@ type  Props = {
 }
 
 const availability = [
-    {value:0, text:"Coming Soon"},
-    {value:1, text:"Fresh Item!"},
-    {value:2, text:"Available Now!"},
-    {value:3, text:"Ending Soon"},
-    {value:4, text:"Expired"}
-]
+    {value:0, text:"Coming Soon", color:"grey"},
+    {value:1, text:"Fresh Item!", color:"paleturquoise"},
+    {value:2, text:"Available Now!", color: "grey"},
+    {value:3, text:"Ending Soon", color: "red"},
+    {value:4, text:"Expired", color:"grey"}
+];
+
 
 const Card :React.FC<Props> = ({className, img_url, productName, offerStart, offerEnd, favoriteNumber, onClick}) => {
 
@@ -80,26 +81,51 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
         // handle card color
         // Is it the promotion period yet? is it within the promotion period? is it outside the promotion period?
         if(diffInStartAndEndDays< 11){
-            if(diffInStartAndEndDays < 1){
+            if(diffInStartAndEndDays < 1){ 
+                const pattern = innerPattern(0,0,1);
                 // grey, 1 x red, grey 
                 // no middle grey, no green
                 // 1 block only - current day = red
             } else if (diffInStartAndEndDays < 8 ){
+                const pattern = innerPattern(0,0,diffInStartAndEndDays);
                 // grey, 1-7x red, grey
                 // no middle grey, no green
                 // 7 block only
             } else { 
+                const pattern = innerPattern(diffInStartAndEndDays - 7, 0, 7);
                 //(diffInStartAndEndDays < 11)
                 // grey, 1-3x green, 7x red, grey
                 // might overlap with green, when green does overlap with red, red prevail
             }
         } else if (diffInStartAndEndDays >= 11){
+            const pattern = innerPattern(3,diffInStartAndEndDays - 10,7);
+            const checkRange1 = Math.round((offerStartDate.getTime() - current.getTime())/oneDay ) > 0;
+            const checkRange2 = Math.round((offerEndDate.getTime() - current.getTime())/oneDay ) > 0;
+            if(checkRange1){
+                setBgcolor(normalBgcolor);
+                setAvailableMessage(availability[0].text)
+            }
             // grey, 3x green, any number of grey, 7x red, grey
         }
         
 
     }, []);
-    
+    function innerPattern(green:number, grey:number, red:number){
+        return {green, grey, red};
+    }
+    function todayColor(obj:{green:number, grey:number, red:number}){
+        let day:number = 0;
+        for(const color in obj){
+            day += obj[color];
+        }
+        return day;
+    }
+    function forLoop(value:number){
+        if(!value) return 0
+        for(let i= 0;i<  value; i++){
+
+        }
+    }
     
     const handleFavorite: ()=> void = () => {
         // fixme: how do we check if user has favour the card already or not?
