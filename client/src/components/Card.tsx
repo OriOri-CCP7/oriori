@@ -114,9 +114,14 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
         return {green, grey, red};
     }
     function todayColor(obj:{green:number, grey:number, red:number}){
+        type Obj = {
+            green: number,
+            grey:number,
+            red:number
+        }
         let day:number = 0;
-        for(const color in obj){
-            day += obj[color];
+        for(let color in obj){
+            day = day + obj[color];
         }
         return day;
     }
