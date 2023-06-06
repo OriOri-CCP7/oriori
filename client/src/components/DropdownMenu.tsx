@@ -1,16 +1,35 @@
-import React from 'react';
+import React, {useState, FunctionComponent} from 'react';
 import axios from 'axios';
 
+
+
+import prefs from '../data/prefectures.json'
+
+
+
 type Props = {
-    className: string | undefined,
+    
+    labelName: string | undefined,
     onChange: (event: React.MouseEvent<HTMLElement>) => void,
+    
 }
 
-export default function DropdownMenu({className,onChange, options, }):(React.FC<Props>)  {
+
+
+// :(React.FC<Props>)
+function DropdownMenu( {labelName, onChange}: Props ) {
+    const [selected, setSelected] = useState<string>(prefs[12].name);
     
+    function handleChange (event:React.MouseEvent<HTMLElement>) {
+        
+    }
     return (
         <>
-            <div></div>
+            <div className="dropdownMenu">
+                <label>{labelName}</label>
+            </div>
         </>
     )
 }
+
+export default DropdownMenu;
