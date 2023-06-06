@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+}
+
+li {
+    margin-bottom: 10px;
+    border-radius: 100px;
+}
+
+.home-icon {
+    width: 40%;
+    fill:#33b45e;
+}
+
+.heart-icon {
+    width: 40%;
+    fill: #d22e64;
+}
+
+.popular-icon {
+    width: 40%;
+    fill: #ff6600
+}
+
+.search-icon {
+    width: 40%;
+}
+
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    font-size: 0;
+    opacity: 0.9;
+    z-index: 99;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav ul {
+    padding: auto;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+.nav li {
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    padding:0;
+    border-right: 1px solid #fff;
+    display: flex;
+    align-items: stretch;
+}
