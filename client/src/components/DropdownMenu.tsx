@@ -8,7 +8,7 @@ type Props = {
 }
 
 function DropdownMenu( {labelName, setPrefecture}: Props ) {
-    const [selected, setSelected] = useState<string>(prefs[12].name); // Tokyo is prefs[12]
+    const [selected, setSelected] = useState<string>("13"); // Tokyo is prefs[12]
     
     function handleChange (event:React.ChangeEvent<HTMLSelectElement>) {
         setSelected(event.target.value)
@@ -21,6 +21,7 @@ function DropdownMenu( {labelName, setPrefecture}: Props ) {
                     <select 
                     className="selectName"
                     onChange={handleChange}
+                    value={selected}
                     >
                         {prefs.map((pref, index) => (
           <option 
