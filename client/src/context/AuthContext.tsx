@@ -16,12 +16,14 @@ interface User {
   uuid: string | unknown
 };
 
-const UserContext = createContext<{
+interface AuthenticatedUser {
   signup: (username: string, email: string, password: string) => Promise<UserCredential>;
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
   user: User;
-} | null>(null);
+}
+
+const UserContext = createContext<AuthenticatedUser | null>(null);
   
 
   export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
@@ -33,8 +35,7 @@ const UserContext = createContext<{
     });
 
   const signup = async (username: string, email: string, password: string) => {
-    console.log('🤪', auth);
-    let newUserInfo: User = {
+    const newUserInfo: User = {
       username: username,
       email: email,
       password: password,
@@ -42,6 +43,7 @@ const UserContext = createContext<{
     };
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     newUserInfo.uuid = newUser.user.uid;
+    console.log('🌎', newUserInfo);
     await axios.post('api/newUser/', newUserInfo);
     return newUser;
   };

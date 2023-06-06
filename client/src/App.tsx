@@ -6,10 +6,12 @@ import Popular from './pages/Popular';
 import Search from './pages/Search';
 import Signup from './pages/Signup';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
   return (
     <div className="App">
+      <AuthContextProvider>
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
@@ -20,6 +22,7 @@ function App() {
       </Routes>
       <Navbar/>
       </BrowserRouter>
+      </AuthContextProvider>
     </div>
   );
 }
