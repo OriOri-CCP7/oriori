@@ -7,6 +7,7 @@ import Favorite from './pages/Favorites';
 import Popular from './pages/Popular';
 import Search from './pages/Search';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Onboarding from './pages/Onboarding';
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
         <Route path='/popular' element={<Popular/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
         <Route path='/testpage' element={<Testpage />}></Route>
+        <Route path='/onboarding' element={<Onboarding/>}></Route>
       </Routes>
       <Navbar/>
       </BrowserRouter>
