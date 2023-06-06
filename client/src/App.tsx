@@ -1,3 +1,5 @@
+
+import Testpage from '../src/pages/TestsPage';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -7,6 +9,7 @@ import Search from './pages/Search';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 function App() {
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -15,6 +18,7 @@ function App() {
         <Route path='/favorite' element={<Favorite/>}></Route>
         <Route path='/popular' element={<Popular/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
+        <Route path='/testpage' element={<Testpage />}></Route>
       </Routes>
       <Navbar/>
       </BrowserRouter>
