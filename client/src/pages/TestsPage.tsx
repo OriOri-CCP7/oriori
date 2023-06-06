@@ -7,6 +7,7 @@ const Testpage = () => {
         <>
         <div>
             <DropdownMenu labelName="ThisIsOriOri!" setPrefecture={(element)=> {console.log(element)}}/>
+            
         <span>
         <Card productName="StarFat: JK style rule breaking Latte" img_url="https://i.ibb.co/NnGtqMb/PSU-Unkonwn-Unit-basic04.png" offerStart="2023-06-30" offerEnd="2023-07-31" className="" onClick={() => {}} favoriteNumber={0}></Card>
         </span><span>

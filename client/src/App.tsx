@@ -1,5 +1,6 @@
 
 import Testpage from '../src/pages/TestsPage';
+import Settings from './pages/Settings';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -11,6 +12,9 @@ import Login from './pages/Login';
 import PasswordReset from './pages/PasswordReset';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
+
+
+
 
 function App() {
   
@@ -26,6 +30,7 @@ function App() {
         <Route path='/favorite' element={<Favorite/>}></Route>
         <Route path='/popular' element={<Popular/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
+        <Route path='/settings' element={<Settings />}></Route>
         <Route path='/testpage' element={<Testpage />}></Route>
       </Routes>
       <Navbar/>
