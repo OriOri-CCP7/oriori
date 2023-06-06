@@ -23,6 +23,7 @@ const Login: React.FC = () => {
   }
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
+    event.preventDefault();
     try {
       if (auth) {
         await auth.login(email, password);
@@ -38,6 +39,27 @@ const Login: React.FC = () => {
   return (
     <>
       <h1>Login</h1>
+      <form
+        onSubmit = { handleLogin }>
+        <Input 
+          className = "login-input"
+          placeholder = "Email"
+          type = "email"
+          value = { email }
+          onChange = { handleEmailInput }
+          />
+        <Input 
+          className = "login-input"
+          placeholder = "Password"
+          type = "password"
+          value = { password }
+          onChange = { handlePasswordInput }
+          />
+          <Button 
+          className = "submit"
+          text = "Log In"
+          type = "submit" />
+      </form>
       <p>
         Don't have an account? 
         <Link to = "/signup"> Sign up! </Link>

@@ -12,12 +12,6 @@ import Cookies from 'js-cookie';
 
 const csrftoken = Cookies.get('csrftoken');
 
-// const CSRFTOKEN = () => {
-//   return (
-//       <input name="csrfmiddlewaretoken" value={csrftoken} type="hidden" />
-//   );
-// };
-
 interface User {
   username: string, 
   email: string, 
@@ -33,7 +27,6 @@ interface AuthenticatedUser {
 }
 
 const UserContext = createContext<AuthenticatedUser | null>(null);
-  
 
   export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User>({
@@ -65,6 +58,7 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
 
   const login = async (email: string, password: string) => {
     const loggedIn = await signInWithEmailAndPassword(auth, email, password);
+    console.log('😜', loggedIn);
     const currentUser = loggedIn.user;
     console.log('🤩', currentUser);
     return loggedIn;

@@ -27,15 +27,12 @@ const Signup: React.FC = () => {
     setEmail(event.target.value);
   }
   
-
   const handleSignUp = async (event: FormEvent<HTMLFormElement>): Promise<void>=> {
     event.preventDefault();
     try {
       if (auth) {
         await auth.signup(username, email, password);
         navigate('/');
-      } else {
-        console.log('😇', "NOPE");
       }
     } catch (error) {
         console.log("🤬", error);
