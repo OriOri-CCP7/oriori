@@ -24,8 +24,6 @@ const availability = [
 
 
 const Card :React.FC<Props> = ({className, img_url, productName, offerStart, offerEnd, favoriteNumber, onClick}) => {
-
-    
     const current :Date = new Date();
     const currentYear: number = current.getFullYear();
     const currentMonth: string = (current.getMonth() + 101).toString().substring(1);
