@@ -1,32 +1,36 @@
-import React, {useState, FunctionComponent} from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import axios from 'axios';
-
-
-
 import prefs from '../data/prefectures.json'
 
-
-
 type Props = {
-    
     labelName: string | undefined,
-    onChange: (event: React.MouseEvent<HTMLElement>) => void,
-    
+    setPrefecture: (event: string) => void,
 }
 
-
-
-// :(React.FC<Props>)
-function DropdownMenu( {labelName, onChange}: Props ) {
-    const [selected, setSelected] = useState<string>(prefs[12].name);
+function DropdownMenu( {labelName, setPrefecture}: Props ) {
+    const [selected, setSelected] = useState<string>(prefs[12].name); // Tokyo is prefs[12]
     
-    function handleChange (event:React.MouseEvent<HTMLElement>) {
-        
+    function handleChange (event:React.ChangeEvent<HTMLSelectElement>) {
+        setSelected(event.target.value)
+        setPrefecture(event.target.value)
     }
     return (
         <>
             <div className="dropdownMenu">
-                <label>{labelName}</label>
+                <label htmlFor={labelName}>{labelName}</label>
+                    <select 
+                    className="selectName"
+                    onChange={handleChange}
+                    >
+                        {prefs.map((pref, index) => (
+          <option 
+            key={index}
+            value={pref.pk} 
+            >
+            { pref.name }
+          </option> 
+                    ))}    
+                    </select>
             </div>
         </>
     )
