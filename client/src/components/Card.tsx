@@ -47,12 +47,12 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
     const offerEndDate: Date = new Date(offerEnds);
     const offerStartDate: Date = new Date(offerStarts);
     const oneDay: number = 24 * 60 * 60 * 1000;
-    const diffInEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - current.getTime()) / oneDay));
-    const diffInStartDays: number = Math.round(Math.abs((offerStartDate.getTime() - current.getTime()) / oneDay));
+    // const diffInEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - current.getTime()) / oneDay));
+    // const diffInStartDays: number = Math.round(Math.abs((offerStartDate.getTime() - current.getTime()) / oneDay));
     const diffInStartAndEndDays: number = Math.round(Math.abs((offerEndDate.getTime() - offerStartDate.getTime()) / oneDay)); // promotion period date
 
     
-
+/*
     console.log("🤡 productName:", productName);
     console.log("👋 offerEndDate:", offerEndDate);
     console.log("💚 offerStartDate:", offerStartDate);
@@ -61,18 +61,18 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
     console.log("😆 diffInEndDays:",diffInEndDays, "days");
     console.log("🥵 diffInStartDays:",diffInStartDays, "day");
     console.log("👿 diffInStartAndEndDays:",diffInStartAndEndDays, "day");
+    */
+
     const normalBgcolor = "grey";
     const freshItemBgcolor = "paleturquoise";
     const lastDayBgcolor = "red";
-    const [ bgcolor, setBgcolor ] = useState<string>(normalBgcolor);
-    // const [isPromotionPeriod, setIsPromotionPeriod] = useState<boolean>(false);
-    const [isStartThreeDays, setIsStartThreeDays ] = useState<boolean>(false);
-    const [isLastWeek, setIsLastWeek] = useState<boolean>(false); 
 
-    // if(diffInEndDays > 0){ // when this is not zero
-    //     setIsPromotionPeriod(true);
-    //     setIsLastWeek(true);
-    // }
+    const [ bgcolor, setBgcolor ] = useState<string>(normalBgcolor);
+
+    
+    
+
+   
 
     const styles = {
         backgroundColor: bgcolor
@@ -113,6 +113,12 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
     function innerPattern(green:number, grey:number, red:number){
         return {green, grey, red};
     }
+    /* WIP  
+    
+    // To next person: 
+    // I was thinking using two for loop for the innerPattern period. My intention was for(const color in obj){ for( let i=0; i< obj[color].value; i++){ ... } } and 'break' the for loop once the code reached today date and return that color. 
+    // But I would leave the discrition to whoever picking that job up.
+
     function todayColor(obj:{green:number, grey:number, red:number}){
         type Obj = {
             green: number,
@@ -131,7 +137,7 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
 
         }
     }
-    
+    */
     const handleFavorite: ()=> void = () => {
         // fixme: how do we check if user has favour the card already or not?
         if(!addLove){
