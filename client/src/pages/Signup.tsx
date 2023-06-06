@@ -32,7 +32,7 @@ const Signup: React.FC = () => {
     try {
       if (auth) {
         await auth.signup(username, email, password);
-        navigate('/');
+        navigate('/login');
       }
     } catch (error) {
         console.log("🤬", error);
@@ -70,7 +70,7 @@ const Signup: React.FC = () => {
 
         <Input 
           className = "signup-input"
-          placeholder = "email"
+          placeholder = "Email"
           type = "email"
           value = { email }
           onChange = { handleEmailInput }

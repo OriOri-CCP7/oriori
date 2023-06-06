@@ -64,8 +64,18 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     return loggedIn;
   }
 
-  const logout = () => {
-    return signOut(auth);
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      setUser({
+        username: '',
+        email: '',
+        uuid: null,
+        location: 1
+      });
+    } catch (error) {
+      console.log('😡', error);
+    }
   };
 
   useEffect(() => {
@@ -78,6 +88,7 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
           location: 1
         };
         setUser(authenticatedUser);
+        console.log('😤', user);
       }
     });
 

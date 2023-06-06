@@ -27,7 +27,7 @@ const Login: React.FC = () => {
     try {
       if (auth) {
         await auth.login(email, password);
-        navigate('/');
+        navigate('/home');
       } else {
         console.log('😱', "USER NOT FOUND");
       }
@@ -41,6 +41,7 @@ const Login: React.FC = () => {
       <h1>Login</h1>
       <form
         onSubmit = { handleLogin }>
+        
         <Input 
           className = "login-input"
           placeholder = "Email"
@@ -48,6 +49,7 @@ const Login: React.FC = () => {
           value = { email }
           onChange = { handleEmailInput }
           />
+        
         <Input 
           className = "login-input"
           placeholder = "Password"
@@ -55,11 +57,13 @@ const Login: React.FC = () => {
           value = { password }
           onChange = { handlePasswordInput }
           />
+          
           <Button 
           className = "submit"
           text = "Log In"
           type = "submit" />
       </form>
+      
       <p>
         Don't have an account? 
         <Link to = "/signup"> Sign up! </Link>
