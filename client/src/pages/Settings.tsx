@@ -1,18 +1,17 @@
 import React from 'react';
+import DropdownMenu from "../components/DropdownMenu"
 
-interface Props {};
+interface Props {
+ 
+};
 
 function Settings({}: Props) {
   return (
-    <div>
-      <h1>
-        Settings
-      </h1>
-      <h2>
-        Username
-      </h2>
+    <div className="Setting">
+      <h1>Settings</h1>
+      <h2>Username</h2>
       <form>
-        <label>
+        <label >
           Username
           <input type="username" defaultValue="Username"/>
         </label>
@@ -22,9 +21,7 @@ function Settings({}: Props) {
         </label>
         <label>
           Home Prefecture
-          <select>
-            <option value="1">Default</option>
-          </select>
+          <DropdownMenu labelName="" setPrefecture={(element) => console.log(element)} />
         </label>
       </form>
     </div>
