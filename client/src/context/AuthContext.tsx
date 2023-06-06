@@ -1,6 +1,8 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
-import auth from '../firebase.config';
+import app from '../firebase.config';
+const { auth } = app;
+
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
