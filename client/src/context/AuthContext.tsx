@@ -12,8 +12,8 @@ import {
 interface User {
   username: string, 
   email: string, 
-  password: string, 
-  uuid: string | unknown
+  uuid: string | unknown,
+  location: number | unknown
 };
 
 interface AuthenticatedUser {
@@ -30,26 +30,28 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     const [user, setUser] = useState<User>({
       username: '',
       email: '',
-      password: '',
       uuid: null,
+      location: 1
     });
 
   const signup = async (username: string, email: string, password: string) => {
     const newUserInfo: User = {
       username: username,
       email: email,
-      password: password,
       uuid: null,
+      location: 1 // user inputs prefecture
     };
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     newUserInfo.uuid = newUser.user.uid;
     console.log('🌎', newUserInfo);
-    await axios.post('api/newUser/', newUserInfo);
+    await axios.post('newUser/', newUserInfo);
     return newUser;
   };
 
   const login = async (email: string, password: string) => {
-    const loggedIn = signInWithEmailAndPassword(auth, email, password);
+    const loggedIn = await signInWithEmailAndPassword(auth, email, password);
+    const currentUser = loggedIn.user;
+    console.log('🤩', currentUser);
     return loggedIn;
   }
 
@@ -63,8 +65,8 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
         const authenticatedUser: User = {
           username: '',
           email: '',
-          password: '',
           uuid: currentUser.uid,
+          location: 1
         };
         setUser(authenticatedUser);
       }

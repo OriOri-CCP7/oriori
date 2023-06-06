@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import "./Signup.css";
@@ -8,28 +8,27 @@ import Button from "../components/Button";
 const Signup: React.FC = () => {
   const navigate = useNavigate();
   const auth = UserAuth();
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  // const [confirmation, setConfirmation] = useState('');
+  const [username, setUsername] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
-  const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     setUsername(event.target.value);
   }
   
-  const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     setPassword(event.target.value);
   }
   
-  const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleEmailInput = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     setEmail(event.target.value);
   }
   
 
-  const handleSignUp = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSignUp = async (event: FormEvent<HTMLFormElement>): Promise<void>=> {
     event.preventDefault();
     try {
       if (auth) {
@@ -40,7 +39,7 @@ const Signup: React.FC = () => {
       }
     } catch (error) {
         console.log("🤬", error);
-      }
+    }
   };
 
   return (
@@ -64,13 +63,13 @@ const Signup: React.FC = () => {
           onChange = { handlePasswordInput }
           />
 
-<Input 
+        {/* <Input 
           className = "signup-input"
           placeholder = "Password Confirmation"
           type = "password"
           value = { confirmation }
           onChange = { handlePasswordInput }
-          />
+          /> */}
 
         <Input 
           className = "signup-input"
@@ -87,7 +86,7 @@ const Signup: React.FC = () => {
 
 <p>
           Already have an account? 
-          <Link to = "/"> Log In! </Link>
+          <Link to = "/login"> Log In! </Link>
         </p>
       </form>
     </>
