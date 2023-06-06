@@ -83,7 +83,7 @@ const Signup: React.FC = () => {
 
 <p>
           Already have an account? 
-          <Link to = "/login"> Log In! </Link>
+          <Link to = "/"> Log In! </Link>
         </p>
       </form>
     </>

@@ -68,6 +68,11 @@ const Login: React.FC = () => {
         Don't have an account? 
         <Link to = "/signup"> Sign up! </Link>
       </p>
+
+      <p>
+        Forgot your password? 
+        <Link to = "/new-password"> Reset it here!</Link>
+      </p>
     </>
   )
 }
