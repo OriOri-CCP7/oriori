@@ -8,6 +8,15 @@ import {
   onAuthStateChanged,
   UserCredential 
 } from 'firebase/auth';
+import Cookies from 'js-cookie';
+
+const csrftoken = Cookies.get('csrftoken');
+
+// const CSRFTOKEN = () => {
+//   return (
+//       <input name="csrfmiddlewaretoken" value={csrftoken} type="hidden" />
+//   );
+// };
 
 interface User {
   username: string, 
@@ -44,7 +53,13 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     newUserInfo.uuid = newUser.user.uid;
     console.log('🌎', newUserInfo);
-    await axios.post('newUser/', newUserInfo);
+    await axios.post('api/newUser/', newUserInfo, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken
+      },
+    });
     return newUser;
   };
 
