@@ -10,6 +10,7 @@ from base.serializers import FavoriteSerializer
 from base.serializers import LocationSerializer
 from base.serializers import StoreSerializer
 from base.serializers import ProductSerializer
+from django.db.models import Count
 
 # Create your views here.
 
@@ -35,7 +36,6 @@ def getUserData(request, uuid):
 
 @api_view(['POST'])
 def addNewUser(request):
-  print('😳', request)
   serializer = UserSerializer(data=request.data)
   if serializer.is_valid():
     serializer.save()
@@ -127,6 +127,16 @@ def getProductDataByPrefecture(request, prefecture):
     return Response(serializer.data)
   except Exception as e:
     return Response({'error': str(e)})
+  
+@api_view(['GET'])
+def getProductDataByPopularity(request):
+  try:
+    products = Product.objects.annotate(num_favs=Count('favorite')).order_by("num_favs").reverse()
+    serializer = ProductSerializer(products[0:10], many=True)
+    return Response(serializer.data)
+  except Exception as e:
+    return Response({'error': str(e)})
+
 
 @api_view(['POST'])
 def addNewProduct(request):

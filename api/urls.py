@@ -14,6 +14,7 @@ urlpatterns = [
     path('product/<int:id>/', views.getProductDataById),
     path('product/<str:uuid>/favorites/', views.getProductDataByUser),
     path('<str:prefecture>/products/', views.getProductDataByPrefecture),
+    path('products/popular/', views.getProductDataByPopularity),
     path('newProduct/', views.addNewProduct),
     path('editedProduct/<int:id>/', views.editProductData),
     path('product/deletion/<int:id>/', views.deleteProductData),
