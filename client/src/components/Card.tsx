@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { useState, useEffect } from 'react';
 import './Card.css';
 
 type  Props = {
@@ -25,29 +24,25 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
     const offerStartNum = offerStartDate.getTime();
     const oneDay: number = 24 * 60 * 60 * 1000;
 
-    const offerLength: number = Math.round(Math.abs((offerEndNum - offerStartNum) / oneDay));
+    // const offerLength: number = Math.round(Math.abs((offerEndNum - offerStartNum) / oneDay));
     const daysSinceStart: number = Math.floor((currentDateNum - offerStartNum) / oneDay);
     const daysBeforeEnd: number = Math.ceil((offerEndNum - currentDateNum) / oneDay);
 
-    const handleFavorite: ()=> void = () => {
-        // fixme: how do we check if user has favour the card already or not?
-        if(!addLove){
-            setAddLove(true);
-        } else {
-            setAddLove(false);
-        }
-    }
-
     let cardClass = "productCard ";
+    let availabilityMsg = `Available on ${offerStartDate.toLocaleDateString()}`;
     if (daysSinceStart >= 0) {
         if (daysBeforeEnd < 6) {
-            cardClass += "ending";
+            if (daysBeforeEnd >= 0) {
+                cardClass += "ending";
+                availabilityMsg = `Only available for ${daysBeforeEnd} days!`;
+            } else {
+                availabilityMsg = "No longer available.";
+            }
         } else if (daysSinceStart < 4) {
             cardClass += "new"
+            availabilityMsg = "Now available!";
         }
     }
-    
-    const [ addLove, setAddLove ] = useState<boolean>(false);
 
     return (
         <div className={cardClass}>
@@ -57,8 +52,8 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
             <div className="productName">
                 {productName}
             </div>
-            <div className="offerStart">
-                {`Offer start: ${offerStartDate.toLocaleDateString()}`}
+            <div className="productAvailMsg">
+                {availabilityMsg}
             </div>
             <div className="offerEnd">
                 {`Offer end: ${offerEndDate.toLocaleDateString()}`}
