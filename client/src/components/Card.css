@@ -1,7 +1,7 @@
-.cardName {
+.productCard {
     margin: 20px;
     padding: 20px;
-    /* background-color:paleturquoise; */
+    background-color: grey;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -9,6 +9,15 @@
     align-items: center;
     width: 400px;
 }
+
+.productCard.new {
+    background-color: paleturquoise;
+}
+
+.productCard.ending {
+    background-color: red;
+}
+
 .favoriteAdd {
     background-color: transparent;
     border: none;
