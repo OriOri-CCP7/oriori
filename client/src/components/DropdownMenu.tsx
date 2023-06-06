@@ -18,18 +18,11 @@ function DropdownMenu( {labelName, setPrefecture}: Props ) {
         <>
             <div className="dropdownMenu">
                 <label htmlFor={labelName}>{labelName}</label>
-                    <select 
-                    className="selectName"
-                    onChange={handleChange}
-                    value={selected}
-                    >
+                    <select className="selectName" onChange={handleChange} value={selected}>
                         {prefs.map((pref, index) => (
-          <option 
-            key={index}
-            value={pref.pk} 
-            >
-            { pref.name }
-          </option> 
+                            <option key={index} value={pref.pk}>
+                        { pref.name }
+                     </option> 
                     ))}    
                     </select>
             </div>
