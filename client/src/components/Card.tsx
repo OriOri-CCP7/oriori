@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import './Card.css';
+import FavButton from './FavButton';
 
 type  Props = {
     className: string | undefined, 
@@ -14,6 +15,8 @@ type  Props = {
 
 
 const Card :React.FC<Props> = ({className, img_url, productName, offerStart, offerEnd, favoriteNumber, onClick}) => {
+
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const currentDate: Date = new Date();
     const offerEndDate: Date = new Date(offerEnd);
@@ -55,15 +58,7 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
             <div className="productAvailMsg">
                 {availabilityMsg}
             </div>
-            <div className="offerEnd">
-                {`Offer end: ${offerEndDate.toLocaleDateString()}`}
-            </div>
-            <button
-                className="favoriteAdd"
-                onClick={handleFavorite}
-                >
-                    {`❤️`}
-            </button>
+            <FavButton isFavorite={isFavorite} setIsFavorite={setIsFavorite}/>
         </div>
 
     )
