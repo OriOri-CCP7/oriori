@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import "./Signup.css";
 import Input from "../components/Input";
@@ -14,10 +14,8 @@ const Signup: React.FC = () => {
 
   const handleSignUp = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('🥵', event.target);
     try {
       if (auth) {
-        console.log('🫡', auth);
         await auth.signup(username, email, password);
         navigate('/');
       } else {
@@ -67,6 +65,11 @@ const Signup: React.FC = () => {
           className = "submit"
           text = "Sign Up"
           type = "submit" />
+
+<p>
+          Already have an account? 
+          <Link to = "/"> Log In! </Link>
+        </p>
       </form>
     </>
   );
