@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import "./Signup.css";
@@ -11,6 +11,23 @@ const Signup: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const [confirmation, setConfirmation] = useState('');
+
+  const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setUsername(event.target.value);
+  }
+  
+  const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setPassword(event.target.value);
+  }
+  
+  const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setEmail(event.target.value);
+  }
+  
 
   const handleSignUp = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,9 +53,7 @@ const Signup: React.FC = () => {
           placeholder = "Username"
           type = "text"
           value = { username }
-          onChange = {(e) => {
-            setUsername(e.target.value);
-          }}
+          onChange = { handleUsernameInput }
           />
         
         <Input 
@@ -46,9 +61,15 @@ const Signup: React.FC = () => {
           placeholder = "Password"
           type = "password"
           value = { password }
-          onChange = {(e) => {
-            setPassword(e.target.value);
-          }}
+          onChange = { handlePasswordInput }
+          />
+
+<Input 
+          className = "signup-input"
+          placeholder = "Password Confirmation"
+          type = "password"
+          value = { confirmation }
+          onChange = { handlePasswordInput }
           />
 
         <Input 
@@ -56,9 +77,7 @@ const Signup: React.FC = () => {
           placeholder = "email"
           type = "email"
           value = { email }
-          onChange = {(e) => {
-            setEmail(e.target.value);
-          }}
+          onChange = { handleEmailInput }
           />
 
         <Button 
