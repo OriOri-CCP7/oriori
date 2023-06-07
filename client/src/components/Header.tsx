@@ -4,7 +4,7 @@ import './Header.css';
 type Props = {
   className: string,
   mainText: string,
-  secondaryText: string
+  secondaryText?: string
 }
 
 const Header: React.FC<Props> = ({ className, mainText, secondaryText }) => {

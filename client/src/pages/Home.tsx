@@ -2,6 +2,9 @@ import React from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Button from '../components/Button';
+import Header from "../components/Header";
+import { Cog6ToothIcon } from '@heroicons/react/24/solid';
+import './Home.css';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -21,7 +24,16 @@ export default function Home() {
 
   return (
   <>
-    <h1>Home</h1>
+    <Cog6ToothIcon 
+      className="settings-icon"
+      onClick = {() => {
+        navigate('/settings');
+      }}/>
+    
+    <Header
+        className="homepage-header"
+        mainText="Home Page" />
+
     <Button
       className="logout"
       text="Log Out"

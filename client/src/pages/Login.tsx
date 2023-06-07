@@ -4,6 +4,7 @@ import { UserAuth } from "../context/AuthContext";
 import "./Login.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Header from "../components/Header";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -38,7 +39,9 @@ const Login: React.FC = () => {
   
   return (
     <>
-      <h1>Login</h1>
+      <Header
+        className="login-header"
+        mainText="Login Page"></Header>
       <form
         onSubmit = { handleLogin }>
         
