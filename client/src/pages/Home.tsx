@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Button from '../components/Button';
 import Header from "../components/Header";
@@ -10,8 +11,22 @@ import GridComponent from "../components/Grid";
 export default function Home() {
   const navigate = useNavigate();
   const auth = UserAuth();
-
   const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    axios.get(`/api/${auth?.user.location}/products`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-CSRFToken': auth?.csrftoken ?? ""
+      }
+    })
+    .then((response) => {
+      console.log('😶‍🌫️', response);
+      setProducts(response.data);
+    })
+    .catch((err) => console.log('😈', err));
+}, []);
 
   const handleLogout = async () => {
     try {
