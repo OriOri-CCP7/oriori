@@ -67,9 +67,9 @@ def deleteUser(request, uuid):
 
 # Views for Favorites data
 @api_view(['GET'])
-def getUserFavorites(request, id):
+def getUserFavorites(request, uuid):
   try:
-    favorites = Favorite.objects.filter(user_id=id)
+    favorites = Favorite.objects.filter(user__uuid=uuid)
     serializer = FavoriteSerializer(favorites, many=True)
     return Response(serializer.data)
   except:
