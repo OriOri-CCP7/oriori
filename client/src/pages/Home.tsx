@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import Header from "../components/Header";
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import './Home.css';
+import GridComponent from "../components/Grid";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -33,6 +34,10 @@ export default function Home() {
     <Header
         className="homepage-header"
         mainText="Home Page" />
+
+    {/* <GridComponent
+      className="homepage-grid"
+      setProductArray={()=>[]} /> */}
 
     <Button
       className="logout"
