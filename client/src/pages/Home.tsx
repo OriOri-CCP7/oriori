@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Button from '../components/Button';
@@ -10,6 +10,8 @@ import GridComponent from "../components/Grid";
 export default function Home() {
   const navigate = useNavigate();
   const auth = UserAuth();
+
+  const [products, setProducts] = useState<Product[]>([]);
 
   const handleLogout = async () => {
     try {
@@ -35,9 +37,15 @@ export default function Home() {
         className="homepage-header"
         mainText="Home Page" />
 
-    {/* <GridComponent
-      className="homepage-grid"
-      setProductArray={()=>[]} /> */}
+      {
+        products.length > 0
+        ? <GridComponent productArray={ products } setProductArray={ null }/>
+        : <>
+            <p>
+              These are the products currently available in your selected location!
+            </p>
+          </>
+      }
 
     <Button
       className="logout"
