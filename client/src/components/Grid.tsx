@@ -13,15 +13,15 @@ interface ProductObj {
 }
 
 interface Props {
-    ProductArray: Array<ProductObj>,
+    productArray: Array<ProductObj>,
     setProductArray: React.Dispatch<React.SetStateAction<Array<ProductObj>>>
   }
 
-function GridComponent({ ProductArray, setProductArray }: Props) {
+function GridComponent({ productArray, setProductArray }: Props) {
     return (
       <div className="Grid">
         <Grid container rowSpacing={1}>
-            {ProductArray.map((data) => (
+            {productArray.map((data) => (
                 <Grid xs={6} key={data.productName}>
                     <Card 
                     className={data.productName}
