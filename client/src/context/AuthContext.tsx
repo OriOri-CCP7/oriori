@@ -47,7 +47,7 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     newUserInfo.uuid = newUser.user.uid;
     console.log('🌎', newUserInfo);
-    await axios.post('api/newUser/', newUserInfo, {
+    await axios.post('api/users/newUser/', newUserInfo, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
