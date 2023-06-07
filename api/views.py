@@ -119,9 +119,9 @@ def getProductDataByUser(request, uuid):
     return Response(serializer.errors)
   
 @api_view(['GET'])
-def getProductDataByPrefecture(request, prefecture):
+def getProductDataByPrefecture(request, prefId):
   try:
-    stores = Store.objects.filter(location__prefecture=prefecture)
+    stores = Store.objects.filter(location__id=prefId)
     products = Product.objects.filter(store__in=stores)
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
@@ -136,7 +136,6 @@ def getProductDataByPopularity(request):
     return Response(serializer.data)
   except Exception as e:
     return Response({'error': str(e)})
-
 
 @api_view(['POST'])
 def addNewProduct(request):
