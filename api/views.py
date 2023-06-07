@@ -35,6 +35,7 @@ def getUserData(request, uuid):
 
 @api_view(['POST'])
 def addNewUser(request):
+  print('😳', request)
   serializer = UserSerializer(data=request.data)
   if serializer.is_valid():
     serializer.save()
