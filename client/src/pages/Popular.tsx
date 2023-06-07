@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
-import Card from '../components/Card';
+import GridComponent from '../components/Grid';
 
 interface Props {};
 
@@ -28,13 +28,7 @@ function Popular({}: Props) {
       <h1>
         Popular
       </h1>
-      {
-        products.map((product) => {
-          return <Card className='productCard' productName={product.product_name} img_url='' offerStart={product.start_date} offerEnd={product.end_date} favoriteNumber={0} onClick={function (event: React.MouseEvent<HTMLElement, MouseEvent>): void {
-            throw new Error('Function not implemented.');
-          } }></Card>;
-        })
-      }
+      <GridComponent productArray={products} setProductArray={null}/>
     </div>
   );
 }
