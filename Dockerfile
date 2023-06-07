@@ -1,4 +1,4 @@
-FROM node:20.2.0 AS clientbuilder
+FROM node:20.2-alpine3.17 AS clientbuilder
 WORKDIR /client
 COPY /client /client
 RUN npm ci && \
