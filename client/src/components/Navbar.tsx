@@ -20,7 +20,7 @@ function Navbar() {
               <HomeIcon 
               className='home-icon' 
               onClick={() => {
-                navigate('/');
+                navigate('/home');
                 handleCurrentView('Home');
               }}/>
             </li>
