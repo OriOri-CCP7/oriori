@@ -44,6 +44,8 @@ const Card :React.FC<Props> = ({className, img_url, productName, offerStart, off
         } else if (daysSinceStart < 4) {
             cardClass += "new"
             availabilityMsg = "Now available!";
+        } else {
+            availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
         }
     }
 
