@@ -10,7 +10,7 @@ function Popular({}: Props) {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    axios.get('/api/products/popularity/', {
+    axios.get('/api/products/popular/', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
