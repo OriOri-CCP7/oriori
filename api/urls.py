@@ -2,18 +2,18 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('user/<str:username>/', views.getUserData),
     path('users/', views.getAllUsers),
     path('user/<str:uuid>/', views.getUserData),
     path('newUser/', views.addNewUser),
     path('editedUser/<str:uuid>/', views.editUserData),
     path('deletion/<str:uuid>/', views.deleteUser),
-    path('<int:id>/favorites/', views.getUserFavorites),
+    path('favorites/<str:uuid>/', views.getUserFavorites),
     path('<int:id>/newFavorite/', views.addNewFavorite),
     path('<int:id>/favorites/deletion/', views.removeFavorite),
     path('product/<int:id>/', views.getProductDataById),
     path('product/<str:uuid>/favorites/', views.getProductDataByUser),
-    path('<str:prefecture>/products/', views.getProductDataByPrefecture),
+    path('<int:prefId>/products/', views.getProductDataByPrefecture),
+    path('products/popular/', views.getProductDataByPopularity),
     path('newProduct/', views.addNewProduct),
     path('editedProduct/<int:id>/', views.editProductData),
     path('product/deletion/<int:id>/', views.deleteProductData),

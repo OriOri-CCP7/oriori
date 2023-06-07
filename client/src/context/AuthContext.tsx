@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
 import auth from '../firebase.config';
 import { 
@@ -24,6 +24,7 @@ interface AuthenticatedUser {
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
   user: User;
+  csrftoken: string | undefined;
 }
 
 const UserContext = createContext<AuthenticatedUser | null>(null);
@@ -97,7 +98,7 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     }
   }, []);
 
-  return <UserContext.Provider value={{ signup, login, logout, user }}>
+  return <UserContext.Provider value={{ signup, login, logout, user, csrftoken }}>
     { children }
   </UserContext.Provider>
 }

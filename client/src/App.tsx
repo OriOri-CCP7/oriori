@@ -1,4 +1,4 @@
-
+import React from 'react';
 import Testpage from '../src/pages/TestsPage';
 import './App.css';
 import Navbar from './components/Navbar';
