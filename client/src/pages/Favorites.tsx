@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
-import Card from '../components/Card';
+import GridComponent from '../components/Grid';
 
 interface Props {};
 
@@ -10,7 +10,7 @@ function Favorites({}: Props) {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        axios.get('/api/product/abc123/favorites/' /*+ (auth?.user.uuid ?? "abc123")*/, {
+        axios.get(`/api/product/${auth?.user.uuid}/favorites/`, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -30,11 +30,13 @@ function Favorites({}: Props) {
                 Favorites
             </h1>
             {
-                products.map((product) => {
-                    return <Card className='productCard' productName={product.product_name} img_url='' offerStart={product.start_date} offerEnd={product.end_date} favoriteNumber={0} onClick={function (event: React.MouseEvent<HTMLElement, MouseEvent>): void {
-                        throw new Error('Function not implemented.');
-                    } }/>;
-                })
+                products.length > 0
+                ? <GridComponent productArray={products} setProductArray={null}/>
+                : <>
+                    <p>
+                        Add to your favorites by tapping the heart icon on any product!
+                    </p>
+                </>
             }
         </div>
     );
