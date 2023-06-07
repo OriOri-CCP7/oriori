@@ -1,22 +1,24 @@
-.cardName {
+.productCard {
     margin: 20px;
     padding: 20px;
-    /* background-color:paleturquoise; */
+    background-color: grey;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 400px;
 }
-.favoriteAdd {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    text-decoration: underline;
-    /* display: inline; */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: 'flex-end';
+
+.productCard.new {
+    background-color: paleturquoise;
+}
+
+.productCard.ending {
+    background-color: red;
+}
+
+.productImg > img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
 }

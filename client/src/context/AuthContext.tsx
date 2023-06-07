@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
 import app from '../firebase.config';
 const { auth } = app;
@@ -10,12 +10,15 @@ import {
   onAuthStateChanged,
   UserCredential 
 } from 'firebase/auth';
+import Cookies from 'js-cookie';
+
+const csrftoken = Cookies.get('csrftoken');
 
 interface User {
   username: string, 
   email: string, 
-  password: string, 
-  uuid: string | unknown
+  uuid: string | unknown,
+  location: number | unknown
 };
 
 interface AuthenticatedUser {
@@ -23,40 +26,59 @@ interface AuthenticatedUser {
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
   user: User;
+  csrftoken: string | undefined;
 }
 
 const UserContext = createContext<AuthenticatedUser | null>(null);
-  
 
   export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User>({
       username: '',
       email: '',
-      password: '',
       uuid: null,
+      location: 1
     });
 
   const signup = async (username: string, email: string, password: string) => {
     const newUserInfo: User = {
       username: username,
       email: email,
-      password: password,
       uuid: null,
+      location: 1 // user inputs prefecture
     };
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     newUserInfo.uuid = newUser.user.uid;
     console.log('🌎', newUserInfo);
-    await axios.post('api/newUser/', newUserInfo);
+    await axios.post('api/users/newUser/', newUserInfo, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken
+      },
+    });
     return newUser;
   };
 
   const login = async (email: string, password: string) => {
-    const loggedIn = signInWithEmailAndPassword(auth, email, password);
+    const loggedIn = await signInWithEmailAndPassword(auth, email, password);
+    console.log('😜', loggedIn);
+    const currentUser = loggedIn.user;
+    console.log('🤩', currentUser);
     return loggedIn;
   }
 
-  const logout = () => {
-    return signOut(auth);
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      setUser({
+        username: '',
+        email: '',
+        uuid: null,
+        location: 1
+      });
+    } catch (error) {
+      console.log('😡', error);
+    }
   };
 
   useEffect(() => {
@@ -65,10 +87,11 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
         const authenticatedUser: User = {
           username: '',
           email: '',
-          password: '',
           uuid: currentUser.uid,
+          location: 1
         };
         setUser(authenticatedUser);
+        console.log('😤', user);
       }
     });
 
@@ -77,7 +100,7 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     }
   }, []);
 
-  return <UserContext.Provider value={{ signup, login, logout, user }}>
+  return <UserContext.Provider value={{ signup, login, logout, user, csrftoken }}>
     { children }
   </UserContext.Provider>
 }
