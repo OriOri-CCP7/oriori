@@ -10,7 +10,7 @@ function Favorites({}: Props) {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        axios.get(`/api/product/${auth?.user.uuid}/favorites/`, {
+        axios.get(`/api/products/${auth?.user.uuid}/favorites/`, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
