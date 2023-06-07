@@ -153,7 +153,7 @@ const [darkmode, setDarkmode] =useState<string>("on");
         checked={darkmode === "on"}
         onChange={(e) => setDarkmode(e.target.value)}
 />
-      <label className="darkmode" htmlFor="on">On</label>
+      <label className="darkmode-label" htmlFor="on">On</label>
 
         <input
           className="darkmode-input"
@@ -164,7 +164,7 @@ const [darkmode, setDarkmode] =useState<string>("on");
           checked={darkmode === "off"}
           onChange={(e) => setDarkmode(e.target.value)}
 />
-<label className="darkmode" htmlFor="off">Off</label>
+<label className="darkmode-label" htmlFor="off">Off</label>
       </form>
     </div>
   );

@@ -46,7 +46,7 @@
     border-radius: 15px;
     position: absolute;
     top: 0;
-    left: ${darkmode === "on" ? "20px" : "0"};
+    left: ${darkmode === "on" ? "15px" : "0"};
     transition: left 0.2s;
   }
   
