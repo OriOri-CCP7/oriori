@@ -1,4 +1,4 @@
-
+import React from 'react';
 import Testpage from '../src/pages/TestsPage';
 import Settings from './pages/Settings';
 import './App.css';

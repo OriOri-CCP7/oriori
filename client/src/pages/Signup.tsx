@@ -4,6 +4,7 @@ import { UserAuth } from "../context/AuthContext";
 import "./Signup.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Header from "../components/Header";
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Signup: React.FC = () => {
     try {
       if (auth) {
         await auth.signup(username, email, password);
-        navigate('/login');
+        navigate('/');
       }
     } catch (error) {
         console.log("🤬", error);
@@ -41,7 +42,9 @@ const Signup: React.FC = () => {
 
   return (
     <>
-      <h1>Sign Up</h1>
+      <Header
+        className="signup-header"
+        mainText="Signup Page" />
       <form
         onSubmit = { handleSignUp } >
         <Input

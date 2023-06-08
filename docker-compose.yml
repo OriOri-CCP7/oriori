@@ -8,9 +8,18 @@ services:
       - SECRET_KEY=django-insecure-i@_@)5*_*zmnnj-n$04n_@*$=07a-#=0sh=$e8mj@9k=#hm8#m
       - DEBUG=False
       - DATABASE_URL=postgres://postgres:devpostgres@dev-db:5432/oriori
+    depends_on:
+      dev-db:
+        condition: service_healthy
     
   dev-db:
     image: postgres:15
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      retries: 10
+      start_period: 10s
+      timeout: 2s
     restart: always
     ports:
       - "5438:5432"
@@ -20,3 +29,4 @@ services:
       - POSTGRES_DB=oriori
     volumes:
       - "./dev-db:/var/lib/postgresql"
+    # Migrations are not always up to date!
