@@ -1,8 +1,10 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import "./PasswordReset.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Header from "../components/Header";
 
 
 const PasswordReset: React.FC = () => {
@@ -31,9 +33,11 @@ const PasswordReset: React.FC = () => {
 
   return (
   <div className="password-reset-form">
-  <h1>Password Reset</h1>
+  <Header
+        className="password-reset-header"
+        mainText="OriOri Password Reset"></Header>
+  <p className="reset-message">Enter your email and we'll send you a link to reset your password.</p>
   <form onSubmit = { handleResetPassword }>
-  
   <Input 
           className = "login-input"
           placeholder = "Email"
