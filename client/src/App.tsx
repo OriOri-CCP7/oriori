@@ -1,16 +1,18 @@
 import React from 'react';
-import Testpage from '../src/pages/TestsPage';
-import './App.css';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Favorite from './pages/Favorites';
-import Popular from './pages/Popular';
-import Search from './pages/Search';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import PasswordReset from './pages/PasswordReset';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
+import Navbar from './components/Navbar';
+import Favorite from './pages/Favorites';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import PasswordReset from './pages/PasswordReset';
+import Popular from './pages/Popular';
+import Search from './pages/Search';
+import Settings from './pages/Settings';
+import Signup from './pages/Signup';
+
+import './App.css';
+
 
 function App() {
   
@@ -26,7 +28,7 @@ function App() {
         <Route path='/favorite' element={<Favorite/>}></Route>
         <Route path='/popular' element={<Popular/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
-        <Route path='/testpage' element={<Testpage />}></Route>
+        <Route path='/settings' element={<Settings />}></Route>
       </Routes>
       <Navbar/>
       </BrowserRouter>
