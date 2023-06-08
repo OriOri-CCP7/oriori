@@ -44,7 +44,7 @@ const Signup: React.FC = () => {
     <>
       <Header
         className="signup-header"
-        mainText="Signup Page" />
+        mainText="OriOri Signup" />
       <form
         onSubmit = { handleSignUp } >
         <Input
