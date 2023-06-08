@@ -1,5 +1,5 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import "./PasswordReset.css";
 import Input from "../components/Input";
@@ -8,7 +8,6 @@ import Header from "../components/Header";
 
 
 const PasswordReset: React.FC = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [isResetSuccessful, setisResetSuccessful] = useState<boolean>(false);
 
@@ -48,11 +47,7 @@ const PasswordReset: React.FC = () => {
           className = "submit"
           text = "Reset Password"
           type = "submit" />
-  <Button 
-          className = "back-to-login"
-          text = "Back to Login Page"
-          type = "button"
-          onClick={() => navigate('/')} />
+  <Link to = "/"> Go back to Login Page! </Link>
   </form>
   
   {isResetSuccessful === true ? (
