@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import './Home.css';
 import GridComponent from "../components/Grid";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -69,5 +70,6 @@ export default function Home() {
             </p>
           </>
       }
+
   </>
 )}

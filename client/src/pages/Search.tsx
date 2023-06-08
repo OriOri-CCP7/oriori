@@ -3,6 +3,7 @@ import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 import GridComponent from '../components/Grid';
 import DropdownMenu from '../components/DropdownMenu';
+import Navbar from '../components/Navbar';
 
 interface Props {};
 
@@ -31,6 +32,7 @@ export default function Search({}: Props) {
             </h1>
             <DropdownMenu labelName='Select a prefecture:' setPrefecture={getProducts} prefill={undefined}/>
             <GridComponent productArray={products} setProductArray={null}/>
+            <Navbar/>
         </div>
     );
 };
