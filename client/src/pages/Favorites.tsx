@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 import GridComponent from '../components/Grid';
+import Navbar from '../components/Navbar';
 
 interface Props {};
 
@@ -38,6 +39,7 @@ function Favorites({}: Props) {
                     </p>
                 </>
             }
+            <Navbar/>
         </div>
     );
 };

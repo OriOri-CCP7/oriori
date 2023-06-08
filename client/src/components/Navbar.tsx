@@ -1,58 +1,50 @@
-import { useState } from 'react';
+import React from 'react';
 import './Navbar.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { HomeIcon, HeartIcon, FireIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 
 
 function Navbar() {
   const navigate = useNavigate();
-  const [currentView, setCurrentView] = useState('Home');
-
-  const handleCurrentView = (currentView: string) => {
-    setCurrentView(currentView);
-  }
+  const location = useLocation();
 
   return (
     <div className='nav'>
       <ul>
             <li className='Home' 
-                style={currentView === 'Home' ? {background : '#ffe4e1'} : {}}>
+                style={location.pathname === '/home' ? {background : '#ffe4e1'} : {}}>
               <HomeIcon 
-              className='home-icon' 
-              onClick={() => {
-                navigate('/home');
-                handleCurrentView('Home');
-              }}/>
+                className='home-icon' 
+                onClick={() => {
+                  navigate('/home');
+                }}/>
             </li>
 
             <li className='Heart'
-                style={currentView === 'Heart' ? {background : '#ffe4e1'} : {}}>
+                style={location.pathname === '/favorite' ? {background : '#ffe4e1'} : {}}>
               <HeartIcon 
-              className='heart-icon'
-              onClick={() => {
-                navigate('/favorite');
-                handleCurrentView('Heart');
-              }}/>
+                className='heart-icon'
+                onClick={() => {
+                  navigate('/favorite');
+                }}/>
             </li>
 
             <li className='Popular'
-                style={currentView === 'Popular' ? {background : '#ffe4e1'} : {}}>
+                style={location.pathname === '/popular' ? {background : '#ffe4e1'} : {}}>
               <FireIcon 
-              className='popular-icon' 
-              onClick={() => {
-                navigate('/popular');
-                handleCurrentView('Popular');
-              }} />
+                className='popular-icon' 
+                onClick={() => {
+                  navigate('/popular');
+                }} />
             </li>
 
             <li className='Search'
-                style={currentView === 'Search' ? {background : '#ffe4e1'} : {}}>
+                style={location.pathname === '/search' ? {background : '#ffe4e1'} : {}}>
               <MagnifyingGlassIcon
-              className='search-icon'
-              onClick={() => {
-                navigate('/search');
-                handleCurrentView('Search');
-              }}/>
+                className='search-icon'
+                onClick={() => {
+                  navigate('/search');
+                }}/>
             </li>
         </ul>
     </div>

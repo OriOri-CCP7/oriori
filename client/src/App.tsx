@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
-import Navbar from './components/Navbar';
 import Favorite from './pages/Favorites';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -30,7 +29,6 @@ function App() {
         <Route path='/search' element={<Search/>}></Route>
         <Route path='/settings' element={<Settings />}></Route>
       </Routes>
-      <Navbar/>
       </BrowserRouter>
       </AuthContextProvider>
     </div>
