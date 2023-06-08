@@ -41,7 +41,7 @@ const Login: React.FC = () => {
     <>
       <Header
         className="login-header"
-        mainText="Login Page"></Header>
+        mainText="OriOri Login"></Header>
       <form
         onSubmit = { handleLogin }>
         
