@@ -6,12 +6,23 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Header from "../components/Header";
 
+const pwdMsg = [
+  {text:"password must be at least 10 or more characters in length"},
+  {text:"password is miss matched"}
+]
+
+
+
 const Signup: React.FC = () => {
   const navigate = useNavigate();
   const auth = UserAuth();
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [hasAttemptedSignUp, setHasAttemptedSignUp] = useState<boolean>(false);
+
 
   const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
@@ -23,6 +34,13 @@ const Signup: React.FC = () => {
     setPassword(event.target.value);
   }
   
+  const handleConfirmPasswordInput = (event:ChangeEvent<HTMLInputElement>): void => {
+    event.preventDefault();
+    setConfirmPassword(event.target.value);
+  }
+
+
+
   const handleEmailInput = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     setEmail(event.target.value);
@@ -63,13 +81,13 @@ const Signup: React.FC = () => {
           onChange = { handlePasswordInput }
           />
 
-        {/* <Input 
+        <Input 
           className = "signup-input"
           placeholder = "Password Confirmation"
           type = "password"
-          value = { confirmation }
-          onChange = { handlePasswordInput }
-          /> */}
+          value = { confirmPassword }
+          onChange = { handleConfirmPasswordInput }
+          />
 
         <Input 
           className = "signup-input"
