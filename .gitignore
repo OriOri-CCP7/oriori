@@ -165,3 +165,4 @@ dev-db
 
 # Other
 .DS_Store
+/.vscode
