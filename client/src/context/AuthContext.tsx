@@ -83,8 +83,8 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     const authenticationState = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         const authenticatedUser: User = {
-          username: '',
-          email: '',
+          username: currentUser.displayName ?? '',
+          email: currentUser.email ?? '',
           uuid: currentUser.uid,
           location: 1
         };

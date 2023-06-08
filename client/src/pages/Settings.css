@@ -1,25 +1,2 @@
-.prefectureTable {
-  display: flex;
-  flex-direction: column;
-  border-collapse: separate;
-}
 
-.row {
-  display: flex;
-  flex-direction: row;
-  /* border-bottom: 1px solid #ccc; */
-}
-
-/* .header {
-  font-weight: bold;
-} */
-
-.cell {
-  padding: 8px;
-  flex: 1;
-}
-
-.backButton {
-  padding: 8px;
-}
   

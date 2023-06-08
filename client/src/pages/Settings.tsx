@@ -1,9 +1,9 @@
-import React, {useState, useEffect, FormEvent, ChangeEvent} from 'react';
+import React, {useState, useEffect, ChangeEvent} from 'react';
 import DropdownMenu from "../components/DropdownMenu";
 import {UserAuth} from "../context/AuthContext";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './Settings.css';
 
@@ -15,51 +15,28 @@ function Settings({}: Props) {
   const auth  = UserAuth();
   const navigate = useNavigate();
 
-  // const userDatabase = { username, email, uuid, location}
   const [username, setUsername] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [oldPassword, setOldPassword] = useState<string>('');
-  const [newPassword, setNewPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [uuid, setUuid] = useState<string>('');
-  const [location, setLocation] = useState<number>(1);
-  const [passwordMessage, setPasswordMessage] = useState<string>('');
-
-
-
-  const [storedUserData, setStoredUserData] = useState({});
-  // const [storedlocation, setStoredLocation] = useState(location) 
+  // const [email, setEmail] = useState<string>('');
+  const [location, setLocation] = useState<string>('1');
   
-
-  const userData = {};
   useEffect(()=>{
     getUserData();
-    console.log("🐯",storedUserData);
   },[]);
 
-  // const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
-  //   event.preventDefault();
-  //   setUsername(event.target.value);
-  // }
-  
-  // const handleNewPasswordInput = (event: ChangeEvent<HTMLInputElement>): void => {
-  //   event.preventDefault();
-  //   setNewPassword(event.target.value);
-  // }
+  const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
+    setUsername(event.target.value);
+  }
   
   // const handleEmailInput = (event: ChangeEvent<HTMLInputElement>): void => {
-  //   event.preventDefault();
   //   setEmail(event.target.value);
   // }
 
   const getUserData = async () => {
     try {
-      if (auth){
-        const result = await axios.get(`/user/${auth.user}/`);
-        setStoredUserData(result.data);
+      if (auth) {
+        const result = await axios.get(`/api/users/${auth.user.uuid}/`);
         setUsername(result.data.username);
-        setOldPassword(result.data.password);
-        setUuid(result.data.uuid);
+        // setEmail(result.data.email);
         setLocation(result.data.location);
       } else {
         navigate("/logout");
@@ -68,66 +45,60 @@ function Settings({}: Props) {
       console.log("🍀", `We got error: ${error}`);
       
     } finally {
-      console.log("getUserData attempt has been launched")
+      console.log("User data retrieved.")
     }
-
-  }
+  };
   
-  const handleBack = (event:React.MouseEvent<HTMLButtonElement> ) => {
-    event.preventDefault();
-    navigate('/');
-  }
+  const handleBack = (event: React.MouseEvent<HTMLButtonElement>) => {
+    navigate('/home');
+  };
 
-  const handleUserDataChange=  async (event: FormEvent<HTMLFormElement>): Promise<void>=>{
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-  }
+    console.log("Submit clicked");
+    try {
+      if (auth) {
+        console.log("Attempting to update User info");
+        const result = await axios.patch(`/api/users/${auth.user.uuid}/edit/`, {
+          username: username,
+          email: auth.user.email,
+          location: location
+        });
+        if (result.status !== 200) {
+          throw new Error("User could not be updated.");
+        } else {
+          navigate("/home");
+        }
+      }
+    } catch (err) {
+      console.log("Error: ", err);
+    }
+  };
 
   return (
     <div className="Setting">
       <Button className="backButton" type="button" onClick={handleBack} text="Back"/>
       <h1>Settings</h1>
-      <h2>User Setting</h2>
-      <form 
-        onSubmit = {handleUserDataChange}>
-        <label>Username :</label>
-        <Input className="username" placeholder={"username cannot be empty"} type="text" value={username} onChange={ (event) => {
-              event.preventDefault();
-              //setStoredInputUser(event.target.value)
-            }
-          } />
+      <form>
+        <label>
+          Username:
+          <Input className="usernameInput" placeholder="Username" type="text" value={username} onChange={handleUsernameInput}/>
+        </label>
         <br />
-        <label>Email Address:</label>
-        <p>{email}</p>
-        {/* <input type="email" defaultValue="example@email.com"
-        value={email} /> */}
-        <br />
-        <label>Change Password:</label>
-        <Input className="newPassword" placeholder={"Enter your new password"} type="password" value={""} onChange={()=> {}}/>
-        <br />
-        <label>Confirm Password:</label>
-        <Input className="confirmPassword" placeholder={"Retype your password"} type="password" value={""} onChange={()=> {}}/>
-        {passwordMessage}
-        <div className="prefectureTable">
-          <div className="row">
-            <div className="cell">
-              <label>Home Prefecture:</label>
-            </div>
-            <div className="cell">
-              <DropdownMenu labelName="Select location:" setPrefecture={(element) => {
-                  console.log(element);
-                  setLocation(parseInt(element));
-                  // setDefault(location) // need update dropdown menu to set location if default location are given
-                } 
-              }/>
-            </div>
-          </div>
-        </div>
-        
-        <label>Update User Data</label>
+        {/* Email address must update both Firebase and Database
+          <label>
+            Email Address:
+            <Input className="emailInput" placeholder="Email address" type="email" value={email} onChange={handleEmailInput}/>
+          </label>
+          <br /> 
+        */}
+        <DropdownMenu labelName="Select Prefecture:" setPrefecture={setLocation} prefill={location}/>
+
         <Button 
-          className="submit" 
+          className="submitButton" 
           type="submit" 
-          text="Update" />
+          text="Save"
+          onClick={handleSubmit}/>
       </form>
 
     </div>

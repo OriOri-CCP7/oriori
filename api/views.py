@@ -49,10 +49,12 @@ def editUserData(request, uuid):
     user = User.objects.get(uuid=uuid)
     user.username = request.data.get('username', user.username)
     user.email = request.data.get('email', user.email)
-    prefecture = request.data.get('prefecture')
-    if prefecture:
-      location = Location.objects.get(prefecture=prefecture)
-      user.location_id = location.id
+    location_id = request.data.get('location')
+    print(request.data)
+    if location_id:
+      location = Location.objects.get(pk=location_id)
+      print(location)
+      user.location_id = location.pk
     user.save()
     serializer = UserSerializer(user)
     return Response(serializer.data)
