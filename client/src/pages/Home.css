@@ -1,4 +1,20 @@
+.buttons {
+  padding: 5px;
+  background-color: hotpink;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout {
+  border-radius: 5px;;
+}
+
 .settings-icon {
-  width: 10%;
+  width: 3%;
   fill: darkgrey;
+}
+
+.homepage-header {
+  background-color: hotpink;
+  padding: 5px;
 }

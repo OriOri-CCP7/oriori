@@ -42,15 +42,23 @@ export default function Home() {
 
   return (
   <>
-    <Cog6ToothIcon 
-      className="settings-icon"
-      onClick = {() => {
-        navigate('/settings');
-      }}/>
+    <div className="buttons">
+      <Button
+      className="logout"
+      text="Log Out"
+      type="button"
+      onClick={ handleLogout } />
+      
+      <Cog6ToothIcon 
+        className="settings-icon"
+        onClick = {() => {
+          navigate('/settings');
+        }} />
+    </div>
     
     <Header
         className="homepage-header"
-        mainText="Home Page" />
+        mainText="OriOri Homepage" />
 
       {
         products.length > 0
@@ -61,12 +69,5 @@ export default function Home() {
             </p>
           </>
       }
-
-    <Button
-      className="logout"
-      text="Log Out"
-      type="button"
-      onClick={ handleLogout }
-    />
   </>
 )}
