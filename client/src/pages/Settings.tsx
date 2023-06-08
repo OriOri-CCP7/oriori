@@ -15,10 +15,6 @@ function Settings({}: Props) {
   const auth  = UserAuth();
   const navigate = useNavigate();
 
-/**
- * User Setting
- */
-
   // const userDatabase = { username, email, uuid, location}
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -32,7 +28,7 @@ function Settings({}: Props) {
 
 
   const [storedUserData, setStoredUserData] = useState({});
-  // const [storedlocation, setStoredLocation] = useState(location)
+  // const [storedlocation, setStoredLocation] = useState(location) 
   
 
   const userData = {};
@@ -81,17 +77,10 @@ function Settings({}: Props) {
     event.preventDefault();
     navigate('/');
   }
-  // FormEvent<HTMLFormElement>
+
   const handleUserDataChange=  async (event: FormEvent<HTMLFormElement>): Promise<void>=>{
     event.preventDefault();
   }
-  
-/**
- *  Preference
- */
-
-const [darkmode, setDarkmode] =useState<string>("on");
-
 
   return (
     <div className="Setting">
@@ -99,13 +88,13 @@ const [darkmode, setDarkmode] =useState<string>("on");
       <h1>Settings</h1>
       <h2>User Setting</h2>
       <form 
-      onSubmit = {handleUserDataChange}>
+        onSubmit = {handleUserDataChange}>
         <label>Username :</label>
         <Input className="username" placeholder={"username cannot be empty"} type="text" value={username} onChange={ (event) => {
-            event.preventDefault();
-            //setStoredInputUser(event.target.value)
+              event.preventDefault();
+              //setStoredInputUser(event.target.value)
             }
-            } />
+          } />
         <br />
         <label>Email Address:</label>
         <p>{email}</p>
@@ -122,13 +111,13 @@ const [darkmode, setDarkmode] =useState<string>("on");
           <div className="row">
             <div className="cell">
               <label>Home Prefecture:</label>
-              </div>
+            </div>
             <div className="cell">
               <DropdownMenu labelName="Select location:" setPrefecture={(element) => {
-              console.log(element);
-              setLocation(parseInt(element));
-              // setDefault(location) // need update dropdown menu to set location if default location are given
-              } 
+                  console.log(element);
+                  setLocation(parseInt(element));
+                  // setDefault(location) // need update dropdown menu to set location if default location are given
+                } 
               }/>
             </div>
           </div>
@@ -136,38 +125,13 @@ const [darkmode, setDarkmode] =useState<string>("on");
         
         <label>Update User Data</label>
         <Button 
-        className="submit" 
-        type="submit" 
-        text="Update" />
+          className="submit" 
+          type="submit" 
+          text="Update" />
       </form>
-      <hr />
-      <h2>Preference</h2>
-      <form>
-      <label>Dark Mode</label>
-      <input
-        className="darkmode-input"
-        type="radio"
-        id="on"
-        name="slide-switch"
-        value="on"
-        checked={darkmode === "on"}
-        onChange={(e) => setDarkmode(e.target.value)}
-/>
-      <label className="darkmode-label" htmlFor="on">On</label>
 
-        <input
-          className="darkmode-input"
-          type="radio"
-          id="off"
-          name="slide-switch"
-          value="off"
-          checked={darkmode === "off"}
-          onChange={(e) => setDarkmode(e.target.value)}
-/>
-<label className="darkmode-label" htmlFor="off">Off</label>
-      </form>
     </div>
   );
-}
+};
 
 export default Settings;
