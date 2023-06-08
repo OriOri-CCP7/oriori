@@ -60,7 +60,6 @@ export default function Home() {
     <Header
         className="homepage-header"
         mainText="OriOri Homepage" />
-
       {
         products.length > 0
         ? <GridComponent productArray={ products } setProductArray={ null }/>
@@ -70,6 +69,7 @@ export default function Home() {
             </p>
           </>
       }
+    <Navbar/>
 
   </>
 )}
