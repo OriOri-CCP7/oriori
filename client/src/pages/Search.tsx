@@ -29,7 +29,7 @@ export default function Search({}: Props) {
             <h1>
                 Search
             </h1>
-            <DropdownMenu labelName='Select a prefecture:' setPrefecture={getProducts}/>
+            <DropdownMenu labelName='Select a prefecture:' setPrefecture={getProducts} prefill={undefined}/>
             <GridComponent productArray={products} setProductArray={null}/>
         </div>
     );

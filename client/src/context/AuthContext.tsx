@@ -49,7 +49,7 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     newUserInfo.uuid = newUser.user.uid;
     console.log('🌎', newUserInfo);
-    await axios.post('api/users/newUser/', newUserInfo, {
+    await axios.post('/api/users/newUser/', newUserInfo, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -85,8 +85,8 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     const authenticationState = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         const authenticatedUser: User = {
-          username: '',
-          email: '',
+          username: currentUser.displayName ?? '',
+          email: currentUser.email ?? '',
           uuid: currentUser.uid,
           location: 1
         };

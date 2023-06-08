@@ -33,7 +33,7 @@ const Signup: React.FC = () => {
     try {
       if (auth) {
         await auth.signup(username, email, password);
-        navigate('/login');
+        navigate('/');
       }
     } catch (error) {
         console.log("🤬", error);

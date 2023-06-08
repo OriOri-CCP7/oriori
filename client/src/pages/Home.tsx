@@ -14,7 +14,7 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    axios.get(`/api/${auth?.user.location}/products`, {
+    axios.get(`/api/${auth?.user.location}/products/`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
