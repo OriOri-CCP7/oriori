@@ -50,10 +50,8 @@ def editUserData(request, uuid):
     user.username = request.data.get('username', user.username)
     user.email = request.data.get('email', user.email)
     location_id = request.data.get('location')
-    print(request.data)
     if location_id:
       location = Location.objects.get(pk=location_id)
-      print(location)
       user.location_id = location.pk
     user.save()
     serializer = UserSerializer(user)
