@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
 import auth from '../firebase.config';
 import { 
@@ -26,6 +26,7 @@ interface AuthenticatedUser {
   logout: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   user: User;
+  csrftoken: string | undefined;
 }
 
 const UserContext = createContext<AuthenticatedUser | null>(null);
@@ -48,7 +49,7 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     const newUser = await createUserWithEmailAndPassword(auth, email, password);
     newUserInfo.uuid = newUser.user.uid;
     console.log('🌎', newUserInfo);
-    await axios.post('api/newUser/', newUserInfo, {
+    await axios.post('/api/users/newUser/', newUserInfo, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -93,8 +94,8 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     const authenticationState = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         const authenticatedUser: User = {
-          username: '',
-          email: '',
+          username: currentUser.displayName ?? '',
+          email: currentUser.email ?? '',
           uuid: currentUser.uid,
           location: 1
         };
@@ -108,7 +109,7 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     }
   }, []);
 
-  return <UserContext.Provider value={{ signup, login, logout, resetPassword, user }}>
+  return <UserContext.Provider value={{ signup, login, logout, resetPassword, user, csrftoken }}>
     { children }
   </UserContext.Provider>
 }

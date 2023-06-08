@@ -2,35 +2,26 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Card from './Card';
 import React from 'react';
 
-interface ProductObj {
-    className: string | undefined, 
-    productName: string,
-    img_url: string | undefined,
-    offerStart: string,
-    offerEnd: string, 
-    favoriteNumber: number, 
-    onClick: (event: React.MouseEvent<HTMLElement>) => void
-}
 
 interface Props {
-    productArray: Array<ProductObj>,
-    setProductArray: React.Dispatch<React.SetStateAction<Array<ProductObj>>>
+    productArray: Array<Product>,
+    setProductArray: React.Dispatch<React.SetStateAction<Array<Product>>> | null
   }
 
 function GridComponent({ productArray, setProductArray }: Props) {
     return (
       <div className="Grid">
         <Grid container rowSpacing={1}>
-            {productArray.map((data) => (
-                <Grid xs={6} key={data.productName}>
+            {productArray.map((product) => (
+                <Grid xs={6} key={product.product_name}>
                     <Card 
-                    className={data.productName}
-                    productName={data.productName}
-                    img_url={data.img_url}
-                    offerStart={data.offerStart}
-                    offerEnd={data.offerEnd}
-                    favoriteNumber={data.favoriteNumber} 
-                    onClick={data.onClick}/>
+                      className="productCard"
+                      productName={product.product_name}
+                      img_url={""}
+                      offerStart={product.start_date}
+                      offerEnd={product.end_date}
+                      favoriteNumber={0} 
+                      onClick={() => {}}/>
                 </Grid>
             ))}
         </Grid>

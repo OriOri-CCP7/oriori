@@ -10,6 +10,7 @@ from base.serializers import FavoriteSerializer
 from base.serializers import LocationSerializer
 from base.serializers import StoreSerializer
 from base.serializers import ProductSerializer
+from django.db.models import Count
 
 # Create your views here.
 
@@ -35,7 +36,6 @@ def getUserData(request, uuid):
 
 @api_view(['POST'])
 def addNewUser(request):
-  print('😳', request)
   serializer = UserSerializer(data=request.data)
   if serializer.is_valid():
     serializer.save()
@@ -49,10 +49,10 @@ def editUserData(request, uuid):
     user = User.objects.get(uuid=uuid)
     user.username = request.data.get('username', user.username)
     user.email = request.data.get('email', user.email)
-    prefecture = request.data.get('prefecture')
-    if prefecture:
-      location = Location.objects.get(prefecture=prefecture)
-      user.location_id = location.id
+    location_id = request.data.get('location')
+    if location_id:
+      location = Location.objects.get(pk=location_id)
+      user.location_id = location.pk
     user.save()
     serializer = UserSerializer(user)
     return Response(serializer.data)
@@ -67,19 +67,19 @@ def deleteUser(request, uuid):
 
 # Views for Favorites data
 @api_view(['GET'])
-def getUserFavorites(request, id):
+def getUserFavorites(request, uuid):
   try:
-    favorites = Favorite.objects.filter(user_id=id)
+    favorites = Favorite.objects.filter(user__uuid=uuid)
     serializer = FavoriteSerializer(favorites, many=True)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
 
 @api_view(['POST'])
-def addNewFavorite(request, id):
+def addNewFavorite(request, uuid):
   try:
     product_id = request.data.get('product_id')
-    user = User.objects.get(id=id)
+    user = User.objects.get(uuid=uuid)
     product = Product.objects.get(id=product_id)
     favorite = Favorite.objects.create(user=user, product=product)
     serializer = FavoriteSerializer(favorite)
@@ -88,9 +88,9 @@ def addNewFavorite(request, id):
     return Response(serializer.errors)
 
 @api_view(['DELETE'])
-def removeFavorite(request, id):
+def removeFavorite(request, uuid):
   try:
-    user = User.objects.get(id=id)
+    user = User.objects.get(uuid=uuid)
     favorite_id = request.data.get('favorite_id')
     favorite = Favorite.objects.get(id=favorite_id, user=user)
     favorite.delete()
@@ -119,11 +119,20 @@ def getProductDataByUser(request, uuid):
     return Response(serializer.errors)
   
 @api_view(['GET'])
-def getProductDataByPrefecture(request, prefecture):
+def getProductDataByPrefecture(request, prefId):
   try:
-    stores = Store.objects.filter(location__prefecture=prefecture)
+    stores = Store.objects.filter(location__id=prefId)
     products = Product.objects.filter(store__in=stores)
     serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
+  except Exception as e:
+    return Response({'error': str(e)})
+  
+@api_view(['GET'])
+def getProductDataByPopularity(request):
+  try:
+    products = Product.objects.annotate(num_favs=Count('favorite')).order_by("num_favs").reverse()
+    serializer = ProductSerializer(products[0:10], many=True)
     return Response(serializer.data)
   except Exception as e:
     return Response({'error': str(e)})

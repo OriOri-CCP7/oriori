@@ -1,19 +1,21 @@
-import React, {useState, ChangeEvent} from 'react';
+import React, {useState, ChangeEvent, SetStateAction} from 'react';
 import axios from 'axios';
 import prefs from '../data/prefectures.json'
 
 type Props = {
     labelName: string | undefined,
-    setPrefecture: (event: string) => void,
+    setPrefecture: (prefId: string) => void,
+    prefill: string | undefined
 }
 
-function DropdownMenu( {labelName, setPrefecture}: Props ) {
-    const [selected, setSelected] = useState<string>("13"); // Tokyo is prefs[12]
+function DropdownMenu( {labelName, setPrefecture, prefill}: Props ) {
+    const [selected, setSelected] = useState<string>(prefill ?? "1");
     
-    function handleChange (event:React.ChangeEvent<HTMLSelectElement>) {
+    function handleChange (event: React.ChangeEvent<HTMLSelectElement>) {
         setSelected(event.target.value)
         setPrefecture(event.target.value)
     }
+
     return (
         <>
             <div className="dropdownMenu">
