@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
+import axios from 'axios';
+import './Favorites.css';
 import GridComponent from '../components/Grid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';

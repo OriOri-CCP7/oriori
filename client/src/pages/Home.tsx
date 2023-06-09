@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Cog6ToothIcon } from '@heroicons/react/24/solid';
+import axios from "axios";
+import './Home.css';
 import Button from '../components/Button';
 import Header from "../components/Header";
-import { Cog6ToothIcon } from '@heroicons/react/24/solid';
-import './Home.css';
 import GridComponent from "../components/Grid";
 import Navbar from "../components/Navbar";
 
