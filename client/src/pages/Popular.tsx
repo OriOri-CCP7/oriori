@@ -3,6 +3,7 @@ import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 import GridComponent from '../components/Grid';
 import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
 interface Props {};
 
@@ -26,9 +27,9 @@ function Popular({}: Props) {
 
   return (
     <div>
-      <h1>
-        Popular
-      </h1>
+      <Header
+          className="popular-header"
+          mainText="Hot Right Now" />
       <GridComponent productArray={products} setProductArray={null}/>
       <Navbar/>
     </div>
