@@ -6,6 +6,7 @@ import GridComponent from '../components/Grid';
 import DropdownMenu from '../components/DropdownMenu';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
+import Footer from "../components/Footer";
 
 interface Props {};
 
@@ -36,6 +37,9 @@ export default function Search({}: Props) {
       labelName='Select a prefecture:' setPrefecture={getProducts} prefill={undefined}/>
       <GridComponent productArray={products} setProductArray={null}/>
       <Navbar/>
+      <Footer 
+        className = "footer"
+        text="© 2023 OriOri" />
     </div>
   );
 };

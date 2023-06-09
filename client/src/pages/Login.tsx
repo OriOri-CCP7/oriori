@@ -5,6 +5,7 @@ import "./Login.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -76,6 +77,10 @@ const Login: React.FC = () => {
         Forgot your password? 
         <Link to = "/new-password"> Reset it here!</Link>
       </p>
+
+      <Footer 
+        className = "footer"
+        text="© 2023 OriOri" />
     </>
   )
 }

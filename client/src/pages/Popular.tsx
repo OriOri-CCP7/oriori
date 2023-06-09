@@ -5,6 +5,7 @@ import './Popular.css';
 import GridComponent from '../components/Grid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
+import Footer from "../components/Footer";
 
 interface Props {};
 
@@ -33,6 +34,9 @@ function Popular({}: Props) {
           mainText="Hot Right Now" />
       <GridComponent productArray={products} setProductArray={null}/>
       <Navbar/>
+      <Footer 
+        className = "footer"
+        text="© 2023 OriOri" />
     </div>
   );
 }

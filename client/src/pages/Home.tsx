@@ -6,6 +6,7 @@ import axios from "axios";
 import './Home.css';
 import Button from '../components/Button';
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import GridComponent from "../components/Grid";
 import Navbar from "../components/Navbar";
 
@@ -70,6 +71,8 @@ export default function Home() {
           </>
       }
     <Navbar/>
-
+    <Footer 
+      className = "footer"
+      text="© 2023 OriOri" />
   </>
 )}
