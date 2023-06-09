@@ -7,11 +7,11 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 
 const pwdMsg = [
-  {text:"password must be at least 10 or more characters in length"},
-  {text:"password is miss matched"}
+  {id:0, text:""},
+  {id:1, text:"password cannot be empty"},
+  {id:2, text:"password must be at least 10 or more characters in length"},
+  {id:3, text:"password mis-matched"},
 ]
-
-
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Signup: React.FC = () => {
 
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [hasAttemptedSignUp, setHasAttemptedSignUp] = useState<boolean>(false);
-
+  const [alertMessage, setAlertMessage ] = useState<string>(pwdMsg[0].text);
 
   const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
@@ -39,8 +39,6 @@ const Signup: React.FC = () => {
     setConfirmPassword(event.target.value);
   }
 
-
-
   const handleEmailInput = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     setEmail(event.target.value);
@@ -48,16 +46,29 @@ const Signup: React.FC = () => {
   
   const handleSignUp = async (event: FormEvent<HTMLFormElement>): Promise<void>=> {
     event.preventDefault();
-    try {
-      if (auth) {
-        await auth.signup(username, email, password);
-        navigate('/');
+    if(!password.length){
+      setHasAttemptedSignUp(true);
+      setAlertMessage(pwdMsg[1].text);
+    } else if (password.length < 10){ 
+      setHasAttemptedSignUp(true);
+      setAlertMessage(pwdMsg[2].text);
+    } else if (password !== confirmPassword){
+      setHasAttemptedSignUp(true);
+      setAlertMessage(pwdMsg[3].text);
+    } else {
+      setHasAttemptedSignUp(false);
+      setAlertMessage(pwdMsg[0].text);
+      try {
+        if (auth) {
+          await auth.signup(username, email, password);
+          navigate('/');
+        }
+      } catch (error) {
+          console.log("🤬", error);
       }
-    } catch (error) {
-        console.log("🤬", error);
     }
   };
-
+  
   return (
     <>
       <Header
@@ -72,7 +83,7 @@ const Signup: React.FC = () => {
           value = { username }
           onChange = { handleUsernameInput }
           />
-        
+
         <Input 
           className = "signup-input"
           placeholder = "Password"
@@ -88,7 +99,8 @@ const Signup: React.FC = () => {
           value = { confirmPassword }
           onChange = { handleConfirmPasswordInput }
           />
-
+          {hasAttemptedSignUp ? <div className="div-signup-alertMessage">{alertMessage}</div> : <></>}
+          
         <Input 
           className = "signup-input"
           placeholder = "Email"
