@@ -13,7 +13,7 @@ import Cookies from 'js-cookie';
 
 const csrftoken = Cookies.get('csrftoken');
 
-interface User {
+export interface User {
   username: string, 
   email: string, 
   uuid: string | unknown,
