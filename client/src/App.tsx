@@ -10,6 +10,8 @@ import Search from './pages/Search';
 import Settings from './pages/Settings';
 import Signup from './pages/Signup';
 
+import  ProtectedRoute from './context/ProtectedRoute'
+
 import './App.css';
 
 
@@ -22,12 +24,13 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
-        <Route path='/home' element={<Home/>}></Route>
-        <Route path='/new-password' element={<PasswordReset/>}></Route>
-        <Route path='/favorite' element={<Favorite/>}></Route>
-        <Route path='/popular' element={<Popular/>}></Route>
-        <Route path='/search' element={<Search/>}></Route>
-        <Route path='/settings' element={<Settings />}></Route>
+        
+        <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
+        <Route path='/new-password' element={<ProtectedRoute><PasswordReset/></ProtectedRoute>}></Route>
+        <Route path='/favorite' element={<ProtectedRoute><Favorite/></ProtectedRoute>}></Route>
+        <Route path='/popular' element={<ProtectedRoute><Popular/></ProtectedRoute>}></Route>
+        <Route path='/search' element={<ProtectedRoute><Search /></ProtectedRoute>}></Route>
+        <Route path='/settings' element={<ProtectedRoute><Settings /></ProtectedRoute>}></Route>
       </Routes>
       </BrowserRouter>
       </AuthContextProvider>
