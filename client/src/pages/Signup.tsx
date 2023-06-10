@@ -5,6 +5,7 @@ import "./Signup.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const pwdMsg = [
   {id:0, text:""},
@@ -119,6 +120,9 @@ const Signup: React.FC = () => {
           <Link to = "/"> Log In! </Link>
         </p>
       </form>
+      <Footer 
+        className = "footer"
+        text="© 2023 OriOri" />
     </>
   );
 };
