@@ -15,3 +15,7 @@ form {
   align-items: center;
   gap: 15px;
 }
+
+.div-signup-alertMessage {
+  color:red;
+}
