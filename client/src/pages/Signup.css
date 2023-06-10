@@ -1,5 +1,9 @@
+body {
+  background-color: #FDF6F0;
+}
+
 .signup-header {
-  background-color: hotpink;
+  background-color: #FCD8D4;
   padding: 15px;
 }
 
@@ -10,4 +14,8 @@ form {
   justify-content: center;
   align-items: center;
   gap: 15px;
+}
+
+.div-signup-alertMessage {
+  color:red;
 }

@@ -5,6 +5,12 @@ import "./Login.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+const alertMsg = [
+  {id:0, text:""},
+  {id:1, text:"Incorrect Email or Password"}
+]
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -12,6 +18,9 @@ const Login: React.FC = () => {
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const [attemptedLogin, setAttemptedLogin] = useState<boolean>(false);
+  const [alertMessage, setAlertMessage] = useState<string>(alertMsg[0].text)
 
   const handleEmailInput = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
@@ -27,6 +36,8 @@ const Login: React.FC = () => {
     event.preventDefault();
     try {
       if (auth) {
+        setAttemptedLogin(false);
+        setAlertMessage(alertMsg[0].text);
         await auth.login(email, password);
         navigate('/home');
       } else {
@@ -34,6 +45,8 @@ const Login: React.FC = () => {
       }
     } catch (error) {
         console.log("🤨", error);
+        setAttemptedLogin(true);
+        setAlertMessage(alertMsg[1].text);
     }
   };
   
@@ -60,7 +73,7 @@ const Login: React.FC = () => {
           value = { password }
           onChange = { handlePasswordInput }
           />
-          
+          {attemptedLogin ? <div className="div-login-attemped">{alertMessage}</div>: <></>}
           <Button 
           className = "submit"
           text = "Log In"
@@ -76,6 +89,10 @@ const Login: React.FC = () => {
         Forgot your password? 
         <Link to = "/new-password"> Reset it here!</Link>
       </p>
+
+      <Footer 
+        className = "footer"
+        text="© 2023 OriOri" />
     </>
   )
 }
