@@ -10,6 +10,8 @@ import Search from './pages/Search';
 import Settings from './pages/Settings';
 import Signup from './pages/Signup';
 
+// import OnBoarding from './pages/OnBoarding';
+
 import  ProtectedRoute from './context/ProtectedRoute'
 
 import './App.css';
@@ -31,6 +33,7 @@ function App() {
         <Route path='/popular' element={<ProtectedRoute><Popular/></ProtectedRoute>}></Route>
         <Route path='/search' element={<ProtectedRoute><Search /></ProtectedRoute>}></Route>
         <Route path='/settings' element={<ProtectedRoute><Settings /></ProtectedRoute>}></Route>
+        {/* <Route path='/onboarding' element={<ProtectedRoute><OnBoarding/ ></ProtectedRoute>}></Route> */}
       </Routes>
       </BrowserRouter>
       </AuthContextProvider>
