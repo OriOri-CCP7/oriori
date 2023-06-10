@@ -1,5 +1,4 @@
-import React, {useState, ChangeEvent, SetStateAction} from 'react';
-import axios from 'axios';
+import React, {useState} from 'react';
 import prefs from '../data/prefectures.json'
 
 type Props = {

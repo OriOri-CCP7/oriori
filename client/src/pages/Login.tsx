@@ -1,5 +1,7 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import app from '../firebase.config';
+import { ref, get } from 'firebase/database';
 import { UserAuth } from "../context/AuthContext";
 import "./Login.css";
 import Input from "../components/Input";
@@ -7,10 +9,16 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+const { database } = app;
+
 const alertMsg = [
   {id:0, text:""},
   {id:1, text:"Incorrect Email or Password"}
-]
+];
+
+interface OnboardedUser {
+  onboarded: true
+};
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -38,8 +46,20 @@ const Login: React.FC = () => {
       if (auth) {
         setAttemptedLogin(false);
         setAlertMessage(alertMsg[0].text);
-        await auth.login(email, password);
-        navigate('/home');
+
+        const loggedinUser = await auth.login(email, password);
+
+        let userSnapshot = await get(ref(database, `onboardedUsers/${loggedinUser.user.uid}`));
+        if (userSnapshot.exists()) {
+          let userJson = userSnapshot.toJSON();
+          if ((userJson as OnboardedUser).onboarded) {
+            navigate('/home');
+            return;
+          }
+        }
+
+        navigate('/onboarding');
+
       } else {
         console.log('😱', "USER NOT FOUND");
       }
