@@ -1,8 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, ReactNode, useReducer } from 'react';
 import axios from 'axios';
 import app from '../firebase.config';
-const { auth } = app;
-
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
@@ -13,73 +11,157 @@ import {
 } from 'firebase/auth';
 import Cookies from 'js-cookie';
 
+const { auth } = app;
 const csrftoken = Cookies.get('csrftoken');
 
-interface User {
-  username: string, 
-  email: string, 
-  uuid: string | unknown,
-  location: number | unknown
-};
-
 interface AuthenticatedUser {
-  signup: (username: string, email: string, password: string) => Promise<UserCredential>;
+  signup: (username: string, email: string, password: string) => Promise<UserCredential | undefined>;
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   user: User;
+  refreshUser: (userId: string, email: string | null) => Promise<void>;
+  dispatchUser: React.Dispatch<UserReducerAction>;
   csrftoken: string | undefined;
+};
+
+interface User {
+  username: string, 
+  email: string, 
+  uuid: string | null,
+  location: string
+};
+
+interface UserReducerAction {
+  type: 'set_user' | 'clear_user' | 'set_username' | 'set_email' | 'set_uuid' | 'set_location',
+  newUsername?: string,
+  newEmail?: string,
+  newUuid?: string,
+  newLocation?: string,
+  newUserState?: User
+}
+
+function userReducer(state: User, action: UserReducerAction): User {
+  switch (action.type) {
+    case 'set_user': {
+      return {
+        ...state,
+        username: action.newUsername ?? state.username,
+        email: action.newEmail ?? state.email,
+        uuid: action.newUuid ?? state.uuid,
+        location: action.newLocation ?? state.location
+      }
+    }
+    case 'clear_user': {
+      return {
+        username: '',
+        email: '',
+        uuid: null,
+        location: '13'
+      };
+    }
+    case 'set_username': {
+      return {
+        ...state,
+        username: action.newUsername ?? state.username
+      };
+    }
+    case 'set_email': {
+      return {
+        ...state,
+        email: action.newEmail ?? state.email
+      };
+    }
+    case 'set_uuid': {
+      return {
+        ...state,
+        uuid: action.newUuid ?? state.uuid
+      };
+    }
+    case 'set_location': {
+      return {
+        ...state,
+        location: action.newLocation ?? state.location
+      };
+    }
+  }
 }
 
 const UserContext = createContext<AuthenticatedUser | null>(null);
 
-  export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-    const [user, setUser] = useState<User>({
+export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
+  const [user, dispatchUser] = useReducer(userReducer,
+    {
       username: '',
       email: '',
       uuid: null,
-      location: 1
-    });
+      location: "13"
+    }
+  );
 
   const signup = async (username: string, email: string, password: string) => {
     const newUserInfo: User = {
       username: username,
       email: email,
       uuid: null,
-      location: 1 // user inputs prefecture
+      location: "13"
     };
-    const newUser = await createUserWithEmailAndPassword(auth, email, password);
-    newUserInfo.uuid = newUser.user.uid;
-    console.log('🌎', newUserInfo);
-    await axios.post('/api/users/newUser/', newUserInfo, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'X-CSRFToken': csrftoken
-      },
-    });
-    return newUser;
+    try {
+      const newUser = await createUserWithEmailAndPassword(auth, email, password);
+      newUserInfo.uuid = newUser.user.uid;
+      console.log('🌎', newUserInfo);
+      let userUpdate = await axios.post('/api/users/newUser/', newUserInfo, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+      });
+      if (userUpdate.status !== 200) throw new Error("User could not be added to app database: " + newUserInfo.uuid);
+      return newUser;
+    } catch(err) {
+      console.log("Error creating user: ", err);
+    }
   };
 
   const login = async (email: string, password: string) => {
     const loggedIn = await signInWithEmailAndPassword(auth, email, password);
     console.log('😜', loggedIn);
-    const currentUser = loggedIn.user;
-    console.log('🤩', currentUser);
+    refreshUser(loggedIn.user.uid, loggedIn.user.email);
+    console.log('🤩', user);
     return loggedIn;
-  }
+  };
 
   const logout = async () => {
     try {
       await signOut(auth);
-      setUser({
-        username: '',
-        email: '',
-        uuid: null,
-        location: 1
+      dispatchUser({
+        type: 'clear_user'
       });
     } catch (error) {
       console.log('😡', error);
+    }
+  };
+
+  const refreshUser = async (userId: string, email: string | null) => {
+    try {
+      if (auth) {
+        const result = await axios.get(`/api/users/${userId}/`);
+        if (result.status !== 200) { throw new Error(`User ID "${userId}" not found in app database.`); }
+        dispatchUser({
+          type: 'set_user',
+          newUsername: result.data.username,
+          newEmail: email ?? (result.data.email ?? ''),
+          newUuid: userId,
+          newLocation: result.data.location
+        });
+      } else {
+        throw new Error("Auth could not be validated.");
+      }
+    } catch (error) {
+      console.log("🍀", `Error: ${error}`);
+    } finally {
+      console.log("User data retrieved.");
     }
   };
 
@@ -95,23 +177,16 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
   useEffect(() => {
     const authenticationState = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        const authenticatedUser: User = {
-          username: currentUser.displayName ?? '',
-          email: currentUser.email ?? '',
-          uuid: currentUser.uid,
-          location: 1
-        };
-        setUser(authenticatedUser);
-        console.log('😤', user);
+        refreshUser(currentUser.uid, currentUser.email);
       }
     });
 
     return () => {
       authenticationState();
-    }
+    };
   }, []);
 
-  return <UserContext.Provider value={{ signup, login, logout, resetPassword, user, csrftoken }}>
+  return <UserContext.Provider value={{ signup, login, logout, resetPassword, user, refreshUser, dispatchUser, csrftoken }}>
     { children }
   </UserContext.Provider>
 }

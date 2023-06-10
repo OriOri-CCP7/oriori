@@ -1,27 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import app from '../firebase.config';
+import { ref, set } from 'firebase/database';
+import { UserAuth } from '../context/AuthContext';
+import DropdownMenu from '../components/DropdownMenu';
 import './Onboarding.css';
 
-import app from '../firebase.config';
 const { database } = app;
-import { ref, set } from 'firebase/database';
-
-import { UserAuth } from '../context/AuthContext';
-import prefs from '../prefectures.json';
 
 function Onboarding() {
   const auth = UserAuth();
   const navigate = useNavigate();
+  
+  const [prefecture, setPrefecture] = useState<string>("13");
 
+  if (!auth) {
+    navigate("/");
+    return (<></>);
+  };
+  
   const clickHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const userId = auth?.user.uuid ?? "";
-    if (userId !== "") {
-      await set(ref(database, 'onboardedUsers/'), {
-        userId: true
-      });
+    try {
+      if (auth) {
+        setPrefecture(auth.user.location);
+        console.log("Attempting to update User info");
+        const result = await axios.patch(`/api/users/${auth.user.uuid}/edit/`, {
+          location: prefecture
+        });
+        if (result.status !== 200) {
+          throw new Error("User could not be updated.");
+        } else {
+          const userId = auth.user.uuid as string ?? "";
+          if (userId !== "") {
+            await set(ref(database, `onboardedUsers/${userId}`), { onboarded: true });
+          } else {
+            throw new Error("User could not be saved as onboarded.")
+          }
+          auth.dispatchUser({
+            type: 'set_location',
+            newLocation: prefecture
+          });
+          navigate("/home");
+        }
+      }
+    } catch (err) {
+      console.log("Error: ", err);
     }
-    navigate("/");
   }
   
   return (
@@ -35,16 +61,7 @@ function Onboarding() {
         meaning ‘from season to season’
       </p>
       <br/>
-      <label>
-        Home Prefecture:
-        <select>
-          {
-            prefs.map((element) => {
-              return (<option value={element.pk}>{element.name}</option>)
-            })
-          }
-        </select>
-      </label>
+      <DropdownMenu labelName={"Home Prefecture:"} setPrefecture={setPrefecture} prefill={prefecture}/>
       <p>
         Select the prefecture you want to use as your Home Prefecture.<br/>
         It can be where you live, where you plan on visiting the most, or just your favorite prefecture!<br/>

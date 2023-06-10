@@ -1,4 +1,4 @@
-import React, {useState, useEffect, ChangeEvent} from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import DropdownMenu from "../components/DropdownMenu";
 import {UserAuth} from "../context/AuthContext";
 import Input from "../components/Input";
@@ -15,14 +15,10 @@ function Settings({}: Props) {
   const auth  = UserAuth();
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState<string>('');
-  // const [email, setEmail] = useState<string>('');
-  const [location, setLocation] = useState<string>('1');
+  const [username, setUsername] = useState<string>(auth?.user.username ?? '');
+  // const [email, setEmail] = useState<string>(auth?.user.email ?? '');
+  const [location, setLocation] = useState<string>(auth?.user.location ?? '1');
   
-  useEffect(()=>{
-    getUserData();
-  },[]);
-
   const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value);
   }
@@ -30,24 +26,6 @@ function Settings({}: Props) {
   // const handleEmailInput = (event: ChangeEvent<HTMLInputElement>): void => {
   //   setEmail(event.target.value);
   // }
-
-  const getUserData = async () => {
-    try {
-      if (auth) {
-        const result = await axios.get(`/api/users/${auth.user.uuid}/`);
-        setUsername(result.data.username);
-        // setEmail(result.data.email);
-        setLocation(result.data.location);
-      } else {
-        navigate("/logout");
-      }
-    } catch (error) {
-      console.log("🍀", `We got error: ${error}`);
-      
-    } finally {
-      console.log("User data retrieved.")
-    }
-  };
   
   const handleBack = (event: React.MouseEvent<HTMLButtonElement>) => {
     navigate('/home');
@@ -67,6 +45,12 @@ function Settings({}: Props) {
         if (result.status !== 200) {
           throw new Error("User could not be updated.");
         } else {
+          auth.dispatchUser({
+            type: 'set_user',
+            newUsername: username,
+            // newEmail: email,
+            newLocation: location
+          });
           navigate("/home");
         }
       }
