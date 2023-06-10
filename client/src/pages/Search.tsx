@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
 import './Search.css';
@@ -8,9 +8,7 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from "../components/Footer";
 
-interface Props {};
-
-export default function Search({}: Props) {
+export default function Search() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
 

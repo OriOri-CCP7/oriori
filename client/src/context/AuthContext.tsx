@@ -17,8 +17,8 @@ const csrftoken = Cookies.get('csrftoken');
 export interface User {
   username: string, 
   email: string, 
-  uuid: string | unknown,
-  location: number | unknown
+  uuid: string | null,
+  location: string
 };
 
 interface AuthenticatedUser {

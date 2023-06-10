@@ -1,17 +1,13 @@
-import React, {useState, ChangeEvent} from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import DropdownMenu from "../components/DropdownMenu";
-import {UserAuth} from "../context/AuthContext";
+import { UserAuth } from "../context/AuthContext";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './Settings.css';
 
-interface Props {
- 
-};
-
-function Settings({}: Props) {
+function Settings() {
   const auth  = UserAuth();
   const navigate = useNavigate();
 
