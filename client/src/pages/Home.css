@@ -1,4 +1,24 @@
+body {
+  background-color: #FDF6F0;
+}
+
+.buttons {
+  padding: 5px;
+  background-color: #FCD8D4;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout {
+  border-radius: 5px;;
+}
+
 .settings-icon {
-  width: 10%;
+  width: 3%;
   fill: darkgrey;
+}
+
+.homepage-header {
+  background-color: #FCD8D4;
+  padding: 5px;
 }

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
+import axios from 'axios';
+import './Popular.css';
 import GridComponent from '../components/Grid';
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
+import Footer from "../components/Footer";
 
 interface Props {};
 
@@ -25,10 +29,14 @@ function Popular({}: Props) {
 
   return (
     <div>
-      <h1>
-        Popular
-      </h1>
+      <Header
+          className="popular-header"
+          mainText="Hot Right Now" />
       <GridComponent productArray={products} setProductArray={null}/>
+      <Navbar/>
+      <Footer 
+        className = "footer"
+        text="© 2023 OriOri" />
     </div>
   );
 }

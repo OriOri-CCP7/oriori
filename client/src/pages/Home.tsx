@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Cog6ToothIcon } from '@heroicons/react/24/solid';
+import axios from "axios";
+import './Home.css';
 import Button from '../components/Button';
 import Header from "../components/Header";
-import { Cog6ToothIcon } from '@heroicons/react/24/solid';
-import './Home.css';
+import Footer from "../components/Footer";
 import GridComponent from "../components/Grid";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -42,16 +44,23 @@ export default function Home() {
 
   return (
   <>
-    <Cog6ToothIcon 
-      className="settings-icon"
-      onClick = {() => {
-        navigate('/settings');
-      }}/>
+    <div className="buttons">
+      <Button
+      className="logout"
+      text="Log Out"
+      type="button"
+      onClick={ handleLogout } />
+      
+      <Cog6ToothIcon 
+        className="settings-icon"
+        onClick = {() => {
+          navigate('/settings');
+        }} />
+    </div>
     
     <Header
         className="homepage-header"
-        mainText="Home Page" />
-
+        mainText="OriOri Homepage" />
       {
         products.length > 0
         ? <GridComponent productArray={ products } setProductArray={ null }/>
@@ -61,12 +70,9 @@ export default function Home() {
             </p>
           </>
       }
-
-    <Button
-      className="logout"
-      text="Log Out"
-      type="button"
-      onClick={ handleLogout }
-    />
+    <Navbar/>
+    <Footer 
+      className = "footer"
+      text="© 2023 OriOri" />
   </>
 )}

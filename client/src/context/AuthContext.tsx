@@ -8,7 +8,8 @@ import {
   createUserWithEmailAndPassword, 
   signOut,
   onAuthStateChanged,
-  UserCredential 
+  UserCredential,
+  sendPasswordResetEmail
 } from 'firebase/auth';
 import Cookies from 'js-cookie';
 
@@ -25,6 +26,7 @@ interface AuthenticatedUser {
   signup: (username: string, email: string, password: string) => Promise<UserCredential>;
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
   user: User;
   csrftoken: string | undefined;
 }
@@ -81,6 +83,15 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     }
   };
 
+  const resetPassword = async (email: string) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      console.log('A password reset email was sent to your registered email address.');
+    } catch(error) {
+      console.log('💢', error);
+    }
+  };
+
   useEffect(() => {
     const authenticationState = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
@@ -100,7 +111,7 @@ const UserContext = createContext<AuthenticatedUser | null>(null);
     }
   }, []);
 
-  return <UserContext.Provider value={{ signup, login, logout, user, csrftoken }}>
+  return <UserContext.Provider value={{ signup, login, logout, resetPassword, user, csrftoken }}>
     { children }
   </UserContext.Provider>
 }
