@@ -28,7 +28,8 @@ export default function Home() {
       setProducts(response.data);
     })
     .catch((err) => console.log('😈', err));
-}, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -70,6 +71,10 @@ export default function Home() {
             </p>
           </>
       }
+      <button onClick={ (e) => {
+          e.preventDefault();
+          navigate("/onboarding");
+        }}>Onboarding</button>
     <Navbar/>
     <Footer 
       className = "footer"

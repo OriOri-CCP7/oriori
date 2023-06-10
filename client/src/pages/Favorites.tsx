@@ -7,26 +7,25 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-interface Props {};
+function Favorites() {
+    const auth = UserAuth();
+    const [products, setProducts] = useState<Product[]>([]);
 
-function Favorites({}: Props) {
-const auth = UserAuth();
-const [products, setProducts] = useState<Product[]>([]);
-
-useEffect(() => {
-    axios.get(`/api/products/${auth?.user.uuid}/favorites/`, {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'X-CSRFToken': auth?.csrftoken ?? ""
-        }
-    })
-    .then((response) => {
-        console.log(response);
-        setProducts(response.data);
-    })
-    .catch((err) => console.log(err));
-}, []);
+    useEffect(() => {
+        axios.get(`/api/products/${auth?.user.uuid}/favorites/`, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': auth?.csrftoken ?? ""
+            }
+        })
+        .then((response) => {
+            console.log(response);
+            setProducts(response.data);
+        })
+        .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
   return (
     <div>
