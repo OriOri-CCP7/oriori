@@ -14,6 +14,13 @@ import Cookies from 'js-cookie';
 const { auth } = app;
 const csrftoken = Cookies.get('csrftoken');
 
+export interface User {
+  username: string, 
+  email: string, 
+  uuid: string | unknown,
+  location: number | unknown
+};
+
 interface AuthenticatedUser {
   signup: (username: string, email: string, password: string) => Promise<UserCredential | undefined>;
   login: (email: string, password: string) => Promise<UserCredential>;
@@ -23,13 +30,6 @@ interface AuthenticatedUser {
   refreshUser: (userId: string, email: string | null) => Promise<void>;
   dispatchUser: React.Dispatch<UserReducerAction>;
   csrftoken: string | undefined;
-};
-
-interface User {
-  username: string, 
-  email: string, 
-  uuid: string | null,
-  location: string
 };
 
 interface UserReducerAction {
