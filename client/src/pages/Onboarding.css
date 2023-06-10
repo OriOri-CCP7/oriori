@@ -1,4 +1,19 @@
-.onboarding-text {
+.onboarding {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75%;
+  height: 100%;
   margin: auto;
+}
+
+.onboarding__intro-text {
+  margin: 2pt auto;
   text-align: center;
+}
+
+.onboarding__instruction-text {
+  margin: 2pt auto;
+  text-align: center;
+  font-size: small;
 }

@@ -14,11 +14,6 @@ function Onboarding() {
   const navigate = useNavigate();
   
   const [prefecture, setPrefecture] = useState<string>("13");
-
-  if (!auth) {
-    navigate("/");
-    return (<></>);
-  };
   
   const clickHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -51,27 +46,27 @@ function Onboarding() {
   }
   
   return (
-    <>
-      <p className="onboarding-text">
+    <div className="onboarding">
+      <p className="onboarding__intro-text">
         四季折々<br/>
         （しきおりおり）<br/>
         <br/>
-        <b>oriori</b> comes from the
-        Japanese phrase <i>shikioriori</i>,
+        <b>oriori</b> comes from the<br/>
+        Japanese phrase <i>shikioriori</i>,<br/>
         meaning ‘from season to season’
       </p>
       <br/>
-      <DropdownMenu labelName={"Home Prefecture:"} setPrefecture={setPrefecture} prefill={prefecture}/>
-      <p>
-        Select the prefecture you want to use as your Home Prefecture.<br/>
-        It can be where you live, where you plan on visiting the most, or just your favorite prefecture!<br/>
-        <i>You can change this at any time in the settings menu.</i>
+      <DropdownMenu labelName={"Home Prefecture: "} setPrefecture={setPrefecture} prefill={prefecture}/>
+      <p className="onboarding__instruction-text">
+        Select the prefecture you want to use as your Home Prefecture. 
+        It can be where you live, where you plan on visiting the most, 
+        or just your favorite prefecture! <i>You can change this at any time in the settings menu.</i>
       </p>
       <br/>
       <button onClick={ clickHandler }>
         Continue
       </button>
-    </>
+    </div>
   );
 }
 

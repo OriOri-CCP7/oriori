@@ -71,6 +71,10 @@ export default function Home() {
             </p>
           </>
       }
+      <button onClick={ (e) => {
+          e.preventDefault();
+          navigate("/onboarding");
+        }}>Onboarding</button>
     <Navbar/>
     <Footer 
       className = "footer"
