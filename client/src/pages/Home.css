@@ -1,3 +1,41 @@
+@media (maxwidth: 480px) {
+  /* Styles for small screens */
+} 
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Styles for medium screens */
+}
+
+/* Styles for screens with a minimum width of 769px */
+@media (min-width: 769px) {
+  /* Styles for large screens */
+  body {
+    background-color: red;
+  }
+  
+  .buttons {
+    padding: 5px;
+    background-color: #FCD8D4;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .logout {
+    border-radius: 5px;;
+  }
+  
+  .settings-icon {
+    width: 3%;
+    fill: darkgrey;
+  }
+  
+  .homepage-header {
+    background-color: #FCD8D4;
+    padding: 5px;
+  }
+
+}
+
 body {
   background-color: #FDF6F0;
 }
