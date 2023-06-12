@@ -1,3 +1,12 @@
+:root {
+    --small-width:25%;
+    --medium-width:32%;
+    --large-width:35%;
+    --small-z-index:66;
+    --medium-z-index:99;
+    --large-z-index:133;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -6,26 +15,6 @@ li {
     margin-bottom: 10px;
     border-radius: 100px;
 }
-
-.home-icon {
-    width: 40%;
-    fill:#33b45e;
-}
-
-.heart-icon {
-    width: 40%;
-    fill: #d22e64;
-}
-
-.popular-icon {
-    width: 40%;
-    fill: #ff6600
-}
-
-.search-icon {
-    width: 40%;
-}
-
 
 body {
     margin: 0;
@@ -40,7 +29,7 @@ body {
     bottom: 0px;
     font-size: 0;
     opacity: 0.9;
-    z-index: 99;
+    /* z-index: 99; */
     display: flex;
     justify-content: space-around;
 }
@@ -63,3 +52,95 @@ body {
     display: flex;
     align-items: stretch;
 }
+
+.home-icon {
+    fill:#33b45e;
+}
+
+.heart-icon {
+    fill: #d22e64;
+}
+
+.popular-icon {
+    fill: #ff6600
+}
+/* Styles for screens with a maximum width of 480px */
+@media (max-width: 480px) {
+    /* Styles for small screens */
+    .home-icon {
+        width: var(--small-width);
+    }
+    
+    .heart-icon {
+        width: var(--small-width);
+    }
+    
+    .popular-icon {
+        width: var(--small-width);
+    }
+    
+    .search-icon {
+        width: var(--small-width);
+    }
+  }
+  
+  /* Styles for screens with a minimum width of 481px and a maximum width of 768px */
+  @media (min-width: 481px) and (max-width: 768px) {
+    /* Styles for medium screens */
+    .home-icon {
+        width: var(--medium-width);
+    }
+    
+    .heart-icon {
+        width: var(--medium-width);
+    }
+    
+    .popular-icon {
+        width: var(--medium-width);
+    }
+    
+    .search-icon {
+        width: var(--medium-width);
+    }
+  }
+  
+  /* Styles for screens with a minimum width of 769px */
+  @media (min-width: 769px) {
+    /* Styles for large screens */
+    .home-icon {
+        width: var(--large-width);   
+    }
+    
+    .heart-icon {
+        width: var(--large-width);    
+    }
+    
+    .popular-icon {
+        width: var(--large-width);   
+    }
+    
+    .search-icon {
+        width: var(--large-width);
+    }
+  }
+
+
+/* .home-icon {
+    width: 38%;
+    fill:#33b45e;
+}
+
+.heart-icon {
+    width: 38%;
+    fill: #d22e64;
+}
+
+.popular-icon {
+    width: 38%;
+    fill: #ff6600
+}
+
+.search-icon {
+    width: 38%;
+} */
+

@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './Header.css';
 
 type Props = {
-  className?: string,
-  mainText?: string,
+  className: string,
+  mainText: string,
   secondaryText?: string
 }
 

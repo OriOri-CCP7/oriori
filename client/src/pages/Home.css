@@ -1,16 +1,13 @@
-@media (maxwidth: 480px) {
-  /* Styles for small screens */
-} 
-
-@media (min-width: 481px) and (max-width: 768px) {
-  /* Styles for medium screens */
+:root {
+  --small-icon-width:5%;
+  --medium-icon-width:10%;
+  --large-icon-width:15%;
 }
 
-/* Styles for screens with a minimum width of 769px */
-@media (min-width: 769px) {
-  /* Styles for large screens */
+@media (maxwidth: 480px) {
+  /* Styles for small screens */
   body {
-    background-color: red;
+    background-color: #FDF6F0;
   }
   
   .buttons {
@@ -21,7 +18,64 @@
   }
   
   .logout {
-    border-radius: 5px;;
+    border-radius: 5px;
+  }
+  
+  .settings-icon {
+    width: 5%;
+    fill: darkgrey;
+  }
+  
+  .homepage-header {
+    background-color: #FCD8D4;
+    padding: 5px;
+  }
+} 
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Styles for medium screens */
+  body {
+    background-color: #FDF6F0;
+  }
+  
+  .buttons {
+    padding: 5px;
+    background-color: #FCD8D4;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .logout {
+    border-radius: 5px;
+  }
+  
+  .settings-icon {
+    width: 3%;
+    fill: darkgrey;
+  }
+  
+  .homepage-header {
+    background-color: #FCD8D4;
+    padding: 5px;
+  }
+}
+
+/* Styles for screens with a minimum width of 769px */
+@media (min-width: 769px) {
+  /* Styles for large screens */
+  body {
+    background-color: #FDF6F0;
+  }
+  
+  .buttons {
+    padding: 5px;
+    background-color: #FCD8D4;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .logout {
+    border-radius: 5px;
   }
   
   .settings-icon {
@@ -36,7 +90,7 @@
 
 }
 
-body {
+/* body {
   background-color: #FDF6F0;
 }
 
@@ -59,4 +113,4 @@ body {
 .homepage-header {
   background-color: #FCD8D4;
   padding: 5px;
-}
+} */
