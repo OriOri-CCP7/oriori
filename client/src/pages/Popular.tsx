@@ -33,7 +33,7 @@ function Popular({}: Props) {
       <Header
           className="popular-header"
           mainText="Hot Right Now" />
-      <GridComponent productArray={products} setProductArray={null}/>
+      <GridComponent productArray={products} />
       <Navbar/>
       <Footer 
         className = "footer"

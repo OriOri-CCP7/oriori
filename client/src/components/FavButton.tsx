@@ -5,13 +5,10 @@ import './FavButton.css';
 
 interface Props {
   isFavorite: boolean,
-  setIsFavorite: React.Dispatch<React.SetStateAction<boolean>>
-}
+  clickHandler: React.MouseEventHandler<HTMLDivElement>
+};
 
-function FavButton({ isFavorite, setIsFavorite }: Props) {
-  const clickHandler: React.MouseEventHandler<HTMLDivElement> = () => {
-    setIsFavorite(!isFavorite);
-  }
+function FavButton({ isFavorite, clickHandler }: Props) {
   
   return (
     <div className='favoriteButton' onClick={ clickHandler }>
@@ -21,7 +18,7 @@ function FavButton({ isFavorite, setIsFavorite }: Props) {
         : <HeartOutline/>
       }
     </div>
-  )
-}
+  );
+;}
 
-export default FavButton
+export default FavButton;

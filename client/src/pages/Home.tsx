@@ -16,12 +16,14 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
+    let headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-CSRFToken': auth?.csrftoken ?? ""
+    };
+    
     axios.get(`/api/${auth?.user.location}/products/`, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'X-CSRFToken': auth?.csrftoken ?? ""
-      }
+      headers: headers
     })
     .then((response) => {
       console.log('😶‍🌫️', response);
@@ -64,7 +66,7 @@ export default function Home() {
         mainText="OriOri Homepage" />
       {
         products.length > 0
-        ? <GridComponent productArray={ products } setProductArray={ null }/>
+        ? <GridComponent productArray={ products }/>
         : <>
             <p>
               These are the products currently available in your selected location!

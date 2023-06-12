@@ -88,11 +88,10 @@ def addNewFavorite(request, uuid):
     return Response(serializer.errors)
 
 @api_view(['DELETE'])
-def removeFavorite(request, uuid):
+def removeFavorite(request, uuid, fav_id):
   try:
     user = User.objects.get(uuid=uuid)
-    favorite_id = request.data.get('favorite_id')
-    favorite = Favorite.objects.get(id=favorite_id, user=user)
+    favorite = Favorite.objects.get(id=fav_id, user=user)
     favorite.delete()
     return Response("Favorite Deleted")
   except Exception as e:

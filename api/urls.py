@@ -9,7 +9,7 @@ urlpatterns = [
     path('users/<str:uuid>/deletion/', views.deleteUser),
     path('favorites/<str:uuid>/', views.getUserFavorites),
     path('favorites/<str:uuid>/newFavorite/', views.addNewFavorite),
-    path('favorites/<str:uuid>/deletion/', views.removeFavorite),
+    path('favorites/<str:uuid>/deletion/<int:fav_id>/', views.removeFavorite),
     path('products/popular/', views.getProductDataByPopularity),
     path('products/newProduct/', views.addNewProduct),
     path('products/<int:id>/', views.getProductDataById),

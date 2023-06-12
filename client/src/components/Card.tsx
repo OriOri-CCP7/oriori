@@ -1,69 +1,102 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
+import { UserAuth } from '../context/AuthContext';
+import { UserFavs } from '../context/FavContext';
 import './Card.css';
 import FavButton from './FavButton';
 
 type  Props = {
-    className: string | undefined, 
-    productName: string,
-    img_url: string | undefined,
-    offerStart: string,
-    offerEnd: string, 
-    favoriteNumber: number, 
-    onClick: (event: React.MouseEvent<HTMLElement>) => void
-}
+  product: Product,
+  favorite?: Favorite
+};
 
 
-const Card :React.FC<Props> = ({className, img_url, productName, offerStart, offerEnd, favoriteNumber, onClick}) => {
+const Card :React.FC<Props> = ({product, favorite}) => {
+  const auth = UserAuth();
+  const { addFav, removeFav } = UserFavs();
+  const [isFavorite, setIsFavorite] = useState(favorite ? true : false);
 
-    const [isFavorite, setIsFavorite] = useState(false);
+  const currentDate: Date = new Date();
+  const offerEndDate: Date = new Date(product.end_date);
+  const offerStartDate: Date = new Date(product.start_date);
 
-    const currentDate: Date = new Date();
-    const offerEndDate: Date = new Date(offerEnd);
-    const offerStartDate: Date = new Date(offerStart);
+  const currentDateNum = currentDate.getTime();
+  const offerEndNum = offerEndDate.getTime();
+  const offerStartNum = offerStartDate.getTime();
+  const oneDay: number = 24 * 60 * 60 * 1000;
 
-    const currentDateNum = currentDate.getTime();
-    const offerEndNum = offerEndDate.getTime();
-    const offerStartNum = offerStartDate.getTime();
-    const oneDay: number = 24 * 60 * 60 * 1000;
+  const daysSinceStart: number = Math.floor((currentDateNum - offerStartNum) / oneDay);
+  const daysBeforeEnd: number = Math.ceil((offerEndNum - currentDateNum) / oneDay);
 
-    // const offerLength: number = Math.round(Math.abs((offerEndNum - offerStartNum) / oneDay));
-    const daysSinceStart: number = Math.floor((currentDateNum - offerStartNum) / oneDay);
-    const daysBeforeEnd: number = Math.ceil((offerEndNum - currentDateNum) / oneDay);
-
-    let cardClass = "productCard ";
-    let availabilityMsg = `Available on ${offerStartDate.toLocaleDateString()}`;
-    if (daysSinceStart >= 0) {
-        if (daysBeforeEnd < 6) {
-            if (daysBeforeEnd >= 0) {
-                cardClass += "ending";
-                availabilityMsg = `Only available for ${daysBeforeEnd} days!`;
-            } else {
-                availabilityMsg = "No longer available.";
-            }
-        } else if (daysSinceStart < 4) {
-            cardClass += "new"
-            availabilityMsg = "Now available!";
-        } else {
-            availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
-        }
+  let cardClass = "productCard ";
+  let availabilityMsg = `Available on ${offerStartDate.toLocaleDateString()}`;
+  if (daysSinceStart >= 0) {
+    if (daysBeforeEnd < 6) {
+      if (daysBeforeEnd >= 0) {
+        cardClass += "ending";
+        availabilityMsg = `Only available for ${daysBeforeEnd} days!`;
+      } else {
+        availabilityMsg = "No longer available.";
+      }
+    } else if (daysSinceStart < 4) {
+      cardClass += "new"
+      availabilityMsg = "Now available!";
+    } else {
+      availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
     }
+  }
 
-    return (
-        <div className={cardClass}>
-            <div className="productImg">
-                { (img_url) ? <img src={img_url} alt={img_url} /> : <></> }
-            </div>
-            <div className="productName">
-                {productName}
-            </div>
-            <div className="productAvailMsg">
-                {availabilityMsg}
-            </div>
-            <FavButton isFavorite={isFavorite} setIsFavorite={setIsFavorite}/>
-        </div>
+  const headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'X-CSRFToken': auth?.csrftoken ?? ""
+  };
 
+  const addFavHandler = () => {
+    axios.post(`/api/favorites/${auth?.user.uuid}/newFavorite/`,
+      { product_id: product.id },
+      { headers: headers }
     )
+    .then((response) => {
+      addFav(response.data);
+    })
+    .catch((err) => console.log('😈', err));
+  };
+
+  const deleteFavHandler = () => {
+    axios.delete(`/api/favorites/${auth?.user.uuid}/deletion/${favorite!.id}/`,
+      { headers: headers }
+    )
+    .then(() => {
+      removeFav(favorite!.product);
+    })
+    .catch((err) => console.log('😈', err));
+  };
+  
+  const clickHandler: React.MouseEventHandler<HTMLDivElement> = () => {
+    if (isFavorite) {
+      deleteFavHandler();
+    } else {
+      addFavHandler();
+    }
+    setIsFavorite(!isFavorite);
+  };
+
+  return (
+      <div className={cardClass}>
+          <div className="productImg">
+              { ("") ? <img src={""} alt={""} /> : <></> }
+          </div>
+          <div className="productName">
+              {product.product_name}
+          </div>
+          <div className="productAvailMsg">
+              {availabilityMsg}
+          </div>
+          <FavButton isFavorite={isFavorite} clickHandler={clickHandler}/>
+      </div>
+
+  );
 }
 
 export default Card;
