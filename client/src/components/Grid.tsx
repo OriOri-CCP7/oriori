@@ -1,33 +1,31 @@
+import React from 'react';
+import { UserFavs } from '../context/FavContext';
 import Grid from '@mui/material/Unstable_Grid2';
 import Card from './Card';
-import React from 'react';
-
 
 interface Props {
-    productArray: Array<Product>,
-    setProductArray: React.Dispatch<React.SetStateAction<Array<Product>>> | null
-  }
+  productArray: Array<Product>,
+};
 
-function GridComponent({ productArray, setProductArray }: Props) {
-    return (
-      <div className="Grid">
-        <Grid container rowSpacing={1}>
-            {productArray.map((product) => (
-                <Grid xs={6} key={product.product_name}>
-                    <Card 
-                      className="productCard"
-                      productName={product.product_name}
-                      img_url={""}
-                      offerStart={product.start_date}
-                      offerEnd={product.end_date}
-                      favoriteNumber={0} 
-                      onClick={() => {}}/>
-                </Grid>
-            ))}
-        </Grid>
-      </div>
-    );
-  }
-  
-  export default GridComponent;
+function GridComponent({ productArray }: Props) {
+  let { favorites } = UserFavs();
+  console.log("🥰", favorites);
+
+  return (
+    <div className="Grid">
+      <Grid container rowSpacing={1}>
+          {productArray.map((product) => (
+              <Grid xs={6} key={product.product_name}>
+                  <Card 
+                    product={product}
+                    favorite={favorites[product.id.toString()]}
+                    />
+              </Grid>
+          ))}
+      </Grid>
+    </div>
+  );
+}
+
+export default GridComponent;
   

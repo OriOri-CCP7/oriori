@@ -33,7 +33,7 @@ export default function Search() {
         mainText="Search" />
       <DropdownMenu 
       labelName='Select a prefecture:' setPrefecture={getProducts} prefill={undefined}/>
-      <GridComponent productArray={products} setProductArray={null}/>
+      <GridComponent productArray={products} />
       <Navbar/>
       <Footer 
         className = "footer"

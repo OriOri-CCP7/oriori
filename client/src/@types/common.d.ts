@@ -6,3 +6,9 @@ declare type Product = {
   "sources": string,
   "store": number
 };
+
+declare type Favorite = {
+  "id": number,
+  "user": number,
+  "product": number
+};

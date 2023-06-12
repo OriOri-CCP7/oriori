@@ -34,7 +34,7 @@ function Favorites() {
         mainText="Favorites" />
       {
         products.length > 0
-        ? <GridComponent productArray={products} setProductArray={null}/>
+        ? <GridComponent productArray={products} />
         : <>
             <p>Add to your favorites by tapping the heart icon on any product!</p>
           </>
