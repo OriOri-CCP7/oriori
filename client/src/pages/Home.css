@@ -1,93 +1,71 @@
 :root {
-  --small-icon-width:5%;
-  --medium-icon-width:10%;
-  --large-icon-width:15%;
+  --small-icon-width:35px;
+  --medium-icon-width:33px;
+  --large-icon-width:30px;
 }
 
-@media (maxwidth: 480px) {
+body {
+  background-color: #FDF6F0;
+}
+
+.buttons {
+  padding: 5px;
+  background-color: #FCD8D4;
+  display: flex;
+  justify-content: space-between;
+}
+
+.homepage-header {
+  background-color: #FCD8D4;
+  padding: 5px;
+}
+
+.logout {
+  padding: 10px 10px;
+}
+
+@media (maxwidth: 320px) {
   /* Styles for small screens */
-  body {
-    background-color: #FDF6F0;
-  }
-  
-  .buttons {
-    padding: 5px;
-    background-color: #FCD8D4;
-    display: flex;
-    justify-content: space-between;
-  }
   
   .logout {
-    border-radius: 5px;
+    /* font-size: 3px; */
+    /* padding: 10px 10px; */
+    border-radius: 2px;
   }
   
   .settings-icon {
-    width: 5%;
+    width: var(--small-icon-width);
     fill: darkgrey;
   }
   
-  .homepage-header {
-    background-color: #FCD8D4;
-    padding: 5px;
-  }
 } 
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 321px) and (max-width: 768px) {
   /* Styles for medium screens */
-  body {
-    background-color: #FDF6F0;
-  }
   
-  .buttons {
-    padding: 5px;
-    background-color: #FCD8D4;
-    display: flex;
-    justify-content: space-between;
-  }
   
   .logout {
-    border-radius: 5px;
+    border-radius: 10px;
   }
   
   .settings-icon {
-    width: 3%;
+    width: var(--medium-icon-width);
     fill: darkgrey;
   }
   
-  .homepage-header {
-    background-color: #FCD8D4;
-    padding: 5px;
-  }
 }
 
 /* Styles for screens with a minimum width of 769px */
 @media (min-width: 769px) {
   /* Styles for large screens */
-  body {
-    background-color: #FDF6F0;
-  }
-  
-  .buttons {
-    padding: 5px;
-    background-color: #FCD8D4;
-    display: flex;
-    justify-content: space-between;
-  }
-  
   .logout {
-    border-radius: 5px;
+    border-radius: 15px;
   }
   
   .settings-icon {
-    width: 3%;
+    width: var(--large-icon-width);
     fill: darkgrey;
   }
-  
-  .homepage-header {
-    background-color: #FCD8D4;
-    padding: 5px;
-  }
-
 }
 
 /* body {
