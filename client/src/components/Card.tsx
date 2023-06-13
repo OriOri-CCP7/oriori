@@ -85,7 +85,7 @@ const Card :React.FC<Props> = ({product, favorite}) => {
   return (
       <div className={cardClass}>
           <div className="productImg">
-              { product.img_url !== "" ? <img src={product.img_url} alt={product.product_name} /> : <></> }
+              { product.img_url ? <img src={product.img_url} alt={product.product_name} /> : <></> }
           </div>
           <div className="productName">
               {product.product_name}

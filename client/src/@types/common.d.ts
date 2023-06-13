@@ -4,8 +4,8 @@ declare type Product = {
   "start_date": string,
   "end_date": string,
   "store": number,
-  "img_url": string,
-  "link_url": string
+  "img_url": string | null,
+  "link_url": string | null
 };
 
 declare type Favorite = {
