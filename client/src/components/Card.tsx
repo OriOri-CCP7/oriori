@@ -4,6 +4,7 @@ import { UserAuth } from '../context/AuthContext';
 import { UserFavs } from '../context/FavContext';
 import './Card.css';
 import FavButton from './FavButton';
+import ReviewButton from './ReviewButton';
 
 type  Props = {
   product: Product,
@@ -93,6 +94,7 @@ const Card :React.FC<Props> = ({product, favorite}) => {
           <div className="productAvailMsg">
               {availabilityMsg}
           </div>
+          <ReviewButton productId={product.id} />
           <FavButton isFavorite={isFavorite} clickHandler={clickHandler}/>
       </div>
 

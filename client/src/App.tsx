@@ -6,6 +6,7 @@ import ProtectedRoute from './context/ProtectedRoute'
 import Favorite from './pages/Favorites';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import NewReview from './pages/NewReview';
 import Onboarding from './pages/Onboarding';
 import PasswordReset from './pages/PasswordReset';
 import Popular from './pages/Popular';
@@ -33,6 +34,7 @@ function App() {
               <Route path='/search' element={<ProtectedRoute><Search/></ProtectedRoute>}></Route>
               <Route path='/settings' element={<ProtectedRoute><Settings/></ProtectedRoute>}></Route>
               <Route path='/onboarding' element={<ProtectedRoute><Onboarding/></ProtectedRoute>}></Route>
+              <Route path='/:productId/new-review' element={<ProtectedRoute><NewReview/></ProtectedRoute>}></Route>
             </Routes>
           </BrowserRouter>
         </FavContextProvider>

@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { PencilSquareIcon } from '@heroicons/react/24/solid';
 import './ReviewButton.css';
 
-function ReviewButton() {
+interface Props {
+  productId: number
+};
+
+function ReviewButton({ productId }: Props) {
   const navigate = useNavigate();
   return (
-    <div className='reviewButton' onClick={ () => navigate("/new-review") }>
+    <div className='reviewButton' onClick={ () => navigate(`/${productId}/new-review`) }>
       <PencilSquareIcon/>
     </div>
   );
