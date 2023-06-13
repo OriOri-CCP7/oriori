@@ -53,7 +53,7 @@ const Card :React.FC<Props> = ({product, favorite}) => {
   };
 
   const addFavHandler = () => {
-    axios.post(`/api/favorites/${auth?.user.uuid}/newFavorite/`,
+    axios.post(`/api/users/${auth?.user.uuid}/favorites/newFavorite/`,
       { product_id: product.id },
       { headers: headers }
     )
@@ -64,7 +64,7 @@ const Card :React.FC<Props> = ({product, favorite}) => {
   };
 
   const deleteFavHandler = () => {
-    axios.delete(`/api/favorites/${auth?.user.uuid}/deletion/${favorite!.id}/`,
+    axios.delete(`/api/users/${auth?.user.uuid}/favorites/deletion/${favorite!.id}/`,
       { headers: headers }
     )
     .then(() => {

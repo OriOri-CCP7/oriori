@@ -1,15 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from base.models import User
-from base.models import Favorite
-from base.models import Location
-from base.models import Store
-from base.models import Product
-from base.serializers import UserSerializer
-from base.serializers import FavoriteSerializer
-from base.serializers import LocationSerializer
-from base.serializers import StoreSerializer
-from base.serializers import ProductSerializer
+from base.models import User, Favorite, Location, Store, Product, Review
+from base.serializers import UserSerializer, FavoriteSerializer, LocationSerializer, StoreSerializer, ProductSerializer, ReviewSerializer
 from django.db.models import Count
 
 # Create your views here.
@@ -224,3 +216,33 @@ def addLocation(request):
   if serializer.is_valid():
     serializer.save()
   return Response(serializer.data)
+
+# Views for Review data
+@api_view(['GET'])
+def getReviewsForUser(request, uuid):
+  try:
+    user = User.objects.get(uuid=uuid)
+    reviews = Review.objects.filter(user__id=user.pk)
+    serializer = ReviewSerializer(reviews, many=True)
+    return Response(serializer.data)
+  except:
+    return Response(serializer.errors)
+  
+@api_view(['POST'])
+def addNewReview(request, uuid):
+  serializer = ReviewSerializer(data=request.data)
+  if serializer.is_valid():
+    serializer.save()
+    return Response(serializer.data)
+  else: 
+    return Response(serializer.errors)
+  
+@api_view(['DELETE'])
+def removeReview(request, uuid, review_id):
+  try:
+    user = User.objects.get(uuid=uuid)
+    review = Review.objects.get(id=review_id, user=user)
+    review.delete()
+    return Response("Review Deleted")
+  except Exception as e:
+    return Response({'error': str(e)})
