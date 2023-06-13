@@ -12,14 +12,14 @@ interface FavList {
   removeFav: (productId: number) => void
 };
 
-const FavContext = createContext<FavList>({ favorites: {}, addFav: (favorite: Favorite) => {}, removeFav: (productId: number) => {} });
+const FavContext = createContext<FavList>({ favorites: {}, addFav: () => {}, removeFav: () => {} });
 
 export const FavContextProvider = ({ children }: { children: ReactNode }) => {
   const auth = UserAuth();
   const [favorites, setFavorites] = useState<FavoritesDict>({});
   
   const fetchFavs = () => {
-    if (!auth) return;
+    if (!auth?.user.uuid) return;
 
     let headers = {
       'Accept': 'application/json',
@@ -42,7 +42,7 @@ export const FavContextProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     fetchFavs();
-  }, [auth]);
+  }, [auth, auth?.isLoading]);
 
   const addFav = (favorite: Favorite) => {
     setFavorites({
