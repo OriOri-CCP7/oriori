@@ -9,16 +9,6 @@ type Props = {
 
 const Header: React.FC<Props> = ({ className, mainText, secondaryText }: Props) => {
 
-  // useEffect(()=>{
-  //   handleClassName()
-  // },[]);
-
-  // const [headerClassName, setClassName] = useState<string>(className)
-  // const handleClassName = () => {
-  //   if(!headerClassName){
-  //     setClassName("default-header-className");
-  //   }
-  // }
   return (
     <>
     <header

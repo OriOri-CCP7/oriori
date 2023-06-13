@@ -26,11 +26,8 @@ body {
 }
 
 @media (maxwidth: 320px) {
-  /* Styles for small screens */
   
   .logout {
-    /* font-size: 3px; */
-    /* padding: 10px 10px; */
     border-radius: 2px;
   }
   
@@ -38,12 +35,9 @@ body {
     width: var(--small-icon-width);
     fill: darkgrey;
   }
-  
 } 
 
 @media (min-width: 321px) and (max-width: 768px) {
-  /* Styles for medium screens */
-  
   
   .logout {
     border-radius: 10px;
@@ -56,9 +50,8 @@ body {
   
 }
 
-/* Styles for screens with a minimum width of 769px */
 @media (min-width: 769px) {
-  /* Styles for large screens */
+  
   .logout {
     border-radius: 15px;
   }
@@ -68,28 +61,3 @@ body {
     fill: darkgrey;
   }
 }
-
-/* body {
-  background-color: #FDF6F0;
-}
-
-.buttons {
-  padding: 5px;
-  background-color: #FCD8D4;
-  display: flex;
-  justify-content: space-between;
-}
-
-.logout {
-  border-radius: 5px;;
-}
-
-.settings-icon {
-  width: 3%;
-  fill: darkgrey;
-}
-
-.homepage-header {
-  background-color: #FCD8D4;
-  padding: 5px;
-} */
