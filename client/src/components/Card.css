@@ -1,6 +1,6 @@
 .productCard {
     margin: 20px;
-    padding: 20px;
+    padding: 15px;
     background-color: grey;
     border-radius: 20px;
     display: flex;
@@ -14,7 +14,7 @@
 }
 
 .productCard.ending {
-    background-color: red;
+    background-color: rgba(230, 102, 11, 0.908);
 }
 
 .productImg > img {
