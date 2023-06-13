@@ -2,5 +2,5 @@
 cd client
 npm run build
 cd ..
-python manage.py collectstatic --noinput
+python3 manage.py collectstatic --noinput
 waitress-serve config.wsgi:application
