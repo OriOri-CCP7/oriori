@@ -1,3 +1,13 @@
-.selectName {
+/* .selectName option {
     font-size: 32px;
-}
+    
+} */
+
+select {
+    background-color: rgba(169, 169, 169, 0.671);
+    border: 5px solid darkcyan;
+  }
+  
+  select option {
+    border: 5px solid #14169f5b;
+  }
