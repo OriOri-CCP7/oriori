@@ -128,7 +128,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const login = async (email: string, password: string) => {
     const loggedIn = await signInWithEmailAndPassword(auth, email, password);
     console.log('😜', loggedIn);
-    await refreshUser(loggedIn.user.uid, loggedIn.user.email).then(() => setIsLoading(false));
+    await refreshUser(loggedIn.user.uid, loggedIn.user.email);
     console.log('🤩', user);
     return loggedIn;
   };
@@ -155,6 +155,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         newUuid: userId,
         newLocation: result.data.location
       });
+      setIsLoading(false);
     } catch (error) {
       console.log("🍀", `Error: ${error}`);
     } finally {
@@ -173,14 +174,14 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (auth.currentUser) {
-      refreshUser(auth.currentUser.uid, auth.currentUser.email).then(() => setIsLoading(false));
+      refreshUser(auth.currentUser.uid, auth.currentUser.email);
     } else {
       dispatchUser({ type: 'clear_user' });
     }
     
     const authenticationState = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        refreshUser(currentUser.uid, currentUser.email).then(() => setIsLoading(false));
+        refreshUser(currentUser.uid, currentUser.email);
       }
     });
 

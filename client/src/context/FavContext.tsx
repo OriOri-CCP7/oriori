@@ -9,17 +9,20 @@ export interface FavoritesDict {
 interface FavList {
   favorites: FavoritesDict,
   addFav: (favorite: Favorite) => void,
-  removeFav: (productId: number) => void
+  removeFav: (productId: number) => void,
+  isLoadingFavs: boolean
 };
 
-const FavContext = createContext<FavList>({ favorites: {}, addFav: () => {}, removeFav: () => {} });
+const FavContext = createContext<FavList>({ favorites: {}, addFav: () => {}, removeFav: () => {}, isLoadingFavs: true});
 
 export const FavContextProvider = ({ children }: { children: ReactNode }) => {
   const auth = UserAuth();
   const [favorites, setFavorites] = useState<FavoritesDict>({});
+  const [isLoadingFavs, setIsLoadingFavs] = useState(true);
   
   const fetchFavs = () => {
     if (!auth?.user.uuid) return;
+    setIsLoadingFavs(true);
 
     let headers = {
       'Accept': 'application/json',
@@ -36,13 +39,14 @@ export const FavContextProvider = ({ children }: { children: ReactNode }) => {
         workingFavs[favorite.product.toString()] = favorite;
       });
       setFavorites(workingFavs);
+      setIsLoadingFavs(false);
     })
     .catch((err) => console.log('😈', err));
   };
 
   useEffect(() => {
     fetchFavs();
-  }, [auth, auth?.isLoading]);
+  }, [auth?.isLoading]);
 
   const addFav = (favorite: Favorite) => {
     setFavorites({
@@ -57,7 +61,7 @@ export const FavContextProvider = ({ children }: { children: ReactNode }) => {
     setFavorites(workingFavs);
   };
 
-  return <FavContext.Provider value={{ favorites, addFav, removeFav }}>
+  return <FavContext.Provider value={{ favorites, addFav, removeFav, isLoadingFavs }}>
     { children }
   </FavContext.Provider>
 };
