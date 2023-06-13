@@ -13,7 +13,7 @@ export default function Search() {
   const [products, setProducts] = useState<Product[]>([]);
 
   const getProducts = (prefId: string) => {
-    axios.get(`/api/${prefId}/products/`, {
+    axios.get(`/api/locations/${prefId}/products/`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

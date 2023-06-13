@@ -30,7 +30,7 @@ export const FavContextProvider = ({ children }: { children: ReactNode }) => {
       'X-CSRFToken': auth.csrftoken ?? ""
     };
 
-    axios.get(`/api/favorites/${auth.user.uuid}/`, {
+    axios.get(`/api/users/${auth.user.uuid}/favorites/`, {
       headers: headers
     }).then((response) => {
       console.log('⭐️', response);

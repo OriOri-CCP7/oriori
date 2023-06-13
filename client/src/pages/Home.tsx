@@ -22,7 +22,7 @@ export default function Home() {
       'X-CSRFToken': auth?.csrftoken ?? ""
     };
     
-    axios.get(`/api/${auth?.user.location}/products/`, {
+    axios.get(`/api/locations/${auth?.user.location}/products/`, {
       headers: headers
     })
     .then((response) => {
