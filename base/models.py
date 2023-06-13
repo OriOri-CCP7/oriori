@@ -22,7 +22,8 @@ class Product(models.Model):
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
-    sources = models.CharField(max_length=255, null=True)
+    img_url = models.CharField(max_length=255, null=True)
+    link_url = models.CharField(max_length=255, null=True)
 
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
