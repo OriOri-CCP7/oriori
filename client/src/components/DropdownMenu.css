@@ -4,10 +4,12 @@
 } */
 
 select {
-    background-color: rgba(169, 169, 169, 0.671);
-    border: 5px solid darkcyan;
+    background-color: rgba(26, 157, 116, 0.671);
+    border: 10px solid darkcyan;
   }
   
   select option {
-    border: 5px solid #14169f5b;
+    background-color: rgba(26, 157, 116, 0.671);
+    border: 10px solid #14169f5b;
+    font-size:20px;
   }
