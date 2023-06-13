@@ -227,3 +227,12 @@ def getReviewsForUser(request, uuid):
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
+  
+@api_view(['POST'])
+def addNewReview(request, uuid):
+  serializer = ReviewSerializer(data=request.data)
+  if serializer.is_valid():
+    serializer.save()
+    return Response(serializer.data)
+  else: 
+    return Response(serializer.errors)

@@ -8,6 +8,7 @@ urlpatterns = [
     path('users/<str:uuid>/edit/', views.editUserData),
     path('users/<str:uuid>/deletion/', views.deleteUser),
     path('users/<str:uuid>/reviews/', views.getReviewsForUser),
+    path('users/<str:uuid>/reviews/newReview/', views.addNewReview),
     path('favorites/<str:uuid>/', views.getUserFavorites),
     path('favorites/<str:uuid>/newFavorite/', views.addNewFavorite),
     path('favorites/<str:uuid>/deletion/<int:fav_id>/', views.removeFavorite),
