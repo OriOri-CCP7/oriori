@@ -7,7 +7,8 @@ type Props = {
   secondaryText?: string
 }
 
-const Header: React.FC<Props> = ({ className, mainText, secondaryText }) => {
+const Header: React.FC<Props> = ({ className, mainText, secondaryText }: Props) => {
+
   return (
     <>
     <header

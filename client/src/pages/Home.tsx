@@ -74,6 +74,8 @@ export default function Home() {
           </>
       }
     <Navbar/>
+    <br />
+    <br />
     <Footer 
       className = "footer"
       text="© 2023 OriOri" />
