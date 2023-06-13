@@ -8,3 +8,6 @@
   display: flex;
   justify-content: 'flex-end';
 }
+.favorited-icon {
+  fill:deeppink;
+}
