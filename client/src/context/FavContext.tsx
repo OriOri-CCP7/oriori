@@ -46,6 +46,7 @@ export const FavContextProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     fetchFavs();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth?.isLoading]);
 
   const addFav = (favorite: Favorite) => {
