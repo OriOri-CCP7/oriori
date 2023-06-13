@@ -3,8 +3,9 @@ declare type Product = {
   "product_name": string,
   "start_date": string,
   "end_date": string,
-  "sources": string,
-  "store": number
+  "store": number,
+  "img_url": string,
+  "link_url": string
 };
 
 declare type Favorite = {
