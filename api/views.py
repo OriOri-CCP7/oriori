@@ -236,3 +236,13 @@ def addNewReview(request, uuid):
     return Response(serializer.data)
   else: 
     return Response(serializer.errors)
+  
+@api_view(['DELETE'])
+def removeReview(request, uuid, review_id):
+  try:
+    user = User.objects.get(uuid=uuid)
+    review = Review.objects.get(id=review_id, user=user)
+    review.delete()
+    return Response("Review Deleted")
+  except Exception as e:
+    return Response({'error': str(e)})
