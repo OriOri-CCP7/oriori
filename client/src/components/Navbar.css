@@ -1,5 +1,4 @@
 :root {
-    
     --small-width:30px;
     --medium-width:25px;
     --large-width:20px;
@@ -7,7 +6,6 @@
 
 * {
     box-sizing: border-box;
-    
 }
 
 li {
@@ -65,31 +63,24 @@ body {
 }
 
 
-/* Styles for screens with a maximum width of 480px */
+
 @media (max-width: 320px) {
-    /* Styles for small screens */
-    
 .home-icon {
     width: var(--small-width);
 }
-    
 .heart-icon {
     width: var(--small-width);
 }
-    
 .popular-icon {
     width: var(--small-width);
 }
-    
 .search-icon {
     width: var(--small-width);
 }
 }
   
-  /* Styles for screens with a minimum width of 481px and a maximum width of 768px */
 @media (min-width: 321px) and (max-width: 768px) {
     
-/* Styles for medium screens */
 .home-icon {
     width: var(--medium-width);
 }
@@ -106,11 +97,9 @@ body {
     width: var(--medium-width);
 }
 }
-  
-  /* Styles for screens with a minimum width of 769px */
+
 @media (min-width: 769px) {
     
-    /* Styles for large screens */
 .home-icon {
     width: var(--large-width);   
 }
@@ -127,24 +116,4 @@ body {
     width: var(--large-width);
 }
 }
-
-
-/* .home-icon {
-    width: 38%;
-    fill:#33b45e;
-}
-
-.heart-icon {
-    width: 38%;
-    fill: #d22e64;
-}
-
-.popular-icon {
-    width: 38%;
-    fill: #ff6600
-}
-
-.search-icon {
-    width: 38%;
-} */
 
