@@ -3,13 +3,15 @@
     
 } */
 
+
 select {
-    background-color: rgba(26, 157, 116, 0.671);
-    border: 10px solid darkcyan;
+   
+    background-color:  rgba(26, 157, 116, 0.671); 
+    border: 20px solid darkcyan;
   }
   
-  select option {
+  #selectName option {
     background-color: rgba(26, 157, 116, 0.671);
-    border: 10px solid #14169f5b;
+    border: 20px solid #ef0baef3;
     font-size:20px;
   }
