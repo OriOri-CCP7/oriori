@@ -1,14 +1,15 @@
-/* select {
+select {
     background-color: #FCD8D4;
     border-radius: 5px;
-    font-size: medium;
-} */
+    font-size: large;
+    padding-left:3px;
+}
 
-select {
+/* select {
     background-color: #fff;
     border: 1px solid #ccc;
   }
   
   select option {
     border: 1px solid #ccc;
-  }
+  } */
