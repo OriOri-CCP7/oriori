@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { UserAuth } from '../context/AuthContext';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import './NewReview.css';
-import Navbar from '../components/Navbar';
+import { UserAuth } from '../context/AuthContext';
+import Button from '../components/Button';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Footer from "../components/Footer";
+import Input from '../components/Input';
+import Navbar from '../components/Navbar';
+import RatingSelector from '../components/RatingSelector';
+import './NewReview.css';
 
 function NewReview() {
   const auth = UserAuth();
   const { productId } = useParams();
-  const [product, setProduct] = useState<Product>()
+  const navigate = useNavigate();
+  const [product, setProduct] = useState<Product>();
+  const [rating, setRating] = useState<0 | 1 | 2>(0);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     axios.get(`/api/products/${productId}/`, {
@@ -27,6 +33,38 @@ function NewReview() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleCommentInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    event.preventDefault();
+    setComment(event.target.value);
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    event.preventDefault();
+
+    const review = {
+      product: productId,
+      rating: rating,
+      comment: comment
+    };
+
+    try {
+      axios.post(`/api/users/${auth?.user.uuid}/reviews/newReview/`, review, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': auth?.csrftoken ?? ""
+        }
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          navigate('/home');
+        }
+      })
+    } catch (error) {
+      console.log("🤨", error);
+    }
+  };
+
   return (
     <div>
       <Header
@@ -41,7 +79,23 @@ function NewReview() {
             {product?.product_name}
           </div>
         </div>
-        
+        <form
+          onSubmit = { handleSubmit }>
+          
+          <RatingSelector rating={rating} setRating={setRating}/>
+          
+          <Input 
+            className = "review-input"
+            placeholder = "Comment"
+            type = "text"
+            value = { comment }
+            onChange = { handleCommentInput }
+            />
+          <Button 
+            className = "submit"
+            text = "Save Review"
+            type = "submit" />
+        </form>
       </>
       <Navbar/>
       <Footer 
