@@ -22,9 +22,34 @@ class Product(models.Model):
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
-    sources = models.CharField(max_length=255, null=True)
+    img_url = models.CharField(max_length=255, null=True)
+    link_url = models.CharField(max_length=255, null=True)
 
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'product'], name='unique_favorite')
+        ]
+
+class Review(models.Model):
+    class Rating(models.IntegerChoices):
+        DEFAULT = 0, "Not rated"
+        THUMBS_DOWN = 1, "Thumbs down"
+        THUMBS_UP = 2, "Thumbs up"
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    time_created = models.DateTimeField(auto_now_add=True)
+    rating = models.IntegerField(
+        choices=Rating.choices,
+        default=Rating.DEFAULT
+    )
+    comment = models.TextField(blank=True, default='')
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'product'], name='unique_review')
+        ]

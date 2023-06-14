@@ -7,9 +7,7 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from "../components/Footer";
 
-interface Props {};
-
-function Popular({}: Props) {
+function Popular() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
 

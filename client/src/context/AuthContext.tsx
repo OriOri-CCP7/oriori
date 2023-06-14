@@ -1,13 +1,13 @@
-import React, { createContext, useContext, useEffect, ReactNode, useReducer } from 'react';
+import React, { createContext, useContext, useEffect, useReducer, useState, ReactNode } from 'react';
 import axios from 'axios';
 import app from '../firebase.config';
 import { 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
-  signOut,
+  createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword, 
+  signOut,
   UserCredential,
-  sendPasswordResetEmail
 } from 'firebase/auth';
 import Cookies from 'js-cookie';
 
@@ -27,8 +27,8 @@ interface AuthenticatedUser {
   logout: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   user: User;
-  refreshUser: (userId: string, email: string | null) => Promise<void>;
   dispatchUser: React.Dispatch<UserReducerAction>;
+  isLoading: boolean;
   csrftoken: string | undefined;
 };
 
@@ -90,6 +90,7 @@ function userReducer(state: User, action: UserReducerAction): User {
 const UserContext = createContext<AuthenticatedUser | null>(null);
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [user, dispatchUser] = useReducer(userReducer,
     {
       username: '',
@@ -127,7 +128,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const login = async (email: string, password: string) => {
     const loggedIn = await signInWithEmailAndPassword(auth, email, password);
     console.log('😜', loggedIn);
-    refreshUser(loggedIn.user.uid, loggedIn.user.email);
+    await refreshUser(loggedIn.user.uid, loggedIn.user.email);
     console.log('🤩', user);
     return loggedIn;
   };
@@ -145,19 +146,16 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   const refreshUser = async (userId: string, email: string | null) => {
     try {
-      if (auth) {
-        const result = await axios.get(`/api/users/${userId}/`);
-        if (result.status !== 200) { throw new Error(`User ID "${userId}" not found in app database.`); }
-        dispatchUser({
-          type: 'set_user',
-          newUsername: result.data.username,
-          newEmail: email ?? (result.data.email ?? ''),
-          newUuid: userId,
-          newLocation: result.data.location
-        });
-      } else {
-        throw new Error("Auth could not be validated.");
-      }
+      const result = await axios.get(`/api/users/${userId}/`);
+      if (result.status !== 200) { throw new Error(`User ID "${userId}" not found in app database.`); }
+      dispatchUser({
+        type: 'set_user',
+        newUsername: result.data.username,
+        newEmail: email ?? (result.data.email ?? ''),
+        newUuid: userId,
+        newLocation: result.data.location
+      });
+      setIsLoading(false);
     } catch (error) {
       console.log("🍀", `Error: ${error}`);
     } finally {
@@ -175,6 +173,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
+    if (auth.currentUser) {
+      refreshUser(auth.currentUser.uid, auth.currentUser.email);
+    } else {
+      dispatchUser({ type: 'clear_user' });
+    }
+    
     const authenticationState = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         refreshUser(currentUser.uid, currentUser.email);
@@ -186,7 +190,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     };
   }, []);
 
-  return <UserContext.Provider value={{ signup, login, logout, resetPassword, user, refreshUser, dispatchUser, csrftoken }}>
+  return <UserContext.Provider value={{ signup, login, logout, resetPassword, user, dispatchUser, isLoading, csrftoken }}>
     { children }
   </UserContext.Provider>
 }
