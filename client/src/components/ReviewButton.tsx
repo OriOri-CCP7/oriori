@@ -12,10 +12,10 @@ function ReviewButton({ productId, review }: Props) {
   const navigate = useNavigate();
   const navPath = review ? `/${productId}/edit-review` : `/${productId}/new-review`
   return (
-    <div className='reviewButton' onClick={ () => navigate(navPath) }>
+    <div className='review-button' onClick={ () => navigate(navPath) }>
       <PencilSquareIcon/>
     </div>
   );
-;}
+};
 
 export default ReviewButton;

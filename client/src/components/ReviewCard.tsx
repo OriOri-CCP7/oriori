@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
-import './ReviewCard.css';
+import { UserReviews } from '../context/ReviewContext';
 import RatingSelector from './RatingSelector';
 import ReviewButton from './ReviewButton';
+import './ReviewCard.css';
+import DeleteButton from './DeleteButton';
 
 type  Props = {
   product: Product,
   review: Review
 };
 
-
 function ReviewCard({ product, review }: Props) {
+  const navigate = useNavigate();
   const auth = UserAuth();
+  const { removeRev } = UserReviews();
+  const [deleteSelected, setDeleteSelected] = useState(false);
 
   const headers = {
     'Accept': 'application/json',
@@ -20,24 +25,25 @@ function ReviewCard({ product, review }: Props) {
     'X-CSRFToken': auth?.csrftoken ?? ""
   };
 
-  // const deleteFavHandler = () => {
-  //   axios.delete(`/api/users/${auth?.user.uuid}/favorites/deletion/${favorite!.id}/`,
-  //     { headers: headers }
-  //   )
-  //   .then(() => {
-  //     removeFav(favorite!.product);
-  //   })
-  //   .catch((err) => console.log('😈', err));
-  // };
+  const deleteRevHandler = () => {
+    axios.delete(`/api/users/${auth?.user.uuid}/reviews/${review.id}/deletion/`,
+      { headers: headers }
+    )
+    .then(() => {
+      removeRev(review.product);
+      setDeleteSelected(false);
+      navigate(0);
+    })
+    .catch((err) => console.log('😈', err));
+  };
   
-  // const clickHandler: React.MouseEventHandler<HTMLDivElement> = () => {
-  //   if (isFavorite) {
-  //     deleteFavHandler();
-  //   } else {
-  //     addFavHandler();
-  //   }
-  //   setIsFavorite(!isFavorite);
-  // };
+  const clickHandler: React.MouseEventHandler<HTMLDivElement> = () => {
+    if (deleteSelected) {
+      deleteRevHandler();
+    } else {
+      setDeleteSelected(true);
+    }
+  };
 
   return (
     <>
@@ -61,6 +67,8 @@ function ReviewCard({ product, review }: Props) {
           { review.comment }
         </div>
         <ReviewButton productId={ product.id } review={ review }/>
+        <DeleteButton clickHandler={ clickHandler }/>
+        { deleteSelected && 'Tap trashcan again to confirm.' }
       </div>
     </> 
   );

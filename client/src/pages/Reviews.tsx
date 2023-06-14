@@ -7,14 +7,9 @@ import Navbar from '../components/Navbar';
 import ReviewGrid from '../components/ReviewGrid';
 import './Reviews.css';
 
-interface ReviewsDict {
-  [key: number]: Review
-};
-
 function Reviews() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
-  const [reviews, setReviews] = useState<ReviewsDict>({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -31,19 +26,6 @@ function Reviews() {
       console.log(response);
       setProducts(response.data);
     })
-    .then(() =>{
-      return axios.get(`/api/users/${auth?.user.uuid}/reviews/`, {
-        headers: headers
-      });
-    })
-    .then((response) => {
-      console.log(response);
-      let reviewObj: ReviewsDict = {};
-      response.data.forEach((review: Review) => {
-        reviewObj[review.product] = review;
-      });
-      setReviews(reviewObj);
-    })
     .catch((err) => console.log(err))
     .finally(() => setIsLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -56,7 +38,7 @@ function Reviews() {
         mainText="Your Reviews"/>
       {
         !isLoading
-          ? <ReviewGrid productArray={ products } reviewObj={ reviews } />
+          ? <ReviewGrid productArray={ products }/>
           : <>
               <p>Review products you've tried by tapping the edit icon on any product!</p>
             </>

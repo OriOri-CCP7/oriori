@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
+import { UserReviews } from '../context/ReviewContext';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -12,8 +13,11 @@ import './NewReview.css';
 
 function NewReview() {
   const auth = UserAuth();
-  const { productId } = useParams();
+  const { addRev } = UserReviews();
+
   const navigate = useNavigate();
+  
+  const { productId } = useParams();
   const [product, setProduct] = useState<Product>();
   const [rating, setRating] = useState<0 | 1 | 2>(0);
   const [comment, setComment] = useState("");
@@ -57,7 +61,8 @@ function NewReview() {
       })
       .then((response) => {
         if (response.status === 200) {
-          navigate('/home');
+          addRev(response.data);
+          navigate('/reviews');
         }
       })
     } catch (error) {
