@@ -2,21 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
+import { UserReviews } from '../context/ReviewContext';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Input from '../components/Input';
 import Navbar from '../components/Navbar';
 import RatingSelector from '../components/RatingSelector';
-import './NewReview.css';
+import './EditReview.css';
 
-function NewReview() {
-  const auth = UserAuth();
-  const { productId } = useParams();
+function EditReview() {
   const navigate = useNavigate();
+
+  const auth = UserAuth();
+  const { reviews, isLoadingRevs } = UserReviews();
+  
+  const { productId } = useParams();
   const [product, setProduct] = useState<Product>();
   const [rating, setRating] = useState<0 | 1 | 2>(0);
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
 
   useEffect(() => {
     axios.get(`/api/products/${productId}/`, {
@@ -33,6 +37,13 @@ function NewReview() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (!isLoadingRevs && productId) {
+      setRating(reviews[productId].rating);
+      setComment(reviews[productId].comment);
+    }
+  }, [isLoadingRevs, productId]);
+
   const handleCommentInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     setComment(event.target.value);
@@ -41,14 +52,13 @@ function NewReview() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
 
-    const review = {
-      product: productId,
+    const reviewData = {
       rating: rating,
       comment: comment
     };
 
     try {
-      axios.post(`/api/users/${auth?.user.uuid}/reviews/newReview/`, review, {
+      axios.patch(`/api/users/${auth?.user.uuid}/reviews/${reviews[productId!].id}/edit/`, reviewData, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -68,8 +78,8 @@ function NewReview() {
   return (
     <div>
       <Header
-        className="new-review-header"
-        mainText="Review a Product"/>
+        className="edit-review-header"
+        mainText="Edit a Review"/>
       <>
         <div className="product__card">
           <div className="product__img">
@@ -105,4 +115,4 @@ function NewReview() {
   );
 };
 
-export default NewReview;
+export default EditReview;

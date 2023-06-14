@@ -4,6 +4,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import { FavContextProvider } from './context/FavContext';
 import { ReviewContextProvider } from './context/ReviewContext';
 import ProtectedRoute from './context/ProtectedRoute'
+import EditReview from './pages/EditReview';
 import Favorite from './pages/Favorites';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -38,6 +39,7 @@ function App() {
                 <Route path='/search' element={<ProtectedRoute><Search/></ProtectedRoute>}></Route>
                 <Route path='/settings' element={<ProtectedRoute><Settings/></ProtectedRoute>}></Route>
                 <Route path='/onboarding' element={<ProtectedRoute><Onboarding/></ProtectedRoute>}></Route>
+                <Route path='/:productId/edit-review' element={<ProtectedRoute><EditReview/></ProtectedRoute>}></Route>
                 <Route path='/:productId/new-review' element={<ProtectedRoute><NewReview/></ProtectedRoute>}></Route>
               </Routes>
             </BrowserRouter>

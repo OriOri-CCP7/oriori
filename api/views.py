@@ -8,7 +8,7 @@ from django.db.models import Count
 
 @api_view(['GET'])
 def hello(request):
-   return Response('Hello World 🌎')
+  return Response('Hello World 🌎')
 
 # Views for User data
 @api_view(['GET'])
@@ -152,7 +152,8 @@ def editProductData(request, id):
       product.store_id = store.id
     product.start_date = request.data.get('start_date', product.start_date)
     product.end_date = request.data.get('end_date', product.end_date)
-    product.sources = request.data.get('sources', product.sources)
+    product.img_url = request.data.get('img_url', product.img_url)
+    product.link_url = request.data.get('link_url', product.link_url)
     product.save()
     serializer = ProductSerializer(product)
     return Response(serializer.data)
@@ -271,3 +272,17 @@ def getUserReviewedProducts(request, uuid):
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
+  
+@api_view(['PATCH'])
+def editReviewData(request, uuid, review_id):
+  try:
+    user = User.objects.get(uuid=uuid)
+    review = Review.objects.get(id=review_id)
+    if review.user.pk == user.pk:
+      review.rating = request.data.get('rating', review.rating)
+      review.comment = request.data.get('comment', review.comment)
+      review.save()
+    serializer = ProductSerializer(review)
+    return Response(serializer.data)
+  except Exception as e:
+    return Response({'error': str(e)})

@@ -17,7 +17,7 @@ interface Props {
 
 function RatingSelector({ rating, setRating, disabled }: Props) {
   const handleClickDown = () => {
-    if (!disabled) return;
+    if (disabled) return;
     setRating(
       rating === 1
         ? 0
@@ -26,7 +26,7 @@ function RatingSelector({ rating, setRating, disabled }: Props) {
   };
 
   const handleClickUp = () => {
-    if (!disabled) return;
+    if (disabled) return;
     setRating(
       rating === 2
         ? 0

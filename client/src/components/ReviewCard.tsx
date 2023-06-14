@@ -3,6 +3,7 @@ import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 import './ReviewCard.css';
 import RatingSelector from './RatingSelector';
+import ReviewButton from './ReviewButton';
 
 type  Props = {
   product: Product,
@@ -59,6 +60,7 @@ function ReviewCard({ product, review }: Props) {
         <div className="review__comment">
           { review.comment }
         </div>
+        <ReviewButton productId={ product.id } review={ review }/>
       </div>
     </> 
   );

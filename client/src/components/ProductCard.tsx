@@ -68,7 +68,7 @@ function ProductCard ({ product, favorite, review }: Props) {
   };
 
   const deleteFavHandler = () => {
-    axios.delete(`/api/users/${auth?.user.uuid}/favorites/deletion/${favorite!.id}/`,
+    axios.delete(`/api/users/${auth?.user.uuid}/favorites/${favorite!.id}/deletion/`,
       { headers: headers }
     )
     .then(() => {
