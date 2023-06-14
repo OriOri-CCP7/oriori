@@ -69,16 +69,18 @@ def getUserFavorites(request, uuid):
 
 @api_view(['POST'])
 def addNewFavorite(request, uuid):
-  try:
-    product_id = request.data.get('product_id')
-    user = User.objects.get(uuid=uuid)
-    product = Product.objects.get(id=product_id)
-    favorite = Favorite.objects.create(user=user, product=product)
-    serializer = FavoriteSerializer(favorite)
-    if serializer.is_valid():
-      serializer.save()
-      return Response(serializer.data)
-  except: 
+  product_id = request.data.get('product_id')
+  user = User.objects.get(uuid=uuid)
+  product = Product.objects.get(id=product_id)
+  data = {
+    "user": user.pk,
+    "product": product.pk
+  }
+  serializer = FavoriteSerializer(data=data)
+  if serializer.is_valid():
+    serializer.save()
+    return Response(serializer.data)
+  else: 
     return Response(serializer.errors)
 
 @api_view(['DELETE'])
@@ -237,8 +239,13 @@ def addNewReview(request, uuid):
   product = Product.objects.get(id=product_id)
   rating = request.data.get('rating')
   comment = request.data.get('comment')
-  review = Review.objects.create(user=user, product=product, rating=rating, comment=comment)
-  serializer = ReviewSerializer(data=review)
+  data = {
+    "user": user.pk,
+    "product": product.pk,
+    "rating": rating,
+    "comment": comment
+  }
+  serializer = ReviewSerializer(data=data)
   if serializer.is_valid():
     serializer.save()
     return Response(serializer.data)
