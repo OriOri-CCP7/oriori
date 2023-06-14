@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import DropdownMenu from "../components/DropdownMenu";
+import DropDownMenu from "../components/DropDownMenuX";
 import { UserAuth } from "../context/AuthContext";
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -73,7 +74,8 @@ function Settings() {
           <br /> 
         */}
         <DropdownMenu labelName="Select Prefecture:" setPrefecture={setLocation} prefill={location}/>
-
+        <DropdownMenu labelName="Select Prefecture:" setPrefecture={setLocation} prefill={location}/>
+        <DropDownMenu labelName="Select Prefecture:" setPrefecture={setLocation} prefill={location}></DropDownMenu>
         <Button 
           className="submitButton" 
           type="submit" 

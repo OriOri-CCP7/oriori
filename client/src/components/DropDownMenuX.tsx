@@ -3,6 +3,7 @@ import prefs from '../data/prefectures.json';
 import 'DropDownMenuX.css'
 
 type Props = {
+    labelName: string | undefined,
     setPrefecture: (prefId: string) => void,
     prefill: string | undefined
 }
@@ -11,7 +12,7 @@ type Options = {
     name:string
 }
 
-function DropdownMenuX( { setPrefecture, prefill }: Props ): JSX.Element {
+function DropDownMenu( { labelName, setPrefecture, prefill }: Props ) {
     const [selected, setSelected] = useState<string>(prefill ?? "1");
     const [isClicked, setIsClicked] =useState<boolean>(false);
     
@@ -24,6 +25,7 @@ function DropdownMenuX( { setPrefecture, prefill }: Props ): JSX.Element {
     return (
         <>
             <div className="dropdown">
+                    <label htmlFor={labelName}>{labelName}</label>
                     <button 
                     className="selectName" 
                     type="button" 
@@ -41,4 +43,4 @@ function DropdownMenuX( { setPrefecture, prefill }: Props ): JSX.Element {
     )
 }
 
-export default DropdownMenuX;
+export default DropDownMenu;
