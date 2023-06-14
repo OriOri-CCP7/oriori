@@ -1,4 +1,4 @@
-.productCard {
+.product__card {
     margin: 20px;
     padding: 20px;
     background-color: grey;
@@ -9,15 +9,15 @@
     align-items: center;
 }
 
-.productCard.new {
+.product__card.new {
     background-color: paleturquoise;
 }
 
-.productCard.ending {
+.product__card.ending {
     background-color: red;
 }
 
-.productImg > img {
+.product__img > img {
     width: 100%;
     max-height: 300px;
     object-fit: cover;

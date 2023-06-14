@@ -11,25 +11,27 @@ import './RatingSelector.css';
 
 interface Props {
   rating: 0 | 1 | 2,
-  setRating: React.Dispatch<SetStateAction<0 | 1 | 2>>
+  setRating: React.Dispatch<SetStateAction<0 | 1 | 2>>,
+  disabled?: true
 };
 
-function RatingSelector({ rating, setRating }: Props) {
- 
+function RatingSelector({ rating, setRating, disabled }: Props) {
   const handleClickDown = () => {
+    if (!disabled) return;
     setRating(
       rating === 1
         ? 0
         : 1
-    )
+    );
   };
 
   const handleClickUp = () => {
+    if (!disabled) return;
     setRating(
       rating === 2
         ? 0
         : 2
-    )
+    );
   };
   
   const generateButtons = () => {

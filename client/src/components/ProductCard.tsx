@@ -29,7 +29,7 @@ const ProductCard :React.FC<Props> = ({product, favorite}) => {
   const daysSinceStart: number = Math.floor((currentDateNum - offerStartNum) / oneDay);
   const daysBeforeEnd: number = Math.ceil((offerEndNum - currentDateNum) / oneDay);
 
-  let cardClass = "productCard ";
+  let cardClass = "product__card ";
   let availabilityMsg = `Available on ${offerStartDate.toLocaleDateString()}`;
   if (daysSinceStart >= 0) {
     if (daysBeforeEnd < 6) {
@@ -84,18 +84,18 @@ const ProductCard :React.FC<Props> = ({product, favorite}) => {
   };
 
   return (
-      <div className={cardClass}>
-          <div className="productImg">
-              { product.img_url ? <img src={product.img_url} alt={product.product_name} /> : <></> }
+      <div className={ cardClass }>
+          <div className="product__img">
+              { product.img_url ? <img src={ product.img_url } alt={ product.product_name }/> : <></> }
           </div>
-          <div className="productName">
-              {product.product_name}
+          <div className="product__name">
+              { product.product_name }
           </div>
-          <div className="productAvailMsg">
-              {availabilityMsg}
+          <div className="product__avail-msg">
+              { availabilityMsg }
           </div>
-          <ReviewButton productId={product.id} />
-          <FavButton isFavorite={isFavorite} clickHandler={clickHandler}/>
+          <ReviewButton productId={ product.id }/>
+          <FavButton isFavorite={ isFavorite } clickHandler={ clickHandler }/>
       </div>
 
   );

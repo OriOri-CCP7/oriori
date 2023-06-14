@@ -261,3 +261,13 @@ def removeReview(request, uuid, review_id):
     return Response("Review Deleted")
   except Exception as e:
     return Response({'error': str(e)})
+  
+@api_view(['GET'])
+def getUserReviewedProducts(request, uuid):
+  try:
+    user = User.objects.get(uuid=uuid)
+    reviews = Product.objects.filter(review__user_id=user)
+    serializer = ProductSerializer(reviews, many=True)
+    return Response(serializer.data)
+  except:
+    return Response(serializer.errors)

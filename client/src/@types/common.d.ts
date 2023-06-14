@@ -13,3 +13,11 @@ declare type Favorite = {
   "user": number,
   "product": number
 };
+
+declare type Review = {
+  "id": number,
+  "user": number,
+  "product": number,
+  "rating": 0 | 1 | 1,
+  "comment": string 
+};

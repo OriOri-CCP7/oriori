@@ -25,7 +25,7 @@ function Navbar() {
               <HeartIcon 
                 className='heart-icon'
                 onClick={() => {
-                  navigate('/favorite');
+                  navigate('/favorites');
                 }}/>
             </li>
 
