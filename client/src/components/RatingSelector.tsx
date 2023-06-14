@@ -7,6 +7,7 @@ import {
   HandThumbUpIcon as HandThumbUpOutline,
   HandThumbDownIcon as HandThumbDownOutline
 } from '@heroicons/react/24/outline';
+import './RatingSelector.css';
 
 interface Props {
   rating: 0 | 1 | 2,
@@ -36,26 +37,29 @@ function RatingSelector({ rating, setRating }: Props) {
       case 0:
         return (
           <>
-            <HandThumbUpOutline onClick={ handleClickUp }/> <HandThumbDownOutline onClick={ handleClickDown }/>
+            <HandThumbUpOutline onClick={ handleClickUp } className="rating-button"/>
+            <HandThumbDownOutline onClick={ handleClickDown } className="rating-button"/>
           </>
         );
       case 1:
         return (
           <>
-            <HandThumbUpOutline onClick={ handleClickUp }/> <HandThumbDownSolid onClick={ handleClickDown }/>
+            <HandThumbUpOutline onClick={ handleClickUp } className="rating-button"/>
+            <HandThumbDownSolid onClick={ handleClickDown } className="rating-button"/>
           </>
         );
       case 2:
         return (
           <>
-            <HandThumbUpSolid onClick={ handleClickUp }/> <HandThumbDownOutline onClick={ handleClickDown }/>
+            <HandThumbUpSolid onClick={ handleClickUp } className="rating-button"/>
+            <HandThumbDownOutline onClick={ handleClickDown } className="rating-button"/>
           </>
         );
     }
   };
   
   return (
-    <div className="rating-buttons">
+    <div className="rating-selector">
       {
         generateButtons()
       }

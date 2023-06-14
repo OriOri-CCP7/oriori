@@ -103,6 +103,6 @@ function NewReview() {
         text="© 2023 OriOri" />
     </div>
   );
-}
+};
 
 export default NewReview;
