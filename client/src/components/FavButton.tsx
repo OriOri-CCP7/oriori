@@ -14,8 +14,18 @@ function FavButton({ isFavorite, clickHandler }: Props) {
     <div className='favoriteButton' onClick={ clickHandler }>
       {
         isFavorite
-        ? <HeartSolid className="favorited-icon"/>
-        : <HeartOutline/>
+        ? 
+        // <>
+        // <span className="container-heartsolid">
+          <HeartSolid className="favorited-icon"/>
+          // </span> 
+          // </>
+        : 
+        // <>
+        // <span className="container-heartoutline">
+          <HeartOutline className="unfavorited-icon"/>
+          // </span>
+          // </>
       }
     </div>
   );
