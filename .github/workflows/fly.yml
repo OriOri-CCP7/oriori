@@ -16,6 +16,7 @@ jobs:
       REACT_APP_FB_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_FB_MESSAGING_SENDER_ID }}
       REACT_APP_FB_APP_ID: ${{ secrets.REACT_APP_FB_APP_ID }}
     steps:
+      - uses: actions/checkout@v3
 
       - name: Setup Node 20.2.0
         uses: actions/setup-node@v3
