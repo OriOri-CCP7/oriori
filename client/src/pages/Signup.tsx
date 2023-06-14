@@ -115,7 +115,7 @@ const Signup: React.FC = () => {
           text = "Sign Up"
           type = "submit" />
 
-<p>
+        <p>
           Already have an account? 
           <Link to = "/"> Log In! </Link>
         </p>
