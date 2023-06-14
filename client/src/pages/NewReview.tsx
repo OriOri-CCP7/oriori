@@ -41,6 +41,7 @@ function NewReview() {
             {product?.product_name}
           </div>
         </div>
+        
       </>
       <Navbar/>
       <Footer 

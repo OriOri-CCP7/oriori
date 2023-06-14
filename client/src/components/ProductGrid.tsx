@@ -1,13 +1,13 @@
 import React from 'react';
 import { UserFavs } from '../context/FavContext';
 import Grid from '@mui/material/Unstable_Grid2';
-import Card from './Card';
+import ProductCard from './ProductCard';
 
 interface Props {
   productArray: Array<Product>,
 };
 
-function GridComponent({ productArray }: Props) {
+function ProductGrid({ productArray }: Props) {
   let { favorites, isLoadingFavs } = UserFavs();
   console.log("🥰", favorites);
 
@@ -16,7 +16,7 @@ function GridComponent({ productArray }: Props) {
       <Grid container rowSpacing={1}>
           {!isLoadingFavs && productArray.map((product) => (
               <Grid xs={6} key={product.product_name}>
-                  <Card 
+                  <ProductCard 
                     product={product}
                     favorite={favorites[product.id.toString()]}
                     />
@@ -27,4 +27,4 @@ function GridComponent({ productArray }: Props) {
   );
 }
 
-export default GridComponent;
+export default ProductGrid;

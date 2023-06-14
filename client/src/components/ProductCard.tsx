@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 import { UserFavs } from '../context/FavContext';
-import './Card.css';
+import './ProductCard.css';
 import FavButton from './FavButton';
 import ReviewButton from './ReviewButton';
 
@@ -12,7 +12,7 @@ type  Props = {
 };
 
 
-const Card :React.FC<Props> = ({product, favorite}) => {
+const ProductCard :React.FC<Props> = ({product, favorite}) => {
   const auth = UserAuth();
   const { addFav, removeFav } = UserFavs();
   const [isFavorite, setIsFavorite] = useState(favorite ? true : false);
@@ -101,4 +101,4 @@ const Card :React.FC<Props> = ({product, favorite}) => {
   );
 }
 
-export default Card;
+export default ProductCard;

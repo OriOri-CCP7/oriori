@@ -7,7 +7,7 @@ import './Home.css';
 import Button from '../components/Button';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import GridComponent from "../components/Grid";
+import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
 
 export default function Home() {
@@ -66,7 +66,7 @@ export default function Home() {
         mainText="OriOri Homepage" />
       {
         products.length > 0
-        ? <GridComponent productArray={ products }/>
+        ? <ProductGrid productArray={ products }/>
         : <>
             <p>
               These are the products currently available in your selected location!
