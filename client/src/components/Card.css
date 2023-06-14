@@ -11,14 +11,28 @@
 
 .productCard.new {
     background-color: paleturquoise;
+    animation: resize .7s ease-in-out infinite;
 }
 
 .productCard.ending {
     background-color: rgba(230, 120, 98, 0.908);
+    animation: resize 1.3s ease-in-out infinite;
 }
 
 .productImg > img {
     width: 100%;
     max-height: 300px;
     object-fit: cover;
+}
+
+@keyframes resize {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
