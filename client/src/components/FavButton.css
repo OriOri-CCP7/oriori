@@ -12,41 +12,24 @@
   position: relative;
   animation: move-left-right 2s ease-in-out infinite;
   fill:deeppink;
-  transform: scale(1.5);
+  
 }
 
 @keyframes move-left-right {
   0% {
-    left: 0;
+    transform: translateX(0);
   }
   50% {
-    left:10px;
+    transform: translateX(10px);
   }
   100% {
-    left:0;
+    transform: translateX(0);
   }
 }
-.unfavorited-icon {
-  
-  font-size: 1rem;
-}
 
 
 
-.container-heartsolid {
-  /* display: inline-block; */
-  /* transition: font-size 0.5s ease-in; */
-}
-.container-heartsolid:hover {
-  /* transform: scale(1.2);
-  font-size: 1.2em; */
-}
 
 
-.constainer-heartoutline {
 
-}
 
-.constainer-heartoutline:hover {
-
-}

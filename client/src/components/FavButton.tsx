@@ -15,17 +15,13 @@ function FavButton({ isFavorite, clickHandler }: Props) {
       {
         isFavorite
         ? 
-        // <>
-        // <span className="container-heartsolid">
+        
           <HeartSolid className="favorited-icon"/>
-          // </span> 
-          // </>
+          
         : 
-        // <>
-        // <span className="container-heartoutline">
+       
           <HeartOutline className="unfavorited-icon"/>
-          // </span>
-          // </>
+          
       }
     </div>
   );
