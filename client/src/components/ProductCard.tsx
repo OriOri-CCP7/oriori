@@ -2,19 +2,22 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 import { UserFavs } from '../context/FavContext';
+import { UserReviews } from '../context/ReviewContext';
 import './ProductCard.css';
 import FavButton from './FavButton';
 import ReviewButton from './ReviewButton';
 
 type  Props = {
   product: Product,
-  favorite?: Favorite
+  favorite?: Favorite,
+  review?: Review
 };
 
 
-const ProductCard :React.FC<Props> = ({product, favorite}) => {
+function ProductCard ({ product, favorite, review }: Props) {
   const auth = UserAuth();
   const { addFav, removeFav } = UserFavs();
+  const { addRev, removeRev } = UserReviews();
   const [isFavorite, setIsFavorite] = useState(favorite ? true : false);
 
   const currentDate: Date = new Date();
@@ -94,7 +97,7 @@ const ProductCard :React.FC<Props> = ({product, favorite}) => {
           <div className="product__avail-msg">
               { availabilityMsg }
           </div>
-          <ReviewButton productId={ product.id }/>
+          <ReviewButton productId={ product.id } review={ review }/>
           <FavButton isFavorite={ isFavorite } clickHandler={ clickHandler }/>
       </div>
 

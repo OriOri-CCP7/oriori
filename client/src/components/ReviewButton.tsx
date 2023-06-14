@@ -4,11 +4,13 @@ import { PencilSquareIcon } from '@heroicons/react/24/solid';
 import './ReviewButton.css';
 
 interface Props {
-  productId: number
+  productId: number,
+  review?: Review
 };
 
-function ReviewButton({ productId }: Props) {
+function ReviewButton({ productId, review }: Props) {
   const navigate = useNavigate();
+  const navPath = review ? `/${productId}/edit-review` : `/${productId}/new-review`
   return (
     <div className='reviewButton' onClick={ () => navigate(`/${productId}/new-review`) }>
       <PencilSquareIcon/>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
 import { FavContextProvider } from './context/FavContext';
+import { ReviewContextProvider } from './context/ReviewContext';
 import ProtectedRoute from './context/ProtectedRoute'
 import Favorite from './pages/Favorites';
 import Home from './pages/Home';
@@ -23,22 +24,24 @@ function App() {
     <div className="App">
       <AuthContextProvider>
         <FavContextProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path='/' element={<Login/>}></Route>
-              <Route path='/signup' element={<Signup/>}></Route>
-              <Route path='/new-password' element={<PasswordReset/>}></Route>
-              
-              <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
-              <Route path='/favorites' element={<ProtectedRoute><Favorite/></ProtectedRoute>}></Route>
-              <Route path='/popular' element={<ProtectedRoute><Popular/></ProtectedRoute>}></Route>
-              <Route path='/reviews' element={<ProtectedRoute><Reviews/></ProtectedRoute>}></Route>
-              <Route path='/search' element={<ProtectedRoute><Search/></ProtectedRoute>}></Route>
-              <Route path='/settings' element={<ProtectedRoute><Settings/></ProtectedRoute>}></Route>
-              <Route path='/onboarding' element={<ProtectedRoute><Onboarding/></ProtectedRoute>}></Route>
-              <Route path='/:productId/new-review' element={<ProtectedRoute><NewReview/></ProtectedRoute>}></Route>
-            </Routes>
-          </BrowserRouter>
+          <ReviewContextProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path='/' element={<Login/>}></Route>
+                <Route path='/signup' element={<Signup/>}></Route>
+                <Route path='/new-password' element={<PasswordReset/>}></Route>
+                
+                <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
+                <Route path='/favorites' element={<ProtectedRoute><Favorite/></ProtectedRoute>}></Route>
+                <Route path='/popular' element={<ProtectedRoute><Popular/></ProtectedRoute>}></Route>
+                <Route path='/reviews' element={<ProtectedRoute><Reviews/></ProtectedRoute>}></Route>
+                <Route path='/search' element={<ProtectedRoute><Search/></ProtectedRoute>}></Route>
+                <Route path='/settings' element={<ProtectedRoute><Settings/></ProtectedRoute>}></Route>
+                <Route path='/onboarding' element={<ProtectedRoute><Onboarding/></ProtectedRoute>}></Route>
+                <Route path='/:productId/new-review' element={<ProtectedRoute><NewReview/></ProtectedRoute>}></Route>
+              </Routes>
+            </BrowserRouter>
+          </ReviewContextProvider>
         </FavContextProvider>
       </AuthContextProvider>
     </div>
