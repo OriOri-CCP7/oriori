@@ -8,3 +8,28 @@
   display: flex;
   justify-content: 'flex-end';
 }
+
+.favorited-icon {
+  position: relative;
+  animation: move-left-right 2s ease-in-out infinite;
+  fill: deeppink;
+}
+
+@keyframes move-left-right {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+
+
+
+
+

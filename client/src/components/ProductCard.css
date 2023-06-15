@@ -1,24 +1,43 @@
 .product__card {
     margin: 20px;
-    padding: 20px;
+    padding: 15px;
     background-color: grey;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    align-content: center;
 }
 
 .product__card.new {
     background-color: paleturquoise;
+    animation: resize .7s ease-in-out infinite;
 }
 
 .product__card.ending, .product__card.new.ending {
-    background-color: red;
+    background-color: rgba(230, 120, 98, 0.908);
+    animation: resize 1.3s ease-in-out infinite;
+    /* background-color: red; */
 }
 
 .product__img > img {
     width: 100%;
     max-height: 300px;
     object-fit: cover;
+}
+
+@keyframes resize {
+    0% {
+        transform: scale(1);
+        transform-origin: center;
+    }
+    50% {
+        transform: scale(1.05);
+        transform-origin: center;
+    }
+    100% {
+        transform: scale(1);
+        transform-origin: center;
+    }
 }
