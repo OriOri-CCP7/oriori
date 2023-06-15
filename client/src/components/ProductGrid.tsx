@@ -17,13 +17,11 @@ type cssClass = {
 
 interface Props {
   productArray: Array<Product>,
-  props: cssClass,
-  theme: cssClass,
 };
 
 
   
-function ProductGrid({ productArray, props, theme }: Props) {
+function ProductGrid({ productArray }: Props) {
   const { favorites, isLoadingFavs } = UserFavs();
   const { reviews, isLoadingRevs } = UserReviews();
   console.log("🥰", favorites);
@@ -39,14 +37,7 @@ function ProductGrid({ productArray, props, theme }: Props) {
     },
   }));
 
-  // const StyledGridItem = styled(Grid)(({ props })=> ({
-  //   height: props.height,
-  //   width: props.width,
-  //   padding: props.padding,
-  //   margin: props.margin,
-  //   backgroundColor: props.backgroundColor,
-  //   color: props.color,
-  // }));
+  
 
   return (
     <>
