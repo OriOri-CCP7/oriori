@@ -116,8 +116,7 @@ def getProductDataByUser(request, uuid):
 @api_view(['GET'])
 def getProductDataByPrefecture(request, prefId):
   try:
-    stores = Store.objects.filter(location__id=prefId)
-    products = Product.objects.filter(store__in=stores)
+    products = Product.objects.filter(location__id=prefId)
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
   except Exception as e:
