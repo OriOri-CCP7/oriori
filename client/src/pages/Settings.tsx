@@ -13,7 +13,7 @@ function Settings() {
 
   const [username, setUsername] = useState<string>(auth?.user.username ?? '');
   // const [email, setEmail] = useState<string>(auth?.user.email ?? '');
-  const [location, setLocation] = useState<string>(auth?.user.location ?? '1');
+  const [location, setLocation] = useState<string>(auth?.user.location ?? '');
   
   const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value);
@@ -78,7 +78,8 @@ function Settings() {
           className="submitButton" 
           type="submit" 
           text="Save"
-          onClick={handleSubmit}/>
+          onClick={ handleSubmit }
+          disabled={ location === "" ? true : false }/>
       </form>
 
     </div>
