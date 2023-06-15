@@ -25,6 +25,6 @@ function FavButton({ isFavorite, clickHandler }: Props) {
       }
     </div>
   );
-;}
+};
 
 export default FavButton;

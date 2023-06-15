@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 import { UserFavs } from '../context/FavContext';
-import './Card.css';
+import './ProductCard.css';
 import FavButton from './FavButton';
+import ReviewButton from './ReviewButton';
 
 type  Props = {
   product: Product,
-  favorite?: Favorite
+  favorite?: Favorite,
+  review?: Review
 };
 
 
-const Card :React.FC<Props> = ({product, favorite}) => {
+function ProductCard ({ product, favorite, review }: Props) {
   const auth = UserAuth();
   const { addFav, removeFav } = UserFavs();
   const [isFavorite, setIsFavorite] = useState(favorite ? true : false);
@@ -28,7 +30,7 @@ const Card :React.FC<Props> = ({product, favorite}) => {
   const daysSinceStart: number = Math.floor((currentDateNum - offerStartNum) / oneDay);
   const daysBeforeEnd: number = Math.ceil((offerEndNum - currentDateNum) / oneDay);
 
-  let cardClass = "productCard ";
+  let cardClass = "product__card ";
   let availabilityMsg = `Available on ${offerStartDate.toLocaleDateString()}`;
   if (daysSinceStart >= 0) {
     if (daysBeforeEnd < 6) {
@@ -64,7 +66,7 @@ const Card :React.FC<Props> = ({product, favorite}) => {
   };
 
   const deleteFavHandler = () => {
-    axios.delete(`/api/users/${auth?.user.uuid}/favorites/deletion/${favorite!.id}/`,
+    axios.delete(`/api/users/${auth?.user.uuid}/favorites/${favorite!.id}/deletion/`,
       { headers: headers }
     )
     .then(() => {
@@ -83,20 +85,21 @@ const Card :React.FC<Props> = ({product, favorite}) => {
   };
 
   return (
-      <div className={cardClass}>
-          <div className="productImg">
-              { product.img_url ? <img src={product.img_url} alt={product.product_name} /> : <></> }
+      <div className={ cardClass }>
+          <div className="product__img">
+              { product.img_url ? <img src={ product.img_url } alt={ product.product_name }/> : <></> }
           </div>
-          <div className="productName">
-              {product.product_name}
+          <div className="product__name">
+              { product.product_name }
           </div>
-          <div className="productAvailMsg">
-              {availabilityMsg}
+          <div className="product__avail-msg">
+              { availabilityMsg }
           </div>
-          <FavButton isFavorite={isFavorite} clickHandler={clickHandler}/>
+          <ReviewButton productId={ product.id } review={ review }/>
+          <FavButton isFavorite={ isFavorite } clickHandler={ clickHandler }/>
       </div>
 
   );
 }
 
-export default Card;
+export default ProductCard;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
 import './Popular.css';
-import GridComponent from '../components/Grid';
+import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from "../components/Footer";
@@ -31,7 +31,7 @@ function Popular() {
       <Header
           className="popular-header"
           mainText="Hot Right Now" />
-      <GridComponent productArray={products} />
+      <ProductGrid productArray={products} />
       <Navbar/>
       <Footer 
         className = "footer"

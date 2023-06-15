@@ -1,7 +1,8 @@
 import React from 'react';
 import { UserFavs } from '../context/FavContext';
 import Grid from '@mui/material/Unstable_Grid2';
-import Card from './Card';
+import ProductCard from './ProductCard';
+import { UserReviews } from '../context/ReviewContext';
 import {styled, makeStyles } from '@mui/material/styles';
 
 type cssClass = {
@@ -13,14 +14,18 @@ type cssClass = {
   color: string | undefined
 }
 
+
 interface Props {
   productArray: Array<Product>,
   props: cssClass,
   theme: cssClass,
 };
 
-function GridComponent({ productArray, props, theme }: Props) {
-  let { favorites, isLoadingFavs } = UserFavs();
+
+  
+function ProductGrid({ productArray, props, theme }: Props) {
+  const { favorites, isLoadingFavs } = UserFavs();
+  const { reviews, isLoadingRevs } = UserReviews();
   console.log("🥰", favorites);
 
   const cssMakeStyles = makeStyles((theme: cssClass) => ({
@@ -47,11 +52,12 @@ function GridComponent({ productArray, props, theme }: Props) {
     <>
     <div className="Grid">
       <Grid container rowSpacing={1}>
-          {!isLoadingFavs && productArray.map((product) => (
+          {(!isLoadingFavs && !isLoadingRevs) && productArray.map((product) => (
               <Grid xs={6} key={product.product_name}>
-                  <Card 
+                  <ProductCard 
                     product={product}
                     favorite={favorites[product.id.toString()]}
+                    review={reviews[product.id.toString()]}
                     />
               </Grid>
           ))}
@@ -61,4 +67,4 @@ function GridComponent({ productArray, props, theme }: Props) {
   );
 }
 
-export default GridComponent;
+export default ProductGrid;
