@@ -73,7 +73,6 @@ function Settings() {
           <br /> 
         */}
         <DropdownMenu labelName="Select Prefecture:" setPrefecture={setLocation} prefill={location}/>
-
         <Button 
           className="submitButton" 
           type="submit" 
