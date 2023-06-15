@@ -36,7 +36,7 @@ export default function Search() {
         className="search-header"
         mainText="Search"/>
       <DropdownMenu 
-        labelName='Select a prefecture:'
+        labelName='Select a prefecture: '
         setPrefecture={ getProducts }/>
       <ProductGrid productArray={ products }/>
       <Navbar/>
