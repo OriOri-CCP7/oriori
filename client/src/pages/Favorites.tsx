@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
 import './Favorites.css';
-import GridComponent from '../components/Grid';
+import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -34,7 +34,7 @@ function Favorites() {
         mainText="Favorites" />
       {
         products.length > 0
-        ? <GridComponent productArray={products} />
+        ? <ProductGrid productArray={products} />
         : <>
             <p>Add to your favorites by tapping the heart icon on any product!</p>
           </>

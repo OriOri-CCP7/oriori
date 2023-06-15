@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState, ReactNode } from
 import axios from 'axios';
 import { UserAuth } from './AuthContext';
 
-export interface FavoritesDict {
+interface FavoritesDict {
   [key: string]: Favorite
 };
 

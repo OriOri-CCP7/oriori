@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
 import './Search.css';
-import GridComponent from '../components/Grid';
+import ProductGrid from '../components/ProductGrid';
 import DropdownMenu from '../components/DropdownMenu';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
@@ -33,7 +33,7 @@ export default function Search() {
         mainText="Search" />
       <DropdownMenu 
       labelName='Select a prefecture:' setPrefecture={getProducts} prefill={undefined}/>
-      <GridComponent productArray={products} />
+      <ProductGrid productArray={products} />
       <Navbar/>
       <Footer 
         className = "footer"
