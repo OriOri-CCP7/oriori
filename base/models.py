@@ -19,9 +19,9 @@ class User(models.Model):
 
 class Product(models.Model):
     product_name = models.CharField(max_length=255)
-    store = models.ForeignKey(Store, on_delete=models.PROTECT)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    location = models.ManyToManyField(Location, related_name='products', blank=False)
+    start_date = models.DateField(null=True)
+    end_date = models.DateField(null=True)
     img_url = models.CharField(max_length=255, null=True)
     link_url = models.CharField(max_length=255, null=True)
 
