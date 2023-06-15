@@ -17,7 +17,6 @@
       "product_name": "Oreo McFlurry",
       "location": ["13"],
       "start_date": "2023-05-31",
-      "end_date": "2025-01-01",
       "link_url": "http://www.starbucks.co.jp"
     }
   },
@@ -39,7 +38,6 @@
       "product_name": "Matcha Black Thunder",
       "location": ["13"],
       "start_date": "2023-05-31",
-      "end_date": "2025-01-01",
       "link_url": "http://www.starbucks.co.jp"
     }
   },
@@ -50,7 +48,6 @@
       "product_name": "Red Shiso Ramen",
       "location": ["13"],
       "start_date": "2023-05-31",
-      "end_date": "2025-01-01",
       "link_url": "http://www.starbucks.co.jp"
     }
   }
