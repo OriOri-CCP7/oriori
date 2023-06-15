@@ -18,33 +18,43 @@ function ProductCard ({ product, favorite, review }: Props) {
   const { addFav, removeFav } = UserFavs();
   const [isFavorite, setIsFavorite] = useState(favorite ? true : false);
 
+  let availabilityMsg = "No availability info.";
+  
   const currentDate: Date = new Date();
-  const offerEndDate: Date = new Date(product.end_date);
-  const offerStartDate: Date = new Date(product.start_date);
-
   const currentDateNum = currentDate.getTime();
-  const offerEndNum = offerEndDate.getTime();
-  const offerStartNum = offerStartDate.getTime();
   const oneDay: number = 24 * 60 * 60 * 1000;
-
-  const daysSinceStart: number = Math.floor((currentDateNum - offerStartNum) / oneDay);
-  const daysBeforeEnd: number = Math.ceil((offerEndNum - currentDateNum) / oneDay);
-
   let cardClass = "product__card ";
-  let availabilityMsg = `Available on ${offerStartDate.toLocaleDateString()}`;
-  if (daysSinceStart >= 0) {
-    if (daysBeforeEnd < 6) {
-      if (daysBeforeEnd >= 0) {
+
+  if (product.start_date) {
+    const offerStartDate: Date = new Date(product.start_date);
+    const offerStartNum = offerStartDate.getTime();
+    const daysSinceStart: number = Math.floor((currentDateNum - offerStartNum) / oneDay);
+    
+    availabilityMsg = `Available on ${offerStartDate.toLocaleDateString()}`;
+  
+    
+    if (daysSinceStart >= 0) {
+      availabilityMsg = "Now available!";
+      if (daysSinceStart < 4) {
+        cardClass += "new "
+      }
+    }
+  }
+
+  if (product.end_date) {
+    const offerEndDate: Date = new Date(product.end_date);
+    const offerEndNum = offerEndDate.getTime();
+    const daysBeforeEnd: number = Math.ceil((offerEndNum - currentDateNum) / oneDay);
+
+    if (daysBeforeEnd >= 0) {
+      if (daysBeforeEnd < 6) {
         cardClass += "ending";
         availabilityMsg = `Only available for ${daysBeforeEnd} days!`;
       } else {
-        availabilityMsg = "No longer available.";
+        availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
       }
-    } else if (daysSinceStart < 4) {
-      cardClass += "new"
-      availabilityMsg = "Now available!";
     } else {
-      availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
+      availabilityMsg = "No longer available.";
     }
   }
 

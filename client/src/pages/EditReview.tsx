@@ -42,6 +42,7 @@ function EditReview() {
       setRating(reviews[productId].rating);
       setComment(reviews[productId].comment);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoadingRevs, productId]);
 
   const handleCommentInput = (event: React.ChangeEvent<HTMLInputElement>): void => {

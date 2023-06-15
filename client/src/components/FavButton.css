@@ -8,11 +8,11 @@
   display: flex;
   justify-content: 'flex-end';
 }
+
 .favorited-icon {
   position: relative;
   animation: move-left-right 2s ease-in-out infinite;
-  fill:deeppink;
-  
+  fill: deeppink;
 }
 
 @keyframes move-left-right {

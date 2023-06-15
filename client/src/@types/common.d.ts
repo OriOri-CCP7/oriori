@@ -1,8 +1,8 @@
 declare type Product = {
   "id": number,
   "product_name": string,
-  "start_date": string,
-  "end_date": string,
+  "start_date"?: string,
+  "end_date"?: string,
   "store": number,
   "img_url": string | null,
   "link_url": string | null

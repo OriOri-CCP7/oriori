@@ -1,23 +1,27 @@
 import React from "react";
 import "./Button.css";
 
-type Props = { 
+interface Props { 
   className: string,
   text: string,
-  type: "button" | "submit" | "reset";
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  type: "button" | "submit" | "reset",
+  onClick?: React.MouseEventHandler<HTMLButtonElement>,
+  disabled?: boolean
 };
 
-const Button: React.FC<Props> = ({ className, text, type, onClick }) => {
+function Button({ className, text, type, onClick, disabled }: Props) {
   return (
     <>
       <button 
-        className = { className } 
-        type = { type }
-        onClick = { onClick } > { text } 
+        className={ className } 
+        type={ type }
+        onClick={ onClick }
+        disabled={ disabled } 
+        >
+        { text }
       </button>
     </>
-  )
-}
+  );
+};
 
 export default Button;

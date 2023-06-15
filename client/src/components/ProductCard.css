@@ -15,9 +15,7 @@
     animation: resize .7s ease-in-out infinite;
 }
 
-
-    
-.product__card.ending {
+.product__card.ending, .product__card.new.ending {
     background-color: rgba(230, 120, 98, 0.908);
     animation: resize 1.3s ease-in-out infinite;
     /* background-color: red; */

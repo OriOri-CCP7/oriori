@@ -6,6 +6,7 @@ import { ref, set } from 'firebase/database';
 import { UserAuth } from '../context/AuthContext';
 import DropdownMenu from '../components/DropdownMenu';
 import './Onboarding.css';
+import Button from '../components/Button';
 
 const { database } = app;
 
@@ -56,16 +57,20 @@ function Onboarding() {
         meaning ‘from season to season’
       </p>
       <br/>
-      <DropdownMenu labelName={"Home Prefecture: "} setPrefecture={setPrefecture} prefill={prefecture}/>
+      <DropdownMenu labelName={ "Home Prefecture: " } setPrefecture={ setPrefecture } prefill={ prefecture }/>
       <p className="onboarding__instruction-text">
         Select the prefecture you want to use as your Home Prefecture. 
         It can be where you live, where you plan on visiting the most, 
         or just your favorite prefecture! <i>You can change this at any time in the settings menu.</i>
       </p>
       <br/>
-      <button onClick={ clickHandler }>
-        Continue
-      </button>
+      <Button
+        className={'onboarding__submit-button'}
+        text={'Continue'}
+        type={'submit'}
+        onClick={ clickHandler }
+        disabled={ prefecture === "" ? true : false }
+        />
     </div>
   );
 }
