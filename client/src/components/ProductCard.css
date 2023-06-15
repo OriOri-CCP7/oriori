@@ -13,7 +13,7 @@
     background-color: paleturquoise;
 }
 
-.product__card.ending {
+.product__card.ending, .product__card.new.ending {
     background-color: red;
 }
 
