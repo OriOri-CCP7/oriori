@@ -23,9 +23,9 @@ function Navbar() {
         <li className='Heart'
           style={location.pathname === '/favorite' ? {background : '#ffe4e1'} : {}}>
           <HeartIcon 
-            className='nav__icon favs'
+            className='nav__icon bkmarks'
             onClick={() => {
-              navigate('/favorites');
+              navigate('/bookmarks');
             }}/>
         </li>
 

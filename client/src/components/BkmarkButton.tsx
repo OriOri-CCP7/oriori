@@ -1,19 +1,19 @@
 import React from 'react'
 import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
 import { HeartIcon as HeartOutline } from '@heroicons/react/24/outline';
-import './FavButton.css';
+import './BkmarkButton.css';
 
 interface Props {
-  isFavorite: boolean,
+  isBookmark: boolean,
   clickHandler: React.MouseEventHandler<HTMLDivElement>
 };
 
-function FavButton({ isFavorite, clickHandler }: Props) {
+function BkmarkButton({ isBookmark, clickHandler }: Props) {
   
   return (
     <div className='favoriteButton' onClick={ clickHandler }>
       {
-        isFavorite
+        isBookmark
           ? <HeartSolid className="favorited-icon"/>
           : <HeartOutline className="unfavorited-icon"/>
       }
@@ -21,4 +21,4 @@ function FavButton({ isFavorite, clickHandler }: Props) {
   );
 };
 
-export default FavButton;
+export default BkmarkButton;

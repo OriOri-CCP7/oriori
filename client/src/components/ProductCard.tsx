@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
-import { UserFavs } from '../context/FavContext';
+import { UserBkmarks } from '../context/BkmarkContext';
 import './ProductCard.css';
-import FavButton from './FavButton';
+import BkmarkButton from './BkmarkButton';
 import ReviewButton from './ReviewButton';
 
 type  Props = {
   product: Product,
-  favorite?: Favorite,
+  bookmark?: Bookmark,
   review?: Review
 };
 
 
-function ProductCard ({ product, favorite, review }: Props) {
+function ProductCard ({ product, bookmark, review }: Props) {
   const auth = UserAuth();
-  const { addFav, removeFav } = UserFavs();
-  const [isFavorite, setIsFavorite] = useState(favorite ? true : false);
+  const { addBkmark, removeBkmark } = UserBkmarks();
+  const [isBookmark, setIsBookmark] = useState(bookmark ? true : false);
 
   let availabilityMsg = "No availability info.";
   
@@ -64,34 +64,34 @@ function ProductCard ({ product, favorite, review }: Props) {
     'X-CSRFToken': auth?.csrftoken ?? ""
   };
 
-  const addFavHandler = () => {
-    axios.post(`/api/users/${auth?.user.uuid}/favorites/newFavorite/`,
+  const addBkmarkHandler = () => {
+    axios.post(`/api/users/${auth?.user.uuid}/bookmarks/new/`,
       { product_id: product.id },
       { headers: headers }
     )
     .then((response) => {
-      addFav(response.data);
+      addBkmark(response.data);
     })
     .catch((err) => console.log('😈', err));
   };
 
-  const deleteFavHandler = () => {
-    axios.delete(`/api/users/${auth?.user.uuid}/favorites/${favorite!.id}/deletion/`,
+  const deleteBkmarkHandler = () => {
+    axios.delete(`/api/users/${auth?.user.uuid}/bookmarks/${bookmark!.id}/deletion/`,
       { headers: headers }
     )
     .then(() => {
-      removeFav(favorite!.product);
+      removeBkmark(bookmark!.product);
     })
     .catch((err) => console.log('😈', err));
   };
   
   const clickHandler: React.MouseEventHandler<HTMLDivElement> = () => {
-    if (isFavorite) {
-      deleteFavHandler();
+    if (isBookmark) {
+      deleteBkmarkHandler();
     } else {
-      addFavHandler();
+      addBkmarkHandler();
     }
-    setIsFavorite(!isFavorite);
+    setIsBookmark(!isBookmark);
   };
 
   return (
@@ -106,7 +106,7 @@ function ProductCard ({ product, favorite, review }: Props) {
               { availabilityMsg }
           </div>
           <ReviewButton productId={ product.id } review={ review }/>
-          <FavButton isFavorite={ isFavorite } clickHandler={ clickHandler }/>
+          <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickHandler }/>
       </div>
 
   );

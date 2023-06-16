@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
-import './Favorites.css';
 import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import './Bookmarks.css';
 
-function Favorites() {
+function Bookmarks() {
     const auth = UserAuth();
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        axios.get(`/api/users/${auth?.user.uuid}/favorites/products/`, {
+        axios.get(`/api/users/${auth?.user.uuid}/bookmarks/products/`, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -30,13 +30,13 @@ function Favorites() {
   return (
     <div>
       <Header
-        className="favorites-header"
-        mainText="Favorites" />
+        className="bookmarks-header"
+        mainText="Bookmarks" />
       {
         products.length > 0
         ? <ProductGrid productArray={products} />
         : <>
-            <p>Add to your favorites by tapping the heart icon on any product!</p>
+            <p>Add to your bookmarks by tapping the heart icon on any product!</p>
           </>
       }
       
@@ -49,4 +49,4 @@ function Favorites() {
   );
 };
 
-export default Favorites;
+export default Bookmarks;
