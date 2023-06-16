@@ -33,7 +33,7 @@ function Logs() {
     <div>
       <Header
         className="logs__header"
-        mainText="Your Logs"/>
+        mainText="Tried Products"/>
       {
         products.length > 0
           ? <ProductGrid productArray={ products }/>
