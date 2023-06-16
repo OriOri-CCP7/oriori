@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Location, Store, Product, Favorite, Review
+from .models import User, Location, Store, Product, Bookmark, Review
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -22,9 +22,9 @@ class ProductSerializer(serializers.ModelSerializer):
           model = Product
           fields = '__all__'
 
-class FavoriteSerializer(serializers.ModelSerializer):
+class BookmarkSerializer(serializers.ModelSerializer):
     class Meta:
-          model = Favorite
+          model = Bookmark
           fields = '__all__'
 
 class ReviewSerializer(serializers.ModelSerializer):

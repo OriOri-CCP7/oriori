@@ -8,7 +8,7 @@ declare type Product = {
   "link_url": string | null
 };
 
-declare type Favorite = {
+declare type Bookmark = {
   "id": number,
   "user": number,
   "product": number

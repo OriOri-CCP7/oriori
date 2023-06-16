@@ -25,13 +25,13 @@ class Product(models.Model):
     img_url = models.CharField(max_length=255, null=True)
     link_url = models.CharField(max_length=255, null=True)
 
-class Favorite(models.Model):
+class Bookmark(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['user', 'product'], name='unique_favorite')
+            models.UniqueConstraint(fields=['user', 'product'], name='unique_bookmark')
         ]
 
 class Review(models.Model):

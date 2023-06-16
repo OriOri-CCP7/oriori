@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { HomeIcon, HeartIcon, FireIcon, MagnifyingGlassIcon, HandThumbUpIcon } from '@heroicons/react/24/solid';
+import { HomeIcon, BookmarkIcon, FireIcon, MagnifyingGlassIcon, HandThumbUpIcon } from '@heroicons/react/24/solid';
 
 
 function Navbar() {
@@ -22,10 +22,10 @@ function Navbar() {
 
         <li className='Heart'
           style={location.pathname === '/favorite' ? {background : '#ffe4e1'} : {}}>
-          <HeartIcon 
-            className='nav__icon favs'
+          <BookmarkIcon 
+            className='nav__icon bkmarks'
             onClick={() => {
-              navigate('/favorites');
+              navigate('/bookmarks');
             }}/>
         </li>
 

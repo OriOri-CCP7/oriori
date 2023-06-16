@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from base.models import User, Favorite, Location, Store, Product, Review
-from base.serializers import UserSerializer, FavoriteSerializer, LocationSerializer, StoreSerializer, ProductSerializer, ReviewSerializer
+from base.models import User, Bookmark, Location, Store, Product, Review
+from base.serializers import UserSerializer, BookmarkSerializer, LocationSerializer, StoreSerializer, ProductSerializer, ReviewSerializer
 from django.db.models import Count
 
 # Create your views here.
@@ -57,18 +57,18 @@ def deleteUser(request, uuid):
   user.delete()
   return Response("User Deleted")
 
-# Views for Favorites data
+# Views for Bookmarks data
 @api_view(['GET'])
-def getUserFavorites(request, uuid):
+def getUserBookmarks(request, uuid):
   try:
-    favorites = Favorite.objects.filter(user__uuid=uuid)
-    serializer = FavoriteSerializer(favorites, many=True)
+    bookmarks = Bookmark.objects.filter(user__uuid=uuid)
+    serializer = BookmarkSerializer(bookmarks, many=True)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
 
 @api_view(['POST'])
-def addNewFavorite(request, uuid):
+def addNewBookmark(request, uuid):
   product_id = request.data.get('product_id')
   user = User.objects.get(uuid=uuid)
   product = Product.objects.get(id=product_id)
@@ -76,7 +76,7 @@ def addNewFavorite(request, uuid):
     "user": user.pk,
     "product": product.pk
   }
-  serializer = FavoriteSerializer(data=data)
+  serializer = BookmarkSerializer(data=data)
   if serializer.is_valid():
     serializer.save()
     return Response(serializer.data)
@@ -84,12 +84,12 @@ def addNewFavorite(request, uuid):
     return Response(serializer.errors)
 
 @api_view(['DELETE'])
-def removeFavorite(request, uuid, fav_id):
+def removeBookmark(request, uuid, bkmark_id):
   try:
     user = User.objects.get(uuid=uuid)
-    favorite = Favorite.objects.get(id=fav_id, user=user)
-    favorite.delete()
-    return Response("Favorite Deleted")
+    bookmark = Bookmark.objects.get(id=bkmark_id, user=user)
+    bookmark.delete()
+    return Response("Bookmark Deleted")
   except Exception as e:
     return Response({'error': str(e)})
 
@@ -107,8 +107,8 @@ def getProductDataById(request, id):
 def getProductDataByUser(request, uuid):
   try:
     user = User.objects.get(uuid=uuid)
-    favorites = Product.objects.filter(favorite__user_id=user)
-    serializer = ProductSerializer(favorites, many=True)
+    bookmarks = Product.objects.filter(bookmark__user_id=user)
+    serializer = ProductSerializer(bookmarks, many=True)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
@@ -125,7 +125,7 @@ def getProductDataByPrefecture(request, prefId):
 @api_view(['GET'])
 def getProductDataByPopularity(request):
   try:
-    products = Product.objects.annotate(num_favs=Count('favorite')).order_by("num_favs").reverse()
+    products = Product.objects.annotate(num_bkmarks=Count('bookmark')).order_by("num_bkmarks").reverse()
     serializer = ProductSerializer(products[0:10], many=True)
     return Response(serializer.data)
   except Exception as e:

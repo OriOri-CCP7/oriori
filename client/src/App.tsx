@@ -1,11 +1,11 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
-import { FavContextProvider } from './context/FavContext';
+import { BkmarkContextProvider } from './context/BkmarkContext';
 import { ReviewContextProvider } from './context/ReviewContext';
 import ProtectedRoute from './context/ProtectedRoute'
 import EditReview from './pages/EditReview';
-import Favorite from './pages/Favorites';
+import Bookmarks from './pages/Bookmarks';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import NewReview from './pages/NewReview';
@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <AuthContextProvider>
-        <FavContextProvider>
+        <BkmarkContextProvider>
           <ReviewContextProvider>
             <BrowserRouter>
               <Routes>
@@ -33,7 +33,7 @@ function App() {
                 <Route path='/new-password' element={<PasswordReset/>}></Route>
                 
                 <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
-                <Route path='/favorites' element={<ProtectedRoute><Favorite/></ProtectedRoute>}></Route>
+                <Route path='/bookmarks' element={<ProtectedRoute><Bookmarks/></ProtectedRoute>}></Route>
                 <Route path='/popular' element={<ProtectedRoute><Popular/></ProtectedRoute>}></Route>
                 <Route path='/reviews' element={<ProtectedRoute><Reviews/></ProtectedRoute>}></Route>
                 <Route path='/search' element={<ProtectedRoute><Search/></ProtectedRoute>}></Route>
@@ -44,7 +44,7 @@ function App() {
               </Routes>
             </BrowserRouter>
           </ReviewContextProvider>
-        </FavContextProvider>
+        </BkmarkContextProvider>
       </AuthContextProvider>
     </div>
   );
