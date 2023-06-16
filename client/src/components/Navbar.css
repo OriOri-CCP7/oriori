@@ -42,8 +42,12 @@
   fill:#33b45e;
 }
 
-.nav__icon.bkmarks {
+.nav__icon.bkmark {
   fill: royalblue;
+}
+
+.nav__icon.log {
+  fill: limegreen;
 }
 
 .nav__icon.pop {

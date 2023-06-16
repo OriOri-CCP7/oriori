@@ -38,7 +38,13 @@ export default function Search() {
       <DropdownMenu 
         labelName='Select a prefecture: '
         setPrefecture={ getProducts }/>
-      <ProductGrid productArray={ products }/>
+      {
+        products.length > 0
+        ? <ProductGrid productArray={ products }/>
+        : <>
+            <p>Search for products in any prefecture!</p>
+          </>
+      }
       <Navbar/>
       <Footer 
         className="footer"

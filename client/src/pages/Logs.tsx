@@ -10,7 +10,6 @@ import './Logs.css';
 function Logs() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const headers = {
@@ -27,7 +26,6 @@ function Logs() {
       setProducts(response.data);
     })
     .catch((err) => console.log(err))
-    .finally(() => setIsLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -37,7 +35,7 @@ function Logs() {
         className="logs__header"
         mainText="Your Logs"/>
       {
-        !isLoading
+        products.length > 0
           ? <ProductGrid productArray={ products }/>
           : <>
               <p>Log products you've tried by tapping the plus icon on any product!</p>
