@@ -34,6 +34,16 @@ class Bookmark(models.Model):
             models.UniqueConstraint(fields=['user', 'product'], name='unique_bookmark')
         ]
 
+class Log(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    time_created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'product'], name='unique_log')
+        ]
+
 class Review(models.Model):
     class Rating(models.IntegerChoices):
         DEFAULT = 0, "Not rated"
