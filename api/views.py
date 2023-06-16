@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from base.models import User, Bookmark, Location, Store, Product, Review
-from base.serializers import UserSerializer, BookmarkSerializer, LocationSerializer, StoreSerializer, ProductSerializer, ReviewSerializer
+from base.models import User, Location, Store, Product, Bookmark, Log, Review
+from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer, ReviewSerializer
 from django.db.models import Count
 
 # Create your views here.
@@ -221,56 +221,53 @@ def addLocation(request):
     serializer.save()
   return Response(serializer.data)
 
-# Views for Review data
+# Views for Log data
 @api_view(['GET'])
-def getReviewsForUser(request, uuid):
+def getLogsForUser(request, uuid):
   try:
     user = User.objects.get(uuid=uuid)
-    reviews = Review.objects.filter(user__id=user.pk)
-    serializer = ReviewSerializer(reviews, many=True)
+    logs = Log.objects.filter(user__id=user.pk)
+    serializer = LogSerializer(logs, many=True)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
   
 @api_view(['POST'])
-def addNewReview(request, uuid):
+def addNewLog(request, uuid):
   user = User.objects.get(uuid=uuid)
   product_id = request.data.get('product')
   product = Product.objects.get(id=product_id)
-  rating = request.data.get('rating')
-  comment = request.data.get('comment')
   data = {
     "user": user.pk,
     "product": product.pk,
-    "rating": rating,
-    "comment": comment
   }
-  serializer = ReviewSerializer(data=data)
+  serializer = LogSerializer(data=data)
   if serializer.is_valid():
     serializer.save()
     return Response(serializer.data)
   else: 
     return Response(serializer.errors)
   
-@api_view(['DELETE'])
-def removeReview(request, uuid, review_id):
-  try:
-    user = User.objects.get(uuid=uuid)
-    review = Review.objects.get(id=review_id, user=user)
-    review.delete()
-    return Response("Review Deleted")
-  except Exception as e:
-    return Response({'error': str(e)})
-  
 @api_view(['GET'])
-def getUserReviewedProducts(request, uuid):
+def getUsersLoggedProducts(request, uuid):
   try:
     user = User.objects.get(uuid=uuid)
-    reviews = Product.objects.filter(review__user_id=user)
-    serializer = ProductSerializer(reviews, many=True)
+    logs = Product.objects.filter(log__user_id=user)
+    serializer = ProductSerializer(logs, many=True)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
+
+@api_view(['DELETE'])
+def removeLog(request, uuid, log_id):
+  try:
+    user = User.objects.get(uuid=uuid)
+    log = Log.objects.get(id=log_id, user=user)
+    log.delete()
+    return Response("Log Deleted")
+  except Exception as e:
+    return Response({'error': str(e)})
+  
   
 @api_view(['PATCH'])
 def editReviewData(request, uuid, review_id):
