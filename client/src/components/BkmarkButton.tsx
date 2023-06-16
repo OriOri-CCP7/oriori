@@ -1,6 +1,6 @@
 import React from 'react'
-import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
-import { HeartIcon as HeartOutline } from '@heroicons/react/24/outline';
+import { BookmarkIcon as BkmarkSolid } from '@heroicons/react/24/solid';
+import { BookmarkIcon as BkmarkOutline } from '@heroicons/react/24/outline';
 import './BkmarkButton.css';
 
 interface Props {
@@ -11,11 +11,11 @@ interface Props {
 function BkmarkButton({ isBookmark, clickHandler }: Props) {
   
   return (
-    <div className='favoriteButton' onClick={ clickHandler }>
+    <div className='bookmark-button' onClick={ clickHandler }>
       {
         isBookmark
-          ? <HeartSolid className="favorited-icon"/>
-          : <HeartOutline className="unfavorited-icon"/>
+          ? <BkmarkSolid className="icon--solid"/>
+          : <BkmarkOutline className="icon--outline"/>
       }
     </div>
   );

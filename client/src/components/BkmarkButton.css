@@ -1,4 +1,4 @@
-.favoriteButton {
+.bookmark-button {
   width: 24px;
   border: none;
   cursor: pointer;
@@ -9,27 +9,7 @@
   justify-content: 'flex-end';
 }
 
-.favorited-icon {
+.icon--solid {
   position: relative;
-  animation: move-left-right 2s ease-in-out infinite;
-  fill: deeppink;
+  fill: royalblue;
 }
-
-@keyframes move-left-right {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(10px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-
-
-
-
-
-
