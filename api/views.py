@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from base.models import User, Location, Store, Product, Bookmark, Log, Review
-from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer, ReviewSerializer
+from base.models import User, Location, Store, Product, Bookmark, Log
+from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer
 from django.db.models import Count
 
 # Create your views here.
@@ -270,15 +270,14 @@ def removeLog(request, uuid, log_id):
   
   
 @api_view(['PATCH'])
-def editReviewData(request, uuid, review_id):
+def editLog(request, uuid, log_id):
   try:
     user = User.objects.get(uuid=uuid)
-    review = Review.objects.get(id=review_id)
-    if review.user.pk == user.pk:
-      review.rating = request.data.get('rating', review.rating)
-      review.comment = request.data.get('comment', review.comment)
-      review.save()
-    serializer = ProductSerializer(review)
+    log = Log.objects.get(id=log_id)
+    if log.user.pk == user.pk:
+      log.liked_it = request.data.get('liked_it', log.liked_it)
+      log.save()
+    serializer = ProductSerializer(log)
     return Response(serializer.data)
   except Exception as e:
     return Response({'error': str(e)})
