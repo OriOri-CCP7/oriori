@@ -6,8 +6,8 @@ services:
       - "8000:8000"
     environment:
       - SECRET_KEY=${SECRET_KEY}
-      - DEBUG=${DEBUG}
-      - DATABASE_URL=${DATABASE_URL}
+      - DEBUG=False
+      - DATABASE_URL=postgres://postgres:devpostgres@dev-db:5432/oriori
     depends_on:
       dev-db:
         condition: service_healthy
