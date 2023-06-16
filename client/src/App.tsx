@@ -2,17 +2,15 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
 import { BkmarkContextProvider } from './context/BkmarkContext';
-import { ReviewContextProvider } from './context/ReviewContext';
+import { LogContextProvider } from './context/LogContext';
 import ProtectedRoute from './context/ProtectedRoute'
-import EditReview from './pages/EditReview';
 import Bookmarks from './pages/Bookmarks';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import NewReview from './pages/NewReview';
 import Onboarding from './pages/Onboarding';
 import PasswordReset from './pages/PasswordReset';
 import Popular from './pages/Popular';
-import Reviews from './pages/Reviews';
+import Logs from './pages/Logs';
 import Search from './pages/Search';
 import Settings from './pages/Settings';
 import Signup from './pages/Signup';
@@ -25,7 +23,7 @@ function App() {
     <div className="App">
       <AuthContextProvider>
         <BkmarkContextProvider>
-          <ReviewContextProvider>
+          <LogContextProvider>
             <BrowserRouter>
               <Routes>
                 <Route path='/' element={<Login/>}></Route>
@@ -35,15 +33,13 @@ function App() {
                 <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
                 <Route path='/bookmarks' element={<ProtectedRoute><Bookmarks/></ProtectedRoute>}></Route>
                 <Route path='/popular' element={<ProtectedRoute><Popular/></ProtectedRoute>}></Route>
-                <Route path='/reviews' element={<ProtectedRoute><Reviews/></ProtectedRoute>}></Route>
+                <Route path='/logs' element={<ProtectedRoute><Logs/></ProtectedRoute>}></Route>
                 <Route path='/search' element={<ProtectedRoute><Search/></ProtectedRoute>}></Route>
                 <Route path='/settings' element={<ProtectedRoute><Settings/></ProtectedRoute>}></Route>
                 <Route path='/onboarding' element={<ProtectedRoute><Onboarding/></ProtectedRoute>}></Route>
-                <Route path='/:productId/edit-review' element={<ProtectedRoute><EditReview/></ProtectedRoute>}></Route>
-                <Route path='/:productId/new-review' element={<ProtectedRoute><NewReview/></ProtectedRoute>}></Route>
               </Routes>
             </BrowserRouter>
-          </ReviewContextProvider>
+          </LogContextProvider>
         </BkmarkContextProvider>
       </AuthContextProvider>
     </div>

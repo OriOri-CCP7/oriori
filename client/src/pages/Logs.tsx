@@ -4,10 +4,10 @@ import { UserAuth } from '../context/AuthContext';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
-import ReviewGrid from '../components/ReviewGrid';
-import './Reviews.css';
+import ProductGrid from '../components/ProductGrid';
+import './Logs.css';
 
-function Reviews() {
+function Logs() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +19,7 @@ function Reviews() {
       'X-CSRFToken': auth?.csrftoken ?? ""
     };
     
-    axios.get(`/api/users/${auth?.user.uuid}/reviews/products/`, {
+    axios.get(`/api/users/${auth?.user.uuid}/logs/products/`, {
       headers: headers
     })
     .then((response) => {
@@ -34,13 +34,13 @@ function Reviews() {
   return (
     <div>
       <Header
-        className="reviews__header"
-        mainText="Your Reviews"/>
+        className="logs__header"
+        mainText="Your Logs"/>
       {
         !isLoading
-          ? <ReviewGrid productArray={ products }/>
+          ? <ProductGrid productArray={ products }/>
           : <>
-              <p>Review products you've tried by tapping the edit icon on any product!</p>
+              <p>Log products you've tried by tapping the plus icon on any product!</p>
             </>
       }
       
@@ -53,4 +53,4 @@ function Reviews() {
   );
 };
 
-export default Reviews;
+export default Logs;

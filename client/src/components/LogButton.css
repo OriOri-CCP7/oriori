@@ -1,4 +1,4 @@
-.review-button {
+.log__button {
   width: 24px;
   border: none;
   cursor: pointer;
@@ -7,4 +7,9 @@
   padding: 0;
   display: flex;
   justify-content: 'flex-end';
+}
+
+.log__icon--solid {
+  position: relative;
+  fill: limegreen;
 }

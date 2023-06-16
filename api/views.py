@@ -69,7 +69,7 @@ def getUserBookmarks(request, uuid):
 
 @api_view(['POST'])
 def addNewBookmark(request, uuid):
-  product_id = request.data.get('product_id')
+  product_id = request.data.get('product')
   user = User.objects.get(uuid=uuid)
   product = Product.objects.get(id=product_id)
   data = {

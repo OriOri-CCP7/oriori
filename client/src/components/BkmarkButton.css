@@ -1,4 +1,4 @@
-.bookmark-button {
+.bookmark__button {
   width: 24px;
   border: none;
   cursor: pointer;
@@ -9,7 +9,7 @@
   justify-content: 'flex-end';
 }
 
-.icon--solid {
+.bookmark__icon--solid {
   position: relative;
   fill: royalblue;
 }
