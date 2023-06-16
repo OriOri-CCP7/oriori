@@ -4,6 +4,7 @@ import { UserAuth } from '../context/AuthContext';
 import { UserBkmarks } from '../context/BkmarkContext';
 import { UserLogs } from '../context/LogContext';
 import BkmarkButton from './BkmarkButton';
+import LikeButton from './LikeButton';
 import LogButton from './LogButton';
 import './ProductCard.css';
 
@@ -18,8 +19,9 @@ function ProductCard ({ product, bookmark, log }: Props) {
   const auth = UserAuth();
   const { addBkmark, removeBkmark } = UserBkmarks();
   const [isBookmark, setIsBookmark] = useState(bookmark ? true : false);
-  const { addLog, removeLog } = UserLogs();
+  const { addLog, editLog, removeLog } = UserLogs();
   const [isLogged, setIsLogged] = useState(log ? true : false);
+  const [isLiked, setIsLiked] = useState(log?.liked_it ? true : false);
 
   let availabilityMsg = "No availability info.";
   
@@ -114,17 +116,25 @@ function ProductCard ({ product, bookmark, log }: Props) {
     )
     .then(() => {
       removeLog(log!.product);
+      setIsLiked(false);
     })
     .catch((err) => console.log('😈', err));
   };
 
-  const clickLogkHandler: React.MouseEventHandler<HTMLDivElement> = () => {
+  const clickLogHandler: React.MouseEventHandler<HTMLDivElement> = () => {
     if (isLogged) {
       deleteLogHandler();
     } else {
       addLogHandler();
     }
     setIsLogged(!isLogged);
+  };
+
+  const clickLikeHandler: React.MouseEventHandler<HTMLDivElement> = () => {
+    const workingLog = log!;
+    workingLog.liked_it = !isLiked;
+    editLog(workingLog);
+    setIsLiked(!isLiked);
   };
 
   return (
@@ -138,8 +148,9 @@ function ProductCard ({ product, bookmark, log }: Props) {
           <div className="product__avail-msg">
               { availabilityMsg }
           </div>
-          { isLogged && 'Tried it!' }
-          <LogButton isLogged={ isLogged } clickHandler={ clickLogkHandler }/>
+          { isLogged && (isLiked ? 'Tried it, loved it!' : 'Tried it!') }
+          <LogButton isLogged={ isLogged } clickHandler={ clickLogHandler }/>
+          { isLogged && <LikeButton isLiked={ isLiked } clickHandler={ clickLikeHandler }/> }
           <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickBkmarkHandler }/>
       </div>
 

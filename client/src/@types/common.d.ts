@@ -17,5 +17,6 @@ declare type Bookmark = {
 declare type Log = {
   "id": number,
   "user": number,
-  "product": number
+  "product": number,
+  "liked_it": boolean
 };
