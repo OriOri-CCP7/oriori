@@ -18,8 +18,8 @@ type  Props = {
 function ProductCard ({ product, bookmark, log }: Props) {
   const auth = UserAuth();
   const { addBkmark, removeBkmark } = UserBkmarks();
-  const [isBookmark, setIsBookmark] = useState(bookmark ? true : false);
   const { addLog, editLog, removeLog } = UserLogs();
+  const [isBookmark, setIsBookmark] = useState(bookmark ? true : false);
   const [isLogged, setIsLogged] = useState(log ? true : false);
   const [isLiked, setIsLiked] = useState(log?.liked_it ? true : false);
 
