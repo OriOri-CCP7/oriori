@@ -1,0 +1,9 @@
+:root{
+  --small-width:30px;
+  --medium-width:25px;
+  --large-width:20px;
+}
+
+body {
+    background-color: #FDF6F0;
+}
