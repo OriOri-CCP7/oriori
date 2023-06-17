@@ -11,11 +11,16 @@ interface Props {
 function LikeButton({ isLiked, clickHandler }: Props) {
   
   return (
-    <div className='like__button' onClick={ clickHandler }>
+    <div className='product__button' onClick={ clickHandler }>
       {
         isLiked
-          ? <LikeSolid className="like__icon--solid"/>
-          : <LikeOutline className="like__icon--outline"/>
+          ? <LikeSolid className="product__icon like__icon solid"/>
+          : <LikeOutline className="product__icon like__icon outline"/>
+      }
+      {
+        isLiked
+          ? 'Liked it!'
+          : 'Like'
       }
     </div>
   );

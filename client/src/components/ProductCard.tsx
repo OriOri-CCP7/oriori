@@ -28,7 +28,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
   const currentDate: Date = new Date();
   const currentDateNum = currentDate.getTime();
   const oneDay: number = 24 * 60 * 60 * 1000;
-  let cardClass = 'product__card ';
+  let availModifier = '';
 
   if (product.start_date) {
     const offerStartDate: Date = new Date(product.start_date);
@@ -41,7 +41,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
     if (daysSinceStart >= 0) {
       availabilityMsg = 'Now available!';
       if (daysSinceStart < 4) {
-        cardClass += 'new '
+        availModifier += ' new'
       }
     }
   }
@@ -53,7 +53,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
 
     if (daysBeforeEnd >= 0) {
       if (daysBeforeEnd < 6) {
-        cardClass += 'ending';
+        availModifier += ' ending';
         availabilityMsg = `Only available for ${daysBeforeEnd} days!`;
       } else {
         availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
@@ -137,21 +137,27 @@ function ProductCard ({ product, bookmark, log }: Props) {
     setIsLiked(!isLiked);
   };
 
+  const clickProductHandler: React.MouseEventHandler<HTMLDivElement> = () => {
+    if (product.link_url) {
+      window.open(product.link_url, '_blank');
+    }
+  };
+
   return (
-    <div className={ cardClass }>
-      <div className='product__title'>
+    <div className='product__card'>
+      <div className='product__title' onClick={ clickProductHandler }>
         <h2 className='product__name'>
           { product.product_name }
         </h2>
-        <div className='product__avail-container'>
-          <p className='product__avail-text'>
+        <div className={ 'product__avail-container' + availModifier }>
+          <p className={ 'product__avail-text' + availModifier }>
             { availabilityMsg }
           </p>
         </div>
       </div>
       <div className='product__content'>
-        <div className='product__img'>
-          { product.img_url ? <img src={ product.img_url } alt={ product.product_name }/> : <></> }
+        <div className='product__img-container' onClick={ clickProductHandler }>
+          { product.img_url ? <img className='product__img' src={ product.img_url } alt={ product.product_name }/> : <></> }
         </div>
         <div className='product__button-container'>
           <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickBkmarkHandler }/>
@@ -160,7 +166,6 @@ function ProductCard ({ product, bookmark, log }: Props) {
         </div>
       </div>
     </div>
-
   );
 }
 

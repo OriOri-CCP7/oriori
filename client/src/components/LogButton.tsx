@@ -10,11 +10,17 @@ interface Props {
 
 function LogButton({ isLogged, clickHandler }: Props) {
   return (
-    <div className='log__button' onClick={ clickHandler }>
+    <div className='product__button' onClick={ clickHandler }>
       {
         isLogged
-          ? <CheckCircleIcon className="log__icon--solid"/>
-          : <PlusCircleIcon className="log__icon--outline"/>
+          ? <CheckCircleIcon className="product__icon log__icon solid"/>
+          : <PlusCircleIcon className="product__icon log__icon outline"/>
+          
+      }
+      {
+        isLogged
+          ? 'Tried it!'
+          : 'Add'
       }
     </div>
   );
