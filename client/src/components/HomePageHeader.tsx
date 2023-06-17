@@ -57,7 +57,7 @@ const HomePageHeader = () => {
 
           </div>
           
-          <div className="local-production">{"Local Production"}
+          <div className="local-production">{"Local Productions"}
           </div>
         </div>
       </div>
