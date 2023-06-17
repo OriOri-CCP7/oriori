@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
@@ -10,9 +9,8 @@ const HomePageHeader = () => {
     const auth = UserAuth();
     const navigate = useNavigate();
 
-    const [location, setLocation ] =useState<number>(Number(auth?.user.location));
-    const [prefecture, setPrefecture] = useState<string>(prefs[location - 1].name);
-    // const [username, setUsername] =useState<string>(auth?.user.username ?? '');
+    const location: number = Number(auth?.user.location);
+    const prefecture: string = prefs[location - 1].name;
     
     const handleLogout = async () => {
         try {
