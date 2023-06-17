@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
@@ -10,10 +10,28 @@ import Footer from "../components/Footer";
 import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
 
+import prefs from '../data/prefectures.json';
+
+type Prefect = {
+  pk: number,
+  name: string,
+}
+
+
 export default function Home() {
   const navigate = useNavigate();
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
+
+  let prefecture = "";
+  const location = useRef<string>(auth?.user.location ?? '');
+  // const prefecture = useRef<string>(prefs.pk[location.current])
+  const prefObj:Prefect | undefined = prefs.find(pref => pref.pk.toString() === location.current);
+  if(prefObj){
+    prefecture= prefObj.name
+  }
+  
+  
 
   useEffect(() => {
     let headers = {
@@ -60,7 +78,9 @@ export default function Home() {
           navigate('/settings');
         }} />
     </div>
-    
+    <div className="user-location">
+      {prefecture}
+    </div>
     <Header
         className="homepage-header"
         mainText="OriOri Homepage" />
