@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
-import Footer from '../components/Footer';
+
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import ProductGrid from '../components/ProductGrid';
@@ -44,9 +44,7 @@ function Logs() {
       
       <Navbar/>
 
-      <Footer 
-        className = "footer"
-        text="© 2023 OriOri" />
+      
     </div>
   );
 };
