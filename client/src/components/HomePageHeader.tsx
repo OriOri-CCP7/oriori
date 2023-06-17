@@ -12,7 +12,7 @@ const HomePageHeader = () => {
 
     const [location, setLocation ] =useState<number>(Number(auth?.user.location));
     const [prefecture, setPrefecture] = useState<string>(prefs[location - 1].name);
-    const [username, setUsername] =useState<string>(auth?.user.username ?? '');
+    // const [username, setUsername] =useState<string>(auth?.user.username ?? '');
     
     const handleLogout = async () => {
         try {
@@ -47,7 +47,7 @@ const HomePageHeader = () => {
     <div className="user-section">
       <div className="user-picture">
         <div className="circular-icon" style={{ background: 'DodgerBlue', width: '90px', height:'90px' }}>
-          {username}
+          {/* {username} */}
           {/* profile picture */}
           </div>
           </div>
