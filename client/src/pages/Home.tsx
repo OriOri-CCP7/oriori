@@ -3,7 +3,7 @@ import { UserAuth } from "../context/AuthContext";
 import HomePageHeader from "../components/HomePageHeader"
 import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+
 import axios from "axios";
 import './Home.css';
 
@@ -47,8 +47,6 @@ export default function Home() {
     <Navbar/>
     <br />
     <br />
-    <Footer 
-      className = "footer"
-      text="© 2023 OriOri" />
+    
   </>
 )}
