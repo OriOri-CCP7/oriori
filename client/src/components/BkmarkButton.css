@@ -1,15 +1,10 @@
 .bookmark__button {
-  width: 24px;
-  border: none;
+  margin: -18pt auto 0;
+  width: 36pt;
   cursor: pointer;
-  text-decoration: underline;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: 'flex-end';
 }
 
-.bookmark__icon--solid {
+.bookmark__icon.solid {
   position: relative;
   fill: royalblue;
 }

@@ -14,8 +14,8 @@ function BkmarkButton({ isBookmark, clickHandler }: Props) {
     <div className='bookmark__button' onClick={ clickHandler }>
       {
         isBookmark
-          ? <BkmarkSolid className="bookmark__icon--solid"/>
-          : <BkmarkOutline className="bookmark__icon--outline"/>
+          ? <BkmarkSolid className="bookmark__icon solid"/>
+          : <BkmarkOutline className="bookmark__icon outline"/>
       }
     </div>
   );
