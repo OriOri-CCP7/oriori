@@ -1,0 +1,15 @@
+.like__button {
+  width: 24px;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: 'flex-end';
+}
+
+.like__icon--solid {
+  position: relative;
+  fill: rgb(148, 65, 225);
+}

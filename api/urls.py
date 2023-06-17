@@ -10,6 +10,7 @@ urlpatterns = [
     path('users/<str:uuid>/logs/', views.getLogsForUser),
     path('users/<str:uuid>/logs/products/', views.getUsersLoggedProducts),
     path('users/<str:uuid>/logs/new/', views.addNewLog),
+    path('users/<str:uuid>/logs/<int:log_id>/edit/', views.editLog),
     path('users/<str:uuid>/logs/<int:log_id>/deletion/', views.removeLog),
     path('users/<str:uuid>/bookmarks/', views.getUserBookmarks),
     path('users/<str:uuid>/bookmarks/products/', views.getProductDataByUser),

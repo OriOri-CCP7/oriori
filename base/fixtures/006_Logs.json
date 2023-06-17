@@ -5,7 +5,8 @@
     "fields": {
       "user": "1",
       "product": "1",
-      "time_created": "2023-06-13T12:06:56.724Z"
+      "time_created": "2023-06-13T12:06:56.724Z",
+      "liked_it": false
     }
   },
   {
@@ -14,7 +15,8 @@
     "fields": {
       "user": "2",
       "product": "1",
-      "time_created": "2023-06-13T12:06:56.724Z"
+      "time_created": "2023-06-13T12:06:56.724Z",
+      "liked_it": true
     }
   }
 ]

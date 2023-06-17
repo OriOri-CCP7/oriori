@@ -9,11 +9,12 @@ interface LogsDict {
 interface LogList {
   logs: LogsDict,
   addLog: (log: Log) => void,
+  editLog: (log: Log) => void,
   removeLog: (productId: number) => void,
   isLoadingLogs: boolean
 };
 
-const LogContext = createContext<LogList>({ logs: {}, addLog: () => {}, removeLog: () => {}, isLoadingLogs: true});
+const LogContext = createContext<LogList>({ logs: {}, addLog: () => {}, editLog: () => {}, removeLog: () => {}, isLoadingLogs: true});
 
 export const LogContextProvider = ({ children }: { children: ReactNode }) => {
   const auth = UserAuth();
@@ -56,13 +57,19 @@ export const LogContextProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const editLog = (log: Log) => {
+    let workingLogs: LogsDict = logs;
+    workingLogs[log.product] = log;
+    setLogs(workingLogs);
+  };
+
   const removeLog = (productId: number) => {
     let workingLogs: LogsDict = logs;
     delete workingLogs[productId];
     setLogs(workingLogs);
   };
 
-  return <LogContext.Provider value={{ logs, addLog, removeLog, isLoadingLogs }}>
+  return <LogContext.Provider value={{ logs, addLog, editLog, removeLog, isLoadingLogs }}>
     { children }
   </LogContext.Provider>
 };
