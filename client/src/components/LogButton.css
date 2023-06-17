@@ -1,15 +1,15 @@
-.rating-selector {
-  display: flex;
-  flex-direction: row;
-}
-
-.rating-button {
+.log__button {
   width: 24px;
   border: none;
   cursor: pointer;
   text-decoration: underline;
-  margin: 12px;
+  margin: 0;
   padding: 0;
   display: flex;
   justify-content: 'flex-end';
+}
+
+.log__icon--solid {
+  position: relative;
+  fill: limegreen;
 }

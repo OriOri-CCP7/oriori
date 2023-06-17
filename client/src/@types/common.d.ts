@@ -14,10 +14,8 @@ declare type Bookmark = {
   "product": number
 };
 
-declare type Review = {
+declare type Log = {
   "id": number,
   "user": number,
-  "product": number,
-  "rating": 0 | 1 | 1,
-  "comment": string 
+  "product": number
 };

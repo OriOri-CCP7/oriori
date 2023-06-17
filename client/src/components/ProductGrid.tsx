@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import { UserBkmarks } from '../context/BkmarkContext';
-import { UserReviews } from '../context/ReviewContext';
+import { UserLogs } from '../context/LogContext';
 import ProductCard from './ProductCard';
 // import { makeStyles } from '@mui/material/styles';
 // import { styled, makeStyles } from '@mui/material/styles';
@@ -25,7 +25,7 @@ interface Props {
 function ProductGrid({ productArray }: Props) {
   // const [deviceType, setDeviceType ] = useState<string>("desktop");
   const { bookmarks, isLoadingBkmarks } = UserBkmarks();
-  const { reviews, isLoadingRevs } = UserReviews();
+  const { logs, isLoadingLogs } = UserLogs();
   console.log("🥰", bookmarks);
   
   // useEffect(() => {
@@ -66,12 +66,12 @@ function ProductGrid({ productArray }: Props) {
     <>
     <div className="Grid">
       <Grid container style={{ margin: '-1px' }} spacing={0} columnGap={0}>
-          {(!isLoadingBkmarks && !isLoadingRevs) && productArray.map((product) => (
+          {(!isLoadingBkmarks && !isLoadingLogs) && productArray.map((product) => (
               <Grid xs={12} style={{ padding: '1px',  marginBottom: 'auto' }} key={product.product_name}>
                   <ProductCard 
                     product={product}
                     bookmark={bookmarks[product.id.toString()]}
-                    review={reviews[product.id.toString()]}
+                    log={logs[product.id.toString()]}
                     />
               </Grid>
           ))}

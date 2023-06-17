@@ -2,21 +2,24 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 import { UserBkmarks } from '../context/BkmarkContext';
-import './ProductCard.css';
+import { UserLogs } from '../context/LogContext';
 import BkmarkButton from './BkmarkButton';
-import ReviewButton from './ReviewButton';
+import LogButton from './LogButton';
+import './ProductCard.css';
 
 type  Props = {
   product: Product,
   bookmark?: Bookmark,
-  review?: Review
+  log?: Log
 };
 
 
-function ProductCard ({ product, bookmark, review }: Props) {
+function ProductCard ({ product, bookmark, log }: Props) {
   const auth = UserAuth();
   const { addBkmark, removeBkmark } = UserBkmarks();
   const [isBookmark, setIsBookmark] = useState(bookmark ? true : false);
+  const { addLog, removeLog } = UserLogs();
+  const [isLogged, setIsLogged] = useState(log ? true : false);
 
   let availabilityMsg = "No availability info.";
   
@@ -66,7 +69,7 @@ function ProductCard ({ product, bookmark, review }: Props) {
 
   const addBkmarkHandler = () => {
     axios.post(`/api/users/${auth?.user.uuid}/bookmarks/new/`,
-      { product_id: product.id },
+      { product: product.id },
       { headers: headers }
     )
     .then((response) => {
@@ -85,13 +88,43 @@ function ProductCard ({ product, bookmark, review }: Props) {
     .catch((err) => console.log('😈', err));
   };
   
-  const clickHandler: React.MouseEventHandler<HTMLDivElement> = () => {
+  const clickBkmarkHandler: React.MouseEventHandler<HTMLDivElement> = () => {
     if (isBookmark) {
       deleteBkmarkHandler();
     } else {
       addBkmarkHandler();
     }
     setIsBookmark(!isBookmark);
+  };
+
+  const addLogHandler = () => {
+    axios.post(`/api/users/${auth?.user.uuid}/logs/new/`,
+      { product: product.id },
+      { headers: headers }
+    )
+    .then((response) => {
+      addLog(response.data);
+    })
+    .catch((err) => console.log('😈', err));
+  };
+
+  const deleteLogHandler = () => {
+    axios.delete(`/api/users/${auth?.user.uuid}/logs/${log!.id}/deletion/`,
+      { headers: headers }
+    )
+    .then(() => {
+      removeLog(log!.product);
+    })
+    .catch((err) => console.log('😈', err));
+  };
+
+  const clickLogkHandler: React.MouseEventHandler<HTMLDivElement> = () => {
+    if (isLogged) {
+      deleteLogHandler();
+    } else {
+      addLogHandler();
+    }
+    setIsLogged(!isLogged);
   };
 
   return (
@@ -105,8 +138,9 @@ function ProductCard ({ product, bookmark, review }: Props) {
           <div className="product__avail-msg">
               { availabilityMsg }
           </div>
-          <ReviewButton productId={ product.id } review={ review }/>
-          <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickHandler }/>
+          { isLogged && 'Tried it!' }
+          <LogButton isLogged={ isLogged } clickHandler={ clickLogkHandler }/>
+          <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickBkmarkHandler }/>
       </div>
 
   );

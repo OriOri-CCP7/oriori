@@ -11,11 +11,11 @@ interface Props {
 function BkmarkButton({ isBookmark, clickHandler }: Props) {
   
   return (
-    <div className='bookmark-button' onClick={ clickHandler }>
+    <div className='bookmark__button' onClick={ clickHandler }>
       {
         isBookmark
-          ? <BkmarkSolid className="icon--solid"/>
-          : <BkmarkOutline className="icon--outline"/>
+          ? <BkmarkSolid className="bookmark__icon--solid"/>
+          : <BkmarkOutline className="bookmark__icon--outline"/>
       }
     </div>
   );
