@@ -1,66 +1,19 @@
-import React from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import { UserBkmarks } from '../context/BkmarkContext';
 import { UserLogs } from '../context/LogContext';
 import ProductCard from './ProductCard';
-// import { makeStyles } from '@mui/material/styles';
-// import { styled, makeStyles } from '@mui/material/styles';
-
-// type cssClass = {
-//   height: number | string | undefined,
-//   width: number | string | undefined,
-//   padding: number | string | undefined,
-//   margin: number | string | undefined,
-//   backgroundColor: string | undefined,
-//   color: string | undefined
-// }
 
 
 interface Props {
   productArray: Array<Product>,
 };
 
-
   
 function ProductGrid({ productArray }: Props) {
-  // const [deviceType, setDeviceType ] = useState<string>("desktop");
+  
   const { bookmarks, isLoadingBkmarks } = UserBkmarks();
   const { logs, isLoadingLogs } = UserLogs();
   console.log("🥰", bookmarks);
-  
-  // useEffect(() => {
-  //   const setDevice = () => {
-  //     const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  //     const isTablet = window.matchMedia('(min-width: 768px) and (max-width: 991px)').matches;
-  //     // const isDesktop = window.matchMedia('(min-width: 992px)').matches;
-  
-  //     if (isMobile) {
-  //       setDeviceType('mobile');
-  //     } else if (isTablet) {
-  //       setDeviceType('tablet');
-  //     } else {
-  //       setDeviceType('desktop');
-  //     }
-  //   };
-  
-  //   setDevice();
-  //   window.addEventListener('resize', setDevice);
-  
-  //   return () => {
-  //     window.removeEventListener('resize', setDevice);
-  //   };
-  // }, []);
-
-  // const cssMakeStyles = makeStyles((theme: cssClass) => ({
-  //   myClass: {
-  //     height: theme.height,
-  //     width: theme.width,
-  //     padding: theme.padding,
-  //     margin: theme.margin,
-  //     backgroundColor: theme.backgroundColor,
-  //     color: theme.color,
-  //   },
-  // }));
 
   return (
     <>

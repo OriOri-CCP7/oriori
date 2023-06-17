@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import Button from '../components/Button';
 import './HomePageHeader.css';
+import '../styles/index.css'
 import prefs from '../data/prefectures.json';
 
 const HomePageHeader = () => {
@@ -25,7 +26,7 @@ const HomePageHeader = () => {
       };
 
     return (
-    <>
+    <div className="header">
     <div className="logout-section">
       <Button
         className="logout"
@@ -59,7 +60,7 @@ const HomePageHeader = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
 )
 }
 export default HomePageHeader;

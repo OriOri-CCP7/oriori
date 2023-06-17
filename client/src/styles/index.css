@@ -7,3 +7,7 @@
 body {
     background-color: #FDF6F0;
 }
+
+.div-login-attemped {
+  color: red;
+}

@@ -5,10 +5,6 @@
     --header-bgcolor:#FCD8D4
 }
   
-body {
-    background-color:#FCD8D4
-}
-  
 .logout-section {
     padding: 10px 10px;
     background-color: var(--header-bgcolor);

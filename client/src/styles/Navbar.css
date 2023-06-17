@@ -1,11 +1,12 @@
-:root {
+@import url('./index.css');
+/* :root {
   --small-width:30px;
   --medium-width:25px;
   --large-width:20px;
   --small-width-hover:35px;
   --medium-width-hover:30px;
   --large-width-hover:25px;
-}
+} */
 
 .nav {
   position: fixed;

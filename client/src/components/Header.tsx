@@ -1,18 +1,17 @@
 import React from 'react';
-import './Header.css';
+import '../styles/Header.css';
 
 type Props = {
-  className: string,
   mainText: string,
   secondaryText?: string
 }
 
-const Header: React.FC<Props> = ({ className, mainText, secondaryText }: Props) => {
+const Header: React.FC<Props> = ({ mainText, secondaryText }: Props) => {
 
   return (
     <>
     <header
-      className = { className } >
+      className="header" >
       <h1> { mainText } </h1>
       <h3> { secondaryText } </h3>
     </header>

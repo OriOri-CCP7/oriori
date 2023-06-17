@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler } from "react";
-import "./Input.css";
+import "../styles/Input.css";
 
 type Props = { 
   className: string,

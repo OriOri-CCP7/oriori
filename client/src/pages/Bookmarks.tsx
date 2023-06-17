@@ -5,6 +5,9 @@ import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../styles/Header.css';
+import '../styles/index.css';
+import '../styles/Footer.css';
 import './Bookmarks.css';
 
 function Bookmarks() {
@@ -29,9 +32,7 @@ function Bookmarks() {
 
   return (
     <div>
-      <Header
-        className="bookmarks-header"
-        mainText="Bookmarks" />
+      <Header mainText="Bookmarks" />
       {
         products.length > 0
         ? <ProductGrid productArray={products} />
@@ -42,9 +43,7 @@ function Bookmarks() {
       
       <Navbar/>
 
-      <Footer 
-        className = "footer"
-        text="© 2023 OriOri" />
+      <Footer />
     </div>
   );
 };

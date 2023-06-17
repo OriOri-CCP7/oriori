@@ -1,17 +1,12 @@
 import React from 'react';
-import './Footer.css';
+import '../styles/Footer.css';
 
-type Props = {
-  className: string,
-  text: string,
-}
-
-const Footer: React.FC<Props> = ({ className, text }) => {
+const Footer: React.FC<{}> = () => {
   return (
     <>
     <footer
-      className = { className } >
-      <p>{ text }</p>
+      className="footer" >
+      <p>{"© 2023 OriOri"}</p>
     </footer>
     </>
   )
