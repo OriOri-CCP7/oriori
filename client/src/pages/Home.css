@@ -2,17 +2,63 @@
   --small-icon-width:35px;
   --medium-icon-width:33px;
   --large-icon-width:30px;
+  --header-bgcolor:#FCD8D4
 }
 
 body {
   background-color: #FDF6F0;
 }
 
-.buttons {
-  padding: 5px;
-  background-color: #FCD8D4;
+.logout-section {
+  padding: 10px 10px;
+  background-color: var(--header-bgcolor);
+  text-align: left;
+  /* display: flex;
+  justify-content: space-between; */
+}
+
+.logout {
+  text-align:left;
+}
+.setting-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  background-color: var(--header-bgcolor);
+  text-align:right;
+}
+
+.circular-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* adjust as needed */
+  height: 50px; /* adjust as needed */
+  border-radius: 50%;
+  /* background-color: #ccc; adjust as needed */
+}
+
+.user-section {
+  display:flex;
+  justify-content: flex-start;
+  /* justify-items:start; */
+  background-color:var(--header-bgcolor);
+  text-align:left;
+}
+.user-picture {
+  display:flex;
+  justify-content: center;
+  /* flex-grow: 1; */
+}
+
+.user-location {
+  /* background-color: #FCD8D4; */
+  text-align:left;
+  font-size:30px;
+}
+.local-production {
+  text-align:left;
+  font-size:15px;
+  /* background-color: #FCD8D4; */
 }
 
 .homepage-header {
@@ -20,11 +66,9 @@ body {
   padding: 5px;
 }
 
-.logout {
-  padding: 10px 10px;
-  
+.settings-icon {
+  fill: darkgrey;
 }
-
 @media (maxwidth: 320px) {
   
   .logout {
@@ -33,7 +77,7 @@ body {
   
   .settings-icon {
     width: var(--small-icon-width);
-    fill: darkgrey;
+    
   }
 } 
 
@@ -45,7 +89,7 @@ body {
   
   .settings-icon {
     width: var(--medium-icon-width);
-    fill: darkgrey;
+    
   }
   
 }
@@ -58,6 +102,6 @@ body {
   
   .settings-icon {
     width: var(--large-icon-width);
-    fill: darkgrey;
+    
   }
 }
