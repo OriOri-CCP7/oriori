@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
-
-import axios from "axios";
-import './Home.css';
-
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import HomePageHeader from "../components/HomePageHeader"
 import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
-
-import HomePageHeader from "../components/HomePageHeader"
+import Footer from "../components/Footer";
+import axios from "axios";
+import './Home.css';
 
 export default function Home() {
   
@@ -38,9 +34,7 @@ export default function Home() {
   <>
     <HomePageHeader />
     
-    <Header
-        className="homepage-header"
-        mainText="" />
+    
       {
         products.length > 0
         ? <ProductGrid productArray={ products }/>
