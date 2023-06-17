@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import prefs from '../data/prefectures.json';
-import './DropdownMenu.css';
+import '../styles/App.css';
 
 type Props = {
   labelName?: string,

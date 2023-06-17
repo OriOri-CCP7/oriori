@@ -11,3 +11,7 @@ body {
 .div-login-attemped {
   color: red;
 }
+
+.div-signup-alertMessage {
+  color:red;
+}

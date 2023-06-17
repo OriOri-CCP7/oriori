@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
-import './Search.css';
 import ProductGrid from '../components/ProductGrid';
 import DropdownMenu from '../components/DropdownMenu';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from "../components/Footer";
+
+import '../styles/index.css';
 
 export default function Search() {
   const auth = UserAuth();
@@ -32,9 +33,7 @@ export default function Search() {
 
   return (
     <div>
-      <Header
-        className="search-header"
-        mainText="Search"/>
+      <Header mainText="Search"/>
       <DropdownMenu 
         labelName='Select a prefecture: '
         setPrefecture={ getProducts }/>
@@ -46,9 +45,7 @@ export default function Search() {
           </>
       }
       <Navbar/>
-      <Footer 
-        className="footer"
-        text="© 2023 OriOri"/>
+      <Footer />
     </div>
   );
 };

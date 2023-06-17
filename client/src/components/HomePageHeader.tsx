@@ -2,9 +2,9 @@ import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import Button from '../components/Button';
+import prefs from '../data/prefectures.json';
 import './HomePageHeader.css';
 import '../styles/index.css'
-import prefs from '../data/prefectures.json';
 
 const HomePageHeader = () => {
     const auth = UserAuth();

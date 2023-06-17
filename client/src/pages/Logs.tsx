@@ -5,7 +5,9 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import ProductGrid from '../components/ProductGrid';
-import './Logs.css';
+
+import '../styles/Header.css';
+import '../styles/index.css';
 
 function Logs() {
   const auth = UserAuth();
@@ -32,7 +34,6 @@ function Logs() {
   return (
     <div>
       <Header
-        className="logs__header"
         mainText="Tried Products"/>
       {
         products.length > 0
@@ -44,9 +45,7 @@ function Logs() {
       
       <Navbar/>
 
-      <Footer 
-        className = "footer"
-        text="© 2023 OriOri" />
+      <Footer />
     </div>
   );
 };

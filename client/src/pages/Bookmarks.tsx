@@ -5,10 +5,10 @@ import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../styles/Header.css';
+
 import '../styles/index.css';
-import '../styles/Footer.css';
-import './Bookmarks.css';
+
+
 
 function Bookmarks() {
   const auth = UserAuth();
