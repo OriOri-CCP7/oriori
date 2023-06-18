@@ -6,7 +6,7 @@ import { UserLogs } from '../context/LogContext';
 import BkmarkButton from './BkmarkButton';
 import LikeButton from './LikeButton';
 import LogButton from './LogButton';
-import './ProductCard.css';
+import '../styles/Card.css';
 
 type  Props = {
   product: Product,

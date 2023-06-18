@@ -6,8 +6,11 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
 import "../styles/index.css";
 import "../styles/App.css";
+import "../styles/Input.css";
+import "../styles/Button.css";
 
 
 const PasswordReset: React.FC = () => {

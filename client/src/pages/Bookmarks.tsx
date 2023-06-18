@@ -8,8 +8,6 @@ import Footer from '../components/Footer';
 
 import '../styles/index.css';
 
-
-
 function Bookmarks() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);

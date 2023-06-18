@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import Button from '../components/Button';
 import prefs from '../data/prefectures.json';
-import './HomePageHeader.css';
-import '../styles/index.css'
+
+import '../styles/index.css';
+import '../styles/Icons.css';
+import '../styles/Header.css';
+import '../styles/Button.css';
+
 
 const HomePageHeader = () => {
     const auth = UserAuth();
@@ -27,14 +31,14 @@ const HomePageHeader = () => {
 
     return (
     <div className="header">
-    <div className="logout-section">
+    <div className="homepage-logout-section">
       <Button
-        className="logout"
+        className="logout__button"
         text="Log Out"
         type="button"
         onClick={ handleLogout } />
     </div>
-    <div className="setting-section">
+    <div className="homepage-setting-section">
       <div className="circular-icon" style={{ background: '#ccc'}}>
         <Cog6ToothIcon 
           className="settings-icon"
@@ -43,20 +47,20 @@ const HomePageHeader = () => {
             }} />
       </div>
     </div>
-    <div className="user-section">
-      <div className="user-picture">
+    <div className="homepage-user-section">
+      <div className="homepage-user-picture">
         <div className="circular-icon" style={{ background: 'DodgerBlue', width: '90px', height:'90px' }}>
           {/* {username} */}
           {/* profile picture */}
           </div>
           </div>
           <div>
-          <div className="user-location">
+          <div className="homepage-prefecture">
            {prefecture ? <div>{prefecture}</div> : null}
 
           </div>
           
-          <div className="local-production">{"Local Productions"}
+          <div className="homepage-title">{"Local Productions"}
           </div>
         </div>
       </div>

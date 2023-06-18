@@ -6,7 +6,6 @@ import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import ProductGrid from '../components/ProductGrid';
 
-import '../styles/Header.css';
 import '../styles/index.css';
 
 function Logs() {

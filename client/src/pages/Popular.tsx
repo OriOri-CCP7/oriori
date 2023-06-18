@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
 import ProductGrid from '../components/ProductGrid';
+
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from "../components/Footer";

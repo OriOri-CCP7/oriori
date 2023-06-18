@@ -2,6 +2,9 @@
   --small-width:30px;
   --medium-width:25px;
   --large-width:20px;
+  --small-icon-width:35px;
+  --medium-icon-width:33px;
+  --large-icon-width:30px;
 }
 
 body {

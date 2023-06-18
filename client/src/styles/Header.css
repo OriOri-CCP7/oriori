@@ -2,3 +2,40 @@
     background-color: #FCD8D4;
     padding: 15px;
 }
+
+.homepage-logout-section {
+    padding: 10px 10px;
+    text-align: left;
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.homepage-setting-section {
+    display: flex;
+    justify-content: flex-end;
+    text-align:right;
+}
+
+.homepage-user-section {
+    display:flex;
+    justify-content: flex-start;
+    /* justify-items:start; */
+    text-align:left;
+}
+
+.homepage-user-picture {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* flex-grow: 1; */
+}
+
+.homepage-title {
+    text-align:left;
+    font-size:15px;
+}
+
+.homepage-prefecture {
+    text-align:left;
+    font-size:30px;
+}
