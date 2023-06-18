@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
