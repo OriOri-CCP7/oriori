@@ -38,4 +38,12 @@ button {
     cursor: pointer;
     overflow: hidden;
 }
-  
+
+.product__button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 10pt;
+    cursor: pointer;
+}

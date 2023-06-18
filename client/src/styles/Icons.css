@@ -38,6 +38,11 @@
     fill: #ff6600;
 }
 
+.product__icon {
+    width: 18pt;
+    margin: 4pt auto 2pt;
+}
+
 .settings-icon {
     fill: darkgrey;
 }
