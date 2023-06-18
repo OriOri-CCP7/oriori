@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 
 import axios from 'axios';
-import './Popular.css';
 
 import '../styles/index.css';
 

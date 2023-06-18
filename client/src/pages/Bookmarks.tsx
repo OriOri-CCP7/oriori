@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import '../styles/index.css';
 
 import axios from 'axios';
-import './Bookmarks.css';
+
 
 function Bookmarks() {
   const auth = UserAuth();

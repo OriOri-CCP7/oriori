@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 
 import axios from 'axios';
-import './Search.css';
+
 
 import '../styles/index.css';
 
