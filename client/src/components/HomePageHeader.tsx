@@ -1,3 +1,4 @@
+import React from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
@@ -11,23 +12,23 @@ import '../styles/Button.css';
 
 
 const HomePageHeader = () => {
-    const auth = UserAuth();
-    const navigate = useNavigate();
+  const auth = UserAuth();
+  const navigate = useNavigate();
 
-    const location: number = Number(auth?.user.location);
-    const prefecture: string = prefs[location - 1].name;
-    
-    const handleLogout = async () => {
-        try {
-          if(auth){
-            await auth.logout();
-          }
-          console.log("User Logged Out");
-          navigate('/');
-        } catch (error) {
-          console.log('🥸', error);
-        }
-      };
+  const location: number = Number(auth?.user.location);
+  const prefecture: string = prefs[location - 1].name;
+  
+  const handleLogout = async () => {
+    try {
+      if(auth){
+        await auth.logout();
+      }
+      console.log("User Logged Out");
+      navigate('/');
+    } catch (error) {
+      console.log('🥸', error);
+    }
+  };
 
     return (
     <div className="header">

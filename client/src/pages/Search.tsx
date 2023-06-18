@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
-import axios from 'axios';
 import ProductGrid from '../components/ProductGrid';
 import DropdownMenu from '../components/DropdownMenu';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
-import Footer from "../components/Footer";
+
+import axios from 'axios';
+import './Search.css';
 
 import '../styles/index.css';
 
@@ -45,7 +46,7 @@ export default function Search() {
           </>
       }
       <Navbar/>
-      <Footer />
+      
     </div>
   );
 };

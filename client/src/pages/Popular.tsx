@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
-import axios from 'axios';
 import ProductGrid from '../components/ProductGrid';
 
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
-import Footer from "../components/Footer";
+
+import axios from 'axios';
+import './Popular.css';
 
 import '../styles/index.css';
 
@@ -33,7 +34,7 @@ function Popular() {
       <Header mainText="Hot Right Now" />
       <ProductGrid productArray={products} />
       <Navbar/>
-      <Footer />
+      
     </div>
   );
 }

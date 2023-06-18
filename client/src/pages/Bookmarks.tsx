@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
-import axios from 'axios';
 import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+
 
 import '../styles/index.css';
+
+import axios from 'axios';
+import './Bookmarks.css';
 
 function Bookmarks() {
   const auth = UserAuth();
@@ -41,7 +43,6 @@ function Bookmarks() {
       
       <Navbar/>
 
-      <Footer />
     </div>
   );
 };
