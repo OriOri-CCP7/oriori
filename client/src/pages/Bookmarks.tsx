@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
-import axios from 'axios';
 import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+
+import axios from 'axios';
 import './Bookmarks.css';
 
 function Bookmarks() {
@@ -42,9 +42,6 @@ function Bookmarks() {
       
       <Navbar/>
 
-      <Footer 
-        className = "footer"
-        text="© 2023 OriOri" />
     </div>
   );
 };

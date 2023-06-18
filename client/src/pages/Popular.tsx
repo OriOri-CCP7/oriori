@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
-import axios from 'axios';
-import './Popular.css';
 import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
-import Footer from "../components/Footer";
+
+import axios from 'axios';
+import './Popular.css';
 
 function Popular() {
   const auth = UserAuth();
@@ -33,9 +33,7 @@ function Popular() {
           mainText="Hot Right Now" />
       <ProductGrid productArray={products} />
       <Navbar/>
-      <Footer 
-        className = "footer"
-        text="© 2023 OriOri" />
+      
     </div>
   );
 }
