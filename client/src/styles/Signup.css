@@ -1,20 +1,3 @@
-body {
-    background-color: #FDF6F0;
-}
-form {
-    margin: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-input {
-    background-color: #FCD8D4;
-    padding: 3px;
-    border-radius: 5px;
-}
-
 .div-signup-alertMessage {
     color:red;
 }

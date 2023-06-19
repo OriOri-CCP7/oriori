@@ -1,16 +1,4 @@
-.product__icon {
-    width: 18pt;
-    margin: 4pt auto 2pt;
-}
 .like__icon.solid {
     position: relative;
     fill: rgb(148, 65, 225);
-}
-.product__button {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 0 auto;
-    font-size: 10pt;
-    cursor: pointer;
 }

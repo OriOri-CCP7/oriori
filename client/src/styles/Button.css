@@ -4,4 +4,10 @@ button {
     border-radius: 5px 5px;
 }
 
-/* is there a css class to handle product__button ? */
+.backButton {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}

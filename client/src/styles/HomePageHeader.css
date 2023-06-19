@@ -10,11 +10,6 @@ button {
     border-radius: 5px 5px;
 }
 
-.header {
-    background-color: #FCD8D4;
-    padding: 15px;
-}
-
 .logout__button {
     text-align:left;
 }

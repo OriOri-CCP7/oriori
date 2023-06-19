@@ -1,8 +1,6 @@
 import React from 'react'
 import { HandThumbUpIcon as LikeSolid } from '@heroicons/react/24/solid';
 import { HandThumbUpIcon as LikeOutline } from '@heroicons/react/24/outline';
-// import '../styles/Icons.css';
-// import '../styles/Button.css';
 
 import '../styles/LikeButton.css';
 

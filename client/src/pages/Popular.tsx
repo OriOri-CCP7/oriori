@@ -7,8 +7,6 @@ import Header from '../components/Header';
 
 import axios from 'axios';
 
-// import '../styles/index.css';
-
 import '../styles/Popular.css';
 
 function Popular() {
