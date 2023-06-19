@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import ProductGrid from '../components/ProductGrid';
 
-import '../styles/index.css';
+// import '../styles/index.css';
 
 import '../styles/Logs.css';
 

@@ -5,7 +5,7 @@ import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
 
 import axios from "axios";
-import "../styles/index.css";
+// import "../styles/index.css";
 
 import "../styles/Home.css";
 

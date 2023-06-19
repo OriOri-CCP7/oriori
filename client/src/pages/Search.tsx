@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import axios from 'axios';
 
 
-import '../styles/index.css';
+// import '../styles/index.css';
 
 import '../styles/Search.css';
 

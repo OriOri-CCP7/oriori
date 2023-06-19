@@ -1,0 +1,17 @@
+button {
+    padding: 10px 10px;
+    background-color:#F5C6AA;
+    border-radius: 5px 5px;
+}
+input {
+    background-color: #FCD8D4;
+    padding: 3px;
+    border-radius: 5px;
+}
+.backButton {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
