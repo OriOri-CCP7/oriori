@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import "../styles/index.css";
 
+import "../styles/Home.css";
+
 export default function Home() {
   
   const auth = UserAuth();

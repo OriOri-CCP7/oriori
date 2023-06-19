@@ -12,6 +12,8 @@ import "../styles/App.css";
 import "../styles/Input.css";
 import "../styles/Button.css";
 
+import "../styles/PasswordReset.css";
+
 
 const PasswordReset: React.FC = () => {
   const [email, setEmail] = useState<string>('');

@@ -13,6 +13,8 @@ import "../styles/App.css";
 import "../styles/Input.css";
 import "../styles/Button.css";
 
+import "../styles/Login.css";
+
 const { database } = app;
 
 const alertMsg = [

@@ -9,6 +9,8 @@ import axios from 'axios';
 import '../styles/Button.css';
 import '../styles/Input.css';
 
+import '../styles/Settings.css';
+
 function Settings() {
   const auth  = UserAuth();
   const navigate = useNavigate();

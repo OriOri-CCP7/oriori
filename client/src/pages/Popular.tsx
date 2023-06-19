@@ -9,6 +9,8 @@ import axios from 'axios';
 
 import '../styles/index.css';
 
+import '../styles/Popular.css';
+
 function Popular() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);

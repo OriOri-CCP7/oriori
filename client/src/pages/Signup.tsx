@@ -10,6 +10,8 @@ import "../styles/index.css";
 import "../styles/App.css";
 import "../styles/Input.css";
 
+import "../styles/Signup.css";
+
 const pwdMsg = [
   {id:0, text:""},
   {id:1, text:"password cannot be empty"},

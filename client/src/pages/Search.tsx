@@ -10,6 +10,8 @@ import axios from 'axios';
 
 import '../styles/index.css';
 
+import '../styles/Search.css';
+
 export default function Search() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);

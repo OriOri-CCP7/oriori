@@ -8,6 +8,8 @@ import ProductGrid from '../components/ProductGrid';
 
 import '../styles/index.css';
 
+import '../styles/Logs.css';
+
 function Logs() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
