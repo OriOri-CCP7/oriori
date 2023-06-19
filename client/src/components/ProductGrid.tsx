@@ -1,8 +1,10 @@
+import React from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import { UserBkmarks } from '../context/BkmarkContext';
 import { UserLogs } from '../context/LogContext';
 import ProductCard from './ProductCard';
 
+import '../styles/ProductGrid.css';
 
 interface Props {
   productArray: Array<Product>,

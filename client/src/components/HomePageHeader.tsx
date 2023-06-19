@@ -10,6 +10,7 @@ import '../styles/Icons.css';
 import '../styles/Header.css';
 import '../styles/Button.css';
 
+import '..styles/HomePageHeader.css'
 
 const HomePageHeader = () => {
   const auth = UserAuth();

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { HomeIcon, BookmarkIcon, FireIcon, MagnifyingGlassIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
 

@@ -4,6 +4,8 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import '../styles/Icons.css';
 import '../styles/Button.css';
 
+import '../styles/LogButton.css';
+
 interface Props {
   isLogged: boolean,
   clickHandler: React.MouseEventHandler<HTMLDivElement>

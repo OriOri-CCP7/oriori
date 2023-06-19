@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import prefs from '../data/prefectures.json';
+
 import '../styles/DropdownMenu.css';
 
 type Props = {

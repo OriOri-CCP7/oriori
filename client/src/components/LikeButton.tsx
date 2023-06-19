@@ -4,6 +4,8 @@ import { HandThumbUpIcon as LikeOutline } from '@heroicons/react/24/outline';
 import '../styles/Icons.css';
 import '../styles/Button.css';
 
+import '../styles/LikeButton.css';
+
 interface Props {
   isLiked: boolean,
   clickHandler: React.MouseEventHandler<HTMLDivElement>

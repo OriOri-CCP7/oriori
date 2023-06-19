@@ -4,6 +4,7 @@ import { BookmarkIcon as BkmarkOutline } from '@heroicons/react/24/outline';
 import "../styles/Icons.css";
 import "../styles/Button.css";
 
+import "../styles/BkmarkButton.css";
 
 interface Props {
   isBookmark: boolean,

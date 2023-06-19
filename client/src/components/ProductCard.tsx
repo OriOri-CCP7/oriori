@@ -14,6 +14,8 @@ import '../styles/Icons.css';
 import '../styles/Button.css';
 import '../styles/Images.css';
 
+import '../styles/ProductCard.css';
+
 type  Props = {
   product: Product,
   bookmark?: Bookmark,
