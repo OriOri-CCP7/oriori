@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { HomeIcon, BookmarkIcon, FireIcon, MagnifyingGlassIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
 
 import '../styles/Navbar.css';
-import '../styles/Icons.css';
+// import '../styles/Icons.css';
 
 function Navbar() {
   const navigate = useNavigate();
