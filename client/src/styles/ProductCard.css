@@ -1,18 +1,24 @@
-.product__button {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 0 auto;
-    font-size: 10pt;
-    cursor: pointer;
-}
-
 .product__card {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     align-content: center;
+}
+
+.product__title, .product__content {
+    width: calc(100% - 24pt);
+    border-radius: 12pt;
+    background-color: white;
+}
+
+.product__title {
+    margin: 14pt 12pt 6pt;
+    padding: 6pt;
+}
+
+.product__name {
+    font-size: 14pt;
 }
 
 .product__avail-container {
@@ -22,12 +28,32 @@
     background-color: #E5E5E5;
 }
 
+.product__avail-text {
+    font-size: 12pt;
+    color: #808080;
+}
+
 .product__avail-container.new {
     background-color: #CAFFC3;
 }
 
+.product__avail-text.new {
+    color: #00AC08;
+}
+
 .product__avail-container.ending {
     background-color: #FFCFD9;
+}
+
+.product__avail-text.ending {
+    color: #CC000E
+}
+
+.product__content {
+    display: flex;
+    flex-direction: row;
+    height: 180pt;
+    margin: 6pt 12pt 0;
 }
 
 .product__img-container {
@@ -46,57 +72,17 @@
     border-bottom-right-radius: 12pt;
 }
 
+.product__img {
+    width: 100%;
+    object-fit: cover;
+}
+
 .product__button-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     min-width: 50pt;
     margin: 12pt;
-}
-.product__title, .product__content {
-    width: calc(100% - 24pt);
-    border-radius: 12pt;
-    background-color: white;
-}
-
-.product__title {
-    margin: 14pt 12pt 6pt;
-    padding: 6pt;
-}
-
-.product__name {
-    font-size: 14pt;
-}
-
-.product__avail-text {
-    font-size: 12pt;
-    color: #808080;
-}
-
-.product__avail-text.new {
-    color: #00AC08;
-}
-
-.product__avail-text.ending {
-    color: #CC000E
-}
-
-.product__content {
-    display: flex;
-    flex-direction: row;
-    height: 180pt;
-    margin: 6pt 12pt 0;
-}
-
-.product__icon {
-    width: 18pt;
-    margin: 4pt auto 2pt;
-}
-
-button {
-    padding: 10px 10px;
-    background-color:#F5C6AA;
-    border-radius: 5px 5px;
 }
 
 .product__button {
@@ -108,7 +94,7 @@ button {
     cursor: pointer;
 }
 
-.product__img {
-    width: 100%;
-    object-fit: cover;
+.product__icon {
+    width: 18pt;
+    margin: 4pt auto 2pt;
 }

@@ -4,12 +4,6 @@
     --large-icon-width:30px;
 }
 
-button {
-    padding: 10px 10px;
-    background-color:#F5C6AA;
-    border-radius: 5px 5px;
-}
-
 .logout__button {
     text-align:left;
 }
