@@ -1,8 +1,8 @@
 import React from 'react'
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
-import '../styles/Icons.css';
-import '../styles/Button.css';
+// import '../styles/Icons.css';
+// import '../styles/Button.css';
 
 import '../styles/LogButton.css';
 

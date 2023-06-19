@@ -5,10 +5,10 @@ import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import Button from '../components/Button';
 import prefs from '../data/prefectures.json';
 
-import '../styles/index.css';
-import '../styles/Icons.css';
-import '../styles/Header.css';
-import '../styles/Button.css';
+// import '../styles/index.css';
+// import '../styles/Icons.css';
+// import '../styles/Header.css';
+// import '../styles/Button.css';
 
 import '../styles/HomePageHeader.css'
 

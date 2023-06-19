@@ -4,7 +4,7 @@ import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 
-import '../styles/index.css';
+// import '../styles/index.css';
 
 import '../styles/Bookmarks.css';
 
