@@ -6,6 +6,7 @@ import { UserLogs } from '../context/LogContext';
 import BkmarkButton from './BkmarkButton';
 import LikeButton from './LikeButton';
 import LogButton from './LogButton';
+import ShareBtnSolid from './ShareBtn';
 
 import '../styles/ProductCard.css';
 
@@ -161,6 +162,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
         </div>
         <div className='product__button-container'>
           <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickBkmarkHandler }/>
+          <ShareBtnSolid hasShared={false} clickHandler={()=>{}} />
           <LogButton isLogged={ isLogged } clickHandler={ clickLogHandler }/>
           { isLogged && <LikeButton isLiked={ isLiked } clickHandler={ clickLikeHandler }/> }
         </div>
