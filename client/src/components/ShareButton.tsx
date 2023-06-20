@@ -1,6 +1,6 @@
 import React from 'react';
-import { ShareIcon as ShareBtnSolid } from '@heroicons/react/24/solid'
-import '../styles/ShareBtn.css';
+import { ShareIcon as ShareButtonSolid } from '@heroicons/react/24/solid'
+import '../styles/ShareButton.css';
 
 type Props = {
     hasShared: boolean,
@@ -8,12 +8,12 @@ type Props = {
 };
 
 
-const Share = ( { hasShared, clickHandler }: Props ) => {
+const ShareButton = ( { hasShared, clickHandler }: Props ) => {
 
     return (
         <div>
             <div className='share__btn' onClick={clickHandler}>
-                <ShareBtnSolid className="share__btn solid"/>
+                <ShareButtonSolid className="share__btn solid"/>
                 </div>
                 <div className='share__btn text'>
                 {hasShared ? "Link Copied" : null }
@@ -22,4 +22,4 @@ const Share = ( { hasShared, clickHandler }: Props ) => {
     )
 }
 
-export default Share;
+export default ShareButton;
