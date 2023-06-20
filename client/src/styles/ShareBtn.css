@@ -2,4 +2,9 @@
     position: relative;
     fill: grey;
     width:20px;
+    
+}
+.share__btn.text {
+    font-size: 10pt;
+    color: #808080;
 }

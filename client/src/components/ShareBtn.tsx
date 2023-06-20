@@ -14,8 +14,9 @@ const Share = ( { hasShared, clickHandler }: Props ) => {
         <div>
             <div className='share__btn' onClick={clickHandler}>
                 <ShareBtnSolid className="share__btn solid"/>
-                <br />
-                {hasShared ? null : "Link Copied"}
+                </div>
+                <div className='share__btn text'>
+                {hasShared ? "Link Copied" : null }
             </div>
         </div>
     )
