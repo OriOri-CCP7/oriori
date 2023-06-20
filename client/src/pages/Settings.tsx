@@ -5,7 +5,8 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import './Settings.css';
+
+import '../styles/Settings.css';
 
 function Settings() {
   const auth  = UserAuth();

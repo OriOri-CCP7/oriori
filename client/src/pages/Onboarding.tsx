@@ -5,8 +5,9 @@ import app from '../firebase.config';
 import { ref, set } from 'firebase/database';
 import { UserAuth } from '../context/AuthContext';
 import DropdownMenu from '../components/DropdownMenu';
-import './Onboarding.css';
 import Button from '../components/Button';
+
+import '../styles/Onboarding.css';
 
 const { database } = app;
 

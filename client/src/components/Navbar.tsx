@@ -1,8 +1,8 @@
 import React from 'react';
-import './Navbar.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { HomeIcon, BookmarkIcon, FireIcon, MagnifyingGlassIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
 
+import '../styles/Navbar.css';
 
 function Navbar() {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ function Navbar() {
         </li>
 
         <li className='Heart'
-          style={location.pathname === '/favorite' ? {background : '#ffe4e1'} : {}}>
+          style={location.pathname === '/bookmarks' ? {background : '#ffe4e1'} : {}}>
           <BookmarkIcon 
             className='nav__icon bkmark'
             onClick={() => {

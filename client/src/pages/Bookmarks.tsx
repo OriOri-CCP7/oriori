@@ -4,8 +4,9 @@ import ProductGrid from '../components/ProductGrid';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 
+import '../styles/Bookmarks.css';
+
 import axios from 'axios';
-import './Bookmarks.css';
 
 function Bookmarks() {
   const auth = UserAuth();
@@ -29,9 +30,7 @@ function Bookmarks() {
 
   return (
     <div>
-      <Header
-        className="bookmarks-header"
-        mainText="Bookmarks" />
+      <Header mainText="Bookmarks" />
       {
         products.length > 0
         ? <ProductGrid productArray={products} />

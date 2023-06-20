@@ -1,12 +1,8 @@
-:root {
+:root{
   --small-width:30px;
   --medium-width:25px;
   --large-width:20px;
-  --small-width-hover:35px;
-  --medium-width-hover:30px;
-  --large-width-hover:25px;
 }
-
 .nav {
   position: fixed;
   width: 100%;
@@ -41,34 +37,27 @@
 .nav__icon.home {
   fill:#33b45e;
 }
-
 .nav__icon.bkmark {
   fill: royalblue;
 }
-
 .nav__icon.log {
   fill: limegreen;
 }
-
 .nav__icon.pop {
   fill: #ff6600;
 }
-
 @media (max-width: 320px) {
   .nav__icon {
-    width: var(--small-width);
+      width: var(--small-width);
   }
-}
-  
-@media (min-width: 321px) and (max-width: 768px) {
+} 
+@media (min-width: 321px) and (max-width: 768px) {  
   .nav__icon {
-    width: var(--medium-width);
+      width: var(--medium-width);
   }
 }
-
-@media (min-width: 769px) { 
+@media (min-width: 769px) {    
   .nav__icon {
-    width: var(--large-width);
+      width: var(--large-width);
   }
 }
-

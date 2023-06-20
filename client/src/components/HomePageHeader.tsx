@@ -3,8 +3,9 @@ import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import Button from '../components/Button';
-import './HomePageHeader.css';
 import prefs from '../data/prefectures.json';
+
+import '../styles/HomePageHeader.css'
 
 const HomePageHeader = () => {
   const auth = UserAuth();
@@ -25,41 +26,42 @@ const HomePageHeader = () => {
     }
   };
 
-  return (
-    <>
-      <div className="logout-section">
-        <Button
-          className="logout"
-          text="Log Out"
-          type="button"
-          onClick={ handleLogout } />
+    return (
+    <div className="header">
+    <div className="homepage-logout-section">
+      <Button
+        className="logout__button"
+        text="Log Out"
+        type="button"
+        onClick={ handleLogout } />
+    </div>
+    <div className="homepage-setting-section">
+      <div className="circular-icon" style={{ background: '#ccc'}}>
+        <Cog6ToothIcon 
+          className="settings-icon"
+          onClick = {() => {
+            navigate('/settings');
+            }} />
       </div>
-      <div className="setting-section">
-        <div className="circular-icon" style={{ background: '#ccc'}}>
-          <Cog6ToothIcon 
-            className="settings-icon"
-            onClick = {() => {
-              navigate('/settings');
-            }}/>
-        </div>
-      </div>
-      <div className="user-section">
-        <div className="user-picture">
-          <div className="circular-icon" style={{ background: 'DodgerBlue', width: '90px', height:'90px' }}>
-            {/* {username} */}
-            {/* profile picture */}
+    </div>
+    <div className="homepage-user-section">
+      <div className="homepage-user-picture">
+        <div className="circular-icon" style={{ background: 'DodgerBlue', width: '90px', height:'90px' }}>
+          {/* {username} */}
+          {/* profile picture */}
+          </div>
+          </div>
+          <div>
+          <div className="homepage-prefecture">
+           {prefecture ? <div>{prefecture}</div> : null}
+
+          </div>
+          
+          <div className="homepage-title">{"Local Productions"}
           </div>
         </div>
-        <div>
-          <div className="user-location">
-            {prefecture ? <div>{prefecture}</div> : null}
-          </div>
-          <div className="local-production">
-            {"Local Productions"}
-          </div>
-        </div>
       </div>
-    </>
-  )
+    </div>
+)
 }
 export default HomePageHeader;

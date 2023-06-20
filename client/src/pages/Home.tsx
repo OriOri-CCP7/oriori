@@ -5,7 +5,8 @@ import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
 
 import axios from "axios";
-import './Home.css';
+
+import "../styles/Home.css";
 
 export default function Home() {
   

@@ -1,12 +1,13 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
-import "./PasswordReset.css";
+
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import "../styles/PasswordReset.css";
 
 const PasswordReset: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -33,9 +34,7 @@ const PasswordReset: React.FC = () => {
 
   return (
   <div className="password-reset-form">
-  <Header
-        className="password-reset-header"
-        mainText="OriOri Password Reset"></Header>
+  <Header mainText="OriOri Password Reset" />
   <p className="reset-message">Enter your email and we'll send you a link to reset your password.</p>
   <form onSubmit = { handleResetPassword }>
   <Input 
@@ -58,9 +57,7 @@ const PasswordReset: React.FC = () => {
   )
   }
 
-<Footer 
-        className = "footer"
-        text="© 2023 OriOri" />
+<Footer />
   </div>
   )
 }

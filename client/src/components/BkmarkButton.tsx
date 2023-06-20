@@ -1,7 +1,8 @@
 import React from 'react'
 import { BookmarkIcon as BkmarkSolid } from '@heroicons/react/24/solid';
 import { BookmarkIcon as BkmarkOutline } from '@heroicons/react/24/outline';
-import './BkmarkButton.css';
+
+import "../styles/BkmarkButton.css";
 
 interface Props {
   isBookmark: boolean,

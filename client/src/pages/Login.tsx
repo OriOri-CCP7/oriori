@@ -3,11 +3,12 @@ import { useNavigate, Link } from "react-router-dom";
 import app from '../firebase.config';
 import { ref, get } from 'firebase/database';
 import { UserAuth } from "../context/AuthContext";
-import "./Login.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
+import "../styles/Login.css";
 
 const { database } = app;
 
@@ -73,8 +74,7 @@ const Login: React.FC = () => {
   return (
     <>
       <Header
-        className="login-header"
-        mainText="OriOri Login"></Header>
+        mainText="OriOri Login" />
       <form
         onSubmit = { handleLogin }>
         
@@ -110,9 +110,7 @@ const Login: React.FC = () => {
         <Link to = "/new-password"> Reset it here!</Link>
       </p>
 
-      <Footer 
-        className = "footer"
-        text="© 2023 OriOri" />
+      <Footer />
     </>
   )
 }

@@ -6,7 +6,8 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 
 import axios from 'axios';
-import './Search.css';
+
+import '../styles/Search.css';
 
 export default function Search() {
   const auth = UserAuth();
@@ -32,9 +33,7 @@ export default function Search() {
 
   return (
     <div>
-      <Header
-        className="search-header"
-        mainText="Search"/>
+      <Header mainText="Search"/>
       <DropdownMenu 
         labelName='Select a prefecture: '
         setPrefecture={ getProducts }/>

@@ -1,11 +1,12 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
-import "./Signup.css";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
+import "../styles/Signup.css";
 
 const pwdMsg = [
   {id:0, text:""},
@@ -72,9 +73,7 @@ const Signup: React.FC = () => {
   
   return (
     <>
-      <Header
-        className="signup-header"
-        mainText="OriOri Signup" />
+      <Header mainText="OriOri Signup" />
       <form
         onSubmit = { handleSignUp } >
         <Input
@@ -120,9 +119,7 @@ const Signup: React.FC = () => {
           <Link to = "/"> Log In! </Link>
         </p>
       </form>
-      <Footer 
-        className = "footer"
-        text="© 2023 OriOri" />
+      <Footer />
     </>
   );
 };

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import ProductGrid from '../components/ProductGrid';
+
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 
 import axios from 'axios';
-import './Popular.css';
+
+import '../styles/Popular.css';
 
 function Popular() {
   const auth = UserAuth();
@@ -28,9 +30,7 @@ function Popular() {
 
   return (
     <div>
-      <Header
-          className="popular-header"
-          mainText="Hot Right Now" />
+      <Header mainText="Hot Right Now" />
       <ProductGrid productArray={products} />
       <Navbar/>
       
