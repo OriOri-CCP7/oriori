@@ -158,17 +158,15 @@ function ProductCard ({ product, bookmark, log }: Props) {
           const shareURL = `${projectURL}#${product.id}`;
             // const url = window.location.href;
             await navigator.clipboard.writeText(shareURL);
-            console.log("💌",product.product_name,":", shareURL);
+            console.log("💌",product.id, ":", product.product_name,":", shareURL);
         }
-      
-      setHasShared(true);
-      setTimeout(() => {
-        setHasShared(false);
-      }, 3000);
-    }  catch (error){
-      console.error("💩",error);
+        setHasShared(true);
+        setTimeout(() => {
+          setHasShared(false);
+        }, 3000);
+      } catch (error){
+        console.error("💩",error);
     }
-    
   } 
   
 
