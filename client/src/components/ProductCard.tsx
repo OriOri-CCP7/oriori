@@ -156,7 +156,6 @@ function ProductCard ({ product, bookmark, log }: Props) {
           })
         } else {
           const shareURL = `${projectURL}#${product.id}`;
-            // const url = window.location.href;
             await navigator.clipboard.writeText(shareURL);
             console.log("💌",product.id, ":", product.product_name,":", shareURL);
         }
