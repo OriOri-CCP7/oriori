@@ -133,7 +133,10 @@ function ProductCard ({ product, bookmark, log }: Props) {
   const clickLikeHandler: React.MouseEventHandler<HTMLDivElement> = () => {
     const workingLog = log!;
     workingLog.liked_it = !isLiked;
-    editLog(workingLog);
+    axios.patch(`/api/users/${auth?.user.uuid}/logs/${log!.id}/edit/`, 
+      workingLog,
+      { headers: headers }
+    )
     setIsLiked(!isLiked);
   };
 
