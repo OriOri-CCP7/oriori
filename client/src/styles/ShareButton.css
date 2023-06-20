@@ -1,10 +1,10 @@
-.share__btn.solid {
+.share__button.solid {
     position: relative;
     fill: grey;
     width:20px;
     
 }
-.share__btn.text {
+.share__button.text {
     font-size: 10pt;
     color: #808080;
 }
