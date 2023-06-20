@@ -188,10 +188,10 @@ function ProductCard ({ product, bookmark, log }: Props) {
         </div>
         <div className='product__button-container'>
           <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickBkmarkHandler }/>
-          <ShareBtnSolid hasShared={hasShared} clickHandler={handleShareClick} />
           <LogButton isLogged={ isLogged } clickHandler={ clickLogHandler }/>
           { isLogged && <LikeButton isLiked={ isLiked } clickHandler={ clickLikeHandler }/> }
         </div>
+          <ShareBtnSolid hasShared={hasShared} clickHandler={handleShareClick} />
       </div>
     </div>
   );
