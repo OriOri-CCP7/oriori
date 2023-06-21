@@ -128,7 +128,7 @@ def getProductDataByPopularity(request):
     for log in Log.objects.values('product__id').annotate(num_likes=Count(Case(When(liked_it=True, then=1)))).order_by('num_likes').reverse():
       if log['num_likes'] != 0:
         popular_product_list.append(Product.objects.get(id=log['product__id']))
-    serializer = ProductSerializer(popular_product_list, many=True)
+    serializer = ProductSerializer(popular_product_list[0:10], many=True)
     return Response(serializer.data)
   except Exception as e:
     return Response({'error': str(e)})
