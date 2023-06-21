@@ -113,6 +113,7 @@ def getProductDataByUser(request, uuid):
     return Response(serializer.errors)
   
 @api_view(['GET'])
+# Change getProductDataByPopularity
 def getProductDataByPrefecture(request, prefId):
   try:
     products = Product.objects.filter(location__id=prefId)
