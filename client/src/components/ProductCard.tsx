@@ -172,7 +172,6 @@ function ProductCard ({ product, bookmark, log }: Props) {
 
   return (
     <div className='product__card' id={`${product.id}`}>
-      <a href={`#${product.id}`}>{product.id}</a>
       <div className='product__title' onClick={ clickProductHandler }>
         <h2 className='product__name'>
           { product.product_name }
