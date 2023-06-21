@@ -60,6 +60,9 @@
     height: 100%;
     margin-right: auto;
     overflow: hidden;
+    border-radius: 12pt;
+    display: flex;
+    justify-content: center;
 }
 
 .product__img-container.left{
@@ -73,7 +76,8 @@
 }
 
 .product__img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: cover;
 }
 
