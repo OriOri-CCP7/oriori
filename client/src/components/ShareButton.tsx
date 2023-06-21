@@ -15,9 +15,7 @@ const ShareButton = ( { hasShared, clickHandler }: Props ) => {
             <div className='product__button' onClick={clickHandler}>
                 <ShareIcon className="product__button share__icon solid"/>
                 </div>
-                {/* <div className='product__button share__icon text'> */}
                 {hasShared ? "Link Copied" : null }
-            {/* </div> */}
         </div>
     )
 }
