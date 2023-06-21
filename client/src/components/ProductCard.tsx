@@ -137,7 +137,10 @@ function ProductCard ({ product, bookmark, log }: Props) {
       workingLog,
       { headers: headers }
     )
-    setIsLiked(!isLiked);
+    .then(() => {
+      editLog(workingLog);
+      setIsLiked(!isLiked);
+    })
   };
 
   const clickProductHandler: React.MouseEventHandler<HTMLDivElement> = () => {
