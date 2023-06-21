@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "link_url": "https://www.suntory.co.jp/softdrink/news/pr/article/SBF1375.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Starbucks%20GRAB-GO%20Iced%20Black%20Coffee",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Starbucks%20GRAB-GO%20Iced%20Black%20Coffee",
       "product_name": "Starbucks GRAB&GO Iced Black Coffee",
       "start_date": "2023-06-20",
       "location": [
@@ -63,7 +63,7 @@
     "pk": 2,
     "fields": {
       "link_url": "https://www.suntory.co.jp/softdrink/news/pr/article/SBF1379.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Starbucks%20Matcha%20Latt%C3%A9%20with%20Subtle%20Houjicha",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Starbucks%20Matcha%20Latt%C3%A9%20with%20Subtle%20Houjicha",
       "product_name": "Starbucks Matcha Latté with Subtle Houjicha",
       "start_date": "2023-06-20",
       "location": [
@@ -123,7 +123,7 @@
     "fields": {
       "product_name": "Calpis Mellow Melon",
       "link_url": "https://www.asahiinryo.co.jp/company/newsrelease/2023/pick_0606.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Calpis%20Mellow%20Melon",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Calpis%20Mellow%20Melon",
       "start_date": "2023-06-20",
       "location": [
         1,
@@ -182,7 +182,7 @@
     "fields": {
       "product_name": "Welch's Light-Hearted Rosé Sparkling Juice",
       "link_url": "https://www.asahiinryo.co.jp/company/newsrelease/2023/pick_0524.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Welch%27s%20Light-Hearted%20Ros%C3%A9%20Sparkling%20Juice",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Welch%27s%20Light-Hearted%20Ros%C3%A9%20Sparkling%20Juice",
       "start_date": "2023-05-30",
       "location": [
         1,
@@ -241,7 +241,7 @@
     "fields": {
       "product_name": "Calpis Soda Orange x Mango Burst",
       "link_url": "https://www.asahiinryo.co.jp/company/newsrelease/2023/pick_0530.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Calpis%20Soda%20Orange%20x%20Mango%20Burst",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Calpis%20Soda%20Orange%20x%20Mango%20Burst",
       "start_date": "2023-06-06",
       "location": [
         1,
@@ -300,7 +300,7 @@
     "fields": {
       "product_name": "Wonda Legend Collection SHOT&SHOT",
       "link_url": "https://www.asahiinryo.co.jp/company/newsrelease/2023/pick_0531_2.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Wonda%20Legend%20Collection%20SHOT-SHOT",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Wonda%20Legend%20Collection%20SHOT-SHOT",
       "start_date": "2023-06-20",
       "location": [
         1,
@@ -359,7 +359,7 @@
     "fields": {
       "product_name": "Calpis Kiwamido White Grape Juice",
       "link_url": "https://www.asahiinryo.co.jp/company/newsrelease/2023/pick_0511_2.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Calpis%20Kiwamido%20White%20Grape%20Juice",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Calpis%20Kiwamido%20White%20Grape%20Juice",
       "start_date": "2023-05-16",
       "location": [
         1,
@@ -418,7 +418,7 @@
     "fields": {
       "product_name": "Tropicana Pineapple Mix Fruit Juice",
       "link_url": "https://www.kirinholdings.com/jp/newsroom/release/2023/0518_01.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Tropicana%20Pineapple%20Mix%20Fruit%20Juice",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Tropicana%20Pineapple%20Mix%20Fruit%20Juice",
       "location": [
         1,
         2,
@@ -477,7 +477,7 @@
     "fields": {
       "product_name": "Kirin Afternoon Tea: Straight Tea, Milk Tea, and Lemon Tea",
       "link_url": "https://www.kirinholdings.com/jp/newsroom/release/2023/0502_02.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Kirin%20Afternoon%20Tea:%20Straight%20Tea%2C%20Milk%20Tea%2C%20and%20Lemon%20Tea",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Kirin%20Afternoon%20Tea:%20Straight%20Tea%2C%20Milk%20Tea%2C%20and%20Lemon%20Tea",
       "location": [
         1,
         2,
@@ -536,7 +536,7 @@
     "fields": {
       "product_name": "Kirin Afternoon Tea TEA SELECTION Earl Grey Iced Tea",
       "link_url": "https://www.kirinholdings.com/jp/newsroom/release/2023/0608_01.html",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Kirin%20Afternoon%20Tea%20TEA%20SELECTION%20Earl%20Grey%20Iced%20Tea",
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Kirin%20Afternoon%20Tea%20TEA%20SELECTION%20Earl%20Grey%20Iced%20Tea",
       "location": [
         1,
         2,
@@ -646,7 +646,7 @@
         47
       ],
       "link_url": "https://www.starbucks.co.jp/press_release/pr2023-4818.php",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Starbucks%20Opera%20Frappuccino"
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Starbucks%20Opera%20Frappuccino"
     }
   },
   {
@@ -706,7 +706,7 @@
         47
       ],
       "link_url": "https://www.starbucks.co.jp/press_release/pr2023-4813.php",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Starbucks%20Fondant%20Chocolat%20Frappuccino"
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Starbucks%20Fondant%20Chocolat%20Frappuccino"
     }
   },
   {
@@ -765,7 +765,7 @@
         47
       ],
       "link_url": "https://www.starbucks.co.jp/press_release/pr2023-4916.php",
-      "img_url": "https://res.cloudinary.com/drwrzr5fx/image/upload/Starbucks%20Setouchi%20Lemon%20Cake%20Frappuccino"
+      "img_url": "https://res.cloudinary.com/oriori/image/upload/Starbucks%20Setouchi%20Lemon%20Cake%20Frappuccino"
     }
   }
 ]
