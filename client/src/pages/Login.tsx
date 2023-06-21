@@ -102,13 +102,13 @@ const Login: React.FC = () => {
       </form>
       
       <p>
-        Don't have an account? 
-        <Link to = "/signup"> Sign up! </Link>
+        { "Don't have an account? " }
+        <Link to = "/signup">Sign up!</Link>
       </p>
 
       <p>
-        Forgot your password? 
-        <Link to = "/new-password"> Reset it here!</Link>
+        { "Forgot your password? " }
+        <Link to = "/new-password">Reset it here!</Link>
       </p>
 
       <Footer />
