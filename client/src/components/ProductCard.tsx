@@ -146,7 +146,11 @@ function ProductCard ({ product, bookmark, log }: Props) {
   };
 
   const handleShareClick: React.MouseEventHandler<HTMLDivElement> = async () => {
-    const projectURL = 'https://oriori.fly.dev/home';
+    // const projectURL = 'https://oriori.fly.dev/home';
+    const projectURL = 'http://localhost:8080/logs';
+    console.log("💀",product.product_name);
+    console.log("☠️",encodeURIComponent(product.product_name));
+    console.log(document.location.href);
     try{
         if(navigator.share){
           await navigator.share({
