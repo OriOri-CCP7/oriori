@@ -3,11 +3,10 @@ import { useNavigate, Link } from "react-router-dom";
 import app from '../firebase.config';
 import { ref, get } from 'firebase/database';
 import { UserAuth } from "../context/AuthContext";
-import Input from "../components/Input";
 import Button from "../components/Button";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
-
+import Header from "../components/Header";
+import Input from "../components/Input";
 import "../styles/Login.css";
 
 const { database } = app;
@@ -74,7 +73,7 @@ const Login: React.FC = () => {
   return (
     <>
       <Header
-        mainText="OriOri Login" />
+        secondaryText="Log In"/>
       <form
         onSubmit = { handleLogin }>
         
@@ -93,11 +92,13 @@ const Login: React.FC = () => {
           value = { password }
           onChange = { handlePasswordInput }
           />
-          {attemptedLogin ? <div className="div-login-attemped">{alertMessage}</div>: <></>}
-          <Button 
+        { attemptedLogin
+          ? <div className="div-login-attemped">{ alertMessage }</div>
+          : <></> }
+        <Button 
           className = "submit"
           text = "Log In"
-          type = "submit" />
+          type = "submit"/>
       </form>
       
       <p>
