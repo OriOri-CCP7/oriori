@@ -12,7 +12,7 @@ const HomePageHeader = () => {
   const navigate = useNavigate();
 
   const location: number = Number(auth?.user.location);
-  const prefecture: string = prefs[location - 1].name;
+  const prefectureName: string = prefs[location - 1].name;
   
   const handleLogout = async () => {
     try {
@@ -27,38 +27,28 @@ const HomePageHeader = () => {
   };
 
     return (
-    <div className="header">
-    <div className="homepage-logout-section">
-      <Button
-        className="logout__button"
-        text="Log Out"
-        type="button"
-        onClick={ handleLogout } />
-    </div>
-    <div className="homepage-setting-section">
-      <div className="circular-icon" style={{ background: '#ccc'}}>
-        <Cog6ToothIcon 
-          className="settings-icon"
-          onClick = {() => {
-            navigate('/settings');
-            }} />
+    <div className="header home">
+      <div className="home-header__top-container">
+        <Button
+          className="logout__button"
+          text="Log Out"
+          type="button"
+          onClick={ handleLogout } />
+        <img src='/oriori-logo.svg' className='header__logo' alt='OriOri Logo'/>
+        <div className="circular-icon" style={{ background: '#ccc'}}>
+          <Cog6ToothIcon 
+            className="settings-icon"
+            onClick = {() => {
+              navigate('/settings');
+            }}/>
+        </div>
       </div>
-    </div>
-    <div className="homepage-user-section">
-      <div className="homepage-user-picture">
-        <div className="circular-icon" style={{ background: 'DodgerBlue', width: '90px', height:'90px' }}>
-          {/* {username} */}
-          {/* profile picture */}
-          </div>
-          </div>
-          <div>
-          <div className="homepage-prefecture">
-           {prefecture ? <div>{prefecture}</div> : null}
-
-          </div>
-          
-          <div className="homepage-title">{"Local Productions"}
-          </div>
+      <div className="home-header__bottom-container">
+        <div className="home-header__pref-name">
+          { prefectureName ? <div>{ prefectureName }</div> : null }
+        </div>
+        <div className="home-header__subtitle">
+          { "Local Products" }
         </div>
       </div>
     </div>
