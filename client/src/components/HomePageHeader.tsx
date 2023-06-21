@@ -44,12 +44,12 @@ const HomePageHeader = () => {
         </div>
       </div>
       <div className="home-header__bottom-container">
-        <div className="home-header__pref-name">
-          { prefectureName ? <div>{ prefectureName }</div> : null }
-        </div>
-        <div className="home-header__subtitle">
-          { "Local Products" }
-        </div>
+        <h1 className="home-header__subtitle heading">
+          { "Products in your Home Prefecture" }
+        </h1>
+        <h2 className="home-header__pref-name heading">
+          { prefectureName ?? null }
+        </h2>
       </div>
     </div>
 )
