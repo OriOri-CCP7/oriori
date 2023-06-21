@@ -14,7 +14,7 @@
 }
 
 .nav ul {
-  padding: 30px;
+  padding: 10px;
   margin: 0;
   list-style: none;
   display: flex;
@@ -23,13 +23,10 @@
 }
 
 .nav li {
+  padding: 5px;
   justify-content: center;
-  align-items: center;
   width: 25%;
-  padding:0;
-  margin-bottom: 10px;
   border-radius: 100px;
-  border-right: 1px solid #fff;
   display: flex;
   align-items: stretch;
 }
