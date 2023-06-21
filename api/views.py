@@ -3,6 +3,9 @@ from rest_framework.decorators import api_view
 from base.models import User, Location, Store, Product, Bookmark, Log
 from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer
 from django.db.models import Count, When, Case
+
+from datetime import date
+
 # Create your views here.
 
 @api_view(['GET'])
@@ -115,8 +118,15 @@ def getProductDataByUser(request, uuid):
 @api_view(['GET'])
 # Change getProductDataByPopularity
 def getProductDataByPrefecture(request, prefId):
+  # consolidatedArray = array1 + array2 + ... + array7
+  # For each condition, add those product into the respective array, and add them into the consolidated array
+  today = date.today()
+  
+
   try:
     products = Product.objects.filter(location__id=prefId)
+    print("🧠",products)
+    noavailableinfo = []
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
   except Exception as e:
