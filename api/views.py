@@ -4,7 +4,7 @@ from base.models import User, Location, Store, Product, Bookmark, Log
 from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer
 from django.db.models import Count, When, Case
 
-from datetime import date
+from datetime import date, timedelta, datetime
 
 # Create your views here.
 
@@ -124,9 +124,21 @@ def getProductDataByPrefecture(request, prefId):
   
 
   try:
+    
+    # array7
+    noAvailInfo= Product.objects.filter(location__id=prefId).filter( start_date__isnull=True, end_date__isnull=True)
+    # array6 WIP wrong string as start_date are 2023-05-23 not date(2023,5,23)
+    # startDateDiff = 
+    noLongerAvail= Product.objects.filter(location__id=prefId).filter( lambda ele: ele.start_date is not None (today - datetime.strptime(ele.start_date, '%Y-%m-%d').date()).days <= 3).filter(lambda ele: ele.end_date is not None(datetime.strptime(ele.end_date, '%Y=$m-%d').date() - today).days < 0 )
+    #(today)start_date__lt=today, end_date__lt=today)
+    # array5
+    # lestRecentAvailNoEndDate = Product.objects.filter(start_date - today > 3)
+    
+
+
     products = Product.objects.filter(location__id=prefId)
-    print("🧠",products)
-    noavailableinfo = []
+    
+    
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
   except Exception as e:
