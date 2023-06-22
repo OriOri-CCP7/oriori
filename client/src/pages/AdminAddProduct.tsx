@@ -133,6 +133,7 @@ function AdminAddProduct() {
             onChange = { (e) => setImage(e.target.value) }
             required
             />
+          <p>Please change the filename to match the product name before uploading.</p>
         </label>
         
         <label>

@@ -39,7 +39,7 @@ interface UserReducerAction {
   newUuid?: string,
   newLocation?: string,
   newUserState?: User
-}
+};
 
 function userReducer(state: User, action: UserReducerAction): User {
   switch (action.type) {
@@ -84,8 +84,8 @@ function userReducer(state: User, action: UserReducerAction): User {
         location: action.newLocation ?? state.location
       };
     }
-  }
-}
+  };
+};
 
 const UserContext = createContext<AuthenticatedUser | null>(null);
 
