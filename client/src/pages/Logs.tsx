@@ -31,7 +31,7 @@ function Logs() {
   }, []);
 
   return (
-    <div>
+    <div className='page__wrapper'>
       <Header
         mainText="Tried Products"/>
       {
@@ -41,10 +41,7 @@ function Logs() {
               <p>Log products you've tried by tapping the plus icon on any product!</p>
             </>
       }
-      
       <Navbar/>
-
-      
     </div>
   );
 };

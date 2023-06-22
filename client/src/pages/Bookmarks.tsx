@@ -29,7 +29,7 @@ function Bookmarks() {
   }, []);
 
   return (
-    <div>
+    <div className='page__wrapper'>
       <Header mainText="Bookmarks" />
       {
         products.length > 0
@@ -38,9 +38,7 @@ function Bookmarks() {
             <p>Add to your bookmarks by tapping the heart icon on any product!</p>
           </>
       }
-      
       <Navbar/>
-
     </div>
   );
 };
