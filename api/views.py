@@ -146,18 +146,18 @@ def getProductDataByPrefecture(request, prefId):
     return endDateDiff(object) > 7
   
   def endDateReached(object):
-    return endDateDiff(object) >= 0
+    return endDateDiff(object) > 0
   
   try:
     
     # array7
-    availDateNullEndDateNull = Product.objects.filter(location__id=prefId).filter( start_date__isnull=True, end_date__isnull=True)
+    availDateNullEndDateNull = Product.objects.filter(location__id=prefId).filter( start_date__isnull=True).filter( end_date__isnull=True)
     # array6 
     availDateReachEndDateReach = Product.objects.filter(location__id=prefId).filter( lambda ele: available(ele) ).filter(lambda ele: endDateReached(ele))
     # array5
     availDateEndEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: available(ele))
     # array4
-    availDateRecentEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: availRecently(ele))
+    availDateRecentEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: available(ele)).filter(lambda ele: availRecently(ele))
     # array3
     availDateNotReachEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: notAvailYet(ele))
     # array2
