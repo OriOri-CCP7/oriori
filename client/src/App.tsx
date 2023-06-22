@@ -3,6 +3,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
 import { BkmarkContextProvider } from './context/BkmarkContext';
 import { LogContextProvider } from './context/LogContext';
+import AdminRoute from './context/AdminRoute';
 import ProtectedRoute from './context/ProtectedRoute'
 import Bookmarks from './pages/Bookmarks';
 import Home from './pages/Home';
@@ -30,7 +31,6 @@ function App() {
                 <Route path='/' element={<Login/>}></Route>
                 <Route path='/signup' element={<Signup/>}></Route>
                 <Route path='/new-password' element={<PasswordReset/>}></Route>
-                <Route path='/admin-addProduct' element={<AdminAddProduct/>}></Route>
                 
                 <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
                 <Route path='/bookmarks' element={<ProtectedRoute><Bookmarks/></ProtectedRoute>}></Route>
@@ -39,6 +39,8 @@ function App() {
                 <Route path='/search' element={<ProtectedRoute><Search/></ProtectedRoute>}></Route>
                 <Route path='/settings' element={<ProtectedRoute><Settings/></ProtectedRoute>}></Route>
                 <Route path='/onboarding' element={<ProtectedRoute><Onboarding/></ProtectedRoute>}></Route>
+                
+                <Route path='/admin-addProduct' element={<AdminRoute><AdminAddProduct/></AdminRoute>}></Route>
               </Routes>
             </BrowserRouter>
           </LogContextProvider>
