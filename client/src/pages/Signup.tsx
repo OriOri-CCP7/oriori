@@ -73,9 +73,11 @@ const Signup: React.FC = () => {
   
   return (
     <>
-      <Header mainText="OriOri Signup" />
+      <Header
+        secondaryText="Sign Up"/>
       <form
-        onSubmit = { handleSignUp } >
+        onSubmit = { handleSignUp }>
+
         <Input
           className = "signup-input" 
           placeholder = "Username"
@@ -99,7 +101,10 @@ const Signup: React.FC = () => {
           value = { confirmPassword }
           onChange = { handleConfirmPasswordInput }
           />
-          {hasAttemptedSignUp ? <div className="div-signup-alertMessage">{alertMessage}</div> : <></>}
+        
+        { hasAttemptedSignUp
+          ? <div className="div-signup-alertMessage">{alertMessage}</div>
+          : <></> }
           
         <Input 
           className = "signup-input"
@@ -112,11 +117,11 @@ const Signup: React.FC = () => {
         <Button 
           className = "submit"
           text = "Sign Up"
-          type = "submit" />
+          type = "submit"/>
 
         <p>
-          Already have an account? 
-          <Link to = "/"> Log In! </Link>
+          { "Already have an account? " }
+          <Link to = "/">Log In!</Link>
         </p>
       </form>
       <Footer />

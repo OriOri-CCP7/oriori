@@ -1,4 +1,7 @@
 .header {
-    background-color: #FCD8D4;
     padding: 15px;
+}
+
+.header__logo {
+    max-width: 100pt;
 }
