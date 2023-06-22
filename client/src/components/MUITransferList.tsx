@@ -75,7 +75,7 @@ export default function MUITransferList({ options, setSelected }: Props) {
   }, [right]);
 
   const customList = (items: readonly Prefecture[]) => (
-    <Paper sx={{ width: 200, height: 230, overflow: 'auto' }}>
+    <Paper sx={{ width: 200, height: 230, overflow: 'auto', marginLeft: 'auto', marginRight: 'auto' }}>
       <List dense component="div" role="list">
         {items.map((value: Prefecture) => {
           const labelId = `transfer-list-item-${value.pk}-label`;

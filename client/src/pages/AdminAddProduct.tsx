@@ -24,39 +24,73 @@ function AdminAddProduct() {
   const [isSending, setIsSending] = useState<boolean>(false);
   const [alertMessage, setAlertMessage] = useState<string>('Sending...')
 
+  const isValidProduct = (input: Product) => {
+    if (input.product_name === '') { 
+      setAlertMessage('Product name required.');
+      return false;
+    }
+
+    if (input.link_url === '') {
+      setAlertMessage('Link URL required.');
+      return false;
+    }
+
+    if (input.img_url === '') {
+      setAlertMessage('Image required.');
+      return false;
+    }
+
+    if (input.location.length < 1) {
+      setAlertMessage('Locations required.');
+      return false;
+    }
+
+    if (input.id) { return false; }
+
+    return true;
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     setIsSending(true);
-    const newProduct = {
-      product_name: productName,
-      link_url: productUrl,
-      start_date: startDate,
-      end_date: endDate,
-      img_url: image,
+    const newProduct: Product = {
+      product_name: productName.trim(),
+      link_url: productUrl.trim(),
+      img_url: image.trim(),
       location: selectedPrefs
     };
 
-    axios.post(`/api/products/newProduct/`, newProduct, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'X-CSRFToken': auth?.csrftoken ?? ""
-      }
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        setAlertMessage('Successfully Added!')
-        navigate(0);
-      } else if (response.status >= 300) {
-        setAlertMessage(response.data)
-      }
-    })
-    .catch((err) => {
-      setAlertMessage(err)
-      console.log(err);
-    });
+    if (startDate !== '') {
+      newProduct.start_date = startDate;
+    }
+    if (endDate !== '') {
+      newProduct.end_date = endDate;
+    }
+
+    console.log(newProduct);
+    if (isValidProduct(newProduct)) {
+      axios.post(`/api/products/newProduct/`, newProduct, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': auth?.csrftoken ?? ""
+        }
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          setAlertMessage('Successfully Added!')
+          // navigate(0);
+        } else if (response.status >= 300) {
+          setAlertMessage(response.data)
+        }
+      })
+      .catch((err) => {
+        setAlertMessage(err)
+        console.log(err);
+      });
+    }
   };
-  
+
   return (
     <>
       <Header
@@ -73,6 +107,7 @@ function AdminAddProduct() {
             type = 'text'
             value = { productName }
             onChange = { (e) => setProductName(e.target.value) }
+            required
             />
         </label>
 
@@ -84,6 +119,7 @@ function AdminAddProduct() {
             type = 'url'
             value = { productUrl }
             onChange = { (e) => setProductUrl(e.target.value) }
+            required
             />
         </label>
 
@@ -95,6 +131,7 @@ function AdminAddProduct() {
             type = 'file'
             value = { image }
             onChange = { (e) => setImage(e.target.value) }
+            required
             />
         </label>
         

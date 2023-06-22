@@ -30,7 +30,7 @@ function App() {
                 <Route path='/' element={<Login/>}></Route>
                 <Route path='/signup' element={<Signup/>}></Route>
                 <Route path='/new-password' element={<PasswordReset/>}></Route>
-                <Route path='/addProduct/' element={<AdminAddProduct/>}></Route>
+                <Route path='/admin-addProduct' element={<AdminAddProduct/>}></Route>
                 
                 <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
                 <Route path='/bookmarks' element={<ProtectedRoute><Bookmarks/></ProtectedRoute>}></Route>
