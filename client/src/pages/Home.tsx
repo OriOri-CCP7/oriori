@@ -32,10 +32,8 @@ export default function Home() {
   }, []);
 
   return (
-  <div className='header-navbar-container'>
+  <div className='page__wrapper'>
     <HomePageHeader />
-    
-    
       {
         products.length > 0
         ? <ProductGrid productArray={ products }/>

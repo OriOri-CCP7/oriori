@@ -32,7 +32,7 @@ export default function Search() {
   };
 
   return (
-    <div className='header-navbar-container'>
+    <div className='page__wrapper'>
       <Header mainText="Search"/>
       <DropdownMenu 
         labelName='Select a prefecture: '

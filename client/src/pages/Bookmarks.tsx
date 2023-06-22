@@ -29,7 +29,7 @@ function Bookmarks() {
   }, []);
 
   return (
-    <div className='header-navbar-container'>
+    <div className='page__wrapper'>
       <Header mainText="Bookmarks" />
       {
         products.length > 0
