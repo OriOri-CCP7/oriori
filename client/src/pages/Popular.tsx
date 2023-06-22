@@ -34,9 +34,7 @@ function Popular() {
     <div className='header-navbar-container'>
       <Header mainText="Hot Right Now" />
       <ProductGrid productArray={products}/>
-      <div className='nav'>
-        <Navbar/>
-      </div>      
+      <Navbar/>
     </div>
   );
 }

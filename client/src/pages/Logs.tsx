@@ -41,9 +41,7 @@ function Logs() {
               <p>Log products you've tried by tapping the plus icon on any product!</p>
             </>
       }
-      <div className='nav'>
-        <Navbar/>
-      </div>
+      <Navbar/>
     </div>
   );
 };

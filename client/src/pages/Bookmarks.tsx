@@ -38,9 +38,7 @@ function Bookmarks() {
             <p>Add to your bookmarks by tapping the heart icon on any product!</p>
           </>
       }
-      <div className='nav'>
-        <Navbar/>
-      </div>
+      <Navbar/>
     </div>
   );
 };

@@ -45,8 +45,6 @@ export default function Home() {
             </p>
           </>
       }
-    <div className='nav'>
       <Navbar/>
-    </div>
   </div>
 )}

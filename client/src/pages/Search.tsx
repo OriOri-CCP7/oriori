@@ -44,9 +44,7 @@ export default function Search() {
             <p>Search for products in any prefecture!</p>
           </>
       }
-      <div className='nav'>
-        <Navbar/>
-      </div>
+      <Navbar/>
     </div>
   );
 };
