@@ -11,3 +11,7 @@ button {
     cursor: pointer;
     overflow: hidden;
 }
+
+.logout__button {
+    text-align: left;
+}

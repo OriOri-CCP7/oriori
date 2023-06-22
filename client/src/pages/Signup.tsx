@@ -115,7 +115,7 @@ const Signup: React.FC = () => {
           />
 
         <Button 
-          className = "submit"
+          className = "signup__button"
           text = "Sign Up"
           type = "submit"/>
 

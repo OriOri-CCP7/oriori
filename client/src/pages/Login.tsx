@@ -96,7 +96,7 @@ const Login: React.FC = () => {
           ? <div className="div-login-attemped">{ alertMessage }</div>
           : <></> }
         <Button 
-          className = "submit"
+          className = "login__button"
           text = "Log In"
           type = "submit"/>
       </form>
