@@ -121,23 +121,31 @@ def getProductDataByPrefecture(request, prefId):
   # consolidatedArray = array1 + array2 + ... + array7
   # For each condition, add those product into the respective array, and add them into the consolidated array
   today = date.today()
-  
-
+  def availDatePassed(object):
+    # positive number mean date has not reached
+    # negative number mean date has reached 
+    return (object is not None (today - datetime.strptime(object, '%Y-%m-%d').date() - today).days < 0)
+  def endDatePassed(object):
+    return (object is not None(datetime.strptime(object, '%Y=$m-%d').date() - today).days < 0)
   try:
     
     # array7
-    noAvailInfo= Product.objects.filter(location__id=prefId).filter( start_date__isnull=True, end_date__isnull=True)
-    # array6 WIP wrong string as start_date are 2023-05-23 not date(2023,5,23)
-    # startDateDiff = 
-    noLongerAvail= Product.objects.filter(location__id=prefId).filter( lambda ele: ele.start_date is not None (today - datetime.strptime(ele.start_date, '%Y-%m-%d').date()).days <= 3).filter(lambda ele: ele.end_date is not None(datetime.strptime(ele.end_date, '%Y=$m-%d').date() - today).days < 0 )
+    noStartDateNoEndDateInfo = Product.objects.filter(location__id=prefId).filter( start_date__isnull=True, end_date__isnull=True)
+    # array6 
+    # today - start_date < 0 # Date passed
+    # end_date - today < 0 # Date passed
+    offerIsNoLongerAvailable = Product.objects.filter(location__id=prefId).filter( lambda ele: availDatePassed(ele.start_date) ).filter(lambda ele: endDatePassed(ele.end_date))
     #(today)start_date__lt=today, end_date__lt=today)
     # array5
-    # lestRecentAvailNoEndDate = Product.objects.filter(start_date - today > 3)
+    # today - start_date < 0 # Date passed
+    lestRecentAvailNoEndDate = Product.objects.filter(location__id=prefId, end_date__isNull=True).filter(lambda ele: ele.start_date is not None(today - datetime.strptime(ele.start_date).date()).days < 3)
+    mostRecentAvailNoEndDate = []
+    notYetAvailableNoEndDate = []
+    AvailNowButNotYetEndDate = []
+    AvailNowButEndDateIsSoon = []
     
-
-
+    # products = AvailNowButEndDateIsSoon.union(AvailNowButNotYetEndDate, notYetAvailableNoEndDate, mostRecentAvailNoEndDate, estRecentAvailNoEndDate, offerIsNoLongerAvailable, noStartDateNoEndDateInfo)
     products = Product.objects.filter(location__id=prefId)
-    
     
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
