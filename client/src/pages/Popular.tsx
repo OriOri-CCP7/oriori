@@ -8,6 +8,8 @@ import Header from '../components/Header';
 import axios from 'axios';
 
 import '../styles/Popular.css';
+import '../styles/Navbar.css';
+import '../styles/ProductGrid.css'
 
 function Popular() {
   const auth = UserAuth();
@@ -29,11 +31,12 @@ function Popular() {
   }, []);
 
   return (
-    <div>
+    <div className='header-navbar-container'>
       <Header mainText="Hot Right Now" />
-      <ProductGrid productArray={products} />
-      <Navbar/>
-      
+      <ProductGrid productArray={products}/>
+      <div className='nav'>
+        <Navbar/>
+      </div>      
     </div>
   );
 }

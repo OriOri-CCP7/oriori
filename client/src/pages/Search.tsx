@@ -32,7 +32,7 @@ export default function Search() {
   };
 
   return (
-    <div>
+    <div className='header-navbar-container'>
       <Header mainText="Search"/>
       <DropdownMenu 
         labelName='Select a prefecture: '
@@ -44,8 +44,9 @@ export default function Search() {
             <p>Search for products in any prefecture!</p>
           </>
       }
-      <Navbar/>
-      
+      <div className='nav'>
+        <Navbar/>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,9 @@
+.header-navbar-container {
+    padding-bottom: 120px;
+    box-sizing: border-box;
+}
+
+.nav {
+    position: fixed;
+    bottom: 0;
+}

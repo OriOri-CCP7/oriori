@@ -32,7 +32,7 @@ export default function Home() {
   }, []);
 
   return (
-  <>
+  <div className='header-navbar-container'>
     <HomePageHeader />
     
     
@@ -45,9 +45,8 @@ export default function Home() {
             </p>
           </>
       }
-    <Navbar/>
-    <br />
-    <br />
-    
-  </>
+    <div className='nav'>
+      <Navbar/>
+    </div>
+  </div>
 )}
