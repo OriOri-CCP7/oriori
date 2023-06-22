@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
@@ -19,6 +19,8 @@ function AdminAddProduct() {
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
   const [image, setImage] = useState<string>('');
+  const [imageFL, setImageFL] = useState<FileList | null>();
+  const [imageUrl, setImageUrl] = useState<string>('');
   const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);
 
   const [isSending, setIsSending] = useState<boolean>(false);
@@ -35,7 +37,7 @@ function AdminAddProduct() {
       return false;
     }
 
-    if (input.img_url === '') {
+    if (image === '') {
       setAlertMessage('Image required.');
       return false;
     }
@@ -52,23 +54,81 @@ function AdminAddProduct() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
-    setIsSending(true);
+
+    const cloudName = 'oriori';
+    const unsignedUploadPreset = 'lblry7vz';
+
+    // *********** Upload file to Cloudinary ******************** //
+    const uploadFile = async (file: File) => {
+      var url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+      var xhr = new XMLHttpRequest();
+      var fd = new FormData();
+      xhr.open('POST', url, true);
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      
+      // Update progress (can be used to show progress indicator)
+      xhr.upload.addEventListener("progress", function(e) {
+        var progress = Math.round((e.loaded * 100.0) / e.total);
+        setAlertMessage(`Uploading Image... ${progress}%`)
+      });
+      
+      xhr.onreadystatechange = function(e) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // File uploaded successfully
+          var response = JSON.parse(xhr.responseText);
+          // https://res.cloudinary.com/cloudName/image/upload/v1483481128/public_id.jpg
+          setImageUrl(response.secure_url);
+          setAlertMessage('Adding to Database...');
+        }
+      };
+      
+      fd.append('upload_preset', unsignedUploadPreset);
+      fd.append('tags', 'browser_upload'); // Optional - add tag for image admin in Cloudinary
+      fd.append('public_id', productName.replace(/[?&#/\\%<>+]+/g, '-'));
+      fd.append('file', file);
+      xhr.send(fd);
+    };
+    
     const newProduct: Product = {
       product_name: productName.trim(),
       link_url: productUrl.trim(),
-      img_url: image.trim(),
+      img_url: '',
       location: selectedPrefs
     };
-
+    
     if (startDate !== '') {
       newProduct.start_date = startDate;
     }
     if (endDate !== '') {
       newProduct.end_date = endDate;
     }
+    
+    setIsSending(true);
 
-    console.log(newProduct);
     if (isValidProduct(newProduct)) {
+      if (!imageFL) { return; }
+      uploadFile(imageFL[0]);
+    }
+  };
+
+  useEffect(() => {
+    if (imageUrl !== '') {
+      const newProduct: Product = {
+        product_name: productName.trim(),
+        link_url: productUrl.trim(),
+        img_url: imageUrl,
+        location: selectedPrefs
+      };
+      
+      if (startDate !== '') {
+        newProduct.start_date = startDate;
+      }
+      if (endDate !== '') {
+        newProduct.end_date = endDate;
+      }
+      
+      console.log(newProduct);
+
       axios.post(`/api/products/newProduct/`, newProduct, {
         headers: {
           'Accept': 'application/json',
@@ -79,7 +139,7 @@ function AdminAddProduct() {
       .then((response) => {
         if (response.status === 200) {
           setAlertMessage('Successfully Added!')
-          // navigate(0);
+          navigate(0);
         } else if (response.status >= 300) {
           setAlertMessage(response.data)
         }
@@ -89,7 +149,8 @@ function AdminAddProduct() {
         console.log(err);
       });
     }
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imageUrl]);
 
   return (
     <>
@@ -130,10 +191,12 @@ function AdminAddProduct() {
             placeholder = ''
             type = 'file'
             value = { image }
-            onChange = { (e) => setImage(e.target.value) }
+            onChange = { (e) => {
+              setImage(e.target.value);
+              setImageFL(e.target.files);
+            }}
             required
             />
-          <p>Please change the filename to match the product name before uploading.</p>
         </label>
         
         <label>
