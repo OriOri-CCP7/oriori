@@ -6,6 +6,7 @@ import { UserLogs } from '../context/LogContext';
 import BkmarkButton from './BkmarkButton';
 import LikeButton from './LikeButton';
 import LogButton from './LogButton';
+import ShareButton from './ShareButton';
 
 import '../styles/ProductCard.css';
 
@@ -22,6 +23,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
   const [isBookmark, setIsBookmark] = useState(bookmark ? true : false);
   const [isLogged, setIsLogged] = useState(log ? true : false);
   const [isLiked, setIsLiked] = useState(log?.liked_it ? true : false);
+  const [hasShared, setHasShared] = useState<boolean>(false);
 
   let availabilityMsg = 'No availability info.';
   
@@ -137,7 +139,10 @@ function ProductCard ({ product, bookmark, log }: Props) {
       workingLog,
       { headers: headers }
     )
-    setIsLiked(!isLiked);
+    .then(() => {
+      editLog(workingLog);
+      setIsLiked(!isLiked);
+    })
   };
 
   const clickProductHandler: React.MouseEventHandler<HTMLDivElement> = () => {
@@ -146,8 +151,33 @@ function ProductCard ({ product, bookmark, log }: Props) {
     }
   };
 
+  const handleShareClick: React.MouseEventHandler<HTMLDivElement> = async () => {
+    const projectURL = 'https://oriori.fly.dev/home';
+    try{
+        if(navigator.share){
+          await navigator.share({
+            title: `${product.product_name}`,
+            text: `${product.id}:${product.product_name}`,
+            url: `${projectURL}#${product.id}`,
+          })
+        } else {
+          const shareURL = `${projectURL}#${product.id}`;
+            await navigator.clipboard.writeText(shareURL);
+            console.log("💌",product.id, ":", product.product_name,":", shareURL);
+        }
+        setHasShared(true);
+        setTimeout(() => {
+          setHasShared(false);
+        }, 3000);
+      } catch (error){
+        console.error("💩",error);
+    }
+  } 
+  
+
+
   return (
-    <div className='product__card'>
+    <div className='product__card' id={`${product.id}`}>
       <div className='product__title' onClick={ clickProductHandler }>
         <h2 className='product__name'>
           { product.product_name }
@@ -166,6 +196,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
           <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickBkmarkHandler }/>
           <LogButton isLogged={ isLogged } clickHandler={ clickLogHandler }/>
           { isLogged && <LikeButton isLiked={ isLiked } clickHandler={ clickLikeHandler }/> }
+          <ShareButton hasShared={hasShared} clickHandler={handleShareClick} />
         </div>
       </div>
     </div>
