@@ -93,13 +93,12 @@ function Settings() {
           text="Save"
           onClick={ handleSubmit }
           disabled={ location === "" ? true : false }/>
-      </form>
-      
-      <Button
+        <Button
           className="logout__button"
           text="Log Out"
           type="button"
           onClick={ handleLogout } />
+      </form>
     </div>
   );
 };

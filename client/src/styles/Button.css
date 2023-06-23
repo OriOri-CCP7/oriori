@@ -13,12 +13,21 @@ button {
   overflow: hidden;
 }
 
-.logout__button {
-  text-align: left;
-}
-
 .setting__submit-button {
   width: 70%;
   height: 40px;
   font-size: medium;
+  margin-top: 10px;
+}
+
+.logout__button-wrapper {
+  width: 100%;
+  margin-top: auto;
+}
+
+.logout__button {
+  width: 70%;
+  height: 40px;
+  font-size: medium;
+  margin-top: 50px;
 }
