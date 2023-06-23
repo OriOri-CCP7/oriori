@@ -76,7 +76,7 @@ function Settings() {
         <label>Username</label>
         <Input className="usernameInput" placeholder="Username" type="text" value={username} onChange={handleUsernameInput}/>
 
-        <br />
+        {/* <br /> */}
         {/* Email address must update both Firebase and Database
           <label>
             Email Address:
