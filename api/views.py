@@ -3,6 +3,9 @@ from rest_framework.decorators import api_view
 from base.models import User, Location, Store, Product, Bookmark, Log
 from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer
 from django.db.models import Count, When, Case
+
+from datetime import date, timedelta, datetime
+
 # Create your views here.
 
 @api_view(['GET'])
@@ -115,8 +118,56 @@ def getProductDataByUser(request, uuid):
 @api_view(['GET'])
 # Change getProductDataByPopularity
 def getProductDataByPrefecture(request, prefId):
+  # consolidatedArray = array1 + array2 + ... + array7
+  # For each condition, add those product into the respective array, and add them into the consolidated array
+  today = date.today()
+  def convertDate(object):
+    return datetime.strptime(object, '%Y-$m-%d').date()
+  
+  def availDateDiff(object):
+    return (convertDate(object.start_date).date() - today).days
+
+  def endDateDiff(object):
+    return (today - convertDate(object.end_date).date()).days
+
+  def available(object):
+    return availDateDiff(object) <= 0
+  
+  def notAvailYet(object):
+    return availDateDiff(object) > 0
+  
+  def availRecently(object):
+    return availDateDiff(object) <= 3
+  
+  def endingSoon(object):
+    return endDateDiff(object) <= 7
+
+  def endingLater(object):
+    return endDateDiff(object) > 7
+  
+  def endDateReached(object):
+    return endDateDiff(object) > 0
+  
   try:
-    products = Product.objects.filter(location__id=prefId)
+    
+    # array7
+    availDateNullEndDateNull = Product.objects.filter(location__id=prefId).filter( start_date__isnull=True).filter( end_date__isnull=True)
+    # array6 
+    availDateReachEndDateReach = Product.objects.filter(location__id=prefId).filter( lambda ele: available(ele) ).filter(lambda ele: endDateReached(ele))
+    # array5
+    availDateEndEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: available(ele))
+    # array4
+    availDateRecentEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: available(ele)).filter(lambda ele: availRecently(ele))
+    # array3
+    availDateNotReachEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: notAvailYet(ele))
+    # array2
+    availDateReachEndDateLater = Product.objects.filter(location__id=prefId).filter(lambda ele: available(ele)).filter(lambda ele: endingLater(ele))
+    # array1
+    availDateReachEndDateSoon = Product.objects.filter(location__id=prefId).filter(lambda ele: available(ele)).filter(lambda ele: endingSoon(ele))
+    
+    products = availDateReachEndDateSoon.union(availDateReachEndDateLater, availDateNotReachEndDateNull, availDateRecentEndDateNull, availDateEndEndDateNull, availDateReachEndDateReach, availDateNullEndDateNull)
+    # products = Product.objects.filter(location__id=prefId)
+    
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
   except Exception as e:
