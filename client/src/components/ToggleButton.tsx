@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+import '../styles/ToggleButton.css';
 type Props = {
     label: string,
     toggled: boolean,
@@ -26,11 +27,13 @@ const Toggle = ({label, toggled, onClick}: Props) => {
     };
 
     return (
-        <label>
-            <input type="checkbox" defaultChecked={isToggled} onClick={callback} />
-            <span />
-            <strong>{label}</strong>
+        <>
+        <label className="toggle-button-label">
+            <input className="toggle-button-input" type="checkbox" defaultChecked={isToggled} onClick={callback} />
+            <span className="toggle-button-span"/>
+            <strong className="toggle-button-strong">{label}</strong>
         </label>
+        </>
     )
 
 

@@ -24,6 +24,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
   const [isLogged, setIsLogged] = useState(log ? true : false);
   const [isLiked, setIsLiked] = useState(log?.liked_it ? true : false);
   const [hasShared, setHasShared] = useState<boolean>(false);
+  const [menuLeftHandSide, setMenuLeftHandSide] = useState<boolean>(true);
 
   let availabilityMsg = 'No availability info.';
   
@@ -173,7 +174,20 @@ function ProductCard ({ product, bookmark, log }: Props) {
         console.error("💩",error);
     }
   } 
-  
+
+  const ProductCardMenu = () => { 
+    return
+    (
+      <>
+        <div className='product__button-container'>
+          <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickBkmarkHandler }/>
+          <LogButton isLogged={ isLogged } clickHandler={ clickLogHandler }/>
+          { isLogged && <LikeButton isLiked={ isLiked } clickHandler={ clickLikeHandler }/> }
+          <ShareButton hasShared={hasShared} clickHandler={handleShareClick} />
+        </div>
+      </>
+    )
+    }
 
 
   return (

@@ -11,8 +11,9 @@ import '../styles/Settings.css';
 import Toggle from '../components/ToggleButton';
 
 const cardMenuNotify = [
-  {id:0, text:"Card Menu Set to Left Hand Side"},
-  {id:1, text:"Card Menu Set to Right Hand Side"}
+  {id:0, text:""},
+  {id:1, text:"Card Menu Set to Left Hand Side"},
+  {id:2, text:"Card Menu Set to Right Hand Side"}
 ]
 
 function Settings() {
@@ -22,7 +23,8 @@ function Settings() {
   const [username, setUsername] = useState<string>(auth?.user.username ?? '');
   // const [email, setEmail] = useState<string>(auth?.user.email ?? '');
   const [location, setLocation] = useState<string>(auth?.user.location ?? '');
-  const [leftSide, setLeftSide] = useState<boolean>(true);
+  const [leftSide, setLeftSide] = useState<boolean>(false); // Need to write to a 'setting' table
+  const [leftSideNotify, setLeftSideNotify] = useState<string>(cardMenuNotify[0].text);
   
   const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value);
@@ -65,7 +67,15 @@ function Settings() {
   };
 
   const handleToggled = (event: ChangeEvent<HTMLInputElement>) => {
-
+    setLeftSide(!leftSide);
+    if(leftSide===true){
+      setLeftSideNotify(cardMenuNotify[1].text);
+    } else {
+      setLeftSideNotify(cardMenuNotify[2].text);
+    }
+    setTimeout(()=>{
+      setLeftSideNotify(cardMenuNotify[0].text);
+    },3000);
   }
 
   return (
@@ -97,8 +107,11 @@ function Settings() {
         <div className="Settings-usersetting">
           <div className="Title-User-Setting">{"User Preferences"}</div>
           <div className="LeftSide-Menu">
-            <div className="LeftSide-Menu-select">{"Product Menu on the Left"}
-            <Toggle label={"Left"} toggled={leftSide} onClick={handleToggled}></Toggle></div>
+            <div className="Set-Menu-on-left">
+            <strong>{"Product Menu on the left handside"}</strong>
+            <Toggle label={leftSide ? "left" : "right"} toggled={leftSide} onClick={handleToggled}></Toggle>
+            <br />{leftSideNotify}
+            </div>
           </div>
         </div>
       { auth?.role === ROLES.ADMIN
