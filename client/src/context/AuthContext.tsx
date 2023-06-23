@@ -223,6 +223,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     return () => {
       authenticationState();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <UserContext.Provider value={{ signup, login, logout, resetPassword, user, role, onboarded, dispatchUser, isLoading, csrftoken }}>
