@@ -2,8 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from base.models import User, Location, Store, Product, Bookmark, Log
 from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer
-from django.db.models import Count
-
+from django.db.models import Count, When, Case
 # Create your views here.
 
 @api_view(['GET'])
@@ -125,8 +124,11 @@ def getProductDataByPrefecture(request, prefId):
 @api_view(['GET'])
 def getProductDataByPopularity(request):
   try:
-    products = Product.objects.annotate(num_bkmarks=Count('bookmark')).order_by("num_bkmarks").reverse()
-    serializer = ProductSerializer(products[0:10], many=True)
+    popular_product_list = []
+    for log in Log.objects.values('product__id').annotate(num_likes=Count(Case(When(liked_it=True, then=1)))).order_by('num_likes').reverse():
+      if log['num_likes'] != 0:
+        popular_product_list.append(Product.objects.get(id=log['product__id']))
+    serializer = ProductSerializer(popular_product_list[0:10], many=True)
     return Response(serializer.data)
   except Exception as e:
     return Response({'error': str(e)})
