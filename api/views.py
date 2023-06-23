@@ -2,9 +2,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from base.models import User, Location, Store, Product, Bookmark, Log
 from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer
-from django.db.models import Count, When, Case
-
-from datetime import date, timedelta, datetime
+from django.db.models import Count, When, Case, Q
+from datetime import date
 
 # Create your views here.
 
@@ -117,53 +116,27 @@ def getProductDataByUser(request, uuid):
   
 @api_view(['GET'])
 def getProductDataByPrefecture(request, prefId):
-  today = date.today()
-  
-  def availDateDiff(object: Product):
-    return (date.fromisoformat(object.start_date)  - today).days
-
-  def endDateDiff(object: Product):
-    return (today - date.fromisoformat(object.end_date)).days
-
-  def available(object: Product):
-    return availDateDiff(object) <= 0
-  
-  def notAvailYet(object: Product):
-    return availDateDiff(object) > 0
-  
-  def availRecently(object: Product):
-    return availDateDiff(object) <= 3
-  
-  def endingSoon(object: Product):
-    return endDateDiff(object) <= 7
-
-  def endingLater(object: Product):
-    return endDateDiff(object) > 7
-  
-  def endDateReached(object: Product):
-    return endDateDiff(object) > 0
-  
   try:
+    today = date.today()
+    product_list = []
+    products = Product.objects.filter(location__id=prefId)
+    endingSoon = products.filter(Q(start_date__isnull=True) | Q(start_date__lte=today)).exclude(Q(end_date__isnull=True) | Q(end_date__lte=today)).order_by('end_date')
+    for product in endingSoon:
+      product_list.append(product)
+    upcoming = products.filter(Q(start_date__isnull=False) & Q(start_date__gt=today)).order_by('start_date')
+    for product in upcoming:
+      product_list.append(product)
+    started = products.filter(Q(start_date__isnull=False) & Q(start_date__lte=today), end_date__isnull=True).order_by('-start_date')
+    for product in started:
+      product_list.append(product)
+    ended = products.filter(Q(end_date__isnull=False) & Q(end_date__lte=today)).order_by('-end_date')
+    for product in ended:
+      product_list.append(product)
+    nodata = products.filter(start_date__isnull=True, end_date__isnull=True).order_by('product_name')
+    for product in nodata:
+      product_list.append(product)
     
-    # array7
-    availDateNullEndDateNull = Product.objects.filter(location__id=prefId, start_date__isnull=True, end_date__isnull=True)
-    # array6 
-    availDateReachEndDateReach = Product.objects.filter(lambda ele: available(ele), lambda ele: endDateReached(ele), location__id=prefId)
-    # array5
-    availDateEndEndDateNull = Product.objects.filter(lambda ele: available(ele), location__id=prefId, end_date__isnull=True)
-    # array4
-    availDateRecentEndDateNull = Product.objects.filter(lambda ele: availRecently(ele), lambda ele: available(ele), location__id=prefId, end_date__isnull=True)
-    # array3
-    availDateNotReachEndDateNull = Product.objects.filter(lambda ele: notAvailYet(ele), location__id=prefId, end_date__isnull=True)
-    # array2
-    availDateReachEndDateLater = Product.objects.filter(lambda ele: available(ele), lambda ele: endingLater(ele), location__id=prefId)
-    # array1
-    availDateReachEndDateSoon = Product.objects.filter(lambda ele: endingSoon(ele), lambda ele: available(ele), location__id=prefId)
-    
-    products = availDateReachEndDateSoon.union(availDateReachEndDateLater, availDateNotReachEndDateNull, availDateRecentEndDateNull, availDateEndEndDateNull, availDateReachEndDateReach, availDateNullEndDateNull)
-    # products = Product.objects.filter(location__id=prefId)
-    
-    serializer = ProductSerializer(products, many=True)
+    serializer = ProductSerializer(product_list, many=True)
     return Response(serializer.data)
   except Exception as e:
     return Response({'error': str(e)})
