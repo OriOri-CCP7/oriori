@@ -9,7 +9,7 @@ import {
   signOut,
   UserCredential,
 } from 'firebase/auth';
-import { get, ref } from 'firebase/database';
+import { get, ref, set } from 'firebase/database';
 import Cookies from 'js-cookie';
 
 const { auth, database } = app;
@@ -130,6 +130,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         },
       });
       if (userUpdate.status !== 200) throw new Error("User could not be added to app database: " + newUserInfo.uuid);
+      await createUserMetadata(newUserInfo.uuid);
       return newUser;
     } catch(err) {
       console.log("Error creating user: ", err);
@@ -193,7 +194,24 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         setRole(userJson.role);
       }
     } else {
-      throw new Error('User metadata not found.')
+      console.log('User metadata not found.')
+    }
+  };
+
+  const createUserMetadata = async (userId: string) => {
+    const newUser: UserMetadata = {
+      onboarded: false,
+      role: ''
+    };
+
+    await set(ref(database, `users/${userId}`), newUser);
+    let userSnapshot = await get(ref(database, `users/${userId}`));
+    if (userSnapshot.exists()) {
+      let userJson: UserMetadata = userSnapshot.toJSON() ?? {};
+      setOnboarded(userJson.onboarded ?? false);
+      setRole(userJson.role ?? '');
+    } else {
+      console.log('User metadata could not be initialized.');
     }
   };
 
@@ -203,7 +221,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       let userJson: UserMetadata = userSnapshot.toJSON() ?? {};
       setOnboarded(userJson.onboarded ?? false);
     } else {
-      throw new Error('User metadata not found.')
+      console.log('User metadata not found.')
     }
   };
 
