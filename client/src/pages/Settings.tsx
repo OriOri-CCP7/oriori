@@ -56,6 +56,18 @@ function Settings() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      if(auth){
+        await auth.logout();
+      }
+      console.log("User Logged Out");
+      navigate('/');
+    } catch (error) {
+      console.log('🥸', error);
+    }
+  };
+
   return (
     <div className="Setting">
       <Button className="backButton" type="button" onClick={handleBack} text="Back"/>
@@ -82,7 +94,12 @@ function Settings() {
           onClick={ handleSubmit }
           disabled={ location === "" ? true : false }/>
       </form>
-
+      
+      <Button
+          className="logout__button"
+          text="Log Out"
+          type="button"
+          onClick={ handleLogout } />
     </div>
   );
 };
