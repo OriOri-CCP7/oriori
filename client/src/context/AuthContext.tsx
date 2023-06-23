@@ -135,7 +135,6 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       await createUserMetadata(newUserInfo.uuid);
       await refreshUser(newUserInfo.uuid, newUserInfo.email);
       setLoadComplete(true);
-      setRefreshAllowed(true);
       return newUser;
     } catch(err) {
       console.log("Error creating user: ", err);
@@ -147,6 +146,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const loggedIn = await signInWithEmailAndPassword(auth, email, password);
     console.log('LOG IN: ', loggedIn);
     const userMetadata = await refreshUser(loggedIn.user.uid, loggedIn.user.email);
+    setLoadComplete(true);
     return userMetadata;
   };
 
