@@ -22,7 +22,7 @@ function Onboarding() {
     try {
       if (auth) {
         setPrefecture(auth.user.location);
-        console.log("Attempting to update User info");
+        console.log("Setting onboard status...");
         const result = await axios.patch(`/api/users/${auth.user.uuid}/edit/`, {
           location: prefecture
         });
@@ -31,7 +31,7 @@ function Onboarding() {
         } else {
           const userId = auth.user.uuid as string ?? "";
           if (userId !== "") {
-            await set(ref(database, `onboardedUsers/${userId}`), { onboarded: true });
+            await set(ref(database, `users/${userId}/onboarded`), true);
           } else {
             throw new Error("User could not be saved as onboarded.")
           }
