@@ -13,8 +13,8 @@ function Navbar() {
       <ul>
         <li className='Home'
           style={location.pathname === '/home' ? {background : '#ffe4e1'} : {}}>
-          <HomeIcon 
-            className='nav__icon home' 
+          <HomeIcon
+            {...location.pathname === '/home' ? {className:'nav__icon home'} : {className:'unselected'}} 
             onClick={() => {
               navigate('/home');
             }}/>
@@ -23,7 +23,7 @@ function Navbar() {
         <li className='Heart'
           style={location.pathname === '/bookmarks' ? {background : '#ffe4e1'} : {}}>
           <BookmarkIcon 
-            className='nav__icon bkmark'
+            {...location.pathname === '/bookmarks' ? {className:'nav__icon bkmark'} : {className:'unselected'}} 
             onClick={() => {
               navigate('/bookmarks');
             }}/>
@@ -32,7 +32,7 @@ function Navbar() {
         <li className='Logs'
           style={location.pathname === '/logs' ? {background : '#ffe4e1'} : {}}>
           <CheckCircleIcon
-            className='nav__icon log'
+            {...location.pathname === '/logs' ? {className:'nav__icon log'} : {className:'unselected'}} 
             onClick={() => {
               navigate('/logs');
             }}/>
@@ -41,7 +41,7 @@ function Navbar() {
         <li className='Popular'
           style={location.pathname === '/popular' ? {background : '#ffe4e1'} : {}}>
           <FireIcon 
-            className='nav__icon pop' 
+            {...location.pathname === '/popular' ? {className:'nav__icon pop'} : {className:'unselected'}}  
             onClick={() => {
               navigate('/popular');
             }} />
@@ -50,7 +50,7 @@ function Navbar() {
         <li className='Search'
           style={location.pathname === '/search' ? {background : '#ffe4e1'} : {}}>
           <MagnifyingGlassIcon
-            className='nav__icon search'
+            {...location.pathname === '/search' ? {className:'nav__icon search'} : {className:'unselected'}} 
             onClick={() => {
               navigate('/search');
             }}/>
