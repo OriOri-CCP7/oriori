@@ -25,8 +25,8 @@ function ProductGrid({ productArray }: Props) {
               <Grid xs={12} style={{ padding: '1px',  marginBottom: 'auto' }} key={product.product_name}>
                   <ProductCard 
                     product={product}
-                    bookmark={bookmarks[product.id.toString()]}
-                    log={logs[product.id.toString()]}
+                    bookmark={bookmarks[product.id!.toString()]}
+                    log={logs[product.id!.toString()]}
                     />
               </Grid>
           ))}

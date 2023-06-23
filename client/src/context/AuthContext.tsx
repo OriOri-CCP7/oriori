@@ -9,9 +9,10 @@ import {
   signOut,
   UserCredential,
 } from 'firebase/auth';
+import { get, ref } from 'firebase/database';
 import Cookies from 'js-cookie';
 
-const { auth } = app;
+const { auth, database } = app;
 const csrftoken = Cookies.get('csrftoken');
 
 export interface User {
@@ -27,6 +28,8 @@ interface AuthenticatedUser {
   logout: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   user: User;
+  role: string;
+  onboarded: boolean;
   dispatchUser: React.Dispatch<UserReducerAction>;
   isLoading: boolean;
   csrftoken: string | undefined;
@@ -39,9 +42,15 @@ interface UserReducerAction {
   newUuid?: string,
   newLocation?: string,
   newUserState?: User
-}
+};
+
+interface UserMetadata {
+  onboarded?: boolean,
+  role?: string
+};
 
 function userReducer(state: User, action: UserReducerAction): User {
+  console.log(action.type);
   switch (action.type) {
     case 'set_user': {
       return {
@@ -84,8 +93,8 @@ function userReducer(state: User, action: UserReducerAction): User {
         location: action.newLocation ?? state.location
       };
     }
-  }
-}
+  };
+};
 
 const UserContext = createContext<AuthenticatedUser | null>(null);
 
@@ -99,6 +108,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       location: "13"
     }
   );
+  const [role, setRole] = useState('');
+  const [onboarded, setOnboarded] = useState(false);
 
   const signup = async (username: string, email: string, password: string) => {
     const newUserInfo: User = {
@@ -148,6 +159,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     try {
       const result = await axios.get(`/api/users/${userId}/`);
       if (result.status !== 200) { throw new Error(`User ID "${userId}" not found in app database.`); }
+      await loadUserRole(userId);
+      await loadOnboardState(userId);
       dispatchUser({
         type: 'set_user',
         newUsername: result.data.username,
@@ -155,11 +168,11 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         newUuid: userId,
         newLocation: result.data.location
       });
-      setIsLoading(false);
+      console.log("User data retrieved.");
     } catch (error) {
       console.log("🍀", `Error: ${error}`);
     } finally {
-      console.log("User data retrieved.");
+      setIsLoading(false);
     }
   };
 
@@ -169,6 +182,28 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       console.log('A password reset email was sent to your registered email address.');
     } catch(error) {
       console.log('💢', error);
+    }
+  };
+
+  const loadUserRole = async (userId: string) => {
+    let userSnapshot = await get(ref(database, `users/${userId}`));
+    if (userSnapshot.exists()) {
+      let userJson: UserMetadata = userSnapshot.toJSON() ?? {};
+      if (userJson.role) {
+        setRole(userJson.role);
+      }
+    } else {
+      throw new Error('User metadata not found.')
+    }
+  };
+
+  const loadOnboardState = async (userId: string) => {
+    let userSnapshot = await get(ref(database, `onboardedUsers/${userId}`));
+    if (userSnapshot.exists()) {
+      let userJson: UserMetadata = userSnapshot.toJSON() ?? {};
+      setOnboarded(userJson.onboarded ?? false);
+    } else {
+      throw new Error('User metadata not found.')
     }
   };
 
@@ -190,7 +225,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     };
   }, []);
 
-  return <UserContext.Provider value={{ signup, login, logout, resetPassword, user, dispatchUser, isLoading, csrftoken }}>
+  return <UserContext.Provider value={{ signup, login, logout, resetPassword, user, role, onboarded, dispatchUser, isLoading, csrftoken }}>
     { children }
   </UserContext.Provider>
 }

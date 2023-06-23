@@ -8,9 +8,10 @@ type Props = {
   type: string,
   value: string,
   onChange: ChangeEventHandler<HTMLInputElement>,
+  required?: boolean
 };
 
-const Input: React.FC<Props> = ({ className, placeholder, type, value, onChange }) => {
+const Input: React.FC<Props> = ({ className, placeholder, type, value, onChange, required }) => {
   return (
     <>
       <input 
@@ -19,6 +20,9 @@ const Input: React.FC<Props> = ({ className, placeholder, type, value, onChange 
         type = { type }
         value = { value }
         onChange = { onChange }
+        required = { required }
+        accept = { type === 'file' ? 'image/*' : undefined }
+        multiple = { type === 'file' ? false : undefined }
       />
     </>
   )
