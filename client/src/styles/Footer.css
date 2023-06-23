@@ -1,11 +1,5 @@
 .footer {
-    padding: 5px; 
-    position: fixed; 
-    /* position: relative; */
-    /* position:absolute; */
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #F5C6AA;
-    text-align: center; 
-  }
+  padding: 6pt;
+  width: 100%;
+  text-align: center; 
+}

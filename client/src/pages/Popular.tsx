@@ -29,11 +29,10 @@ function Popular() {
   }, []);
 
   return (
-    <div>
+    <div className='page__wrapper'>
       <Header mainText="Hot Right Now" />
-      <ProductGrid productArray={products} />
+      <ProductGrid productArray={products}/>
       <Navbar/>
-      
     </div>
   );
 }
