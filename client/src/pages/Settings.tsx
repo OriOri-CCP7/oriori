@@ -94,7 +94,6 @@ function Settings() {
           onClick={ handleSubmit }
           disabled={ location === "" ? true : false }/>
       </form>
-<<<<<<< HEAD
         <div className="Settings-usersetting">
           <div className="Title-User-Setting">{"User Preferences"}</div>
           <div className="LeftSide-Menu">
@@ -102,7 +101,6 @@ function Settings() {
             <Toggle label={"Left"} toggled={leftSide} onClick={handleToggled}></Toggle></div>
           </div>
         </div>
-=======
       { auth?.role === ROLES.ADMIN
         ? <Button
           className="navButton"
@@ -112,7 +110,6 @@ function Settings() {
           />
         : null
       }
->>>>>>> c62c90de3946ff73db2dac8bca899b3111a76e73
     </div>
   );
 };
