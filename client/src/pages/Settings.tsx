@@ -73,10 +73,9 @@ function Settings() {
       <Button className="backButton" type="button" onClick={handleBack} text="Back"/>
       <h1>Settings</h1>
       <form>
-        <label>
-          Username:
-          <Input className="usernameInput" placeholder="Username" type="text" value={username} onChange={handleUsernameInput}/>
-        </label>
+        <label>Username</label>
+        <Input className="usernameInput" placeholder="Username" type="text" value={username} onChange={handleUsernameInput}/>
+
         <br />
         {/* Email address must update both Firebase and Database
           <label>
@@ -85,8 +84,9 @@ function Settings() {
           </label>
           <br /> 
         */}
-        <DropdownMenu labelName="Select Prefecture: " setPrefecture={setLocation} prefill={location}/>
-
+        <label>Select Prefecture</label>
+        <DropdownMenu setPrefecture={setLocation} prefill={location}/>
+        {/* labelName="Select Prefecture: " */}
         <Button 
           className="submitButton" 
           type="submit" 
