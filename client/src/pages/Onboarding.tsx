@@ -51,10 +51,9 @@ function Onboarding() {
   return (
     <div className="onboarding">
       <Header/>
-      <p className="onboarding__kanji">
-        四季折々<br/>
-        （しきおりおり）
-      </p>
+      <ruby className="onboarding__kanji">
+        <rp>(</rp>四<rt>し</rt>季<rt>き</rt>折<rt>おり</rt>々<rt>おり</rt><rp>)</rp>
+      </ruby>
       <p className="onboarding__intro-text">
         <b>oriori</b> comes from the<br/>
         Japanese phrase <i>shikioriori</i>,<br/>
@@ -63,9 +62,12 @@ function Onboarding() {
       <br/>
       <DropdownMenu className="onboarding__dropdown" labelName={ "Home Prefecture: " } setPrefecture={ setPrefecture } prefill={ prefecture }/>
       <p className="onboarding__instruction-text">
-        Select the prefecture you want to use as your Home Prefecture. 
-        It can be where you live, where you plan on visiting the most, 
-        or just your favorite prefecture! <i>You can change this at any time in the settings menu.</i>
+        Products shown on the Home tab are filtered by
+        what's available in your Home Prefecture.<br/>
+        Pick any Home Prefecture you like.
+        <br/><br/>
+        <i className="onboarding__instruction-detail">You can change this in the Settings menu,
+        or use the Search tab to browse other Prefectures at any time.</i>
       </p>
       <br/>
       <Button

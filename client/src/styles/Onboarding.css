@@ -9,9 +9,15 @@
 
 .onboarding__kanji {
   margin: 4pt auto;
-  font-size: xx-large;
+  font-size: xxx-large;
+  font-weight: 700;
   opacity: 0;
   animation: 2s ease-in 0s fade-in forwards;
+}
+
+.onboarding__kanji > rt {
+  font-size: medium;
+  transform: translateY(-4pt);
 }
 
 .onboarding__intro-text {
@@ -23,8 +29,9 @@
 }
 
 .onboarding__dropdown {
+  margin: 6pt auto 10pt;
   opacity: 0;
-  animation: 3s ease-in 4s fade-in forwards;
+  animation: 2s ease-in 4s fade-in forwards;
 }
 
 .onboarding__instruction-text {
@@ -32,12 +39,17 @@
   text-align: center;
   font-size: small;
   opacity: 0;
-  animation: 3s ease-in 4s fade-in forwards;
+  animation: 2s ease-in 4s fade-in forwards;
+}
+
+.onboarding__instruction-detail {
+  opacity: 0;
+  animation: 2s ease-in 6s fade-in forwards;
 }
 
 .onboarding__submit-button {
   opacity: 0;
-  animation: 3s ease-in 4s fade-in forwards;
+  animation: 2s ease-in 4s fade-in forwards;
 }
 
 @keyframes fade-in {
