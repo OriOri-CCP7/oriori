@@ -5,10 +5,10 @@ import * as ROLES from '../constants/roles';
 
 const AdminRoute = ({children} : { children: JSX.Element }) => {
   const auth = UserAuth();
-  const { role, isLoading } = auth!;
+  const { role, loadComplete } = auth!;
   
   let location = useLocation();
-  return !isLoading
+  return loadComplete
     ? (
         role === ROLES.ADMIN
           ? children
