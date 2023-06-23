@@ -157,6 +157,7 @@ function AdminAddProduct() {
       <Header
         mainText='OriOri Admin'
         secondaryText='Submit New Product'/>
+      <Button className="backButton" type="button" onClick={ () => navigate('/home') } text="Back"/>
       <form
         onSubmit = { handleSubmit }>
         
