@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import '../styles/Settings.css';
+import Toggle from '../components/ToggleButton';
+
+const cardMenuNotify = [
+  {id:0, text:"Card Menu Set to Left Hand Side"},
+  {id:1, text:"Card Menu Set to Right Hand Side"}
+]
 
 function Settings() {
   const auth  = UserAuth();
@@ -15,6 +21,7 @@ function Settings() {
   const [username, setUsername] = useState<string>(auth?.user.username ?? '');
   // const [email, setEmail] = useState<string>(auth?.user.email ?? '');
   const [location, setLocation] = useState<string>(auth?.user.location ?? '');
+  const [leftSide, setLeftSide] = useState<boolean>(true);
   
   const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value);
@@ -56,6 +63,10 @@ function Settings() {
     }
   };
 
+  const handleToggled = (event: ChangeEvent<HTMLInputElement>) => {
+
+  }
+
   return (
     <div className="Setting">
       <Button className="backButton" type="button" onClick={handleBack} text="Back"/>
@@ -82,7 +93,13 @@ function Settings() {
           onClick={ handleSubmit }
           disabled={ location === "" ? true : false }/>
       </form>
-
+        <div className="Settings-usersetting">
+          <div className="Title-User-Setting">{"User Preferences"}</div>
+          <div className="LeftSide-Menu">
+            <div className="LeftSide-Menu-select">{"Product Menu on the Left"}
+            <Toggle label={"Left"} toggled={leftSide} onClick={handleToggled}></Toggle></div>
+          </div>
+        </div>
     </div>
   );
 };
