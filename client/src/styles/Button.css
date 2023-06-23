@@ -1,13 +1,18 @@
 button {
-    padding: 10px 10px;
-    background-color:#F5C6AA;
-    border-radius: 5px 5px;
+  padding: 6pt 10pt;
+  background-color:#F5C6AA;
+  border-radius: 4pt;
+  border: none;
 }
 
 .backButton {
-    background-color: Transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.logout__button {
+  text-align: left;
 }

@@ -4,10 +4,6 @@
     --large-icon-width: 30px;
 }
 
-.logout__button {
-    text-align: left;
-}
-
 @media (max-width: 320px) {
     .logout__button {
         border-radius: 2px;

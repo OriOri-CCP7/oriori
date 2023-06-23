@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, ChangeEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import Input from "../components/Input";
@@ -25,26 +25,6 @@ const Signup: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [hasAttemptedSignUp, setHasAttemptedSignUp] = useState<boolean>(false);
   const [alertMessage, setAlertMessage ] = useState<string>(pwdMsg[0].text);
-
-  const handleUsernameInput = (event: ChangeEvent<HTMLInputElement>): void => {
-    event.preventDefault();
-    setUsername(event.target.value);
-  }
-  
-  const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>): void => {
-    event.preventDefault();
-    setPassword(event.target.value);
-  }
-  
-  const handleConfirmPasswordInput = (event:ChangeEvent<HTMLInputElement>): void => {
-    event.preventDefault();
-    setConfirmPassword(event.target.value);
-  }
-
-  const handleEmailInput = (event: ChangeEvent<HTMLInputElement>): void => {
-    event.preventDefault();
-    setEmail(event.target.value);
-  }
   
   const handleSignUp = async (event: FormEvent<HTMLFormElement>): Promise<void>=> {
     event.preventDefault();
@@ -62,11 +42,13 @@ const Signup: React.FC = () => {
       setAlertMessage(pwdMsg[0].text);
       try {
         if (auth) {
-          await auth.signup(username, email, password);
-          navigate('/');
+          let newUser = await auth.signup(username, email, password);
+          if (newUser) {
+            navigate('/onboarding');
+          }
         }
       } catch (error) {
-          console.log("🤬", error);
+        console.log("🤬", error);
       }
     }
   };
@@ -82,24 +64,27 @@ const Signup: React.FC = () => {
           className = "signup-input" 
           placeholder = "Username"
           type = "text"
+          autoComplete = "nickname"
           value = { username }
-          onChange = { handleUsernameInput }
+          onChange = { (event) => setUsername(event.target.value) }
           />
 
         <Input 
           className = "signup-input"
           placeholder = "Password"
           type = "password"
+          autoComplete = "new-password"
           value = { password }
-          onChange = { handlePasswordInput }
+          onChange = { (event) => setPassword(event.target.value) }
           />
 
         <Input 
           className = "signup-input"
           placeholder = "Password Confirmation"
           type = "password"
+          autoComplete = "new-password"
           value = { confirmPassword }
-          onChange = { handleConfirmPasswordInput }
+          onChange = { (event) => setConfirmPassword(event.target.value) }
           />
         
         { hasAttemptedSignUp
@@ -110,12 +95,13 @@ const Signup: React.FC = () => {
           className = "signup-input"
           placeholder = "Email"
           type = "email"
+          autoComplete = "username"
           value = { email }
-          onChange = { handleEmailInput }
+          onChange = { (event) => setEmail(event.target.value) }
           />
 
         <Button 
-          className = "submit"
+          className = "signup__button"
           text = "Sign Up"
           type = "submit"/>
 

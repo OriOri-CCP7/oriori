@@ -24,7 +24,7 @@ export default function Home() {
       headers: headers
     })
     .then((response) => {
-      console.log('😶‍🌫️', response);
+      console.log('🏠 HOME: ', response);
       setProducts(response.data);
     })
     .catch((err) => console.log('😈', err));
@@ -32,10 +32,8 @@ export default function Home() {
   }, []);
 
   return (
-  <>
+  <div className='page__wrapper'>
     <HomePageHeader />
-    
-    
       {
         products.length > 0
         ? <ProductGrid productArray={ products }/>
@@ -45,9 +43,6 @@ export default function Home() {
             </p>
           </>
       }
-    <Navbar/>
-    <br />
-    <br />
-    
-  </>
+      <Navbar/>
+  </div>
 )}
