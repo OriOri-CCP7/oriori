@@ -116,54 +116,49 @@ def getProductDataByUser(request, uuid):
     return Response(serializer.errors)
   
 @api_view(['GET'])
-# Change getProductDataByPopularity
 def getProductDataByPrefecture(request, prefId):
-  # consolidatedArray = array1 + array2 + ... + array7
-  # For each condition, add those product into the respective array, and add them into the consolidated array
   today = date.today()
-  def convertDate(object):
-    return datetime.strptime(object, '%Y-$m-%d').date()
   
-  def availDateDiff(object):
-    return (convertDate(object.start_date).date() - today).days
+  def availDateDiff(object: Product):
+    return (date.fromisoformat(object.start_date)  - today).days
 
-  def endDateDiff(object):
-    return (today - convertDate(object.end_date).date()).days
+  def endDateDiff(object: Product):
+    return (today - date.fromisoformat(object.end_date)).days
 
-  def available(object):
+  def available(object: Product):
     return availDateDiff(object) <= 0
   
-  def notAvailYet(object):
+  def notAvailYet(object: Product):
     return availDateDiff(object) > 0
   
-  def availRecently(object):
+  def availRecently(object: Product):
     return availDateDiff(object) <= 3
   
-  def endingSoon(object):
+  def endingSoon(object: Product):
     return endDateDiff(object) <= 7
 
-  def endingLater(object):
+  def endingLater(object: Product):
     return endDateDiff(object) > 7
   
-  def endDateReached(object):
+  def endDateReached(object: Product):
     return endDateDiff(object) > 0
   
   try:
     
     # array7
-    availDateNullEndDateNull = Product.objects.filter(location__id=prefId).filter( start_date__isnull=True).filter( end_date__isnull=True)
+    availDateNullEndDateNull = Product.objects.filter(location__id=prefId, start_date__isnull=True, end_date__isnull=True)
     # array6 
-    availDateReachEndDateReach = Product.objects.filter(location__id=prefId).filter( lambda ele: available(ele) ).filter(lambda ele: endDateReached(ele))
+    availDateReachEndDateReach = Product.objects.filter(lambda ele: available(ele), lambda ele: endDateReached(ele), location__id=prefId)
     # array5
-    availDateEndEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: available(ele))
+    availDateEndEndDateNull = Product.objects.filter(lambda ele: available(ele), location__id=prefId, end_date__isnull=True)
     # array4
-    availDateRecentEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: available(ele)).filter(lambda ele: availRecently(ele))
+    availDateRecentEndDateNull = Product.objects.filter(lambda ele: availRecently(ele), lambda ele: available(ele), location__id=prefId, end_date__isnull=True)
     # array3
-    availDateNotReachEndDateNull = Product.objects.filter(location__id=prefId, end_date__isnull=True).filter(lambda ele: notAvailYet(ele))
+    availDateNotReachEndDateNull = Product.objects.filter(lambda ele: notAvailYet(ele), location__id=prefId, end_date__isnull=True)
     # array2
-    availDateReachEndDateLater = Product.objects.filter(location__id=prefId).filter(lambda ele: available(ele)).filter(lambda ele: endingLater(ele))
+    availDateReachEndDateLater = Product.objects.filter(lambda ele: available(ele), lambda ele: endingLater(ele), location__id=prefId)
     # array1
-    availDateReachEndDateSoon = Product.objects.filter(location__id=prefId).filter(lambda ele: available(ele)).filter(lambda ele: endingSoon(ele))
+    availDateReachEndDateSoon = Product.objects.filter(lambda ele: endingSoon(ele), lambda ele: available(ele), location__id=prefId)
     
     products = availDateReachEndDateSoon.union(availDateReachEndDateLater, availDateNotReachEndDateNull, availDateRecentEndDateNull, availDateEndEndDateNull, availDateReachEndDateReach, availDateNullEndDateNull)
     # products = Product.objects.filter(location__id=prefId)
@@ -177,7 +172,7 @@ def getProductDataByPrefecture(request, prefId):
 def getProductDataByPopularity(request):
   try:
     popular_product_list = []
-    for log in Log.objects.values('product__id').annotate(num_likes=Count(Case(When(liked_it=True, then=1)))).order_by('num_likes').reverse():
+    for log in Log.objects.values('product__id').annotate(num_likes=Count(Case(When(liked_it=True, then=1)))).order_by('-num_likes'):
       if log['num_likes'] != 0:
         popular_product_list.append(Product.objects.get(id=log['product__id']))
     serializer = ProductSerializer(popular_product_list[0:10], many=True)
