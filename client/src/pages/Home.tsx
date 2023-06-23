@@ -24,7 +24,7 @@ export default function Home() {
       headers: headers
     })
     .then((response) => {
-      console.log('😶‍🌫️', response);
+      console.log('🏠 HOME: ', response);
       setProducts(response.data);
     })
     .catch((err) => console.log('😈', err));
