@@ -16,3 +16,9 @@ button {
 .logout__button {
   text-align: left;
 }
+
+.setting__submit-button {
+  width: 70%;
+  height: 40px;
+  font-size: medium;
+}
