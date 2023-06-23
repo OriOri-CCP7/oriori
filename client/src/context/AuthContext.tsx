@@ -112,6 +112,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [onboarded, setOnboarded] = useState(false);
 
   const signup = async (username: string, email: string, password: string) => {
+    setIsLoading(true);
     const newUserInfo: User = {
       username: username,
       email: email,
@@ -131,9 +132,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       });
       if (userUpdate.status !== 200) throw new Error("User could not be added to app database: " + newUserInfo.uuid);
       await createUserMetadata(newUserInfo.uuid);
+      await refreshUser(newUserInfo.uuid, newUserInfo.email);
       return newUser;
     } catch(err) {
       console.log("Error creating user: ", err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -194,10 +198,20 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         setRole(userJson.role);
       }
     } else {
-      console.log('User metadata not found.')
+      console.log('User metadata (role) not found.')
     }
   };
 
+  const loadOnboardState = async (userId: string) => {
+    let userSnapshot = await get(ref(database, `onboardedUsers/${userId}`));
+    if (userSnapshot.exists()) {
+      let userJson: UserMetadata = userSnapshot.toJSON() ?? {};
+      setOnboarded(userJson.onboarded ?? false);
+    } else {
+      console.log('User metadata (onboard) not found.')
+    }
+  };
+  
   const createUserMetadata = async (userId: string) => {
     const newUser: UserMetadata = {
       onboarded: false,
@@ -212,16 +226,6 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       setRole(userJson.role ?? '');
     } else {
       console.log('User metadata could not be initialized.');
-    }
-  };
-
-  const loadOnboardState = async (userId: string) => {
-    let userSnapshot = await get(ref(database, `onboardedUsers/${userId}`));
-    if (userSnapshot.exists()) {
-      let userJson: UserMetadata = userSnapshot.toJSON() ?? {};
-      setOnboarded(userJson.onboarded ?? false);
-    } else {
-      console.log('User metadata not found.')
     }
   };
 

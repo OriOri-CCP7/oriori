@@ -81,6 +81,7 @@ const Login: React.FC = () => {
           className = "login-input"
           placeholder = "Email"
           type = "email"
+          autoComplete = "email"
           value = { email }
           onChange = { handleEmailInput }
           />
@@ -89,6 +90,7 @@ const Login: React.FC = () => {
           className = "login-input"
           placeholder = "Password"
           type = "password"
+          autoComplete = "current-password"
           value = { password }
           onChange = { handlePasswordInput }
           />
