@@ -15,21 +15,23 @@ function ProductGrid({ productArray }: Props) {
   
   const { bookmarks, isLoadingBkmarks } = UserBkmarks();
   const { logs, isLoadingLogs } = UserLogs();
-  console.log("🥰", bookmarks);
 
   return (
     <>
     <div className="Grid">
       <Grid container style={{ margin: '-1px' }} spacing={0} columnGap={0}>
-          {(!isLoadingBkmarks && !isLoadingLogs) && productArray.map((product) => (
+        {(!isLoadingBkmarks && !isLoadingLogs)
+          ? productArray.map((product) => (
               <Grid xs={12} style={{ padding: '1px',  marginBottom: 'auto' }} key={product.product_name}>
-                  <ProductCard 
-                    product={product}
-                    bookmark={bookmarks[product.id.toString()]}
-                    log={logs[product.id.toString()]}
-                    />
+                <ProductCard 
+                  product={product}
+                  bookmark={bookmarks[product.id!.toString()]}
+                  log={logs[product.id!.toString()]}
+                  />
               </Grid>
-          ))}
+            ))
+          : 'Loading...'
+        }
       </Grid>
     </div>
     </>

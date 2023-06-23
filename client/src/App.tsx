@@ -3,7 +3,9 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
 import { BkmarkContextProvider } from './context/BkmarkContext';
 import { LogContextProvider } from './context/LogContext';
+import AdminRoute from './context/AdminRoute';
 import ProtectedRoute from './context/ProtectedRoute'
+import AdminAddProduct from './pages/AdminAddProduct';
 import Bookmarks from './pages/Bookmarks';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -37,6 +39,8 @@ function App() {
                 <Route path='/search' element={<ProtectedRoute><Search/></ProtectedRoute>}></Route>
                 <Route path='/settings' element={<ProtectedRoute><Settings/></ProtectedRoute>}></Route>
                 <Route path='/onboarding' element={<ProtectedRoute><Onboarding/></ProtectedRoute>}></Route>
+
+                <Route path='/admin-addProduct' element={<AdminRoute><AdminAddProduct/></AdminRoute>}></Route>
               </Routes>
             </BrowserRouter>
           </LogContextProvider>

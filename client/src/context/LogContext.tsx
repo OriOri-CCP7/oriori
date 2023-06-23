@@ -34,7 +34,7 @@ export const LogContextProvider = ({ children }: { children: ReactNode }) => {
     axios.get(`/api/users/${auth.user.uuid}/logs/`, {
       headers: headers
     }).then((response) => {
-      console.log('⭐️', response);
+      console.log('✅ LOGS: ', response);
       let workingLogs: LogsDict = {};
       response.data.forEach((log: Log) => {
         workingLogs[log.product.toString()] = log;
@@ -42,13 +42,13 @@ export const LogContextProvider = ({ children }: { children: ReactNode }) => {
       setLogs(workingLogs);
       setIsLoadingLogs(false);
     })
-    .catch((err) => console.log('😈', err));
+    .catch((err) => console.log('😈 Log fetch error: ', err));
   };
 
   useEffect(() => {
     fetchLogs();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth?.isLoading]);
+  }, [auth?.user]);
 
   const addLog = (log: Log) => {
     setLogs({

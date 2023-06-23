@@ -2,7 +2,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from base.models import User, Location, Store, Product, Bookmark, Log
 from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer
-from django.db.models import Count
+from django.db.models import Count, When, Case, Q
+from datetime import date
 
 # Create your views here.
 
@@ -106,9 +107,27 @@ def getProductDataById(request, id):
 @api_view(['GET'])
 def getProductDataByUser(request, uuid):
   try:
+    today = date.today()
     user = User.objects.get(uuid=uuid)
-    bookmarks = Product.objects.filter(bookmark__user_id=user)
-    serializer = ProductSerializer(bookmarks, many=True)
+    products = Product.objects.filter(bookmark__user_id=user)
+    product_list = []
+    endingSoon = products.filter(Q(start_date__isnull=True) | Q(start_date__lte=today)).exclude(Q(end_date__isnull=True) | Q(end_date__lte=today)).order_by('end_date')
+    for product in endingSoon:
+      product_list.append(product)
+    upcoming = products.filter(Q(start_date__isnull=False) & Q(start_date__gt=today)).order_by('start_date')
+    for product in upcoming:
+      product_list.append(product)
+    started = products.filter(Q(start_date__isnull=False) & Q(start_date__lte=today), end_date__isnull=True).order_by('-start_date')
+    for product in started:
+      product_list.append(product)
+    ended = products.filter(Q(end_date__isnull=False) & Q(end_date__lte=today)).order_by('-end_date')
+    for product in ended:
+      product_list.append(product)
+    nodata = products.filter(start_date__isnull=True, end_date__isnull=True).order_by('product_name')
+    for product in nodata:
+      product_list.append(product)
+    
+    serializer = ProductSerializer(product_list, many=True)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
@@ -116,8 +135,26 @@ def getProductDataByUser(request, uuid):
 @api_view(['GET'])
 def getProductDataByPrefecture(request, prefId):
   try:
+    today = date.today()
+    product_list = []
     products = Product.objects.filter(location__id=prefId)
-    serializer = ProductSerializer(products, many=True)
+    endingSoon = products.filter(Q(start_date__isnull=True) | Q(start_date__lte=today)).exclude(Q(end_date__isnull=True) | Q(end_date__lte=today)).order_by('end_date')
+    for product in endingSoon:
+      product_list.append(product)
+    upcoming = products.filter(Q(start_date__isnull=False) & Q(start_date__gt=today)).order_by('start_date')
+    for product in upcoming:
+      product_list.append(product)
+    started = products.filter(Q(start_date__isnull=False) & Q(start_date__lte=today), end_date__isnull=True).order_by('-start_date')
+    for product in started:
+      product_list.append(product)
+    ended = products.filter(Q(end_date__isnull=False) & Q(end_date__lte=today)).order_by('-end_date')
+    for product in ended:
+      product_list.append(product)
+    nodata = products.filter(start_date__isnull=True, end_date__isnull=True).order_by('product_name')
+    for product in nodata:
+      product_list.append(product)
+    
+    serializer = ProductSerializer(product_list, many=True)
     return Response(serializer.data)
   except Exception as e:
     return Response({'error': str(e)})
@@ -125,8 +162,11 @@ def getProductDataByPrefecture(request, prefId):
 @api_view(['GET'])
 def getProductDataByPopularity(request):
   try:
-    products = Product.objects.annotate(num_bkmarks=Count('bookmark')).order_by("num_bkmarks").reverse()
-    serializer = ProductSerializer(products[0:10], many=True)
+    popular_product_list = []
+    for log in Log.objects.values('product__id').annotate(num_likes=Count(Case(When(liked_it=True, then=1)))).order_by('-num_likes'):
+      if log['num_likes'] != 0:
+        popular_product_list.append(Product.objects.get(id=log['product__id']))
+    serializer = ProductSerializer(popular_product_list[0:10], many=True)
     return Response(serializer.data)
   except Exception as e:
     return Response({'error': str(e)})
@@ -251,9 +291,27 @@ def addNewLog(request, uuid):
 @api_view(['GET'])
 def getUsersLoggedProducts(request, uuid):
   try:
+    today = date.today()
     user = User.objects.get(uuid=uuid)
-    logs = Product.objects.filter(log__user_id=user)
-    serializer = ProductSerializer(logs, many=True)
+    products = Product.objects.filter(log__user_id=user)
+    product_list = []
+    endingSoon = products.filter(Q(start_date__isnull=True) | Q(start_date__lte=today)).exclude(Q(end_date__isnull=True) | Q(end_date__lte=today)).order_by('end_date')
+    for product in endingSoon:
+      product_list.append(product)
+    upcoming = products.filter(Q(start_date__isnull=False) & Q(start_date__gt=today)).order_by('start_date')
+    for product in upcoming:
+      product_list.append(product)
+    started = products.filter(Q(start_date__isnull=False) & Q(start_date__lte=today), end_date__isnull=True).order_by('-start_date')
+    for product in started:
+      product_list.append(product)
+    ended = products.filter(Q(end_date__isnull=False) & Q(end_date__lte=today)).order_by('-end_date')
+    for product in ended:
+      product_list.append(product)
+    nodata = products.filter(start_date__isnull=True, end_date__isnull=True).order_by('product_name')
+    for product in nodata:
+      product_list.append(product)
+    
+    serializer = ProductSerializer(product_list, many=True)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)

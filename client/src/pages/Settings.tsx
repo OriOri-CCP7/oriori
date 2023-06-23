@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import DropdownMenu from "../components/DropdownMenu";
 import { UserAuth } from "../context/AuthContext";
+import * as ROLES from "../constants/roles";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
@@ -93,6 +94,7 @@ function Settings() {
           onClick={ handleSubmit }
           disabled={ location === "" ? true : false }/>
       </form>
+<<<<<<< HEAD
         <div className="Settings-usersetting">
           <div className="Title-User-Setting">{"User Preferences"}</div>
           <div className="LeftSide-Menu">
@@ -100,6 +102,17 @@ function Settings() {
             <Toggle label={"Left"} toggled={leftSide} onClick={handleToggled}></Toggle></div>
           </div>
         </div>
+=======
+      { auth?.role === ROLES.ADMIN
+        ? <Button
+          className="navButton"
+          type="button"
+          text="Add Products"
+          onClick={ () => navigate("/admin-addProduct")}
+          />
+        : null
+      }
+>>>>>>> c62c90de3946ff73db2dac8bca899b3111a76e73
     </div>
   );
 };

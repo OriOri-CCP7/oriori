@@ -11,3 +11,7 @@ form {
   align-items: center;
   gap: 15px;
 }
+
+.page__wrapper {
+  padding-bottom: 120px;
+}
