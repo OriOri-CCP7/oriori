@@ -75,7 +75,6 @@
 }
 
 .header__logo {
-    top: 30px;
     position: absolute;
     margin: auto;/* centered with position: absolute */
 }

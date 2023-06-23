@@ -13,10 +13,12 @@ const Header: React.FC<Props> = ({ mainText, secondaryText }: Props) => {
     <>
     <header
       className="header">
-      <img src='/oriori-logo.svg' className='header__logo' alt='OriOri Logo'/>
+        <img src='/oriori-logo.svg' className='header__logo' alt='OriOri Logo'/>
+    </header>
+      <div className="header__bottom-container">
       { mainText && <h1> { mainText } </h1> }
       { secondaryText && <h2> { secondaryText } </h2> }
-    </header>
+      </div>
     </>
   )
 }
