@@ -107,9 +107,27 @@ def getProductDataById(request, id):
 @api_view(['GET'])
 def getProductDataByUser(request, uuid):
   try:
+    today = date.today()
     user = User.objects.get(uuid=uuid)
-    bookmarks = Product.objects.filter(bookmark__user_id=user)
-    serializer = ProductSerializer(bookmarks, many=True)
+    products = Product.objects.filter(bookmark__user_id=user)
+    product_list = []
+    endingSoon = products.filter(Q(start_date__isnull=True) | Q(start_date__lte=today)).exclude(Q(end_date__isnull=True) | Q(end_date__lte=today)).order_by('end_date')
+    for product in endingSoon:
+      product_list.append(product)
+    upcoming = products.filter(Q(start_date__isnull=False) & Q(start_date__gt=today)).order_by('start_date')
+    for product in upcoming:
+      product_list.append(product)
+    started = products.filter(Q(start_date__isnull=False) & Q(start_date__lte=today), end_date__isnull=True).order_by('-start_date')
+    for product in started:
+      product_list.append(product)
+    ended = products.filter(Q(end_date__isnull=False) & Q(end_date__lte=today)).order_by('-end_date')
+    for product in ended:
+      product_list.append(product)
+    nodata = products.filter(start_date__isnull=True, end_date__isnull=True).order_by('product_name')
+    for product in nodata:
+      product_list.append(product)
+    
+    serializer = ProductSerializer(product_list, many=True)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
@@ -273,9 +291,27 @@ def addNewLog(request, uuid):
 @api_view(['GET'])
 def getUsersLoggedProducts(request, uuid):
   try:
+    today = date.today()
     user = User.objects.get(uuid=uuid)
-    logs = Product.objects.filter(log__user_id=user)
-    serializer = ProductSerializer(logs, many=True)
+    products = Product.objects.filter(log__user_id=user)
+    product_list = []
+    endingSoon = products.filter(Q(start_date__isnull=True) | Q(start_date__lte=today)).exclude(Q(end_date__isnull=True) | Q(end_date__lte=today)).order_by('end_date')
+    for product in endingSoon:
+      product_list.append(product)
+    upcoming = products.filter(Q(start_date__isnull=False) & Q(start_date__gt=today)).order_by('start_date')
+    for product in upcoming:
+      product_list.append(product)
+    started = products.filter(Q(start_date__isnull=False) & Q(start_date__lte=today), end_date__isnull=True).order_by('-start_date')
+    for product in started:
+      product_list.append(product)
+    ended = products.filter(Q(end_date__isnull=False) & Q(end_date__lte=today)).order_by('-end_date')
+    for product in ended:
+      product_list.append(product)
+    nodata = products.filter(start_date__isnull=True, end_date__isnull=True).order_by('product_name')
+    for product in nodata:
+      product_list.append(product)
+    
+    serializer = ProductSerializer(product_list, many=True)
     return Response(serializer.data)
   except:
     return Response(serializer.errors)
