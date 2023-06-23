@@ -28,36 +28,33 @@ const PasswordReset: React.FC = () => {
         setisResetSuccessful(true);
       }
     } catch (error) {
-        console.log("🤬", error);
+      console.log("🤬 Password reset error: ", error);
     }
   }
 
   return (
   <div className="password-reset-form">
-  <Header mainText="OriOri Password Reset" />
-  <p className="reset-message">Enter your email and we'll send you a link to reset your password.</p>
-  <form onSubmit = { handleResetPassword }>
-  <Input 
-          className = "login-input"
-          placeholder = "Email"
-          type = "email"
-          value = { email }
-          onChange = { handleEmailInput }/>
-  <Button 
-          className = "submit"
-          text = "Reset Password"
-          type = "submit" />
-  <Link to = "/"> Go back to Login Page! </Link>
-  </form>
-  
-  {isResetSuccessful === true ? (
-    <p>A password reset email was sent to your registered email address.</p>
-  ) : (
-    <></>
-  )
-  }
+    <Header mainText="OriOri Password Reset" />
+    <p className="reset-message">Enter your email and we'll send you a link to reset your password.</p>
+    <form onSubmit = { handleResetPassword }>
+      <Input 
+        className = "login-input"
+        placeholder = "Email"
+        type = "email"
+        value = { email }
+        onChange = { handleEmailInput }/>
+      <Button 
+        className = "submit"
+        text = "Reset Password"
+        type = "submit" />
+      <Link to = "/"> Go back to Login Page! </Link>
+    </form>
+    
+    { isResetSuccessful === true
+      ? <p>A password reset email was sent to your registered email address.</p>
+      : <></> }
 
-<Footer />
+    <Footer />
   </div>
   )
 }

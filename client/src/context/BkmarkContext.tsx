@@ -33,7 +33,7 @@ export const BkmarkContextProvider = ({ children }: { children: ReactNode }) => 
     axios.get(`/api/users/${auth.user.uuid}/bookmarks/`, {
       headers: headers
     }).then((response) => {
-      console.log('⭐️', response);
+      console.log('🔖 BOOKMARKS: ', response);
       let workingBkmarks: BookmarksDict = {};
       response.data.forEach((bookmark: Bookmark) => {
         workingBkmarks[bookmark.product.toString()] = bookmark;
@@ -41,13 +41,13 @@ export const BkmarkContextProvider = ({ children }: { children: ReactNode }) => 
       setBookmarks(workingBkmarks);
       setIsLoadingBkmarks(false);
     })
-    .catch((err) => console.log('😈', err));
+    .catch((err) => console.log('😈 Bookmark fetch error: ', err));
   };
 
   useEffect(() => {
     fetchBkmarks();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth?.isLoading]);
+  }, [auth?.user]);
 
   const addBkmark = (bookmark: Bookmark) => {
     setBookmarks({
