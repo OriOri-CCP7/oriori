@@ -4,12 +4,13 @@ import prefs from '../data/prefectures.json';
 import '../styles/DropdownMenu.css';
 
 type Props = {
+  className?: string,
   labelName?: string,
   setPrefecture: (prefId: string) => void,
   prefill?: string
 };
 
-function DropdownMenu( {labelName, setPrefecture, prefill}: Props ) {
+function DropdownMenu({ className, labelName, setPrefecture, prefill }: Props) {
   const [selected, setSelected] = useState<string>(prefill ?? "");
   
   function handleChange (event: React.ChangeEvent<HTMLSelectElement>) {
@@ -19,7 +20,7 @@ function DropdownMenu( {labelName, setPrefecture, prefill}: Props ) {
 
   return (
     <>
-      <div className="dropdownMenu">
+      <div className={ "dropdownMenu " + className }>
         <label>
           { labelName ?? "" }
           <select className="selectName" onChange={ handleChange } value={ selected }>

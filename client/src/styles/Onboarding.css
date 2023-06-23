@@ -7,13 +7,45 @@
   margin: auto;
 }
 
+.onboarding__kanji {
+  margin: 4pt auto;
+  font-size: xx-large;
+  opacity: 0;
+  animation: 2s ease-in 0s fade-in forwards;
+}
+
 .onboarding__intro-text {
   margin: 2pt auto;
   text-align: center;
+  font-size: large;
+  opacity: 0;
+  animation: 2s ease-in 2s fade-in forwards;
+}
+
+.onboarding__dropdown {
+  opacity: 0;
+  animation: 3s ease-in 4s fade-in forwards;
 }
 
 .onboarding__instruction-text {
   margin: 2pt auto;
   text-align: center;
   font-size: small;
+  opacity: 0;
+  animation: 3s ease-in 4s fade-in forwards;
+}
+
+.onboarding__submit-button {
+  opacity: 0;
+  animation: 3s ease-in 4s fade-in forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

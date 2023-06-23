@@ -4,8 +4,9 @@ import axios from 'axios';
 import app from '../firebase.config';
 import { ref, set } from 'firebase/database';
 import { UserAuth } from '../context/AuthContext';
-import DropdownMenu from '../components/DropdownMenu';
 import Button from '../components/Button';
+import DropdownMenu from '../components/DropdownMenu';
+import Header from '../components/Header';
 
 import '../styles/Onboarding.css';
 
@@ -49,16 +50,18 @@ function Onboarding() {
   
   return (
     <div className="onboarding">
-      <p className="onboarding__intro-text">
+      <Header/>
+      <p className="onboarding__kanji">
         四季折々<br/>
-        （しきおりおり）<br/>
-        <br/>
+        （しきおりおり）
+      </p>
+      <p className="onboarding__intro-text">
         <b>oriori</b> comes from the<br/>
         Japanese phrase <i>shikioriori</i>,<br/>
-        meaning ‘from season to season’
+        which means ‘from season to season’
       </p>
       <br/>
-      <DropdownMenu labelName={ "Home Prefecture: " } setPrefecture={ setPrefecture } prefill={ prefecture }/>
+      <DropdownMenu className="onboarding__dropdown" labelName={ "Home Prefecture: " } setPrefecture={ setPrefecture } prefill={ prefecture }/>
       <p className="onboarding__instruction-text">
         Select the prefecture you want to use as your Home Prefecture. 
         It can be where you live, where you plan on visiting the most, 
