@@ -5,10 +5,17 @@ Deployment: [oriori.fly.dev](oriori.fly.dev)
 * * *
 ![Updated](https://img.shields.io/static/v1?label=updated&message=June%2024th%202023&color=388E3C&style=flat-square)  
 
-## Project Description ##
-oriori is a tracking tool for seasonal and regional goods in Japan.
+## Project's Description ##
+四季折々 'しきおりおり' - ORIORI 
 
+What is Oriori?
+Oriori is a tracking tool for seasonal and regional goods in Japan.
+Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 
+Why use Oriori?
+Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
+
+---
 
 ### Index ###
 * Go to section  
