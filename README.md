@@ -4,19 +4,15 @@
 
 Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
 
----
-
 ## Project's Description ##
 <u>四季折々 'しきおりおり' - ORIORI</u> 
 
--What is Oriori?  
+- What is Oriori?  
 Oriori is a tracking tool for seasonal and regional goods in Japan.
 Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 
--Why use Oriori?  
+- Why use Oriori?  
 Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
-
----
 
 ### Index ###
 * Go to section  
@@ -33,34 +29,39 @@ Did you ever wondered what different seasonal products are there, when are they 
 4. [Credits](#credits)    
 5. [Licence](#licence)    
 
----
-2. How to Install and Run the Project
 ### How to Install and Run the Project ###
 
-
-
 Run the following essential seeds for the apps to run:
+
 ```bash
 python3 manage.py loaddata 001_Locations.json 
 python3 manage.py loaddata 004_Products.json
 ```
+
 -Alternatively, you can open `runseed.sh` in the root directory and edit skipindices to omit some entry in the list, just DO NOT RUN it yet.  
+
 For the above cases, at `skipindices`, remove `0` and `3` for the script to run `001_Locations.json` and `004_Products.json`:    
+
 ```bash
 ./runseed.sh
 ``` 
+
 For linux user, be sure to run `chmod u+x runseed.sh` first.
 
 Beside `sh runseed.sh` and the above, you can try to run the `runseed.sh` by:-
+
 ```bash
 source runseed.sh
 ```
+
 OR
+
 ```bash
 bash runseed.sh
 ```
+
 ### .env ###
----
+
 #### .env at folder oriori ####
 - You also needed two `.env` file in the following location:
 
@@ -73,6 +74,7 @@ SECRET_KEY=
 DEBUG=
 DATABASE_URL=
 ```
+
 ##### SECRET_KEY #####
 You needed to create a secret key for your team or yourself if you work for MVP:
 https://codinggear.blog/django-generate-secret-key/#generate-secret-key-in-django-using-getrandomsecretkeynbspfunction
@@ -103,7 +105,7 @@ CREATE DATABASE oriori
 ``` 
 #### .env at foler oriori/client ####
 - `.env` at `oriori/client`
----
+
 You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields:-
 
 ```
@@ -119,7 +121,7 @@ REACT_APP_FB_DB_URL=
 NB: Make sure you exclude both .env file from your .gitignore, this data should be keep off from your git pull.  
 
 ## For Docker ##
----
+
 Install Docker in your respective desktop environment (MacOs, Windows, Linux, etc)  
 Download [Docker](https://www.docker.com/)  
 Run the following command to make oriori start in a virtual environment provided by docker  
@@ -137,7 +139,7 @@ docker compose up
 ```
 
 ### How to Use the Project ###
----  
+
 
 For development
 - To run it locally, in the oriori root folder, you needed to create a virtual environment in python3:  
@@ -170,7 +172,7 @@ sh rundev.sh
 
 If the app has no error, it will run the app at [localhost:8080](http://localhost:8080). If there is errors, try to resolve it.
 
----
+
 
 ### Credits ###  
 
@@ -181,7 +183,7 @@ If the app has no error, it will run the app at [localhost:8080](http://localhos
 | Ikuno Kanasugi  | -Fullstack Engineer  <br> -Data Sourcing  <br> -Database | https://github.com/ikuno815 |
 | Chadwick Au | -Fullstack Engineer  <br> -Client Page <br> -UI Components | https://github.com/SirrorsMoore1975 |
 
----
+
 
 ### Licence ###
 
