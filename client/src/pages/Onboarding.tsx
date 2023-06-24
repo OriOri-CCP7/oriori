@@ -51,23 +51,24 @@ function Onboarding() {
   return (
     <div className="onboarding">
       <Header/>
-      <ruby className="onboarding__kanji">
+      <ruby className="onboarding__kanji bold">
         <rp>(</rp>四<rt>し</rt>季<rt>き</rt>折<rt>おり</rt>々<rt>おり</rt><rp>)</rp>
       </ruby>
       <p className="onboarding__intro-text">
-        <b>oriori</b> comes from the<br/>
+        <b className='bold'>oriori</b> comes from the<br/>
         Japanese phrase <i>shikioriori</i>,<br/>
-        which means ‘from season to season’
+        meaning ‘from season to season’
       </p>
       <br/>
       <DropdownMenu className="onboarding__dropdown" labelName={ "Home Prefecture: " } setPrefecture={ setPrefecture } prefill={ prefecture }/>
       <p className="onboarding__instruction-text">
-        Products shown on the Home tab are filtered by
-        what's available in your Home Prefecture.<br/>
-        Pick any Home Prefecture you like.
+        The Home tab showcases products<br/>
+        available in your Home Prefecture.<br/>
+        Select any Home Prefecture you like.
         <br/><br/>
-        <i className="onboarding__instruction-detail">You can change this in the Settings menu,
-        or use the Search tab to browse other Prefectures at any time.</i>
+        <i className="onboarding__instruction-detail">
+          You can change this setting or browse other prefectures at any time.
+        </i>
       </p>
       <br/>
       <Button

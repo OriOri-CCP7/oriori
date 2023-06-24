@@ -5,13 +5,9 @@
 
 .header__logo {
   min-width: 60pt;
-  max-width: 80pt;
+  max-width: 100pt;
 }
 
-.header__bottom-container {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  padding: 10pt;
-  margin-top: 20px;
+.header__h1 {
+  font-weight: 500;
 }

@@ -16,25 +16,19 @@
 }
 
 .home-header__top-container {
-  padding: 10px 10px;
-  text-align: left;
   display: flex;
-  justify-content: space-between;
-  padding: 10px 10px;
-  display: flex;
-  position: relative;/* position: relative is needed in parent div to use absolute */
+  position: relative;
 }
 
 .home-header__bottom-container {
   display: flex;
   flex-direction: column;
-  align-items: left;
   padding: 2pt;
-  margin-top: 50px;
 }
 
 .home-header__pref-name {
   font-size: 24pt;
+  font-weight: 500;
 }
 
 .home-header__subtitle {
@@ -42,8 +36,5 @@
 }
 
 .home-header__logo {
-  position: absolute;
-  right: 0;
-  left: 0;
-  margin: auto;
+  margin: 0 auto;
 }

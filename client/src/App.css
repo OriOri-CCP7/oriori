@@ -12,6 +12,10 @@ form {
   gap: 15px;
 }
 
+.bold {
+  font-weight: 500;
+}
+
 .page__wrapper {
   padding-bottom: 120px;
 }

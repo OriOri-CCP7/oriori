@@ -2,15 +2,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 75%;
+  width: 80%;
   height: 100%;
   margin: auto;
 }
 
 .onboarding__kanji {
   margin: 4pt auto;
+  font-family: 'Kaisei Tokumin', serif;
   font-size: xxx-large;
-  font-weight: 700;
   opacity: 0;
   animation: 2s ease-in 0s fade-in forwards;
 }
@@ -23,13 +23,13 @@
 .onboarding__intro-text {
   margin: 2pt auto;
   text-align: center;
-  font-size: large;
+  font-size: medium;
   opacity: 0;
   animation: 2s ease-in 2s fade-in forwards;
 }
 
 .onboarding__dropdown {
-  margin: 6pt auto 10pt;
+  margin: 4pt auto 6pt;
   opacity: 0;
   animation: 2s ease-in 4s fade-in forwards;
 }
@@ -50,6 +50,7 @@
 .onboarding__submit-button {
   opacity: 0;
   animation: 2s ease-in 4s fade-in forwards;
+  margin-bottom: 30pt;
 }
 
 @keyframes fade-in {
