@@ -52,11 +52,11 @@ function ProductCard ({ product, bookmark, log }: Props) {
         availabilityMsg = "Available while supplies last!";
         
         if (daysSinceStart > 7) {
-          availabilityMsg = "While supplies last <br> (started last week)!";
+          availabilityMsg = `While supplies last ${<br />} (started last week)!`;
         }
 
         if (daysSinceStart > 14) {
-          availabilityMsg = "While supplies last <br> (started 2 weeks ago)!";
+          availabilityMsg = `While supplies last ${<br />} (started 2 weeks ago)!`;
         }
       }
     }
