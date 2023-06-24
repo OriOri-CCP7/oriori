@@ -13,7 +13,7 @@
 Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
 
 ## Project's Description ##
-<u>四季折々 'しきおりおり' - ORIORI</u> 
+<u>四季折々 'しきおりおり' - (SHIKI)ORIORI</u> 
 
 - What is Oriori?  
 Oriori is a tracking tool for seasonal and regional goods in Japan.
