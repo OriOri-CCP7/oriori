@@ -12,14 +12,19 @@ Deployment: [oriori.fly.dev](oriori.fly.dev)
 4.[Credits](#credits)  
 5.[Licence](#licence)  
 
-### How to Install and Run the Project ###
 ---
+
+### How to Install and Run the Project ###
+
 To test it locally, first create it 
+
+---
+
 ### How to Use the Project ###
+
 ---
 
 ### Credits ###  
----
 
 | Name | Title / Position | GitHub  |
 | ---- | ---------------- | ------- |
@@ -28,8 +33,10 @@ To test it locally, first create it
 | Ikuno Kanasugi  | -Fullstack Engineer  <br> -Data Sourcing  <br> -Database | https://github.com/ikuno815 |
 | Chadwick Au | -Fullstack Engineer  <br> -Client Page <br> -UI Components | https://github.com/SirrorsMoore1975 |
 
-### Licence ###
 ---
+
+### Licence ###
+
 
 MIT License
 
@@ -44,3 +51,4 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+---
