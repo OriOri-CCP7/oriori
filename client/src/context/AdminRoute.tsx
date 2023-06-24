@@ -12,7 +12,7 @@ const AdminRoute = ({children} : { children: JSX.Element }) => {
     ? (
         role === ROLES.ADMIN
           ? children
-          : <Navigate to='/' state={{ from: location }} replace/>
+          : <Navigate to='/home' state={{ from: location }} replace/>
       )
     : null;
 };

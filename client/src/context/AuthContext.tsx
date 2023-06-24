@@ -110,8 +110,10 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   );
   const [role, setRole] = useState('');
   const [onboarded, setOnboarded] = useState(false);
+  const [refreshAllowed, setRefreshAllowed] = useState(true);
 
   const signup = async (username: string, email: string, password: string) => {
+    setRefreshAllowed(false);
     const newUserInfo: User = {
       username: username,
       email: email,
@@ -132,6 +134,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       if (userUpdate.status !== 200) throw new Error("User could not be added to app database: " + newUserInfo.uuid);
       await createUserMetadata(newUserInfo.uuid);
       await refreshUser(newUserInfo.uuid, newUserInfo.email);
+      setLoadComplete(true);
       return newUser;
     } catch(err) {
       console.log("Error creating user: ", err);
@@ -139,10 +142,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const login = async (email: string, password: string) => {
+    setRefreshAllowed(false);
     const loggedIn = await signInWithEmailAndPassword(auth, email, password);
     console.log('LOG IN: ', loggedIn);
-    const refreshResult = await refreshUser(loggedIn.user.uid, loggedIn.user.email);
-    return refreshResult;
+    const userMetadata = await refreshUser(loggedIn.user.uid, loggedIn.user.email);
+    setLoadComplete(true);
+    return userMetadata;
   };
 
   const logout = async () => {
@@ -156,12 +161,10 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const refreshUser = async (userId: string, email: string | null): Promise<UserMetadata | undefined> => {
+  const refreshUser = async (userId: string, email: string | null) => {
     try {
       const result = await axios.get(`/api/users/${userId}/`);
       if (result.status !== 200) { throw new Error(`User ID "${userId}" not found in app database.`); }
-      const role = await loadUserRole(userId);
-      const onboard = await loadOnboardState(userId);
       dispatchUser({
         type: 'set_user',
         newUsername: result.data.username,
@@ -169,7 +172,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         newUuid: userId,
         newLocation: String(result.data.location)
       });
-      return { onboarded: onboard, role: role };
+      const userMetadata = await updateUserMetadata(userId);
+      return userMetadata;
     } catch (error) {
       console.log("🍀 Refresh Error: ", error);
     }
@@ -191,7 +195,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       if (userJson.role) {
         setRole(userJson.role);
         console.log('USER ROLE: ', userJson.role);
-        return userJson.role;
+        return userJson.role
       }
     } else {
       console.log('User metadata (role) not found.')
@@ -231,16 +235,18 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const updateUserMetadata = async (userId: string): Promise<UserMetadata> => {
+    const role = await loadUserRole(userId);
+    const onboard = await loadOnboardState(userId);
+    return { onboarded: onboard, role: role };
+  };
+
   useEffect(() => {
-    if (auth.currentUser && loadComplete) {
-      refreshUser(auth.currentUser.uid, auth.currentUser.email);
-    } else {
-      dispatchUser({ type: 'clear_user' });
-    }
-    
     const authenticationState = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser && loadComplete) {
-        refreshUser(currentUser.uid, currentUser.email);
+      console.log("Auth state change.");
+      if (currentUser && refreshAllowed) {
+        refreshUser(currentUser.uid, currentUser.email)
+          .then(() => setLoadComplete(true));
       }
     });
 
@@ -248,10 +254,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       authenticationState();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [refreshAllowed]);
 
   useEffect(() => {
-    setLoadComplete(true);
     console.log('USER UPDATE: ', user);
   }, [user]);
 
