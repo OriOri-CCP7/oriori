@@ -24,3 +24,10 @@ button {
   margin-left: 10pt;
   margin-top: 10pt;
 }
+
+.navButton {
+  width: 70%;
+  height: 40px;
+  font-size: medium;
+  margin-top: 20px;
+}

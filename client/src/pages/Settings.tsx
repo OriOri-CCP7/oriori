@@ -94,12 +94,13 @@ function Settings() {
           text="Save"
           onClick={ handleSubmit }
           disabled={ location === "" ? true : false }/>
-        <Button
+        
+        {/* <Button
           className="logout__button"
           text="Log Out"
           type="button"
-          onClick={ handleLogout } />
-      </form>
+          onClick={ handleLogout } /> */}
+
       { auth?.role === ROLES.ADMIN
         ? <Button
           className="navButton"
@@ -109,6 +110,12 @@ function Settings() {
           />
         : null
       }
+        <Button
+          className="logout__button"
+          text="Log Out"
+          type="button"
+          onClick={ handleLogout } />
+      </form>
     </div>
   );
 };
