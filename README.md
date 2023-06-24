@@ -177,18 +177,19 @@ sh rundev.sh
 If the app has no error, it will run the app at [localhost:8080](http://localhost:8080). If there is errors, try to resolve it.
 
 ## At the App
-### Sign in
+### Sign up
 When you are in the app, you needed to create a user account if you are a user. 
 
-Click Sign in.
+Click to Sign up.
 
-Fill in your **username** **password** **confirm password** and **email**. Press submit or Enter.
+Fill in your `**username**` `**password**` `**confirm password**` and `**email**`. Press submit or Enter.
 
 You will be directed to the boarding page and you are all set.
 
 ### Login
-When you have a user account, enter your credential email and password, then press Log in.
+When you have a user account, enter your credential `email` and `password`, then press Log in.
 
+You can reset your password by click `reset password`.
 
 ### Navbar
 The Navbar is how you navigate the app.
