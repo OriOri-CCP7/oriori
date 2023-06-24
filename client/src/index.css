@@ -16,6 +16,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-color: #FDF6F0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 code {

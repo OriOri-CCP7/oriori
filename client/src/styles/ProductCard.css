@@ -30,6 +30,7 @@
 }
 
 .product__avail-text {
+	white-space: pre-line;
 	font-size: 12pt;
 	margin-top: 4pt;
 }

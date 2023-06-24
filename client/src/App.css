@@ -12,6 +12,14 @@ form {
   gap: 15px;
 }
 
+a {
+  color: #cd5ecd;
+}
+
+a:visited {
+  color: #bb87bb;
+}
+
 .bold {
   font-weight: 500;
 }
