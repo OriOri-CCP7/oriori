@@ -44,6 +44,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
       availabilityMsg = 'Now available!';
       if (daysSinceStart < 4) {
         availModifier += ' new'
+        availabilityMsg = "New release!"
       }
     }
   }
@@ -61,8 +62,12 @@ function ProductCard ({ product, bookmark, log }: Props) {
         availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
       }
     } else {
+      availModifier += ' ended';
       availabilityMsg = 'No longer available.';
     }
+  } else if (!product.end_date) {
+    availModifier += ' while-supplies';
+    availabilityMsg = "Available while supplies last!";
   }
 
   const headers = {
@@ -174,8 +179,6 @@ function ProductCard ({ product, bookmark, log }: Props) {
     }
   } 
   
-
-
   return (
     <div className='product__card' id={`${product.id}`}>
       <div className='product__title' onClick={ clickProductHandler }>

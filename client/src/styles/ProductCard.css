@@ -30,7 +30,14 @@
 
 .product__avail-text {
     font-size: 12pt;
-    color: #808080;
+}
+
+.product__avail-container.while-supplies {
+  background-color: #c3f6ff;
+}
+
+.product__avail-text.while-supplies {
+  color: #4bb1c3;
 }
 
 .product__avail-container.new {
@@ -47,6 +54,14 @@
 
 .product__avail-text.ending {
     color: #CC000E
+}
+
+.product__avail-container.ended {
+  background-color: rgb(208, 208, 208);
+}
+
+.product__avail-text.ended {
+  color: grey;
 }
 
 .product__content {
