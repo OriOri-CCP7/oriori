@@ -15,9 +15,12 @@
 ### How to Use the Project ###
 
 ### Credits ###
-| Name | Position | GitHub Link |
-| ---- | -------- | ----------- |
-| Joseph Van Alstyne | 1.TechLeader 2. DevOps/CI 3. Support | https://github.com/kappanjoe |
+| Name | Position | GitHub  |
+| ---- | -------- | ------- |
+| Joseph Van Alstyne | 1.TechLeader 2.DevOps/CI 3.Support | https://github.com/kappanjoe |
+| Nicole Boci  | 1.Product Owner 2.Fullstack Engineer 3.Server 4.Data Sourcing | https://github.com/nikobatzi1990 |
+| Ikuno Kanasugi  | 1.Fullstack Engineer 2.Data Sourcing 3.Database | https://github.com/ikuno815 |
+| Chadwick Au | 1.Fullstack Engineer 2.Client Page 3.UI Components | https://github.com/SirrorsMoore1975 |
 ### Licence ###
 MIT License
 
