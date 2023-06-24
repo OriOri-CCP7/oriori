@@ -1,18 +1,19 @@
 # ORIORI
 
-Deployment: [oriori.fly.dev](oriori.fly.dev)  
-
-* * *
 ![Updated](https://img.shields.io/static/v1?label=updated&message=June%2024th%202023&color=388E3C&style=flat-square)  
 
-## Project's Description ##
-四季折々 'しきおりおり' - ORIORI 
+Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
 
-What is Oriori?
+---
+
+## Project's Description ##
+<u>四季折々 'しきおりおり' - ORIORI</u> 
+
+-What is Oriori?  
 Oriori is a tracking tool for seasonal and regional goods in Japan.
 Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 
-Why use Oriori?
+-Why use Oriori?  
 Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
 
 ---
@@ -29,11 +30,134 @@ Did you ever wondered what different seasonal products are there, when are they 
 
 ### How to Install and Run the Project ###
 
-To test it locally, first create it 
+
+
+Run the following essential seeds for the apps to run:
+```bash
+python3 manage.py loaddata 001_Locations.json 
+python3 manage.py loaddata 004_Products.json
+```
+-Alternatively, you can open `runseed.sh` in the root directory and edit skipindices to omit some entry in the list, just DO NOT RUN it yet.  
+For the above cases, at `skipindices`, remove `0` and `3` for the script to run `001_Locations.json` and `004_Products.json`:    
+```bash
+./runseed.sh
+``` 
+For linux user, be sure to run `chmod u+x runseed.sh` first.
+
+Beside `sh runseed.sh` and the above, you can try to run the `runseed.sh` by:-
+```bash
+source runseed.sh
+```
+OR
+```bash
+bash runseed.sh
+```
+### .env ###
+1. You also needed two `.env` file in the following location:
+
+- in the `oriori` root directory
+- in the `oriori/client` directory
+
+The `.env.example` provided gives you an example on how to use the `.env` in your root directory. You needed to set the following in order for the app to run properly.
+```
+SECRET_KEY=
+DEBUG=
+DATABASE_URL=
+```
+#### SECRET_KEY ####
+You needed to create a secret key for your team or yourself if you work for MVP:
+https://codinggear.blog/django-generate-secret-key/#generate-secret-key-in-django-using-getrandomsecretkeynbspfunction
+
+#### DEBUG ####
+Set it to equal to `True` or `False`
+
+#### DATABASE_URL ####
+
+```
+DATABASE_URL=postgres://[YOUR_USERNAME]:[YOUR_PASS]@localhost:5432/[YOUR_DB_NAME]
+```
+
+The oriori root directory is for credential using `postgres` database locally, if you did not have postgres installed in your system, please install it. Check how your system install and run postgres.   
+
+You will need the following three variables:
+- postgres's username at `YOUR_USERNAME` (usually is postgres)
+- postgres's password at `YOUR_PASS`
+- the oriori database postrgres going to use at `YOUR_DB_NAME`
+
+Once you have postgres installed, enter by using: 
+```
+psql - U
+```
+At postgres create a database:
+```psql
+CREATE DATABASE oriori
+``` 
+2. `.env` at `oriori/client`
+You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields:-
+
+```
+REACT_APP_API_KEY=
+REACT_APP_FB_AUTH_DOMAIN=
+REACT_APP_FB_PROJECT_ID=
+REACT_APP_FB_STORAGE_BUCKET=
+REACT_APP_FB_MESSAGING_SENDER_ID=
+REACT_APP_FB_APP_ID=
+REACT_APP_FB_DB_URL=
+```
+
+NB: Make sure you exclude both .env file from your .gitignore, this data should be keep off from your git pull.  
+
+## For Docker ##
+Install Docker in your respective desktop environment (MacOs, Windows, Linux, etc)  
+Download [Docker](https://www.docker.com/)  
+Run the following command to make oriori start in a virtual environment provided by docker  
+```bash
+docker compose up
+```
+
+Once your codes are updated, you will wanted to purge the previous image, run:
+```bash
+docker compose down --rmi all
+```
+Re-run: 
+```bash
+docker compose up
+```
 
 ---
 
 ### How to Use the Project ###
+
+For development
+-To run it locally, in the oriori root folder, you needed to create a virtual environment in python3:  
+
+```bash
+python3 -m venv venv
+```
+
+Run the environment:  
+
+```bash
+source venv/bin/activate
+```
+
+Install your necessary project requirements (if a requirements file exist)
+```bash
+pip install -r requirements.txt
+```
+
+To make migration from mange.py
+```bash
+python3 manage.py makemigrations
+```
+
+To start the project, run the following command:   
+
+```bash
+sh rundev.sh
+```
+
+If the app has no error, it will run the app at [localhost:8080](http://localhost:8080). If there is errors, try to resolve it.
 
 ---
 
