@@ -4,16 +4,17 @@
 	justify-content: space-around;
 	align-items: center;
 	align-content: center;
+  margin-bottom: 8pt;
 }
 
 .product__title, .product__content {
+	background-color: white;
 	width: calc(100% - 24pt);
 	border-radius: 12pt;
-	background-color: white;
 }
 
 .product__title {
-	margin: 14pt 12pt 6pt;
+	margin: 14pt 12pt 10pt;
 	padding: 6pt;
 }
 
@@ -22,14 +23,15 @@
 }
 
 .product__avail-container {
+	background-color: #E5E5E5;
+	border-radius: 6pt;
 	margin: 2pt 24pt -14pt;
 	padding: 0 0 2pt;
-	border-radius: 6pt;
-	background-color: #E5E5E5;
 }
 
 .product__avail-text {
 	font-size: 12pt;
+	margin-top: 4pt;
 }
 
 .product__avail-container.while-supplies {

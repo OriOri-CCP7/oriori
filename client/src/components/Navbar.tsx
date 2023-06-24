@@ -9,48 +9,48 @@ function Navbar() {
   const location = useLocation();
 
   return (
-    <div className='nav'>
-      <ul>
-        <li className='Home'
+    <div className='nav__container'>
+      <ul className='nav__button-wrapper'>
+        <li className='nav__button home'
           style={location.pathname === '/home' ? {background : '#ffe4e1'} : {}}>
           <HomeIcon
-            {...location.pathname === '/home' ? {className:'nav__icon home'} : {className:'unselected'}} 
+            {...location.pathname === '/home' ? {className:'nav__icon home'} : {className:'nav__icon unselected'}} 
             onClick={() => {
               navigate('/home');
             }}/>
         </li>
 
-        <li className='Heart'
+        <li className='nav__button bkmark'
           style={location.pathname === '/bookmarks' ? {background : '#ffe4e1'} : {}}>
           <BookmarkIcon 
-            {...location.pathname === '/bookmarks' ? {className:'nav__icon bkmark'} : {className:'unselected'}} 
+            {...location.pathname === '/bookmarks' ? {className:'nav__icon bkmark'} : {className:'nav__icon unselected'}} 
             onClick={() => {
               navigate('/bookmarks');
             }}/>
         </li>
 
-        <li className='Logs'
+        <li className='nav__button log'
           style={location.pathname === '/logs' ? {background : '#ffe4e1'} : {}}>
           <CheckCircleIcon
-            {...location.pathname === '/logs' ? {className:'nav__icon log'} : {className:'unselected'}} 
+            {...location.pathname === '/logs' ? {className:'nav__icon log'} : {className:'nav__icon unselected'}} 
             onClick={() => {
               navigate('/logs');
             }}/>
         </li>
 
-        <li className='Popular'
+        <li className='nav__button pop'
           style={location.pathname === '/popular' ? {background : '#ffe4e1'} : {}}>
           <FireIcon 
-            {...location.pathname === '/popular' ? {className:'nav__icon pop'} : {className:'unselected'}}  
+            {...location.pathname === '/popular' ? {className:'nav__icon pop'} : {className:'nav__icon unselected'}}  
             onClick={() => {
               navigate('/popular');
             }} />
         </li>
 
-        <li className='Search'
+        <li className='nav__button search'
           style={location.pathname === '/search' ? {background : '#ffe4e1'} : {}}>
           <MagnifyingGlassIcon
-            {...location.pathname === '/search' ? {className:'nav__icon search'} : {className:'unselected'}} 
+            {...location.pathname === '/search' ? {className:'nav__icon search'} : {className:'nav__icon unselected'}} 
             onClick={() => {
               navigate('/search');
             }}/>

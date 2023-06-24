@@ -1,4 +1,4 @@
-.nav {
+.nav__container {
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -8,7 +8,7 @@
   justify-content: space-around;
 }
 
-.nav ul {
+.nav__button-wrapper {
   padding: 10px;
   margin: 0;
   list-style: none;
@@ -17,7 +17,7 @@
   width: 100%;
 }
 
-.nav li {
+.nav__button {
   padding: 5px;
   justify-content: center;
   width: 25%;
@@ -31,7 +31,7 @@
 }
 
 .nav__icon {
-  width: 18pt;
+  height: 18pt;
 }
 
 .nav__icon.home {

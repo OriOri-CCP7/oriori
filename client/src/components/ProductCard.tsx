@@ -25,7 +25,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
   const [isLiked, setIsLiked] = useState(log?.liked_it ? true : false);
   const [hasShared, setHasShared] = useState<boolean>(false);
 
-  let availabilityMsg = 'No availability info.';
+  let availabilityMsg = 'Now Available!';
   
   const currentDate: Date = new Date();
   const currentDateNum = currentDate.getTime();
@@ -41,7 +41,6 @@ function ProductCard ({ product, bookmark, log }: Props) {
   
     
     if (daysSinceStart >= 0) {
-      // availabilityMsg = 'Now available!';
       if (daysSinceStart < 4) {
         availModifier += ' new'
         availabilityMsg = "New release!"
@@ -50,14 +49,8 @@ function ProductCard ({ product, bookmark, log }: Props) {
       if (!product.end_date && daysSinceStart > 4) {
         availModifier += ' while-supplies';
         availabilityMsg = "Available while supplies last!";
-        
-        if (daysSinceStart > 7) {
-          availabilityMsg = "While supplies last (started last week)!";
-        }
-
-        if (daysSinceStart > 14) {
-          availabilityMsg = "While supplies last (started 2 weeks ago)!";
-        }
+        const weeks = Math.floor(daysSinceStart / 7);
+        availabilityMsg = `While supplies last!\n(started ${weeks} weeks ago)`;
       }
     }
   }
