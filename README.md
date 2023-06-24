@@ -7,7 +7,7 @@
 ![GitHub issues](https://img.shields.io/github/issues/oriori-ccp7/oriori?style=flat-square)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/oriori-ccp7/oriori?style=flat-square)
 
-![Your Repository's Stats](https://github-readme-stats.vercel.app/api?username=oriori-ccp7&show_icons=true)
+
 
 Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
 
@@ -21,20 +21,30 @@ Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 - Why use Oriori?  
 Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
 
+- Tech used and why?  
+
+- Challenges faced and how we over come them
+
+- Future implementation
+
 # Index 
 * Go to section  
-
+0. [ORIORI](#oriori)
 1. [How to Install and Run the Project](#How-to-Install-and-Run-the-Project)  
-2. **[.env](#env)**  
-    1. **[.env at folder oriori]**(#env-at-folder-oriori)  
+2. [.env](#env)  
+    1. [.env at folder oriori](#env-at-folder-oriori)  
         1. [SECRET_KEY](#secret_key)  
         2. [DEBUG](#debug)  
         3. [DATABASE_URL](#database_url)  
-    2. ****[.env at folder oriori/client]**(#env-at-foler-orioriclient)  
-    1. ****[Docker](#for-docker)**  
-3. [How to Use the Project](#how-to-use-the-project)    
-4. **[Credits](#credits)**    
-5. [Licence](#licence)    
+    2. [.env at folder oriori/client](#env-at-foler-orioriclient)  
+    3. [Docker](#for-docker)  
+3. [How to Use the Project](#how-to-use-the-project)
+    1. [Development](#development)
+        1. [Installation](#installation)  
+        2. [Running the App](#running-the-app)
+    2. [App](#app)    
+4. [Credits](#credits)    
+5. [License](#license)    
 
 # How to Install and Run the Project 
 
@@ -75,7 +85,7 @@ bash runseed.sh
 - in the `oriori` root directory
 - in the `oriori/client` directory
 
-The `.env.example` provided gives you an example on how to use the `.env` in your root directory. You needed to set the following in order for the app to run properly.
+The `.env.example` provided gives you an example on how to use the `.env` in your root directory, as well as in the `oriori/client` folder. You needed to set the following in order for the app to run properly.
 ```
 SECRET_KEY=
 DEBUG=
@@ -106,16 +116,18 @@ You will need the following three variables:
 
 Once you have postgres installed, enter by using: 
 ```
-psql - U
+psql -U
 ```
 At postgres create a database:
 ```psql
 CREATE DATABASE oriori
 ``` 
 ## .env at foler oriori/client
-- `.env` at `oriori/client`
+[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
-You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields:-
+- `.env` at `oriori/client`  
+
+You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields. A `.env.example` file has already prepared inside `oriori/client` folder:-
 
 ```
 REACT_APP_API_KEY=
@@ -127,7 +139,7 @@ REACT_APP_FB_APP_ID=
 REACT_APP_FB_DB_URL=
 ```
 
-NB: Make sure you exclude both .env file from your .gitignore, this data should be keep off from your git pull.  
+NB: Make sure you exclude both `.env` file from your `.gitignore`, this data should be keep off from your git pull.  
 
 ## For Docker
 
@@ -153,6 +165,7 @@ docker compose up
 
 # How to Use the Project  
 ## For development
+### Installation
 - To run it locally, in the oriori root folder, you needed to create a virtual environment in python3:  
 
 ```bash
@@ -183,7 +196,8 @@ sh rundev.sh
 
 If the app has no error, it will run the app at [localhost:8080](http://localhost:8080). If there is errors, try to resolve it.
 
-## At the App
+## Running the App
+[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 ### Sign up
 When you are in the app, you needed to create a user account if you are a user. 
 
@@ -222,7 +236,7 @@ The Menu next to the product has the following features:
 ### Setting 
 | component | Description |
 | --------- | ----------- |
-| <- | Back Icon will bring you back to Home page |
+| <- | Back arrow will bring you back to Home page |
 | Log out | Log user out from the app |
 
 #### Normal User
@@ -236,9 +250,11 @@ Click Save will save the change and will direct you back to Home page.
 #### Admin User
 You can input custom post and remove them in this menu. 
 
-
+## App
 
 # *Credits*  
+[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
+
 
 | Name | Title / Position | GitHub  |
 | ---- | ---------------- | ------- |
@@ -249,7 +265,7 @@ You can input custom post and remove them in this menu.
 
 
 
-# Licence
+# License
 
 
 MIT License
@@ -265,4 +281,4 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
----
+[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
