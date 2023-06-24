@@ -6,7 +6,8 @@
 ![GitHub stars](https://img.shields.io/github/stars/oriori-ccp7/oriori?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/oriori-ccp7/oriori?style=flat-square)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/oriori-ccp7/oriori?style=flat-square)
-
+![GitHub forks](https://img.shields.io/github/forks/oriori-ccp7/oriori?style=flat-square)
+![GitHub watchers](https://img.shields.io/github/watchers/oriori-ccp7/oriori?style=flat-square)
 
 
 Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
@@ -25,8 +26,12 @@ Did you ever wondered what different seasonal products are there, when are they 
 
 | Tech name | Reasons |  
 | --------- | ------- |  
-| python | ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) blar blar blar |  
-| css3 | ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) blar blar blar |  
+| ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  | blar blar blar |  
+| ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  | blar blar blar |  
+| ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  | blar blar blar |
+| ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | blar blar blar |
+| ![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)  | blar blar blar |
+| ![postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)   | blar blar blar |
 
 - Challenges faced and how we over come them
 
