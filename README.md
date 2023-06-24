@@ -1,3 +1,3 @@
 # ORIORI
----
-oriori is a tracking tool for seasonal and regional goods in Japan.
+* * *
+## oriori is a tracking tool for seasonal and regional goods in Japan.
