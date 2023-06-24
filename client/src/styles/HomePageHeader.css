@@ -2,15 +2,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px; /* adjust as needed */
-  height: 50px; /* adjust as needed */
+  width: 26pt;
+  height: 26pt; /* adjust as needed */
   border-radius: 50%;
-  /* background-color: #ccc; adjust as needed */
+  border: 2pt solid #ccc;
+  position: absolute;
+  right: 0; /* right-aligned with position: absolute */
 }
 
 .settings-icon {
-  fill: darkgrey;
-  width: 24pt;
+  fill: #ccc;
+  width: 22pt;
 }
 
 .home-header__top-container {
@@ -18,6 +20,9 @@
   text-align: left;
   display: flex;
   justify-content: space-between;
+  padding: 10px 10px;
+  display: flex;
+  position: relative;/* position: relative is needed in parent div to use absolute */
 }
 
 .home-header__bottom-container {
@@ -25,6 +30,7 @@
   flex-direction: column;
   align-items: left;
   padding: 2pt;
+  margin-top: 50px;
 }
 
 .home-header__pref-name {
@@ -33,4 +39,11 @@
 
 .home-header__subtitle {
   font-size: 12pt;
+}
+
+.home-header__logo {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
 }

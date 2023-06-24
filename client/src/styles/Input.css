@@ -3,4 +3,18 @@ input {
   padding: 6pt 10pt;
   border-radius: 4pt;
   border: 0 none;
+  font-size: large;
+}
+
+.usernameInput {
+  width: 70%;
+  height: 40px;
+  box-sizing: border-box;
+  font-size: large;
+  padding-left: 10px;
+}
+
+label {
+  width: 70%;
+  text-align: left;
 }

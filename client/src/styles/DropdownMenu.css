@@ -3,5 +3,13 @@ select {
   border-radius: 4pt;
   border: none;
   font-size: large;
-  padding-left: 3px;
+  padding-left: 5px;
+  width: 70%;
+  height: 40px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.dropdownMenu {
+  width: 100%;
 }
