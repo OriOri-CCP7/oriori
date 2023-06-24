@@ -7,13 +7,57 @@
   margin: auto;
 }
 
+.onboarding__kanji {
+  margin: 4pt auto;
+  font-size: xxx-large;
+  font-weight: 700;
+  opacity: 0;
+  animation: 2s ease-in 0s fade-in forwards;
+}
+
+.onboarding__kanji > rt {
+  font-size: medium;
+  transform: translateY(-4pt);
+}
+
 .onboarding__intro-text {
   margin: 2pt auto;
   text-align: center;
+  font-size: large;
+  opacity: 0;
+  animation: 2s ease-in 2s fade-in forwards;
+}
+
+.onboarding__dropdown {
+  margin: 6pt auto 10pt;
+  opacity: 0;
+  animation: 2s ease-in 4s fade-in forwards;
 }
 
 .onboarding__instruction-text {
   margin: 2pt auto;
   text-align: center;
   font-size: small;
+  opacity: 0;
+  animation: 2s ease-in 4s fade-in forwards;
+}
+
+.onboarding__instruction-detail {
+  opacity: 0;
+  animation: 2s ease-in 6s fade-in forwards;
+}
+
+.onboarding__submit-button {
+  opacity: 0;
+  animation: 2s ease-in 4s fade-in forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

@@ -4,7 +4,7 @@
     --large-icon-width: 30px;
 }
 
-@media (max-width: 320px) {
+/* @media (max-width: 320px) {
     .logout__button {
         border-radius: 2px;
     }
@@ -18,7 +18,7 @@
     .logout__button {
         border-radius: 15px;
     }
-}
+} */
 
 .circular-icon {
     display: flex;
@@ -27,6 +27,8 @@
     width: 50px; /* adjust as needed */
     height: 50px; /* adjust as needed */
     border-radius: 50%;
+    position: absolute;
+    right: 0; /* right-aligned with position: absolute */
     /* background-color: #ccc; adjust as needed */
 }
 
@@ -52,9 +54,8 @@
 
 .home-header__top-container {
     padding: 10px 10px;
-    text-align: left;
     display: flex;
-    justify-content: space-between;
+    position: relative;/* position: relative is needed in parent div to use absolute */
 }
 
 .home-header__bottom-container {
@@ -62,6 +63,7 @@
     flex-direction: column;
     align-items: left;
     padding: 2pt;
+    margin-top: 50px;
 }
 
 .home-header__pref-name {
@@ -70,4 +72,9 @@
 
 .home-header__subtitle {
     font-size: 12pt;
+}
+
+.header__logo {
+    position: absolute;
+    margin: auto;/* centered with position: absolute */
 }

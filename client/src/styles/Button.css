@@ -5,14 +5,29 @@ button {
   border: none;
 }
 
-.backButton {
-  background-color: Transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
+.setting__save-button {
+  width: 70%;
+  height: 40px;
+  font-size: medium;
+  margin-top: 10px;
 }
 
 .logout__button {
-  text-align: left;
+  width: 70%;
+  height: 40px;
+  font-size: medium;
+  margin-top: 50px;
+}
+
+.setting__icon.back {
+  width: 10%;
+  margin-left: 10pt;
+  margin-top: 10pt;
+}
+
+.navButton {
+  width: 70%;
+  height: 40px;
+  font-size: medium;
+  margin-top: 20px;
 }
