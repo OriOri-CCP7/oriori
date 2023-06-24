@@ -62,7 +62,7 @@ bash runseed.sh
 ### .env ###
 ---
 #### .env at folder oriori ####
-1. You also needed two `.env` file in the following location:
+- You also needed two `.env` file in the following location:
 
 - in the `oriori` root directory
 - in the `oriori/client` directory
@@ -102,7 +102,7 @@ At postgres create a database:
 CREATE DATABASE oriori
 ``` 
 #### .env at foler oriori/client ####
-2. `.env` at `oriori/client`
+- `.env` at `oriori/client`
 ---
 You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields:-
 
