@@ -17,11 +17,17 @@ Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
 
 ---
-
+1. Index
 ### Index ###
 * Go to section  
 1.[Index](#index)  
-2.[How to Install and Run the Project](#How-to-Install-and-Run-the-Project)  
+2.[How to Install and Run the Project](#How-to-Install-and-Run-the-Project)
+2.1 [.env](#env)
+2.1.1 [.env at folder oriori](#env-at-folder-oriori)
+2.1.1.1 [SECRET_KEY](#secret_key)
+2.1.1.2 [DEBUG](#debug)
+2.1.1.3 [DATABASE_URL](#database_url)
+2.1.2 [.env at folder oriori/client](#env-at-foler-orioriclient)
 3.[How to Use the Project](#how-to-use-the-project)  
 4.[Credits](#credits)  
 5.[Licence](#licence)  
@@ -53,6 +59,7 @@ OR
 bash runseed.sh
 ```
 ### .env ###
+#### .env at folder oriori ####
 1. You also needed two `.env` file in the following location:
 
 - in the `oriori` root directory
@@ -64,14 +71,14 @@ SECRET_KEY=
 DEBUG=
 DATABASE_URL=
 ```
-#### SECRET_KEY ####
+##### SECRET_KEY #####
 You needed to create a secret key for your team or yourself if you work for MVP:
 https://codinggear.blog/django-generate-secret-key/#generate-secret-key-in-django-using-getrandomsecretkeynbspfunction
 
-#### DEBUG ####
+##### DEBUG #####
 Set it to equal to `True` or `False`
 
-#### DATABASE_URL ####
+##### DATABASE_URL #####
 
 ```
 DATABASE_URL=postgres://[YOUR_USERNAME]:[YOUR_PASS]@localhost:5432/[YOUR_DB_NAME]
@@ -92,6 +99,7 @@ At postgres create a database:
 ```psql
 CREATE DATABASE oriori
 ``` 
+#### .env at foler oriori/client ####
 2. `.env` at `oriori/client`
 You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields:-
 
