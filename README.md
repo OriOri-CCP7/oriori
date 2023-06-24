@@ -4,19 +4,21 @@
 
 ### 1 Index ###
 * Go to section
-[Index](#1-index)
-[How to Install and Run the Project](#2-How-to-Install-and-Run-the-Project)
-[How to Use the Project](#3-how-to-use-the-project)
-[Credits](#4-credits)
-[Licence](#5-licence)
+1.[Index](#index)
+2.[How to Install and Run the Project](#How-to-Install-and-Run-the-Project)
+3.[How to Use the Project](#how-to-use-the-project)
+4.[Credits](#credits)
+5.[Licence](#licence)
 
-### 2 How to Install and Run the Project ###
+### How to Install and Run the Project ###
 
-### 3 How to Use the Project ###
+### How to Use the Project ###
 
-### 4 Credits ###
-
-### 5 Licence ###
+### Credits ###
+| Name | Position | GitHub Link |
+| ---- | -------- | ----------- |
+| Joseph Van Alstyne | 1.TechLeader 2. DevOps/CI 3. Support | https://github.com/kappanjoe |
+### Licence ###
 MIT License
 
 Copyright (c) 2023 OriOri-CCP7
