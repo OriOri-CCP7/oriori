@@ -213,23 +213,18 @@ The Menu next to the product has the following features:
 | Share | Call device's share function if available |
 
 ### Setting 
-#### <- 
-Back Icon will bring you back to Home page.
-
-#### Log out
-Log user out from the app.
+| component | Description |
+| --------- | ----------- |
+| <- | Back Icon will bring you back to Home page |
+| Log out | Log user out from the app |
 
 #### Normal User
-##### Change Prefecture
-You can change your prefecture base from the drop down menu. Click Save to save the base prefecture.
+| component | Description |
+| --------- | ----------- |
+| Select Prefecture | You can change your prefecture base from the drop down menu |
+| Username | If user wish to change their username | 
 
-Click Save will direct you back to Home.
-
-##### Change username
-If user wish to change their username. Click Save to save your new username.
-
-Click Save will direct you back to Home.
-
+Click Save will save the change and will direct you back to Home page.  
 
 #### Admin User
 You can input custom post and remove them in this menu. 
