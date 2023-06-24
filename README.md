@@ -212,6 +212,12 @@ The Menu next to the product has the following features:
 | Share | Call device's share function if available |
 
 ### Setting 
+#### <- 
+Back Icon will bring you back to Home page.
+
+#### Log out
+Log user out from the app.
+
 #### Normal User
 ##### Change Prefecture
 You can change your prefecture base from the drop down menu. Click Save to save the base prefecture.
@@ -226,6 +232,8 @@ Click Save will direct you back to Home.
 
 #### Admin User
 You can input custom post and remove them in this menu. 
+
+
 
 # *Credits*  
 
