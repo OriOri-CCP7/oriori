@@ -156,6 +156,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       dispatchUser({
         type: 'clear_user'
       });
+      setRole('');
     } catch (error) {
       console.log('😡 Logout Error: ', error);
     }
