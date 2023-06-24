@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 import '../styles/Settings.css';
 
 function Settings() {
@@ -70,7 +71,10 @@ function Settings() {
 
   return (
     <div className="Setting">
-      <Button className="backButton" type="button" onClick={handleBack} text="Back"/>
+      <div className="setting__icon back">
+      <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
+      </div>
+      {/* <Button className="backButton" type="button" onClick={handleBack} text="Back"/> */}
       <h1>Settings</h1>
       <form>
         <label>Username</label>
