@@ -24,8 +24,8 @@ Did you ever wondered what different seasonal products are there, when are they 
 - Tech used and why?
 | Tech | Reason |
 | ---- | ------ |
-| ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) | blar blar blar |
-| ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | blar blar blar |
+| python | ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) blar blar blar |
+| css3 | ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) blar blar blar |
 
 - Challenges faced and how we over come them
 
