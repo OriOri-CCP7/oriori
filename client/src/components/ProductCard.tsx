@@ -41,9 +41,23 @@ function ProductCard ({ product, bookmark, log }: Props) {
   
     
     if (daysSinceStart >= 0) {
-      availabilityMsg = 'Now available!';
+      // availabilityMsg = 'Now available!';
       if (daysSinceStart < 4) {
         availModifier += ' new'
+        availabilityMsg = "New release!"
+      }
+
+      if (!product.end_date && daysSinceStart > 4) {
+        availModifier += ' while-supplies';
+        availabilityMsg = "Available while supplies last!";
+        
+        if (daysSinceStart > 7) {
+          availabilityMsg = "While supplies last (started last week)!";
+        }
+
+        if (daysSinceStart > 14) {
+          availabilityMsg = "While supplies last (started 2 weeks ago)!";
+        }
       }
     }
   }
@@ -58,9 +72,11 @@ function ProductCard ({ product, bookmark, log }: Props) {
         availModifier += ' ending';
         availabilityMsg = `Only available for ${daysBeforeEnd} days!`;
       } else {
+        availModifier += ' midlife';
         availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
       }
     } else {
+      availModifier += ' ended';
       availabilityMsg = 'No longer available.';
     }
   }
@@ -174,8 +190,6 @@ function ProductCard ({ product, bookmark, log }: Props) {
     }
   } 
   
-
-
   return (
     <div className='product__card' id={`${product.id}`}>
       <div className='product__title' onClick={ clickProductHandler }>

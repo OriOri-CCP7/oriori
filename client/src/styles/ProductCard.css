@@ -30,7 +30,14 @@
 
 .product__avail-text {
     font-size: 12pt;
-    color: #808080;
+}
+
+.product__avail-container.while-supplies {
+  background-color: #c3f6ff;
+}
+
+.product__avail-text.while-supplies {
+  color: #4bb1c3;
 }
 
 .product__avail-container.new {
@@ -41,12 +48,28 @@
     color: #00AC08;
 }
 
+.product__avail-container.midlife {
+  background-color: rgb(255, 211, 129)
+}
+
+.product__avail-text.midlife {
+  color: rgb(255, 97, 40)
+}
+
 .product__avail-container.ending {
     background-color: #FFCFD9;
 }
 
 .product__avail-text.ending {
     color: #CC000E
+}
+
+.product__avail-container.ended {
+  background-color: rgb(208, 208, 208);
+}
+
+.product__avail-text.ended {
+  color: grey;
 }
 
 .product__content {
