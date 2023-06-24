@@ -2,7 +2,7 @@
 * * *
 ## oriori is a tracking tool for seasonal and regional goods in Japan.
 
-Deployment: oriori.fly.dev
+Deployment: [oriori.fly.dev](oriori.fly.dev)  
 
 ### 1 Index ###
 * Go to section  
