@@ -41,7 +41,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
   
     
     if (daysSinceStart >= 0) {
-      availabilityMsg = 'Now available!';
+      // availabilityMsg = 'Now available!';
       if (daysSinceStart < 4) {
         availModifier += ' new'
         availabilityMsg = "New release!"
@@ -59,6 +59,7 @@ function ProductCard ({ product, bookmark, log }: Props) {
         availModifier += ' ending';
         availabilityMsg = `Only available for ${daysBeforeEnd} days!`;
       } else {
+        availModifier += ' midlife';
         availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
       }
     } else {
