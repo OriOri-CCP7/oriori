@@ -21,20 +21,20 @@ Did you ever wondered what different seasonal products are there, when are they 
 ### Index ###
 * Go to section  
 1.[Index](#index)  
-2.[How to Install and Run the Project](#How-to-Install-and-Run-the-Project)
-2.1 [.env](#env)
-2.1.1 [.env at folder oriori](#env-at-folder-oriori)
-2.1.1.1 [SECRET_KEY](#secret_key)
-2.1.1.2 [DEBUG](#debug)
-2.1.1.3 [DATABASE_URL](#database_url)
-2.1.2 [.env at folder oriori/client](#env-at-foler-orioriclient)
-2.2 [Docker](#for-docker)
-3.[How to Use the Project](#how-to-use-the-project)  
-4.[Credits](#credits)  
-5.[Licence](#licence)  
+2.[How to Install and Run the Project](#How-to-Install-and-Run-the-Project)  
+2.1 [.env](#env)  
+2.1.1 [.env at folder oriori](#env-at-folder-oriori)  
+2.1.1.1 [SECRET_KEY](#secret_key)  
+2.1.1.2 [DEBUG](#debug)  
+2.1.1.3 [DATABASE_URL](#database_url)  
+2.1.2 [.env at folder oriori/client](#env-at-foler-orioriclient)  
+2.2 [Docker](#for-docker)  
+3.[How to Use the Project](#how-to-use-the-project)    
+4.[Credits](#credits)    
+5.[Licence](#licence)    
 
 ---
-
+2. How to Install and Run the Project
 ### How to Install and Run the Project ###
 
 
