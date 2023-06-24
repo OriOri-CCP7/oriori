@@ -1,12 +1,7 @@
-:root{
-  --small-width:30px;
-  --medium-width:25px;
-  --large-width:20px;
-}
 .nav {
   position: fixed;
   width: 100%;
-  bottom: 0px;
+  bottom: 0;
   font-size: 0;
   background-color: #F5C6AA;
   display: flex;
@@ -35,6 +30,10 @@
   fill: antiquewhite;
 }
 
+.nav__icon {
+  width: 18pt;
+}
+
 .nav__icon.home {
   fill: #33b45e;
 }
@@ -46,19 +45,4 @@
 }
 .nav__icon.pop {
   fill: #ff6600;
-}
-@media (max-width: 320px) {
-  .nav__icon {
-      width: var(--small-width);
-  }
-} 
-@media (min-width: 321px) and (max-width: 768px) {  
-  .nav__icon {
-      width: var(--medium-width);
-  }
-}
-@media (min-width: 769px) {    
-  .nav__icon {
-      width: var(--large-width);
-  }
 }
