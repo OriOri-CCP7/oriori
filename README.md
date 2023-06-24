@@ -21,7 +21,7 @@ Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 - Why use Oriori?  
 Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
 
-- Tech used and why?
+- Tech used and why?  
 | Tech | Reason |
 | ---- | ------ |
 | python | ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) blar blar blar |
