@@ -17,21 +17,21 @@ Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
 
 ---
-1. Index
+
 ### Index ###
 * Go to section  
-1.[Index](#index)  
-2.[How to Install and Run the Project](#How-to-Install-and-Run-the-Project)  
-2.1 [.env](#env)  
-2.1.1 [.env at folder oriori](#env-at-folder-oriori)  
-2.1.1.1 [SECRET_KEY](#secret_key)  
-2.1.1.2 [DEBUG](#debug)  
-2.1.1.3 [DATABASE_URL](#database_url)  
-2.1.2 [.env at folder oriori/client](#env-at-foler-orioriclient)  
-2.2 [Docker](#for-docker)  
-3.[How to Use the Project](#how-to-use-the-project)    
-4.[Credits](#credits)    
-5.[Licence](#licence)    
+
+1. [How to Install and Run the Project](#How-to-Install-and-Run-the-Project)  
+2. ** [.env](#env)  
+    1. ** [.env at folder oriori](#env-at-folder-oriori)  
+        1. [SECRET_KEY](#secret_key)  
+        2. [DEBUG](#debug)  
+        3. [DATABASE_URL](#database_url)  
+    2. [.env at folder oriori/client](#env-at-foler-orioriclient)  
+    3. [Docker](#for-docker)  
+3. [How to Use the Project](#how-to-use-the-project)    
+4. [Credits](#credits)    
+5. [Licence](#licence)    
 
 ---
 2. How to Install and Run the Project
