@@ -56,7 +56,7 @@ const Login: React.FC = () => {
   };
   
   return (
-    <>
+    <div className="page__wrapper--center">
       <Header
         secondaryText="Log In"/>
       <form
@@ -99,7 +99,7 @@ const Login: React.FC = () => {
       </p>
 
       <Footer />
-    </>
+    </div>
   )
 }
 

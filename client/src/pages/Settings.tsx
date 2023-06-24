@@ -58,7 +58,7 @@ function Settings() {
   };
 
   return (
-    <div className="Setting">
+    <div className="page__wrapper--center">
       <Button className="backButton" type="button" onClick={handleBack} text="Back"/>
       <h1>Settings</h1>
       <form>

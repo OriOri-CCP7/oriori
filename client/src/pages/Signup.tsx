@@ -54,7 +54,7 @@ const Signup: React.FC = () => {
   };
   
   return (
-    <>
+    <div className="page__wrapper--center">
       <Header
         secondaryText="Sign Up"/>
       <form
@@ -111,7 +111,7 @@ const Signup: React.FC = () => {
         </p>
       </form>
       <Footer />
-    </>
+    </div>
   );
 };
 
