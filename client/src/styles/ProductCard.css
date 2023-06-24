@@ -1,4 +1,5 @@
 .product__card {
+  margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -13,7 +14,7 @@
 }
 
 .product__title {
-    margin: 14pt 12pt 6pt;
+    margin: 14pt 12pt 10pt;
     padding: 6pt;
 }
 
