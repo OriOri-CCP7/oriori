@@ -7,6 +7,8 @@
 ![GitHub issues](https://img.shields.io/github/issues/oriori-ccp7/oriori?style=flat-square)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/oriori-ccp7/oriori?style=flat-square)
 
+![Your Repository's Stats](https://github-readme-stats.vercel.app/api?username=oriori-ccp7&show_icons=true)
+
 Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
 
 ## Project's Description ##
