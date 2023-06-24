@@ -2,6 +2,8 @@
 * * *
 ## oriori is a tracking tool for seasonal and regional goods in Japan.
 
+Deployment: oriori.fly.dev
+
 ### 1 Index ###
 * Go to section  
 1.[Index](#index)  
@@ -11,10 +13,14 @@
 5.[Licence](#licence)  
 
 ### How to Install and Run the Project ###
-
+---
+To test it locally, first create it 
 ### How to Use the Project ###
+---
 
 ### Credits ###  
+---
+
 | Name | Title / Position | GitHub  |
 | ---- | ---------------- | ------- |
 | Joseph Van Alstyne | -TechLeader <br> -DevOps/CI <br> -Team Support | https://github.com/kappanjoe |
@@ -23,6 +29,8 @@
 | Chadwick Au | -Fullstack Engineer  <br> -Client Page <br> -UI Components | https://github.com/SirrorsMoore1975 |
 
 ### Licence ###
+---
+
 MIT License
 
 Copyright (c) 2023 OriOri-CCP7
