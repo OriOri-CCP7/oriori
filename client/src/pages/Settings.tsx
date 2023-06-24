@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 import '../styles/Settings.css';
 
 function Settings() {
@@ -24,10 +25,7 @@ function Settings() {
   // const handleEmailInput = (event: ChangeEvent<HTMLInputElement>): void => {
   //   setEmail(event.target.value);
   // }
-  
-  const handleBack = (event: React.MouseEvent<HTMLButtonElement>) => {
-    navigate('/home');
-  };
+
 
   const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -57,16 +55,29 @@ function Settings() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      if(auth){
+        await auth.logout();
+      }
+      console.log("User Logged Out");
+      navigate('/');
+    } catch (error) {
+      console.log('🥸', error);
+    }
+  };
+
   return (
     <div className="Setting">
-      <Button className="backButton" type="button" onClick={handleBack} text="Back"/>
+      <div className="setting__icon back">
+      <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
+      </div>
       <h1>Settings</h1>
       <form>
-        <label>
-          Username:
-          <Input className="usernameInput" placeholder="Username" type="text" value={username} onChange={handleUsernameInput}/>
-        </label>
-        <br />
+        <label>Username</label>
+        <Input className="usernameInput" placeholder="Username" type="text" value={username} onChange={handleUsernameInput}/>
+
+        {/* <br /> */}
         {/* Email address must update both Firebase and Database
           <label>
             Email Address:
@@ -74,15 +85,22 @@ function Settings() {
           </label>
           <br /> 
         */}
-        <DropdownMenu labelName="Select Prefecture: " setPrefecture={setLocation} prefill={location}/>
-
+        <label>Select Prefecture</label>
+        <DropdownMenu setPrefecture={setLocation} prefill={location}/>
+        
         <Button 
-          className="submitButton" 
+          className="setting__save-button" 
           type="submit" 
           text="Save"
           onClick={ handleSubmit }
           disabled={ location === "" ? true : false }/>
-      </form>
+        
+        {/* <Button
+          className="logout__button"
+          text="Log Out"
+          type="button"
+          onClick={ handleLogout } /> */}
+
       { auth?.role === ROLES.ADMIN
         ? <Button
           className="navButton"
@@ -92,6 +110,12 @@ function Settings() {
           />
         : null
       }
+        <Button
+          className="logout__button"
+          text="Log Out"
+          type="button"
+          onClick={ handleLogout } />
+      </form>
     </div>
   );
 };
