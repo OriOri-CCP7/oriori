@@ -3,7 +3,7 @@
 Deployment: [oriori.fly.dev](oriori.fly.dev)  
 
 * * *
-![Updated](https://img.shields.io/static/v1?label=updated&message=June%2024th%202322&color=388E3C&style=flat-square)  
+![Updated](https://img.shields.io/static/v1?label=updated&message=June%2024th%202023&color=388E3C&style=flat-square)  
 
 ## Project Description ##
 oriori is a tracking tool for seasonal and regional goods in Japan.
