@@ -28,6 +28,7 @@ Did you ever wondered what different seasonal products are there, when are they 
 2.1.1.2 [DEBUG](#debug)
 2.1.1.3 [DATABASE_URL](#database_url)
 2.1.2 [.env at folder oriori/client](#env-at-foler-orioriclient)
+2.2 [Docker](#for-docker)
 3.[How to Use the Project](#how-to-use-the-project)  
 4.[Credits](#credits)  
 5.[Licence](#licence)  
@@ -59,6 +60,7 @@ OR
 bash runseed.sh
 ```
 ### .env ###
+---
 #### .env at folder oriori ####
 1. You also needed two `.env` file in the following location:
 
@@ -101,6 +103,7 @@ CREATE DATABASE oriori
 ``` 
 #### .env at foler oriori/client ####
 2. `.env` at `oriori/client`
+---
 You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields:-
 
 ```
@@ -116,6 +119,7 @@ REACT_APP_FB_DB_URL=
 NB: Make sure you exclude both .env file from your .gitignore, this data should be keep off from your git pull.  
 
 ## For Docker ##
+---
 Install Docker in your respective desktop environment (MacOs, Windows, Linux, etc)  
 Download [Docker](https://www.docker.com/)  
 Run the following command to make oriori start in a virtual environment provided by docker  
@@ -132,24 +136,23 @@ Re-run:
 docker compose up
 ```
 
----
-
 ### How to Use the Project ###
+---  
 
 For development
--To run it locally, in the oriori root folder, you needed to create a virtual environment in python3:  
+- To run it locally, in the oriori root folder, you needed to create a virtual environment in python3:  
 
 ```bash
 python3 -m venv venv
 ```
 
-Run the environment:  
+- Run the environment:  
 
 ```bash
 source venv/bin/activate
 ```
 
-Install your necessary project requirements (if a requirements file exist)
+- Install your necessary project requirements (if a requirements file exist)
 ```bash
 pip install -r requirements.txt
 ```
