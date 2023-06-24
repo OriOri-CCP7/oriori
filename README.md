@@ -62,7 +62,7 @@ bash runseed.sh
 
 # .env
 
-# .env at folder oriori
+## .env at folder oriori
 - You also needed two `.env` file in the following location:
 
 - in the `oriori` root directory
@@ -75,14 +75,14 @@ DEBUG=
 DATABASE_URL=
 ```
 
-# SECRET_KEY
+### SECRET_KEY
 You needed to create a secret key for your team or yourself if you work for MVP:
 https://codinggear.blog/django-generate-secret-key/#generate-secret-key-in-django-using-getrandomsecretkeynbspfunction
 
-# DEBUG 
+### DEBUG 
 Set it to equal to `True` or `False`
 
-# DATABASE_URL
+### DATABASE_URL
 
 ```
 DATABASE_URL=postgres://[YOUR_USERNAME]:[YOUR_PASS]@localhost:5432/[YOUR_DB_NAME]
@@ -105,7 +105,7 @@ At postgres create a database:
 ```psql
 CREATE DATABASE oriori
 ``` 
-# .env at foler oriori/client
+## .env at foler oriori/client
 - `.env` at `oriori/client`
 
 You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields:-
@@ -122,7 +122,7 @@ REACT_APP_FB_DB_URL=
 
 NB: Make sure you exclude both .env file from your .gitignore, this data should be keep off from your git pull.  
 
-# For Docker
+## For Docker
 
 Install Docker in your respective desktop environment (MacOs, Windows, Linux, etc)  
 Download [Docker](https://www.docker.com/)  
@@ -145,8 +145,7 @@ docker compose up
 ```
 
 # How to Use the Project  
-
-For development
+## For development
 - To run it locally, in the oriori root folder, you needed to create a virtual environment in python3:  
 
 ```bash
@@ -177,7 +176,33 @@ sh rundev.sh
 
 If the app has no error, it will run the app at [localhost:8080](http://localhost:8080). If there is errors, try to resolve it.
 
-## *Credits*  
+## At the App
+### Sign in
+When you are in the app, you needed to create a user account if you are a user. 
+
+Click Sign in.
+
+Fill in your **username** **password** **confirm password** and **email**. Press submit or Enter.
+
+You will be directed to the boarding page and you are all set.
+
+### Login
+When you have a user account, enter your credential email and password, then press Log in.
+
+
+### Navbar
+The Navbar is how you navigate the app.
+
+| Nav Icon | Description |
+| -------- | ----------- |
+| Home | Home page that show all the products the app found in the prefecture user is based. |
+| Bookmark | Bookmark page that show all the product user has bookmarked |
+| Ticked | The products you have tried are present here |
+| Hot | The products that is **HOT** Available right now |
+| Search | Search other prefecture for seasonal products | 
+
+
+# *Credits*  
 
 | Name | Title / Position | GitHub  |
 | ---- | ---------------- | ------- |
