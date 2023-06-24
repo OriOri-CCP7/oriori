@@ -36,6 +36,10 @@ Did you ever wondered what different seasonal products are there, when are they 
 - Challenges faced and how we over come them
 
 - Future implementation
+-[] White Mode / Dark Mode
+-[] Filter 
+
+- Contribution (WIP)
 
 # Index 
 * Go to section  
@@ -130,7 +134,7 @@ psql -U
 ```
 At postgres create a database:
 ```psql
-CREATE DATABASE oriori
+CREATE DATABASE oriori;
 ``` 
 ## .env at foler oriori/client
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
@@ -188,7 +192,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-- Install your necessary project requirements (if a requirements file exist)
+- Install your necessary project requirements
 ```bash
 pip install -r requirements.txt
 ```
@@ -213,7 +217,7 @@ When you are in the app, you needed to create a user account if you are a user.
 
 Click to Sign up.
 
-Fill in your `**username**` `**password**` `**confirm password**` and `**email**`. Press submit or Enter.
+Fill in your `username` `password` `confirm password` and `email`. Press submit or Enter.
 
 You will be directed to the boarding page and you are all set.
 
@@ -258,7 +262,22 @@ The Menu next to the product has the following features:
 Click Save will save the change and will direct you back to Home page.  
 
 #### Admin User
-You can input custom post and remove them in this menu. 
+You can input custom products and remove them. If your account is an admin account, an Add Product Button will be accessable for you. Press it and you will navigate to an add Product Page.
+
+##### Interface
+| Interface | Explaination |
+| --------- | ------------ |
+| Back | Navigate back to Home Page |
+| Input: Product Name | Add Product's Name |
+| Input: Link URL | Add Product's URL |
+| Input: Image URL | Add Product's Image URL |
+| Input: Start Date | Add Product Available Date |
+| Input: End Date | Add Product Available End Date |
+| MUITransferList | Choose the available prefecture |
+| Submit Button | submit your input |
+
+##### Remove Products
+WIP
 
 ## App
 
