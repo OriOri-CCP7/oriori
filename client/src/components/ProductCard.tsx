@@ -46,6 +46,19 @@ function ProductCard ({ product, bookmark, log }: Props) {
         availModifier += ' new'
         availabilityMsg = "New release!"
       }
+
+      if (!product.end_date && daysSinceStart > 4) {
+        availModifier += ' while-supplies';
+        availabilityMsg = "Available while supplies last!";
+        
+        if (daysSinceStart > 7) {
+          availabilityMsg = "While supplies last (started last week)!";
+        }
+
+        if (daysSinceStart > 14) {
+          availabilityMsg = "While supplies last (started 2 weeks ago)!";
+        }
+      }
     }
   }
 
@@ -66,9 +79,6 @@ function ProductCard ({ product, bookmark, log }: Props) {
       availModifier += ' ended';
       availabilityMsg = 'No longer available.';
     }
-  } else if (!product.end_date) {
-    availModifier += ' while-supplies';
-    availabilityMsg = "Available while supplies last!";
   }
 
   const headers = {
