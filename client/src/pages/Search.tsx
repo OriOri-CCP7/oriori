@@ -35,7 +35,8 @@ export default function Search() {
     <div className='page__wrapper'>
       <Header mainText="Search"/>
       <DropdownMenu 
-        labelName='Select a prefecture: '
+        className='search__dropdown'
+        labelName='Select a prefecture:'
         setPrefecture={ getProducts }/>
       {
         products.length > 0

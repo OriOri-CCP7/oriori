@@ -1,20 +1,15 @@
 input {
+  max-width: 100%;
   background-color: #FCD8D4;
-  padding: 6pt 10pt;
-  border-radius: 4pt;
+  font-size: large;
   border: 0 none;
-  font-size: large;
-}
-
-.usernameInput {
-  width: 70%;
-  height: 40px;
-  box-sizing: border-box;
-  font-size: large;
-  padding-left: 10px;
+  border-radius: 4pt;
+  margin-top: 2pt;
+  padding: 6pt 10pt;
 }
 
 label {
-  width: 70%;
+  display: flex;
+  flex-direction: column;
   text-align: left;
 }

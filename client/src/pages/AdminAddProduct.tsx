@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import Input from '../components/Input';
 import MUITransferList from '../components/MUITransferList';
 import prefectureList from '../data/prefectures.json';
-import '../styles/Login.css';
+import '../styles/AdminAddProduct.css';
 
 function AdminAddProduct() {
   const navigate = useNavigate();
@@ -157,7 +157,7 @@ function AdminAddProduct() {
       <Header
         mainText='OriOri Admin'
         secondaryText='Submit New Product'/>
-      <Button className="backButton" type="button" onClick={ () => navigate('/home') } text="Back"/>
+      <Button className="admin__button" type="button" onClick={ () => navigate('/home') } text="Back"/>
       <form
         onSubmit = { handleSubmit }>
         
@@ -224,9 +224,8 @@ function AdminAddProduct() {
 
         <MUITransferList options={ prefectureList } setSelected={ setSelectedPrefs }/>
         
-        { isSending
-          ? <div className='admin__sending-msg'>{ alertMessage }</div>
-          : <></> }
+        <div className='admin__sending-msg'>{ isSending && alertMessage }</div>
+
         
         <Button 
           className = 'admin__button'

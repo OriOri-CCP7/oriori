@@ -74,8 +74,10 @@ function Settings() {
       </div>
       <h1>Settings</h1>
       <form>
-        <label>Username</label>
-        <Input className="usernameInput" placeholder="Username" type="text" value={username} onChange={handleUsernameInput}/>
+        <label>
+          Username:
+          <Input className="setting__input" placeholder="username" type="text" value={username} onChange={handleUsernameInput}/>
+        </label>
 
         {/* <br /> */}
         {/* Email address must update both Firebase and Database
@@ -85,11 +87,11 @@ function Settings() {
           </label>
           <br /> 
         */}
-        <label>Select Prefecture</label>
-        <DropdownMenu setPrefecture={setLocation} prefill={location}/>
+        
+        <DropdownMenu labelName={ 'Home Prefecture:' } setPrefecture={ setLocation } prefill={ location }/>
         
         <Button 
-          className="setting__save-button" 
+          className="setting__button" 
           type="submit" 
           text="Save"
           onClick={ handleSubmit }
@@ -103,7 +105,7 @@ function Settings() {
 
       { auth?.role === ROLES.ADMIN
         ? <Button
-          className="navButton"
+          className="setting__button"
           type="button"
           text="Add Products"
           onClick={ () => navigate("/admin-addProduct")}
@@ -111,7 +113,7 @@ function Settings() {
         : null
       }
         <Button
-          className="logout__button"
+          className="setting__button logout__button"
           text="Log Out"
           type="button"
           onClick={ handleLogout } />
