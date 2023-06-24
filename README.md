@@ -2,6 +2,11 @@
 
 ![Updated](https://img.shields.io/static/v1?label=updated&message=June%2024th%202023&color=388E3C&style=flat-square)  
 
+![GitHub](https://img.shields.io/github/license/oriori-ccp7/oriori?style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/oriori-ccp7/oriori?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/oriori-ccp7/oriori?style=flat-square)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/oriori-ccp7/oriori?style=flat-square)
+
 Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
 
 ## Project's Description ##
