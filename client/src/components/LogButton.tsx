@@ -1,6 +1,6 @@
 import React from 'react'
-import { PlusCircleIcon } from '@heroicons/react/24/outline';
-import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import { CheckCircleIcon as CheckSolid } from '@heroicons/react/24/solid';
+import { CheckCircleIcon as CheckOutline } from '@heroicons/react/24/outline';
 
 import '../styles/LogButton.css';
 
@@ -14,14 +14,14 @@ function LogButton({ isLogged, clickHandler }: Props) {
     <div className='product__button' onClick={ clickHandler }>
       {
         isLogged
-          ? <CheckCircleIcon className="product__icon log__icon solid"/>
-          : <PlusCircleIcon className="product__icon log__icon outline"/>
+          ? <CheckSolid className="product__icon log__icon solid"/>
+          : <CheckOutline className="product__icon log__icon outline"/>
           
       }
       {
         isLogged
           ? 'Tried it!'
-          : 'Add'
+          : 'Tried it?'
       }
     </div>
   );

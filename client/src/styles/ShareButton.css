@@ -1,3 +1,7 @@
+.product__button.share {
+  margin-top: auto;
+}
+
 .product__icon.share__icon {
     position: relative;
     fill: grey;
