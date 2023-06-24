@@ -14,22 +14,22 @@ Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 - Why use Oriori?  
 Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
 
-### Index ###
+# Index 
 * Go to section  
 
 1. [How to Install and Run the Project](#How-to-Install-and-Run-the-Project)  
-2. **[.env](#env)  
-    1. **[.env at folder oriori](#env-at-folder-oriori)  
+2. **[.env](#env)**  
+    1. **[.env at folder oriori]**(#env-at-folder-oriori)  
         1. [SECRET_KEY](#secret_key)  
         2. [DEBUG](#debug)  
         3. [DATABASE_URL](#database_url)  
-    2. [.env at folder oriori/client](#env-at-foler-orioriclient)  
-    1. [Docker](#for-docker)  
+    2. ****[.env at folder oriori/client]**(#env-at-foler-orioriclient)  
+    1. ****[Docker](#for-docker)**  
 3. [How to Use the Project](#how-to-use-the-project)    
-4. [Credits](#credits)    
+4. **[Credits](#credits)**    
 5. [Licence](#licence)    
 
-### How to Install and Run the Project ###
+# How to Install and Run the Project 
 
 Run the following essential seeds for the apps to run:
 
@@ -38,7 +38,7 @@ python3 manage.py loaddata 001_Locations.json
 python3 manage.py loaddata 004_Products.json
 ```
 
--Alternatively, you can open `runseed.sh` in the root directory and edit skipindices to omit some entry in the list, just DO NOT RUN it yet.  
+-Alternatively, you can open `runseed.sh` in the root directory and edit skipindices to omit some entry in the list, just **DO NOT RUN** it yet.  
 
 For the above cases, at `skipindices`, remove `0` and `3` for the script to run `001_Locations.json` and `004_Products.json`:    
 
@@ -60,9 +60,9 @@ OR
 bash runseed.sh
 ```
 
-### .env ###
+# .env
 
-#### .env at folder oriori ####
+# .env at folder oriori
 - You also needed two `.env` file in the following location:
 
 - in the `oriori` root directory
@@ -75,20 +75,22 @@ DEBUG=
 DATABASE_URL=
 ```
 
-##### SECRET_KEY #####
+# SECRET_KEY
 You needed to create a secret key for your team or yourself if you work for MVP:
 https://codinggear.blog/django-generate-secret-key/#generate-secret-key-in-django-using-getrandomsecretkeynbspfunction
 
-##### DEBUG #####
+# DEBUG 
 Set it to equal to `True` or `False`
 
-##### DATABASE_URL #####
+# DATABASE_URL
 
 ```
 DATABASE_URL=postgres://[YOUR_USERNAME]:[YOUR_PASS]@localhost:5432/[YOUR_DB_NAME]
 ```
 
-The oriori root directory is for credential using `postgres` database locally, if you did not have postgres installed in your system, please install it. Check how your system install and run postgres.   
+1. The oriori root directory is for credential using `postgres` database locally. 
+1. If you did not have postgres installed in your system, please install it. 
+1. Check how your system install and run postgres.   
 
 You will need the following three variables:
 - postgres's username at `YOUR_USERNAME` (usually is postgres)
@@ -103,7 +105,7 @@ At postgres create a database:
 ```psql
 CREATE DATABASE oriori
 ``` 
-#### .env at foler oriori/client ####
+# .env at foler oriori/client
 - `.env` at `oriori/client`
 
 You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields:-
@@ -120,26 +122,29 @@ REACT_APP_FB_DB_URL=
 
 NB: Make sure you exclude both .env file from your .gitignore, this data should be keep off from your git pull.  
 
-## For Docker ##
+# For Docker
 
 Install Docker in your respective desktop environment (MacOs, Windows, Linux, etc)  
 Download [Docker](https://www.docker.com/)  
 Run the following command to make oriori start in a virtual environment provided by docker  
+
 ```bash
 docker compose up
 ```
 
-Once your codes are updated, you will wanted to purge the previous image, run:
+Once your codes are updated, you will wanted to purge the previous image, run:  
+
 ```bash
 docker compose down --rmi all
 ```
-Re-run: 
+
+Re-run:  
+
 ```bash
 docker compose up
 ```
 
-### How to Use the Project ###
-
+# How to Use the Project  
 
 For development
 - To run it locally, in the oriori root folder, you needed to create a virtual environment in python3:  
@@ -148,7 +153,7 @@ For development
 python3 -m venv venv
 ```
 
-- Run the environment:  
+- Run the environment:   
 
 ```bash
 source venv/bin/activate
@@ -172,9 +177,7 @@ sh rundev.sh
 
 If the app has no error, it will run the app at [localhost:8080](http://localhost:8080). If there is errors, try to resolve it.
 
-
-
-### Credits ###  
+## *Credits*  
 
 | Name | Title / Position | GitHub  |
 | ---- | ---------------- | ------- |
@@ -185,7 +188,7 @@ If the app has no error, it will run the app at [localhost:8080](http://localhos
 
 
 
-### Licence ###
+# Licence
 
 
 MIT License
