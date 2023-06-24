@@ -56,6 +56,7 @@ const Signup: React.FC = () => {
   return (
     <div className="page__wrapper--center">
       <Header
+        className="full-width"
         secondaryText="Sign Up"/>
       <form
         onSubmit = { handleSignUp }>

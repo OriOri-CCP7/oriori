@@ -33,18 +33,19 @@ const PasswordReset: React.FC = () => {
   }
 
   return (
-  <div className="password-reset-form">
-    <Header mainText="OriOri Password Reset" />
-    <p className="reset-message">Enter your email and we'll send you a link to reset your password.</p>
+  <div className="page__wrapper--center">
+    <Header className="full-width" secondaryText="Password Reset" />
     <form onSubmit = { handleResetPassword }>
+      <p className="reset-message">Enter your email and we'll send you a link to reset your password.</p>
       <Input 
         className = "login-input"
         placeholder = "Email"
         type = "email"
+        autoComplete = "username"
         value = { email }
         onChange = { handleEmailInput }/>
       <Button 
-        className = "submit"
+        className = "reset__button"
         text = "Reset Password"
         type = "submit" />
       <Link to = "/"> Go back to Login Page! </Link>

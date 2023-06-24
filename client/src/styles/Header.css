@@ -1,7 +1,11 @@
 .header {
-  width: 100%;
+  background-color: #fdf6f0d1;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6pt);
+  box-shadow: #00000024 0 4pt 2pt;
   padding: 16pt 12pt 6pt;
-  position: relative;
+  z-index: 100;
 }
 
 .header__logo {
@@ -11,4 +15,15 @@
 
 .header__h1 {
   font-weight: 500;
+}
+
+.full-width {
+  width: 100%;
+  background-color: none;
+  position: relative;
+  top: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  padding: 16pt 12pt 6pt;
+  z-index: 100;
 }
