@@ -201,6 +201,31 @@ The Navbar is how you navigate the app.
 | Hot | The products that is **HOT** Available right now |
 | Search | Search other prefecture for seasonal products | 
 
+### Menu
+The Menu next to the product has the following features:
+
+| product icon | Description |
+| ------------ | ----------- |
+| Bookmark | Click to save the seasonal products user wanted into the user bookmark page |
+| Plus Circle | Click if the user has tried the Icon, and a thumb up icon will appear |
+| Thumb up | Refer to Plus Circle Icon. Click if user like or enjoy the product. |
+| Share | Call device's share function if available |
+
+### Setting 
+#### Normal User
+##### Change Prefecture
+You can change your prefecture base from the drop down menu. Click Save to save the base prefecture.
+
+Click Save will direct you back to Home.
+
+##### Change username
+If user wish to change their username. Click Save to save your new username.
+
+Click Save will direct you back to Home.
+
+
+#### Admin User
+You can input custom post and remove them in this menu. 
 
 # *Credits*  
 
