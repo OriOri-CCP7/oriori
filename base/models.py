@@ -44,3 +44,6 @@ class Log(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['user', 'product'], name='unique_log')
         ]
+
+# class Settings(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)

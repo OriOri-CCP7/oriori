@@ -175,23 +175,24 @@ function ProductCard ({ product, bookmark, log }: Props) {
     }
   } 
 
-  const ProductCardMenu = () => { 
-    return
+  const ProductCardMenu = 
+    
     (
-      <>
+      <div>
         <div className='product__button-container'>
           <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickBkmarkHandler }/>
           <LogButton isLogged={ isLogged } clickHandler={ clickLogHandler }/>
           { isLogged && <LikeButton isLiked={ isLiked } clickHandler={ clickLikeHandler }/> }
           <ShareButton hasShared={hasShared} clickHandler={handleShareClick} />
         </div>
-      </>
+      </div>
     )
-    }
+    
 
 
   return (
     <div className='product__card' id={`${product.id}`}>
+      
       <div className='product__title' onClick={ clickProductHandler }>
         <h2 className='product__name'>
           { product.product_name }
@@ -200,18 +201,21 @@ function ProductCard ({ product, bookmark, log }: Props) {
           <p className={ 'product__avail-text' + availModifier }>
             { availabilityMsg }
           </p>
+          
         </div>
       </div>
       <div className='product__content'>
+      {menuLeftHandSide ? <>{ProductCardMenu}</> : null}
         <div className='product__img-container' onClick={ clickProductHandler }>
           { product.img_url ? <img className='product__img' src={ product.img_url } alt={ product.product_name }/> : <></> }
         </div>
-        <div className='product__button-container'>
+        {menuLeftHandSide ? null : <>{ProductCardMenu}</> }
+        {/* <div className='product__button-container'>
           <BkmarkButton isBookmark={ isBookmark } clickHandler={ clickBkmarkHandler }/>
           <LogButton isLogged={ isLogged } clickHandler={ clickLogHandler }/>
           { isLogged && <LikeButton isLiked={ isLiked } clickHandler={ clickLikeHandler }/> }
           <ShareButton hasShared={hasShared} clickHandler={handleShareClick} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
