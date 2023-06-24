@@ -24,10 +24,7 @@ function Settings() {
   // const handleEmailInput = (event: ChangeEvent<HTMLInputElement>): void => {
   //   setEmail(event.target.value);
   // }
-  
-  const handleBack = (event: React.MouseEvent<HTMLButtonElement>) => {
-    navigate('/home');
-  };
+
 
   const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -74,7 +71,6 @@ function Settings() {
       <div className="setting__icon back">
       <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
       </div>
-      {/* <Button className="backButton" type="button" onClick={handleBack} text="Back"/> */}
       <h1>Settings</h1>
       <form>
         <label>Username</label>

@@ -5,14 +5,6 @@ button {
   border: none;
 }
 
-.backButton {
-  background-color: Transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-}
-
 .setting__save-button {
   width: 70%;
   height: 40px;
