@@ -224,8 +224,9 @@ sh rundev.sh
 If the app has no error, it will run the app at [localhost:8080](http://localhost:8080). If there is errors, try to resolve it.
 
 ## Running the App
+### Normal User
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
-### Sign up
+#### Sign up
 When you are in the app, you needed to create a user account if you are a user. 
 
 Click to Sign up.
@@ -234,12 +235,12 @@ Fill in your `username` `password` `confirm password` and `email`. Press submit 
 
 You will be directed to the boarding page and you are all set.
 
-### Login
+#### Login
 When you have a user account, enter your credential `email` and `password`, then press Log in.
 
 You can reset your password by click `reset password`.
 
-### Navbar
+#### Navbar
 The Navbar is how you navigate the app.
 
 | Nav Icon | Description |
@@ -250,7 +251,7 @@ The Navbar is how you navigate the app.
 | Hot | The products that is **HOT** Available right now |
 | Search | Search other prefecture for seasonal products | 
 
-### Menu
+#### Menu
 The Menu next to the product has the following features:
 
 | product icon | Description |
@@ -260,13 +261,12 @@ The Menu next to the product has the following features:
 | Thumb up | Refer to Plus Circle Icon. Click if user like or enjoy the product. |
 | Share | Call device's share function if available |
 
-### Setting 
+#### Setting 
 | component | Description |
 | --------- | ----------- |
 | <- | Back arrow will bring you back to Home page |
 | Log out | Log user out from the app |
 
-#### Normal User
 | component | Description |
 | --------- | ----------- |
 | Select Prefecture | You can change your prefecture base from the drop down menu |
@@ -274,9 +274,11 @@ The Menu next to the product has the following features:
 
 Click Save will save the change and will direct you back to Home page.  
 
-#### Admin User
+### Admin User
+#### Setting
 You can input custom products and remove them. If your account is an admin account, an Add Product Button will be accessable for you. Press it and you will navigate to an add Product Page.
 
+#### Product Page
 ##### Interface
 | Interface | Explaination |
 | --------- | ------------ |
@@ -293,6 +295,11 @@ You can input custom products and remove them. If your account is an admin accou
 WIP
 
 ## App
+
+### Server
+
+### Client
+
 
 # *Credits*  
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
