@@ -46,7 +46,7 @@ Did you ever wondered what different seasonal products are there, when are they 
 
 ### Contribution (WIP)
 You can contribut by
-1. help us / provide feedback / suggestion by reading the [CONTRUBUTING.md](CONTRUBUTING.md)
+1. help us / provide feedback / suggestion / issue / discuss it and by reading the [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 # Index 
 * Go to section  
@@ -64,7 +64,7 @@ You can contribut by
         1. [SECRET_KEY](#secret_key)  
         2. [DEBUG](#debug)  
         3. [DATABASE_URL](#database_url)  
-    2. [.env at folder oriori/client](#env-at-foler-orioriclient)  
+    2. [.env at folder oriori/client](#env-at-folder-orioriclient)  
     3. [Docker](#for-docker)  
 3. [How to Use the Project](#how-to-use-the-project)
     1. [Development](#development)
@@ -150,7 +150,7 @@ At postgres create a database:
 ```psql
 CREATE DATABASE oriori;
 ``` 
-## .env at foler oriori/client
+## .env at folder oriori/client
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
 - `.env` at `oriori/client`  
