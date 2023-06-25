@@ -2,11 +2,3 @@
   max-width: 75%;
   margin: 0 auto;
 }
-
-.search__subtitle {
-  font-size: larger;
-  font-weight: 500;
-  width: max-content;
-  margin: 14pt auto 8pt;
-  padding: 2pt;
-}

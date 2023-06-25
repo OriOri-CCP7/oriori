@@ -42,12 +42,12 @@ export default function Home() {
       {
         products.length > 0
           ? <>
-              <h2 className="home__subtitle">
+              <h2 className="subtitle underlined">
                 { `Products Available in ${ prefectureName }` }
               </h2>
               <ProductGrid productArray={ products }/>
             </>
-          : loadComplete && <h2 className="home__subtitle">
+          : loadComplete && <h2 className="subtitle">
               No products could be found in your Home Prefecture.
             </h2>
       }

@@ -34,7 +34,7 @@ export default function Search() {
   return (
     <div className='page__wrapper'>
       <Header mainText="Search"/>
-      <h2 className='search__subtitle'>
+      <h2 className='subtitle'>
         Search for products in any prefecture.
       </h2>
       <DropdownMenu 

@@ -36,7 +36,7 @@ function Bookmarks() {
       {
         products.length > 0
           ? <ProductGrid productArray={products} />
-          : loadComplete && <h2 className="bookmarks__subtitle">
+          : loadComplete && <h2 className="subtitle">
               Bookmarked products are displayed here. Tap the book mark ribbon on any product to add it to your bookmarks!
             </h2>
       }

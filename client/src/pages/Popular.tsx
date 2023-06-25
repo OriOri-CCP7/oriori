@@ -31,7 +31,7 @@ function Popular() {
   return (
     <div className='page__wrapper'>
       <Header mainText="Hot Right Now" />
-      <h2 className='popular__subtitle'>
+      <h2 className='subtitle underlined'>
         The Most-Liked Products in Japan
       </h2>
       <ProductGrid productArray={products}/>

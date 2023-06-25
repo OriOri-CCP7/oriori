@@ -39,7 +39,7 @@ function Logs() {
       {
         products.length > 0
           ? <ProductGrid productArray={ products }/>
-          : loadComplete && <h2 className='logs__subtitle'>
+          : loadComplete && <h2 className='subtitle'>
               Products you've tried are displayed here. Tap the checkmark on any product to add it to this list!
             </h2>
       }

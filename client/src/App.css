@@ -1,5 +1,6 @@
 .App {
   height: 100vh;
+  overflow-x: clip;
   text-align: center;
 }
 
@@ -34,4 +35,17 @@ a:visited {
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+
+.subtitle {
+  font-size: larger;
+  font-weight: 500;
+  width: fit-content;
+  max-width: 95%;
+  margin: 14pt auto 8pt;
+  padding: 2pt;
+}
+
+.subtitle.underlined {
+  border-bottom: 1pt solid black;
 }

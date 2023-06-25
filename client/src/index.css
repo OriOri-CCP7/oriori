@@ -8,6 +8,7 @@
 
 body {
   display: flex;
+  overflow-x: clip;
   flex-direction: column;
   background-color: #FDF6F0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
