@@ -1,7 +1,7 @@
 # ORIORI
 ![oriori-logo](./client/public/oriori-logo.png)
 
-![Updated](https://img.shields.io/static/v1?label=updated&message=June%2024th%202023&color=388E3C&style=flat-square)  
+![Updated](https://img.shields.io/static/v1?label=updated&message=June%2025th%202023&color=388E3C&style=flat-square)  
 
 ![GitHub](https://img.shields.io/github/license/oriori-ccp7/oriori?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/oriori-ccp7/oriori?style=flat-square)
@@ -13,17 +13,17 @@
 
 Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
 
-## Project's Description ##
+# Project's Description ##
 <u>四季折々 'しきおりおり' - (SHIKI)ORIORI</u> 
 
-### What is Oriori?  
+## What is Oriori?  
 Oriori is a tracking tool for seasonal and regional goods in Japan.
 Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 
-### Why use Oriori?  
+## Why use Oriori?  
 Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
 
-### Tech used and why?  
+## Tech used and why?  
 
 | Tech name | Reasons |  
 | --------- | ------- |  
@@ -34,19 +34,29 @@ Did you ever wondered what different seasonal products are there, when are they 
 | ![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)  | Take advantage of python programming and easy to use |
 | ![postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)   | Small scale and sustainable |
 
-### Challenges faced and how we over come them
+## Challenges faced and how we over come them
+- RSS data scraping 
+-  
 
-### Future implementation
-- [ ] White Mode / Dark Mode
-- [ ] User choose of Left or Right Hand Sided Products Menus 
+## Future implementation
+- [ ] Light Mode / Dark Mode / Color Mode
+- [ ] User choices for a Left or Right Hand Sided Products Menus 
 - [ ] Advanced Seach with Filters / Keywords
 - [ ] User Products Submission
 - [ ] Store Locations
 - [ ] Stamp Ralley / Promotional Campaigns
 
-### Contribution (WIP)
-You can contribut by
-1. help us / provide feedback / suggestion / issue / discuss it and by reading the [CONTRIBUTING.md](./CONTRIBUTING.md)
+## Contribution
+You can contribute by:-  
+- provide feedback   
+- give suggestions  
+- create new issues  
+- share your idea  
+- suggest us a better service / libraries / languages to use
+- pull request your new features for review  
+- mirror it or clone the [repo](https://github.com/OriOri-CCP7/oriori) 
+- become a contributor, etc  
+Be sure to read the [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 # Index 
 * Go to section  
@@ -70,8 +80,12 @@ You can contribut by
     1. [Development](#development)
         1. [Installation](#installation)  
         2. [Running the App](#running-the-app)
-    2. [App](#app)    
-4. [Credits](#credits)    
+            1. [Normal User](#normal-user)
+            2. [Admin User](#admin-user)
+    2. [App](#app) (WIP -someone please take over)
+        1. [Server](#server)
+        2. [Client](#client)   
+4. [Credits](#credits)     
 5. [License](#license)    
 
 # How to Install and Run the Project 
@@ -83,7 +97,7 @@ python3 manage.py loaddata 001_Locations.json
 python3 manage.py loaddata 004_Products.json
 ```
 
--Alternatively, you can open `runseed.sh` in the root directory and edit skipindices to omit some entry in the list, just **DO NOT RUN** it yet.  
+Alternatively, you can open `runseed.sh` in the root directory and edit skipindices to omit some entry in the list, just **DO NOT RUN** it yet.  
 
 For the above cases, at `skipindices`, remove `0` and `3` for the script to run `001_Locations.json` and `004_Products.json`:    
 
@@ -107,13 +121,19 @@ bash runseed.sh
 
 # .env
 
-## .env at folder oriori
-- You also needed two `.env` file in the following location:
+- You needed two `.env` file in the following locations:
 
 - in the `oriori` root directory
-- in the `oriori/client` directory
+- in the `oriori/client` directory  
 
-The `.env.example` provided gives you an example on how to use the `.env` in your root directory, as well as in the `oriori/client` folder. You needed to set the following in order for the app to run properly.
+**NB**: Make sure you exclude both `.env` file from your `.gitignore`, this data should be keep off from your git pull. 
+
+## .env at folder oriori
+
+The `.env.example` located at the root folder gives you the necessary variable for the project to run, use it for the `.env` in your root directory.
+
+The content of your `.env` in the root directory should looks something like this:-  
+
 ```
 SECRET_KEY=
 DEBUG=
@@ -121,7 +141,8 @@ DATABASE_URL=
 ```
 
 ### SECRET_KEY
-You needed to create a secret key for your team or yourself if you work for MVP:
+You needed to create a secret key for your team or yourself if you are working solo and copy it to SECRET_KEY:-  
+
 https://codinggear.blog/django-generate-secret-key/#generate-secret-key-in-django-using-getrandomsecretkeynbspfunction
 
 ### DEBUG 
@@ -129,33 +150,34 @@ Set it to equal to `True` or `False`
 
 ### DATABASE_URL
 
+The `DATABASE_URL` consist of `YOUR_USERNAME`, `YOUR_PASS` and `YOUR_DB_NAME` variables, each required to be replaced with your respective `username`, `password` and `database name` in `postgresql`.  
+
 ```
 DATABASE_URL=postgres://[YOUR_USERNAME]:[YOUR_PASS]@localhost:5432/[YOUR_DB_NAME]
 ```
 
-1. The oriori root directory is for credential using `postgres` database locally. 
-1. If you did not have postgres installed in your system, please install it. 
-1. Check how your system install and run postgres.   
+1. The oriori project required `postgresql` database to run. 
+1. If you did not have `postgresql` installed in your system, please install it, refer to their homepage for your respective computing system. 
+1. Once you have `postgresql` installed, enter by using:-  
 
-You will need the following three variables:
-- postgres's username at `YOUR_USERNAME` (usually is postgres)
-- postgres's password at `YOUR_PASS`
-- the oriori database postrgres going to use at `YOUR_DB_NAME`
-
-Once you have postgres installed, enter by using: 
 ```
 psql -U
 ```
-At postgres create a database:
+
+At `postgresql` create a database:-  
+
 ```psql
 CREATE DATABASE oriori;
 ``` 
+
+exit `postgresql` by `\q`.  
+
 ## .env at folder oriori/client
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
-- `.env` at `oriori/client`  
+`.env` at `oriori/client`  
 
-You will needed to register firebase and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields. A `.env.example` file has already prepared inside `oriori/client` folder:-
+You will needed to register your project in firebase at [firebase.com](https://firebase.google.com/) and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields. A `.env.example` file has already prepared inside `oriori/client` folder:-
 
 ```
 REACT_APP_API_KEY=
@@ -167,25 +189,27 @@ REACT_APP_FB_APP_ID=
 REACT_APP_FB_DB_URL=
 ```
 
-NB: Make sure you exclude both `.env` file from your `.gitignore`, this data should be keep off from your git pull.  
+**NB**: Make sure you exclude both `.env` file from your `.gitignore`, this data should be keep off from your git pull. 
 
 ## For Docker
 
-Install Docker in your respective desktop environment (MacOs, Windows, Linux, etc)  
-Download [Docker](https://www.docker.com/)  
-Run the following command to make oriori start in a virtual environment provided by docker  
+Install Docker in your respective desktop environment (MacOs, Windows, Linux, etc).  
+
+Download [Docker](https://www.docker.com/).   
+
+Run the following command to make oriori start in a virtual environment provided by docker:-    
 
 ```bash
 docker compose up
 ```
 
-Once your codes are updated, you will wanted to purge the previous image, run:  
+Once your codes are updated, you will wanted to purge the previous image, run this:-    
 
 ```bash
 docker compose down --rmi all
 ```
 
-Re-run:  
+Re-run the following:-    
 
 ```bash
 docker compose up
@@ -212,11 +236,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-To make migration from mange.py
-```bash
-python3 manage.py makemigrations
-```
-
 To start the project, run the following command:   
 
 ```bash
@@ -225,9 +244,17 @@ sh rundev.sh
 
 If the app has no error, it will run the app at [localhost:8080](http://localhost:8080). If there is errors, try to resolve it.
 
+If it still does not work, try to repeat the above steps, or maybe try some other troubleshooting, for example:-  
+
+```bash
+python3 manage.py makemigrations
+```
+
+(More suggestion to come)
+
 ## Running the App
 ### Normal User
-[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
+[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)  
 #### Sign up
 When you are in the app, you needed to create a user account if you are a user. 
 
