@@ -32,11 +32,17 @@
   border-radius: 100px;
   display: flex;
   align-items: stretch;
-  max-width: 250px;
+  max-width: 200px;
 }
 
 .unselected {
   fill: antiquewhite;
+  min-width: 18pt;
+  max-width: 30pt;
+}
+.nav__icon {
+  min-width: 18pt;
+  max-width: 30pt;
 }
 
 .nav__icon.home {
@@ -50,19 +56,4 @@
 }
 .nav__icon.pop {
   fill: #ff6600;
-}
-@media (max-width: 320px) {
-  .nav__icon, .unselected {
-      width: var(--small-width);
-  }
-} 
-@media (min-width: 321px) and (max-width: 768px) {  
-  .nav__icon, .unselected {
-      width: var(--medium-width);
-  }
-}
-@media (min-width: 769px) {    
-  .nav__icon, .unselected {
-      width: var(--large-width);
-  }
 }
