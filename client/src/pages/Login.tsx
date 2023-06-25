@@ -58,7 +58,7 @@ const Login: React.FC = () => {
   return (
     <div className="page__wrapper--center">
       <Header
-        className="full-width"
+        fullWidth
         secondaryText="Log In"/>
       <form
         onSubmit = { handleLogin }>

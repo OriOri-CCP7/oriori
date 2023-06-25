@@ -11,6 +11,7 @@ import axios from 'axios';
 function Bookmarks() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
+  const [loadComplete, setLoadComplete] = useState(false);
 
   useEffect(() => {
     axios.get(`/api/users/${auth?.user.uuid}/bookmarks/products/`, {
@@ -24,7 +25,8 @@ function Bookmarks() {
       console.log(response);
       setProducts(response.data);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
+    .finally(() => setLoadComplete(true));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -33,10 +35,10 @@ function Bookmarks() {
       <Header mainText="Bookmarks" />
       {
         products.length > 0
-        ? <ProductGrid productArray={products} />
-        : <>
-            <p>Add to your bookmarks by tapping the heart icon on any product!</p>
-          </>
+          ? <ProductGrid productArray={products} />
+          : loadComplete && <h2 className="bookmarks__subtitle">
+              Bookmarked products are displayed here. Tap the book mark ribbon on any product to add it to your bookmarks!
+            </h2>
       }
       <Navbar/>
     </div>

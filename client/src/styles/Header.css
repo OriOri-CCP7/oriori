@@ -1,9 +1,9 @@
 .header {
-  background-color: #fdf6f0d1;
+  background-color: #f5d3c2eb;
   position: sticky;
   top: 0;
-  backdrop-filter: blur(6pt);
-  box-shadow: #00000024 0 4pt 2pt;
+  backdrop-filter: blur(8pt);
+  box-shadow: #00000024 0 2pt 6pt;
   padding: 16pt 12pt 6pt;
   z-index: 100;
 }
@@ -15,15 +15,16 @@
 
 .header__h1 {
   font-weight: 500;
+  font-size: 1.6rem;
 }
 
 .full-width {
   width: 100%;
-  background-color: none;
+  background-color: transparent;
   position: relative;
-  top: none;
-  backdrop-filter: none;
-  box-shadow: none;
+  top: unset;
+  backdrop-filter: unset;
+  box-shadow: unset;
   padding: 16pt 12pt 6pt;
   z-index: 100;
 }

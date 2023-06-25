@@ -3,7 +3,9 @@
   width: 100%;
   bottom: 0;
   font-size: 0;
-  background-color: #F5C6AA;
+  background-color: #F5C6AAEB;
+  backdrop-filter: blur(8pt);
+  box-shadow: #00000024 0 2pt 6pt;
   display: flex;
   justify-content: space-around;
 }
@@ -27,7 +29,7 @@
 }
 
 .unselected {
-  fill: antiquewhite;
+  fill: #fdf6f0;
 }
 
 .nav__icon {

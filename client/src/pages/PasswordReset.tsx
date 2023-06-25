@@ -34,7 +34,7 @@ const PasswordReset: React.FC = () => {
 
   return (
   <div className="page__wrapper--center">
-    <Header className="full-width" secondaryText="Password Reset" />
+    <Header fullWidth secondaryText="Password Reset" />
     <form onSubmit = { handleResetPassword }>
       <p className="reset-message">Enter your email and we'll send you a link to reset your password.</p>
       <Input 

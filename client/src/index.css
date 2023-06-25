@@ -23,3 +23,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*
+  Using overflow on html and body you can clip the horizontal axis and allow vertical scrolling.
+  However, the header has some unexpected behavior in this state and will sometimes scroll as well...
+  Content avoids the space around the notch correctly, but the blur backdrop effect isn't visible.
+  The Navbar enters the margins around the Home bar.
+  The Homepage header is kind of big.
+*/

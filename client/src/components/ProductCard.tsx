@@ -50,7 +50,13 @@ function ProductCard ({ product, bookmark, log }: Props) {
         availModifier += ' while-supplies';
         availabilityMsg = "Available while supplies last!";
         const weeks = Math.floor(daysSinceStart / 7);
-        availabilityMsg = `While supplies last!\n(released ${weeks} weeks ago)`;
+        if (weeks < 1) {
+          availabilityMsg = `While supplies last!\n(released this week)`;
+        } else if (weeks === 1) {
+          availabilityMsg = `While supplies last!\n(released last week)`;
+        } else {
+          availabilityMsg = `While supplies last!\n(released ${weeks} weeks ago)`;
+        }
       }
     }
   }

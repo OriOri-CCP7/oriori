@@ -5,13 +5,13 @@
   width: 26pt;
   height: 26pt; /* adjust as needed */
   border-radius: 50%;
-  border: 2pt solid #ccc;
+  border: 2pt solid #fdf6f0;
   position: absolute;
   right: 0; /* right-aligned with position: absolute */
 }
 
 .settings-icon {
-  fill: #ccc;
+  fill: #fdf6f0;
   width: 22pt;
 }
 
@@ -24,15 +24,6 @@
   display: flex;
   flex-direction: column;
   padding: 2pt;
-}
-
-.home-header__pref-name {
-  font-size: 24pt;
-  font-weight: 500;
-}
-
-.home-header__subtitle {
-  font-size: 12pt;
 }
 
 .home-header__logo {

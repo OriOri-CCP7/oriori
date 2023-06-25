@@ -1,10 +1,11 @@
 .product__card {
+	max-width: 360pt;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
 	align-content: center;
-  margin-bottom: 8pt;
+  margin: 4pt auto;
 }
 
 .product__title, .product__content {
@@ -19,7 +20,8 @@
 }
 
 .product__name {
-	font-size: 14pt;
+	font-size: medium;
+	font-weight: 500;
 }
 
 .product__avail-container {
@@ -31,7 +33,7 @@
 
 .product__avail-text {
 	white-space: pre-line;
-	font-size: 12pt;
+	font-size: medium;
 	margin-top: 4pt;
 }
 
@@ -86,17 +88,15 @@
 .product__content {
 	display: flex;
 	flex-direction: row;
-	height: 180pt;
+	min-height: 180pt;
 	margin: 6pt 12pt 0;
 }
 
 .product__img-container {
-	height: 100%;
-	margin-right: auto;
-	overflow: hidden;
 	border-radius: 12pt;
 	display: flex;
-	justify-content: center;
+	overflow: hidden;
+	margin-right: auto;
 }
 
 .product__img-container.left{
@@ -111,7 +111,7 @@
 
 .product__img {
 	max-width: 100%;
-	max-height: 100%;
+	min-height: 100%;
 	object-fit: cover;
 }
 
