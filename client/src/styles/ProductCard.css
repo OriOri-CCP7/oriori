@@ -1,10 +1,12 @@
 .product__card {
-  margin: 10px;
+    margin: 0 auto 10px auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     align-content: center;
+    max-width: 450px;
+    min-width: 300px;
 }
 
 .product__title, .product__content {
