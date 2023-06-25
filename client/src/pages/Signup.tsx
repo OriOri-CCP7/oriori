@@ -54,65 +54,65 @@ const Signup: React.FC = () => {
   };
   
   return (
-    <div className="page__wrapper--center">
-      <Header
-        fullWidth
-        secondaryText="Sign Up"/>
-      <form
-        onSubmit = { handleSignUp }>
+    <>
+      <Header mainText="Sign Up"/>
+      <div className="page__wrapper center">
+        <form
+          onSubmit = { handleSignUp }>
 
-        <Input
-          className = "signup-input" 
-          placeholder = "Username"
-          type = "text"
-          autoComplete = "nickname"
-          value = { username }
-          onChange = { (event) => setUsername(event.target.value) }
-          />
+          <Input
+            className = "signup-input" 
+            placeholder = "Username"
+            type = "text"
+            autoComplete = "nickname"
+            value = { username }
+            onChange = { (event) => setUsername(event.target.value) }
+            />
 
-        <Input 
-          className = "signup-input"
-          placeholder = "Password"
-          type = "password"
-          autoComplete = "new-password"
-          value = { password }
-          onChange = { (event) => setPassword(event.target.value) }
-          />
+          <Input 
+            className = "signup-input"
+            placeholder = "Password"
+            type = "password"
+            autoComplete = "new-password"
+            value = { password }
+            onChange = { (event) => setPassword(event.target.value) }
+            />
 
-        <Input 
-          className = "signup-input"
-          placeholder = "Password Confirmation"
-          type = "password"
-          autoComplete = "new-password"
-          value = { confirmPassword }
-          onChange = { (event) => setConfirmPassword(event.target.value) }
-          />
-        
-        { hasAttemptedSignUp
-          ? <div className="div-signup-alertMessage">{alertMessage}</div>
-          : <></> }
+          <Input 
+            className = "signup-input"
+            placeholder = "Password Confirmation"
+            type = "password"
+            autoComplete = "new-password"
+            value = { confirmPassword }
+            onChange = { (event) => setConfirmPassword(event.target.value) }
+            />
           
-        <Input 
-          className = "signup-input"
-          placeholder = "Email"
-          type = "email"
-          autoComplete = "username"
-          value = { email }
-          onChange = { (event) => setEmail(event.target.value) }
-          />
+          { hasAttemptedSignUp
+            ? <div className="div-signup-alertMessage">{alertMessage}</div>
+            : <></> }
+            
+          <Input 
+            className = "signup-input"
+            placeholder = "Email"
+            type = "email"
+            autoComplete = "username"
+            value = { email }
+            onChange = { (event) => setEmail(event.target.value) }
+            />
 
-        <Button 
-          className = "signup__button"
-          text = "Sign Up"
-          type = "submit"/>
+          <Button 
+            className = "signup__button"
+            text = "Sign Up"
+            type = "submit"/>
 
-        <p>
-          { "Already have an account? " }
-          <Link to = "/">Log In!</Link>
-        </p>
-      </form>
+          <p>
+            { "Already have an account? " }
+            <Link to = "/">Log In!</Link>
+          </p>
+        </form>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -157,82 +157,83 @@ function AdminAddProduct() {
       <Header
         mainText='OriOri Admin'
         secondaryText='Submit New Product'/>
-      <Button className="admin__button" type="button" onClick={ () => navigate('/home') } text="Back"/>
-      <form
-        onSubmit = { handleSubmit }>
-        
-        <label>
-          { 'Product Name: ' }
-          <Input 
-            className = 'admin__input'
-            placeholder = 'Product Name'
-            type = 'text'
-            value = { productName }
-            onChange = { (e) => setProductName(e.target.value) }
-            required
-            />
-        </label>
+      <div className='page__wrapper center'>
+        <Button className="admin__button" type="button" onClick={ () => navigate('/home') } text="Back"/>
+        <form
+          onSubmit = { handleSubmit }>
+          
+          <label>
+            { 'Product Name: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = 'Product Name'
+              type = 'text'
+              value = { productName }
+              onChange = { (e) => setProductName(e.target.value) }
+              required
+              />
+          </label>
 
-        <label>
-          { 'Link URL: ' }
-          <Input 
-            className = 'admin__input'
-            placeholder = 'Link URL'
-            type = 'url'
-            value = { productUrl }
-            onChange = { (e) => setProductUrl(e.target.value) }
-            required
-            />
-        </label>
+          <label>
+            { 'Link URL: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = 'Link URL'
+              type = 'url'
+              value = { productUrl }
+              onChange = { (e) => setProductUrl(e.target.value) }
+              required
+              />
+          </label>
 
-        <label>
-          { 'Image: ' }
-          <Input 
-            className = 'admin__input'
-            placeholder = ''
-            type = 'file'
-            value = { image }
-            onChange = { (e) => {
-              setImage(e.target.value);
-              setImageFL(e.target.files);
-            }}
-            required
-            />
-        </label>
-        
-        <label>
-          { 'Start Date: ' }
-          <Input 
-            className = 'admin__input'
-            placeholder = ''
-            type = 'date'
-            value = { startDate }
-            onChange = { (e) => setStartDate(e.target.value) }
-            />
-        </label>
+          <label>
+            { 'Image: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = ''
+              type = 'file'
+              value = { image }
+              onChange = { (e) => {
+                setImage(e.target.value);
+                setImageFL(e.target.files);
+              }}
+              required
+              />
+          </label>
+          
+          <label>
+            { 'Start Date: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = ''
+              type = 'date'
+              value = { startDate }
+              onChange = { (e) => setStartDate(e.target.value) }
+              />
+          </label>
 
-        <label>
-          { 'End Date: ' }
-          <Input 
-            className = 'admin__input'
-            placeholder = ''
-            type = 'date'
-            value = { endDate }
-            onChange = { (e) => setEndDate(e.target.value) }
-            />
-        </label>
+          <label>
+            { 'End Date: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = ''
+              type = 'date'
+              value = { endDate }
+              onChange = { (e) => setEndDate(e.target.value) }
+              />
+          </label>
 
-        <MUITransferList options={ prefectureList } setSelected={ setSelectedPrefs }/>
-        
-        <div className='admin__sending-msg'>{ isSending && alertMessage }</div>
+          <MUITransferList options={ prefectureList } setSelected={ setSelectedPrefs }/>
+          
+          <div className='admin__sending-msg'>{ isSending && alertMessage }</div>
 
-        
-        <Button 
-          className = 'admin__button'
-          text = 'Submit'
-          type = 'submit'/>
-      </form>
-
+          
+          <Button 
+            className = 'admin__button'
+            text = 'Submit'
+            type = 'submit'/>
+        </form>
+      </div>
       <Footer/>
     </>
   );

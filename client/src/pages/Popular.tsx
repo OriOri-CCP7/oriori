@@ -29,14 +29,16 @@ function Popular() {
   }, []);
 
   return (
-    <div className='page__wrapper'>
-      <Header mainText="Hot Right Now" />
-      <h2 className='subtitle underlined'>
-        The Most-Liked Products in Japan
-      </h2>
-      <ProductGrid productArray={products}/>
+    <>
+      <Header mainText="Hot Right Now"/>
+      <div className='page__wrapper'>
+        <h2 className='subtitle underlined'>
+          The Most-Liked Products in Japan
+        </h2>
+        <ProductGrid productArray={products}/>
+      </div>
       <Navbar/>
-    </div>
+    </>
   );
 }
 

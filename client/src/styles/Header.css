@@ -4,7 +4,7 @@
   top: 0;
   backdrop-filter: blur(8pt);
   box-shadow: #00000024 0 2pt 6pt;
-  padding: 16pt 12pt 6pt;
+  padding: max(14pt, env(safe-area-inset-top)) 12pt 6pt;
   z-index: 100;
 }
 
@@ -24,13 +24,6 @@
   font-size: 1.6rem;
 }
 
-.full-width {
-  width: 100%;
-  background-color: transparent;
-  position: relative;
-  top: unset;
-  backdrop-filter: unset;
-  box-shadow: unset;
-  padding: 16pt 12pt 6pt;
-  z-index: 100;
+.header__h2 {
+  font-size: large;
 }

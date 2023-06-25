@@ -4,15 +4,14 @@ import SettingsButton from './SettingsButton';
 import '../styles/Header.css';
 
 type Props = {
-  fullWidth?: boolean,
-  mainText?: string,
+  mainText: string,
   secondaryText?: string
 };
 
-const Header: React.FC<Props> = ({ fullWidth, mainText, secondaryText }: Props) => {
+const Header: React.FC<Props> = ({ mainText, secondaryText }: Props) => {
   const location = useLocation();
   return (
-    <header className={ 'header ' + (fullWidth ? 'full-width' : '') }>
+    <header className={ 'header' }>
       <div className='header__top-container'>
         <img src='/oriori-logo.svg' className='header__logo' alt='OriOri Logo'/>
         { location.pathname === '/home' && <SettingsButton/> }

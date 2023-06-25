@@ -9,6 +9,7 @@ import axios from 'axios';
 
 import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 import '../styles/Settings.css';
+import Header from '../components/Header';
 
 function Settings() {
   const auth  = UserAuth();
@@ -68,57 +69,59 @@ function Settings() {
   };
 
   return (
-    <div className="page__wrapper--center">
-      <div className="setting__button back">
-      <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
-      </div>
-      <h1>Settings</h1>
-      <form>
-        <label>
-          Username:
-          <Input className="setting__input" placeholder="username" type="text" value={username} onChange={handleUsernameInput}/>
-        </label>
-
-        {/* <br /> */}
-        {/* Email address must update both Firebase and Database
+    <>
+      <Header mainText='Settings'/>
+      <div className="page__wrapper center">
+        <div className="setting__button back">
+          <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
+        </div>
+        <form>
           <label>
+            Username:
+            <Input className="setting__input" placeholder="username" type="text" value={username} onChange={handleUsernameInput}/>
+          </label>
+
+          {/* <br /> */}
+          {/* Email address must update both Firebase and Database
+            <label>
             Email Address:
             <Input className="emailInput" placeholder="Email address" type="email" value={email} onChange={handleEmailInput}/>
-          </label>
-          <br /> 
-        */}
-        
-        <DropdownMenu labelName={ 'Home Prefecture:' } setPrefecture={ setLocation } prefill={ location }/>
-        
-        <Button 
-          className="setting__button" 
-          type="submit" 
-          text="Save"
-          onClick={ handleSubmit }
-          disabled={ location === "" ? true : false }/>
-        
-        {/* <Button
-          className="logout__button"
-          text="Log Out"
-          type="button"
+            </label>
+            <br /> 
+          */}
+          
+          <DropdownMenu labelName={ 'Home Prefecture:' } setPrefecture={ setLocation } prefill={ location }/>
+          
+          <Button 
+            className="setting__button" 
+            type="submit" 
+            text="Save"
+            onClick={ handleSubmit }
+            disabled={ location === "" ? true : false }/>
+          
+          {/* <Button
+            className="logout__button"
+            text="Log Out"
+            type="button"
           onClick={ handleLogout } /> */}
 
-      { auth?.role === ROLES.ADMIN
-        ? <Button
+        { auth?.role === ROLES.ADMIN
+          ? <Button
           className="setting__button"
           type="button"
           text="Add Products"
           onClick={ () => navigate("/admin-addProduct")}
           />
-        : null
-      }
-        <Button
-          className="setting__button logout__button"
-          text="Log Out"
-          type="button"
-          onClick={ handleLogout } />
-      </form>
-    </div>
+          : null
+        }
+          <Button
+            className="setting__button logout__button"
+            text="Log Out"
+            type="button"
+            onClick={ handleLogout } />
+        </form>
+      </div>
+    </>
   );
 };
 

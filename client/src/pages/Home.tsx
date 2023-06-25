@@ -37,20 +37,22 @@ export default function Home() {
   }, []);
 
   return (
-  <div className='page__wrapper'>
-    <Header mainText="Home"/>
-      {
-        products.length > 0
+    <>
+      <Header mainText="Home"/>
+      <div className='page__wrapper'>
+        {
+          products.length > 0
           ? <>
-              <h2 className="subtitle underlined">
-                { `Products Available in ${ prefectureName }` }
+                <h2 className="subtitle underlined">
+                  { `Products Available in ${ prefectureName }` }
+                </h2>
+                <ProductGrid productArray={ products }/>
+              </>
+            : loadComplete && <h2 className="subtitle">
+                No products could be found in your Home Prefecture.
               </h2>
-              <ProductGrid productArray={ products }/>
-            </>
-          : loadComplete && <h2 className="subtitle">
-              No products could be found in your Home Prefecture.
-            </h2>
-      }
+        }
+      </div>
       <Navbar/>
-  </div>
+    </>
 )}

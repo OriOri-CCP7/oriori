@@ -2,33 +2,18 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Kiwi Maru', sans-serif;
+  font-family: 'Kiwi Maru', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: #FDF6F0;
+  overscroll-behavior: none;
 }
 
 body {
-  display: flex;
-  overflow-x: clip;
-  flex-direction: column;
   background-color: #FDF6F0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  overflow-x: clip;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/*
-  Using overflow on html and body you can clip the horizontal axis and allow vertical scrolling.
-  However, the header has some unexpected behavior in this state and will sometimes scroll as well...
-  Content avoids the space around the notch correctly, but the blur backdrop effect isn't visible.
-  The Navbar enters the margins around the Home bar.
-  The Homepage header is kind of big.
-*/

@@ -33,18 +33,19 @@ function Logs() {
   }, []);
 
   return (
-    <div className='page__wrapper'>
-      <Header
-        mainText="Tried Products"/>
-      {
-        products.length > 0
-          ? <ProductGrid productArray={ products }/>
-          : loadComplete && <h2 className='subtitle'>
-              Products you've tried are displayed here. Tap the checkmark on any product to add it to this list!
-            </h2>
-      }
+    <>
+      <Header mainText="Tried Products"/>
+      <div className='page__wrapper'>
+        {
+          products.length > 0
+            ? <ProductGrid productArray={ products }/>
+            : loadComplete && <h2 className='subtitle'>
+                Products you've tried are displayed here. Tap the checkmark on any product to add it to this list!
+              </h2>
+        }
+      </div>
       <Navbar/>
-    </div>
+    </>
   );
 };
 

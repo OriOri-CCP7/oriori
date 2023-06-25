@@ -33,30 +33,32 @@ const PasswordReset: React.FC = () => {
   }
 
   return (
-  <div className="page__wrapper--center">
-    <Header fullWidth secondaryText="Password Reset" />
-    <form onSubmit = { handleResetPassword }>
-      <p className="reset-message">Enter your email and we'll send you a link to reset your password.</p>
-      <Input 
-        className = "login-input"
-        placeholder = "Email"
-        type = "email"
-        autoComplete = "username"
-        value = { email }
-        onChange = { handleEmailInput }/>
-      <Button 
-        className = "reset__button"
-        text = "Reset Password"
-        type = "submit" />
-      <Link to = "/"> Go back to Login Page! </Link>
-    </form>
-    
-    { isResetSuccessful === true
-      ? <p>A password reset email was sent to your registered email address.</p>
-      : <></> }
+    <>
+      <Header mainText="Password Reset"/>
+      <div className="page__wrapper center">
+        <form onSubmit = { handleResetPassword }>
+          <p className="reset-message">Enter your email and we'll send you a link to reset your password.</p>
+          <Input 
+            className = "login-input"
+            placeholder = "Email"
+            type = "email"
+            autoComplete = "username"
+            value = { email }
+            onChange = { handleEmailInput }/>
+          <Button 
+            className = "reset__button"
+            text = "Reset Password"
+            type = "submit" />
+          <Link to = "/"> Go back to Login Page! </Link>
+        </form>
+        
+        { isResetSuccessful === true
+          ? <p>A password reset email was sent to your registered email address.</p>
+          : <></> }
 
-    <Footer />
-  </div>
+      </div>
+      <Footer />
+    </>
   )
 }
 

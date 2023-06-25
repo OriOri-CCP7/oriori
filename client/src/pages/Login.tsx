@@ -56,51 +56,51 @@ const Login: React.FC = () => {
   };
   
   return (
-    <div className="page__wrapper--center">
-      <Header
-        fullWidth
-        secondaryText="Log In"/>
-      <form
-        onSubmit = { handleLogin }>
+    <>
+      <Header mainText="Log In"/>
+      <div className="page__wrapper center">
+        <form
+          onSubmit = { handleLogin }>
+          
+          <Input 
+            className = "login-input"
+            placeholder = "Email"
+            type = "email"
+            autoComplete = "email"
+            value = { email }
+            onChange = { handleEmailInput }
+            />
+          
+          <Input 
+            className = "login-input"
+            placeholder = "Password"
+            type = "password"
+            autoComplete = "current-password"
+            value = { password }
+            onChange = { handlePasswordInput }
+            />
+          { attemptedLogin
+            ? <div className="div-login-attemped">{ alertMessage }</div>
+            : <></> }
+          <Button 
+            className = "login__button"
+            text = "Log In"
+            type = "submit"/>
+        </form>
         
-        <Input 
-          className = "login-input"
-          placeholder = "Email"
-          type = "email"
-          autoComplete = "email"
-          value = { email }
-          onChange = { handleEmailInput }
-          />
-        
-        <Input 
-          className = "login-input"
-          placeholder = "Password"
-          type = "password"
-          autoComplete = "current-password"
-          value = { password }
-          onChange = { handlePasswordInput }
-          />
-        { attemptedLogin
-          ? <div className="div-login-attemped">{ alertMessage }</div>
-          : <></> }
-        <Button 
-          className = "login__button"
-          text = "Log In"
-          type = "submit"/>
-      </form>
-      
-      <p>
-        { "Don't have an account? " }
-        <Link to = "/signup">Sign up!</Link>
-      </p>
+        <p>
+          { "Don't have an account? " }
+          <Link to = "/signup">Sign up!</Link>
+        </p>
 
-      <p>
-        { "Forgot your password? " }
-        <Link to = "/new-password">Reset it here!</Link>
-      </p>
+        <p>
+          { "Forgot your password? " }
+          <Link to = "/new-password">Reset it here!</Link>
+        </p>
 
+      </div>
       <Footer />
-    </div>
+    </>
   )
 }
 

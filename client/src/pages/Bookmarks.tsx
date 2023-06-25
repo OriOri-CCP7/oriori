@@ -31,17 +31,19 @@ function Bookmarks() {
   }, []);
 
   return (
-    <div className='page__wrapper'>
-      <Header mainText="Bookmarks" />
-      {
-        products.length > 0
-          ? <ProductGrid productArray={products} />
-          : loadComplete && <h2 className="subtitle">
-              Bookmarked products are displayed here. Tap the book mark ribbon on any product to add it to your bookmarks!
-            </h2>
-      }
+    <>
+      <Header mainText="Bookmarks"/>
+      <div className='page__wrapper'>
+        {
+          products.length > 0
+            ? <ProductGrid productArray={products} />
+            : loadComplete && <h2 className="subtitle">
+                Bookmarked products are displayed here. Tap the book mark ribbon on any product to add it to your bookmarks!
+              </h2>
+        }
+      </div>
       <Navbar/>
-    </div>
+    </>
   );
 };
 

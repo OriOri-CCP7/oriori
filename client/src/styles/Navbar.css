@@ -11,12 +11,13 @@
 }
 
 .nav__button-wrapper {
-  padding: 10px;
-  margin: 0;
   list-style: none;
   display: flex;
-  gap: 2rem;
   width: 100%;
+  max-width: 380pt;
+  gap: 2rem;
+  margin: 0;
+  padding: 8pt 8pt max(8pt, env(safe-area-inset-bottom));
 }
 
 .nav__button {
