@@ -191,6 +191,7 @@ docker compose up
 ```
 
 # How to Use the Project  
+[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 ## For development
 ### Installation
 - To run it locally, in the oriori root folder, you needed to create a virtual environment in python3:  
