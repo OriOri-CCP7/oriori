@@ -36,12 +36,12 @@ Did you ever wondered what different seasonal products are there, when are they 
 ### Challenges faced and how we over come them
 
 ### Future implementation
--[] White Mode / Dark Mode
--[] User choose of Left or Right Hand Sided Products Menus 
--[] Advanced Seach with Filters / Keywords
--[] User Products Submission
--[] Store Locations
--[] Stamp Ralley / Promotional Campaigns
+- [ ] White Mode / Dark Mode
+- [ ] User choose of Left or Right Hand Sided Products Menus 
+- [ ] Advanced Seach with Filters / Keywords
+- [ ] User Products Submission
+- [ ] Store Locations
+- [ ] Stamp Ralley / Promotional Campaigns
 
 ### Contribution (WIP)
 You can contribut by
