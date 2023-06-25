@@ -15,35 +15,48 @@ Deployment: [oriori.fly.dev](https://oriori.fly.dev)
 ## Project's Description ##
 <u>四季折々 'しきおりおり' - (SHIKI)ORIORI</u> 
 
-- What is Oriori?  
+### What is Oriori?  
 Oriori is a tracking tool for seasonal and regional goods in Japan.
 Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
 
-- Why use Oriori?  
+### Why use Oriori?  
 Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
 
-- Tech used and why?  
+### Tech used and why?  
 
 | Tech name | Reasons |  
 | --------- | ------- |  
-| ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  | blar blar blar |  
-| ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  | blar blar blar |  
-| ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  | blar blar blar |
-| ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | blar blar blar |
-| ![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)  | blar blar blar |
-| ![postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)   | blar blar blar |
+| ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  | One of the most used programming language currently |  
+| ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  | The best way to have responsive components with controlable behaviour |  
+| ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  | It provide a better performances |
+| ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | Responsive way to handle DOM Tree likes components or pages |
+| ![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)  | Take advantage of python programming and easy to use |
+| ![postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)   | Small scale and sustainable |
 
-- Challenges faced and how we over come them
+### Challenges faced and how we over come them
 
-- Future implementation
+### Future implementation
 -[] White Mode / Dark Mode
--[] Filter 
+-[] User choose of Left or Right Hand Sided Products Menus 
+-[] Advanced Seach with Filters / Keywords
+-[] User Products Submission
+-[] Store Locations
+-[] Stamp Ralley / Promotional Campaigns
 
-- Contribution (WIP)
+### Contribution (WIP)
+You can contribut by
+1. help us by 
 
 # Index 
 * Go to section  
 0. [ORIORI](#oriori)
+    1. [Project's Desciption](#projects-description)
+    2. [What is oriori?](#what-is-oriori)
+    3. [Why use oriori?](#why-use-oriori)
+    4. [Tech used and why?](#tech-used-and-why) 
+    5. [Challenges face and how we over come them](#challenges-faced-and-how-we-over-come-them)
+    6. [Future implementation](#future-implementation)
+    7. [Contribution (WIP)](#contribution-wip)
 1. [How to Install and Run the Project](#How-to-Install-and-Run-the-Project)  
 2. [.env](#env)  
     1. [.env at folder oriori](#env-at-folder-oriori)  
