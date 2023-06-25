@@ -3,6 +3,7 @@ button {
   background-color:#F5C6AA;
   border-radius: 4pt;
   border: none;
+  color: #000000;
 }
 
 .setting__save-button {
