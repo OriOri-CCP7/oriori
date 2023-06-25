@@ -4,22 +4,6 @@
     --large-icon-width: 30px;
 }
 
-/* @media (max-width: 320px) {
-    .logout__button {
-        border-radius: 2px;
-    }
-}   
-@media (min-width: 321px) and (max-width: 768px) {    
-    .logout__button {
-        border-radius: 10px;
-    }    
-}
-@media (min-width: 769px) {   
-    .logout__button {
-        border-radius: 15px;
-    }
-} */
-
 .circular-icon {
     display: flex;
     align-items: center;
