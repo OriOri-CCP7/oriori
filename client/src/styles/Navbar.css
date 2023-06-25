@@ -18,8 +18,11 @@
   margin: 0;
   list-style: none;
   display: flex;
-  gap: 2rem;
   width: 100%;
+  min-width: 200pt;
+  min-height: 60px;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .nav li {
@@ -29,6 +32,7 @@
   border-radius: 100px;
   display: flex;
   align-items: stretch;
+  max-width: 250px;
 }
 
 .unselected {
