@@ -14,18 +14,3 @@
   fill: #fdf6f0;
   width: 22pt;
 }
-
-.home-header__top-container {
-  display: flex;
-  position: relative;
-}
-
-.home-header__bottom-container {
-  display: flex;
-  flex-direction: column;
-  padding: 2pt;
-}
-
-.home-header__logo {
-  margin: 0 auto;
-}

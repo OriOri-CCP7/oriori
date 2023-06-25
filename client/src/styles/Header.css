@@ -8,7 +8,13 @@
   z-index: 100;
 }
 
+.header__top-container {
+  display: flex;
+  position: relative;
+}
+
 .header__logo {
+  margin: 0 auto;
   min-width: 60pt;
   max-width: 100pt;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
-import HomePageHeader from "../components/HomePageHeader"
+import Header from "../components/Header"
 import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
 import prefs from "../data/prefectures.json";
@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
   <div className='page__wrapper'>
-    <HomePageHeader/>
+    <Header mainText="Home"/>
       {
         products.length > 0
           ? <>
