@@ -1,5 +1,5 @@
 # ORIORI
-![oriori-logo](/client/public/oriori-logo.png)
+![oriori-logo](./client/public/oriori-logo.png)
 
 ![Updated](https://img.shields.io/static/v1?label=updated&message=June%2024th%202023&color=388E3C&style=flat-square)  
 
@@ -46,7 +46,7 @@ Did you ever wondered what different seasonal products are there, when are they 
 
 ### Contribution (WIP)
 You can contribut by
-1. help us by 
+1. help us / provide feedback / suggestion by reading the [CONTRUBUTING.md](CONTRUBUTING.md)
 
 # Index 
 * Go to section  
@@ -307,8 +307,8 @@ WIP
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
 
-| Name | Title / Position | GitHub  |
-| ---- | ---------------- | ------- |
+| Name | Title / Position | GitHub or Social Media  |
+| ---- | ---------------- | ----------------------  |
 | Joseph Van Alstyne | -TechLeader <br> -DevOps/CI <br> -Team Support | https://github.com/kappanjoe |
 | Nicole Boci  | -Product Owner <br> -Fullstack Engineer  <br> -Server  <br> -Data Sourcing | https://github.com/nikobatzi1990 |
 | Ikuno Kanasugi  | -Fullstack Engineer  <br> -Data Sourcing  <br> -Database | https://github.com/ikuno815 |
