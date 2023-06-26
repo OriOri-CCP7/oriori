@@ -1,24 +1,26 @@
-# ORIORI
-![oriori-logo](./oriori-logo.png)
+<div align="center">
+  <img src="./client/public/oriori-logo.svg" width="360pt" alt="Oriori Logo"/>
+  <br/><br/>
 
-![Updated](https://img.shields.io/static/v1?label=updated&message=June%2025th%202023&color=388E3C&style=flat-square)  
+  ![Updated](https://img.shields.io/static/v1?label=updated&message=June%2025th%202023&color=388E3C&style=flat-square)  
 
-![GitHub](https://img.shields.io/github/license/oriori-ccp7/oriori?style=flat-square)
-![GitHub stars](https://img.shields.io/github/stars/oriori-ccp7/oriori?style=flat-square)
-![GitHub issues](https://img.shields.io/github/issues/oriori-ccp7/oriori?style=flat-square)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/oriori-ccp7/oriori?style=flat-square)
-![GitHub forks](https://img.shields.io/github/forks/oriori-ccp7/oriori?style=flat-square)
-![GitHub watchers](https://img.shields.io/github/watchers/oriori-ccp7/oriori?style=flat-square)
+  ![GitHub](https://img.shields.io/github/license/oriori-ccp7/oriori?style=flat-square)
+  ![GitHub stars](https://img.shields.io/github/stars/oriori-ccp7/oriori?style=flat-square)
+  ![GitHub issues](https://img.shields.io/github/issues/oriori-ccp7/oriori?style=flat-square)
+  ![GitHub pull requests](https://img.shields.io/github/issues-pr/oriori-ccp7/oriori?style=flat-square)
+  ![GitHub forks](https://img.shields.io/github/forks/oriori-ccp7/oriori?style=flat-square)
+  ![GitHub watchers](https://img.shields.io/github/watchers/oriori-ccp7/oriori?style=flat-square)
+<hr/>
 
-
-Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
+# Live Deployment: [https://oriori.fly.dev](https://oriori.fly.dev)  
+</div>
+<br/>
 
 # Table of Contents 
 <details>
 <summary>Click here to expand</summary>
 
-1. [ORIORI](#oriori)
-   - [Project's Desciption](#projects-description)
+1. [Project Description](#project-description)
    - [What is oriori?](#what-is-oriori)
    - [Why use oriori?](#why-use-oriori)
    - [Tech used and why?](#tech-used-and-why)
@@ -342,7 +344,7 @@ WIP
 
 | Name | Title / Position | GitHub or Social Media  |
 | ---- | ---------------- | ----------------------  |
-| Joseph Van Alstyne | -TechLeader <br> -DevOps/CI <br> -Team Support | https://github.com/kappanjoe |
+| Joe V. | -TechLeader <br> -DevOps/CI <br> -Team Support | https://github.com/kappanjoe |
 | Nicole Boci  | -Product Owner <br> -Fullstack Engineer  <br> -Server  <br> -Data Sourcing | https://github.com/nikobatzi1990 |
 | Ikuno Kanasugi  | -Fullstack Engineer  <br> -Data Sourcing  <br> -Database | https://github.com/ikuno815 |
 | Chadwick Au | -Fullstack Engineer  <br> -Client Page <br> -UI Components | https://github.com/SirrorsMoore1975 |
