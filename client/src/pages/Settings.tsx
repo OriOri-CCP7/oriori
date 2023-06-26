@@ -68,54 +68,56 @@ function Settings() {
   };
 
   return (
-    <div className="Setting">
+    <div className="setting__wrapper">
       <div className="setting__icon back">
       <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
       </div>
-      <h1>Settings</h1>
-      <form>
-        <label>Username</label>
-        <Input className="usernameInput" placeholder="Username" type="text" value={username} onChange={handleUsernameInput}/>
+      <div className='setting__form'>
+        <h1>Settings</h1>
+        <form>
+          <label>Username</label>
+          <Input className="usernameInput" placeholder="Username" type="text" value={username} onChange={handleUsernameInput}/>
 
-        {/* <br /> */}
-        {/* Email address must update both Firebase and Database
-          <label>
-            Email Address:
-            <Input className="emailInput" placeholder="Email address" type="email" value={email} onChange={handleEmailInput}/>
-          </label>
-          <br /> 
-        */}
-        <label>Select Prefecture</label>
-        <DropdownMenu setPrefecture={setLocation} prefill={location}/>
-        
-        <Button 
-          className="setting__save-button" 
-          type="submit" 
-          text="Save"
-          onClick={ handleSubmit }
-          disabled={ location === "" ? true : false }/>
-        
-        {/* <Button
-          className="logout__button"
-          text="Log Out"
-          type="button"
-          onClick={ handleLogout } /> */}
+          {/* <br /> */}
+          {/* Email address must update both Firebase and Database
+            <label>
+              Email Address:
+              <Input className="emailInput" placeholder="Email address" type="email" value={email} onChange={handleEmailInput}/>
+            </label>
+            <br /> 
+          */}
+          <label>Select Prefecture</label>
+          <DropdownMenu setPrefecture={setLocation} prefill={location}/>
+          
+          <Button 
+            className="setting__save-button" 
+            type="submit" 
+            text="Save"
+            onClick={ handleSubmit }
+            disabled={ location === "" ? true : false }/>
+          
+          {/* <Button
+            className="logout__button"
+            text="Log Out"
+            type="button"
+            onClick={ handleLogout } /> */}
 
-      { auth?.role === ROLES.ADMIN
-        ? <Button
-          className="navButton"
-          type="button"
-          text="Add Products"
-          onClick={ () => navigate("/admin-addProduct")}
-          />
-        : null
-      }
-        <Button
-          className="logout__button"
-          text="Log Out"
-          type="button"
-          onClick={ handleLogout } />
-      </form>
+        { auth?.role === ROLES.ADMIN
+          ? <Button
+            className="navButton"
+            type="button"
+            text="Add Products"
+            onClick={ () => navigate("/admin-addProduct")}
+            />
+          : null
+        }
+          <Button
+            className="logout__button"
+            text="Log Out"
+            type="button"
+            onClick={ handleLogout } />
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,22 @@
+.setting__wrapper {
+    max-width: 500pt;
+    padding-right: auto;
+    padding-left: auto;
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: column;
+    display: flex;
+    height: 100vh;
+}
+
+.setting__form {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.setting__icon.back {
+    width: 40px;
+    margin-top: 20px;
+}

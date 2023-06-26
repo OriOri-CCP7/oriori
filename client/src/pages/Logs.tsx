@@ -31,18 +31,22 @@ function Logs() {
   }, []);
 
   return (
-    <div className='page__wrapper'>
-      <Header
-        mainText="Tried Products"/>
-      {
-        products.length > 0
-          ? <ProductGrid productArray={ products }/>
-          : <>
-              <p>Log products you've tried by tapping the plus icon on any product!</p>
-            </>
-      }
-      <Navbar/>
-    </div>
+    <>
+      <div className='page__wrapper'>
+        <Header
+          mainText="Tried Products"/>
+        {
+          products.length > 0
+            ? <ProductGrid productArray={ products }/>
+            : <>
+                <p>Log products you've tried by tapping the plus icon on any product!</p>
+              </>
+        }
+      </div>
+      <div className='navbar__wrapper'>
+        <Navbar/>
+      </div>
+    </>
   );
 };
 

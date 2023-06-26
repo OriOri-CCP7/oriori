@@ -4,28 +4,12 @@
     --large-icon-width: 30px;
 }
 
-/* @media (max-width: 320px) {
-    .logout__button {
-        border-radius: 2px;
-    }
-}   
-@media (min-width: 321px) and (max-width: 768px) {    
-    .logout__button {
-        border-radius: 10px;
-    }    
-}
-@media (min-width: 769px) {   
-    .logout__button {
-        border-radius: 15px;
-    }
-} */
-
 .circular-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px; /* adjust as needed */
-    height: 50px; /* adjust as needed */
+    width: 30pt; /* adjust as needed */
+    height: 30pt; /* adjust as needed */
     border-radius: 50%;
     position: absolute;
     right: 0; /* right-aligned with position: absolute */
@@ -34,22 +18,7 @@
 
 .settings-icon {
     fill: darkgrey;
-}
-
-@media (max-width: 320px) {
-    .settings-icon {
-        width: var(--small-icon-width);
-    }
-} 
-@media (min-width: 321px) and (max-width: 768px) {  
-    .settings-icon {
-        width: var(--medium-icon-width);
-    }
-}
-@media (min-width: 769px) {    
-    .settings-icon {
-        width: var(--large-icon-width);
-    }
+    width: 26pt;
 }
 
 .home-header__top-container {

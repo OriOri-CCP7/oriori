@@ -3,17 +3,18 @@ button {
   background-color:#F5C6AA;
   border-radius: 4pt;
   border: none;
+  color: #000000;
 }
 
 .setting__save-button {
-  width: 70%;
+  width: 250px;
   height: 40px;
   font-size: medium;
   margin-top: 10px;
 }
 
 .logout__button {
-  width: 70%;
+  width: 250px;
   height: 40px;
   font-size: medium;
   margin-top: 50px;
@@ -26,7 +27,18 @@ button {
 }
 
 .navButton {
-  width: 70%;
+  width: 250px;
+  height: 40px;
+  font-size: medium;
+  margin-top: 20px;
+}
+
+.admin__location-options-button {
+  width: 200px;
+}
+
+.admin__button {
+  width: 250px;
   height: 40px;
   font-size: medium;
   margin-top: 20px;

@@ -32,17 +32,21 @@ export default function Home() {
   }, []);
 
   return (
-  <div className='page__wrapper'>
-    <HomePageHeader />
-      {
-        products.length > 0
-        ? <ProductGrid productArray={ products }/>
-        : <>
-            <p>
-              These are the products currently available in your selected location!
-            </p>
-          </>
-      }
+  <>
+    <div className='page__wrapper'>
+      <HomePageHeader />
+        {
+          products.length > 0
+          ? <ProductGrid productArray={ products }/>
+          : <>
+              <p>
+                These are the products currently available in your selected location!
+              </p>
+            </>
+        }
+    </div>
+    <div className='navbar__wrapper'>
       <Navbar/>
-  </div>
+    </div>
+  </>
 )}

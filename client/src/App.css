@@ -1,6 +1,8 @@
 .App {
   height: 100vh;
   text-align: center;
+  padding-right: auto;
+  padding-left: auto;
 }
 
 form {
@@ -14,4 +16,11 @@ form {
 
 .page__wrapper {
   padding-bottom: 120px;
+  max-width: 1200px;
+  padding-right: auto;
+  padding-left: auto;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
 }
