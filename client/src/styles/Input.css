@@ -22,10 +22,9 @@ label {
 
 .admin__input {
     width: 300px;
-    max-width: 350px;
     height: 50px;
     box-sizing: border-box;
-    font-size: large;
+    font-size: medium;
     text-align: left;
 }
 
