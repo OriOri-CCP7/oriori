@@ -13,26 +13,61 @@
 
 Deployment: [oriori.fly.dev](https://oriori.fly.dev)  
 
-# Project's Description ##
+# Table of Contents 
+<details>
+<summary>Click here to expand</summary>
+
+1. [ORIORI](#oriori)
+   - [Project's Desciption](#projects-description)
+   - [What is oriori?](#what-is-oriori)
+   - [Why use oriori?](#why-use-oriori)
+   - [Tech used and why?](#tech-used-and-why)
+   - [Challenges face and how we over come them](#challenges-faced-and-how-we-over-come-them)
+   - [Future implementation](#future-implementation)
+   - [Contribution (WIP)](#contribution-wip)
+2. [How to Install and Run the Project](#How-to-Install-and-Run-the-Project)
+3. [.env](#env)
+   - [.env at folder oriori](#env-at-folder-oriori)
+     - [SECRET_KEY](#secret_key)
+     - [DEBUG](#debug)
+     - [DATABASE_URL](#database_url)
+   - [.env at folder oriori/client](#env-at-folder-orioriclient)
+   - [Docker](#for-docker)
+4. [How to Use the Project](#how-to-use-the-project)
+   - [Development](#development)
+     - [Installation](#installation)
+     - [Running the App](#running-the-app)
+       - [Normal User](#normal-user)
+       - [Admin User](#admin-user)
+   - [App](#app) (WIP -someone please take over)
+     - [Server](#server)
+     - [Client](#client)
+5. [Credits](#credits)
+6. [License](#license)
+
+</details>
+<br/>
+
+# Project Description
 <u>四季折々 'しきおりおり' - (SHIKI)ORIORI</u> 
 
 ## What is Oriori?  
 Oriori is a tracking tool for seasonal and regional goods in Japan.
-Japanese phrase <i>shikioriori</i>, meaning <i>‘from season to season’</i>
+The name comes from the Japanese phrase <i>shikioriori</i>, which means ‘<i>from season to season</i>.’
 
 ## Why use Oriori?  
-Did you ever wondered what different seasonal products are there, when are they available, are they available on your near-by neightbourhood area? Did you ever have some seasonal products that you wanted to share with your friends? Have you planed on going further away from your home town and look for some seasonal products that is only available on a particular area? Look no further, we got you covered!
+Have you ever wondered what different seasonal products there are, when are they available, and if they are available in your neighbourhood? Did you ever have some seasonal products that you wanted to share with your friends? Have you planned on going further away from your home town to look for some seasonal products only available in a particular area? Look no further, we got you covered!
 
 ## Tech used and why?  
 
 | Tech name | Reasons |  
 | --------- | ------- |  
-| ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  | One of the most used programming language currently |  
-| ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  | The best way to have responsive components with controlable behaviour |  
-| ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  | It provide a better performances |
-| ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | Responsive way to handle DOM Tree likes components or pages |
-| ![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)  | Take advantage of python programming and easy to use |
-| ![postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)   | Small scale and sustainable |
+| ![postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)   | Provides a secure, scalable database  |
+| ![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)  | Allows managing the PostgreSQL database with ease and precision  |
+| ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  | To be able to use Django :) |  
+| ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | Responsive framework to manage the DOM using components and pages |
+| ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  | Allows type-safe coding with the familiarity of JavaScript |
+| ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  | Allows responsive styling with controllable behaviour |  
 
 ## Challenges faced and how we over come them
 - RSS data scraping 
@@ -58,35 +93,6 @@ You can contribute by:-
 - become a contributor, etc  
 Be sure to read the [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-# Index 
-* Go to section  
-0. [ORIORI](#oriori)
-    1. [Project's Desciption](#projects-description)
-    2. [What is oriori?](#what-is-oriori)
-    3. [Why use oriori?](#why-use-oriori)
-    4. [Tech used and why?](#tech-used-and-why) 
-    5. [Challenges face and how we over come them](#challenges-faced-and-how-we-over-come-them)
-    6. [Future implementation](#future-implementation)
-    7. [Contribution (WIP)](#contribution-wip)
-1. [How to Install and Run the Project](#How-to-Install-and-Run-the-Project)  
-2. [.env](#env)  
-    1. [.env at folder oriori](#env-at-folder-oriori)  
-        1. [SECRET_KEY](#secret_key)  
-        2. [DEBUG](#debug)  
-        3. [DATABASE_URL](#database_url)  
-    2. [.env at folder oriori/client](#env-at-folder-orioriclient)  
-    3. [Docker](#for-docker)  
-3. [How to Use the Project](#how-to-use-the-project)
-    1. [Development](#development)
-        1. [Installation](#installation)  
-        2. [Running the App](#running-the-app)
-            1. [Normal User](#normal-user)
-            2. [Admin User](#admin-user)
-    2. [App](#app) (WIP -someone please take over)
-        1. [Server](#server)
-        2. [Client](#client)   
-4. [Credits](#credits)     
-5. [License](#license)    
 
 # How to Install and Run the Project 
 
