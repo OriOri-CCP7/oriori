@@ -1,27 +1,27 @@
+.admin__back-button {
+  width: 30pt;
+  margin-top: 16pt;
+  margin-left: 8pt;
+}
+
+.admin__label {
+  width: 300px;
+}
+
+.admin__input {
+  width: 300px;
+  height: 50px;
+  font-size: medium;
+}
+
+.admin__location-options-button {
+  width: 200px;
+}
+
+.admin__button {
+  margin-top: 20px;
+}
+
 .admin__sending-msg {
   color: grey;
-}
-
-.admin__wrapper {
-  max-width: 500pt;
-  padding-right: auto;
-  padding-left: auto;
-  margin-right: auto;
-  margin-left: auto;
-  flex-direction: column;
-  display: flex;
-  height: 100vh;
-}
-
-.admin__form {
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  display: flex;
-}
-
-.admin__icon.back {
-  margin-left: 10px;
-  width: 40px;
-  margin-top: 20px;
 }

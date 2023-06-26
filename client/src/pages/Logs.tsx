@@ -11,6 +11,7 @@ import '../styles/Logs.css';
 function Logs() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
+  const [loadComplete, setLoadComplete] = useState(false);
 
   useEffect(() => {
     const headers = {
@@ -27,25 +28,23 @@ function Logs() {
       setProducts(response.data);
     })
     .catch((err) => console.log(err))
+    .finally(() => setLoadComplete(true));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
+      <Header mainText="Tried Products"/>
       <div className='page__wrapper'>
-        <Header
-          mainText="Tried Products"/>
         {
           products.length > 0
             ? <ProductGrid productArray={ products }/>
-            : <>
-                <p>Log products you've tried by tapping the plus icon on any product!</p>
-              </>
+            : loadComplete && <h2 className='subtitle'>
+                Products you've tried are displayed here. Tap the checkmark on any product to add it to this list!
+              </h2>
         }
       </div>
-      <div className='navbar__wrapper'>
-        <Navbar/>
-      </div>
+      <Navbar/>
     </>
   );
 };

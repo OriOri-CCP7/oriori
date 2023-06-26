@@ -1,31 +1,26 @@
-:root{
-  --small-width:30px;
-  --medium-width:25px;
-  --large-width:20px;
-}
-.nav {
+.nav__container {
   position: fixed;
   width: 100%;
-  bottom: 0px;
+  bottom: 0;
   font-size: 0;
-  background-color: #F5C6AA;
+  background-color: #F5C6AAEB;
+  backdrop-filter: blur(8pt);
+  box-shadow: #00000024 0 2pt 6pt;
   display: flex;
   justify-content: space-around;
 }
 
-.nav ul {
-  padding: 10px;
-  margin: 0;
+.nav__button-wrapper {
   list-style: none;
   display: flex;
-  width: 100%;
-  min-width: 200pt;
-  min-height: 60px;
-  justify-content: center;
   gap: 2rem;
+  width: 100%;
+  max-width: 380pt;
+  margin: 0;
+  padding: 8pt 8pt max(8pt, env(safe-area-inset-bottom));
 }
 
-.nav li {
+.nav__button {
   padding: 5px;
   justify-content: center;
   width: 25%;
@@ -35,14 +30,13 @@
   max-width: 200px;
 }
 
-.unselected {
-  fill: antiquewhite;
-  min-width: 18pt;
-  max-width: 30pt;
-}
 .nav__icon {
   min-width: 18pt;
-  max-width: 30pt;
+  max-width: 26pt;
+}
+
+.unselected {
+  fill: #fdf6f0;
 }
 
 .nav__icon.home {

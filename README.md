@@ -1,5 +1,5 @@
 # ORIORI
-![oriori-logo](./client/public/oriori-logo.png)
+![oriori-logo](./oriori-logo.png)
 
 ![Updated](https://img.shields.io/static/v1?label=updated&message=June%2025th%202023&color=388E3C&style=flat-square)  
 

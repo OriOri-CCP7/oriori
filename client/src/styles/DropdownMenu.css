@@ -1,13 +1,16 @@
-select {
+.dropdown__container {
+  width: max-content;
+}
+
+.dropdown__select {
+  width: 180pt;
+  height: 30pt;
+  color: #000;
   background-color: #FCD8D4;
   border-radius: 4pt;
   border: none;
   font-size: large;
-  padding-left: 5px;
-  width: 250px;
-  height: 40px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
   text-align: left;
-  color:#000000;
+  padding: 6pt 10pt;
+  margin-bottom: 14pt;
 }

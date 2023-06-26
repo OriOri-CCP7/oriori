@@ -8,8 +8,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 
-import '../styles/AdminAddProduct.css';
-
 function not(a: readonly Prefecture[], b: readonly Prefecture[]) {
   return a.filter((value) => b.indexOf(value) === -1);
 }

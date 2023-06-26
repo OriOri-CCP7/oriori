@@ -33,22 +33,15 @@ export default function Search() {
 
   return (
     <>
+      <Header mainText="Search" secondaryText='Find Products in Other Prefectures'/>
       <div className='page__wrapper'>
-        <Header mainText="Search"/>
         <DropdownMenu 
-          labelName='Select a prefecture: '
+          className='search__dropdown'
+          labelName='Select a prefecture:'
           setPrefecture={ getProducts }/>
-        {
-          products.length > 0
-          ? <ProductGrid productArray={ products }/>
-          : <>
-              <p>Search for products in any prefecture!</p>
-            </>
-        }
+        <ProductGrid productArray={ products }/>
       </div>
-      <div className='navbar__wrapper'>
-        <Navbar/>
-      </div>
+      <Navbar/>
     </>
   );
 };

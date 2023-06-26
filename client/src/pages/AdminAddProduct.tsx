@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 import { UserAuth } from '../context/AuthContext';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
@@ -8,8 +9,6 @@ import Header from '../components/Header';
 import Input from '../components/Input';
 import MUITransferList from '../components/MUITransferList';
 import prefectureList from '../data/prefectures.json';
-
-import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 import '../styles/AdminAddProduct.css';
 
 function AdminAddProduct() {
@@ -155,86 +154,91 @@ function AdminAddProduct() {
   }, [imageUrl]);
 
   return (
-    <div className='admin__wrapper'>
-      <div className='admin__icon back'>
-        <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
-      </div>
+    <>
       <Header
         mainText='OriOri Admin'
         secondaryText='Submit New Product'/>
-      {/* <Button className="backButton" type="button" onClick={ () => navigate('/home') } text="Back"/> */}
-      
-      
-      <div className='admin__form'>
-      <form
-        onSubmit = { handleSubmit }>
-        
-        <label>Product Name:</label>
-          <Input 
-            className = 'admin__input'
-            placeholder = 'Product Name'
-            type = 'text'
-            value = { productName }
-            onChange = { (e) => setProductName(e.target.value) }
-            required
-            />
-
-        <label>Link URL:</label>
-          <Input 
-            className = 'admin__input'
-            placeholder = 'Link URL'
-            type = 'url'
-            value = { productUrl }
-            onChange = { (e) => setProductUrl(e.target.value) }
-            required
-            />
-
-        <label> Image:</label>
-          <Input 
-            className = 'admin__input'
-            placeholder = ''
-            type = 'file'
-            value = { image }
-            onChange = { (e) => {
-              setImage(e.target.value);
-              setImageFL(e.target.files);
-            }}
-            required
-            />
-        
-        <label>Start Date:</label>
-          <Input 
-            className = 'admin__input'
-            placeholder = ''
-            type = 'date'
-            value = { startDate }
-            onChange = { (e) => setStartDate(e.target.value) }
-            />
-
-        <label>End Date:</label>
-          <Input 
-            className = 'admin__input'
-            placeholder = ''
-            type = 'date'
-            value = { endDate }
-            onChange = { (e) => setEndDate(e.target.value) }
-            />
-
-        <MUITransferList options={ prefectureList } setSelected={ setSelectedPrefs }/>
-        
-        { isSending
-          ? <div className='admin__sending-msg'>{ alertMessage }</div>
-          : <></> }
-        
-        <Button 
-          className = 'admin__button'
-          text = 'Submit'
-          type = 'submit'/>
-      </form>
-
-      <Footer/>
+      <div className='admin__back-button'>
+        <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
       </div>
-    </div>
+      <div className='page__wrapper center'>
+        <form
+          onSubmit = { handleSubmit }>
+          
+          <label className='admin__label'>
+            { 'Product Name: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = 'Product Name'
+              type = 'text'
+              value = { productName }
+              onChange = { (e) => setProductName(e.target.value) }
+              required
+              />
+          </label>
+
+          <label className='admin__label'>
+            { 'Link URL: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = 'Link URL'
+              type = 'url'
+              value = { productUrl }
+              onChange = { (e) => setProductUrl(e.target.value) }
+              required
+              />
+          </label>
+
+          <label className='admin__label'>
+            { 'Image: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = ''
+              type = 'file'
+              value = { image }
+              onChange = { (e) => {
+                setImage(e.target.value);
+                setImageFL(e.target.files);
+              }}
+              required
+              />
+          </label>
+          
+          <label className='admin__label'>
+            { 'Start Date: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = ''
+              type = 'date'
+              value = { startDate }
+              onChange = { (e) => setStartDate(e.target.value) }
+              />
+          </label>
+
+          <label className='admin__label'>
+            { 'End Date: ' }
+            <Input 
+              className = 'admin__input'
+              placeholder = ''
+              type = 'date'
+              value = { endDate }
+              onChange = { (e) => setEndDate(e.target.value) }
+              />
+          </label>
+
+          <MUITransferList options={ prefectureList } setSelected={ setSelectedPrefs }/>
+          
+          <div className='admin__sending-msg'>{ isSending && alertMessage }</div>
+
+          
+          <Button 
+            className = 'admin__button'
+            text = 'Submit'
+            type = 'submit'/>
+        </form>
+      </div>
+      <Footer/>
+    </>
   );
 };
 

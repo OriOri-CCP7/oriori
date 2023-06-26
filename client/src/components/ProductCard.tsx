@@ -49,13 +49,13 @@ function ProductCard ({ product, bookmark, log }: Props) {
       if (!product.end_date && daysSinceStart > 4) {
         availModifier += ' while-supplies';
         availabilityMsg = "Available while supplies last!";
-        
-        if (daysSinceStart > 7) {
-          availabilityMsg = `While supplies last (started last week)!`;
-        }
-
-        if (daysSinceStart > 14) {
-          availabilityMsg = `While supplies last (started 2 weeks ago)!`;
+        const weeks = Math.floor(daysSinceStart / 7);
+        if (weeks < 1) {
+          availabilityMsg = `While supplies last!\n(released this week)`;
+        } else if (weeks === 1) {
+          availabilityMsg = `While supplies last!\n(released last week)`;
+        } else {
+          availabilityMsg = `While supplies last!\n(released ${weeks} weeks ago)`;
         }
       }
     }

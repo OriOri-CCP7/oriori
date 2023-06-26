@@ -1,0 +1,16 @@
+.circular-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26pt;
+  height: 26pt; /* adjust as needed */
+  border-radius: 50%;
+  border: 2pt solid #fdf6f0;
+  position: absolute;
+  right: 0; /* right-aligned with position: absolute */
+}
+
+.settings-icon {
+  fill: #fdf6f0;
+  width: 22pt;
+}

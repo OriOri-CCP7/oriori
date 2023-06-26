@@ -19,23 +19,21 @@ function DropdownMenu({ className, labelName, setPrefecture, prefill }: Props) {
   };
 
   return (
-    <>
-      <div className={ "dropdownMenu " + className }>
-        <label>
-          { labelName ?? "" }
-          <select className="selectName" onChange={ handleChange } value={ selected }>
-            <option key={ -1 } value="" className="prefectureOption"></option>
-            {
-              prefs.map((pref, index) => (
-                <option key={ index } value={ pref.pk } className="prefectureOption">
-                  { pref.name }
-                </option> 
-              ))
-            }
-          </select>
-        </label>
-      </div>
-    </>
+    <div className={ "dropdown__container " + (className ?? "") }>
+      <label className="dropdown__label">
+        { labelName ?? "" }
+        <select className="dropdown__select" onChange={ handleChange } value={ selected }>
+          <option key={ -1 } value="" className="prefectureOption"></option>
+          {
+            prefs.map((pref, index) => (
+              <option key={ index } value={ pref.pk } className="prefectureOption">
+                { pref.name }
+              </option> 
+            ))
+          }
+        </select>
+      </label>
+    </div>
   );
 };
 

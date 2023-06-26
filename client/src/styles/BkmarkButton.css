@@ -1,9 +1,10 @@
 .bookmark__button {
-    margin: -18pt auto 0;
-    width: 36pt;
-    cursor: pointer;
+  margin: -18pt auto 0;
+  width: 36pt;
+  cursor: pointer;
 }
+
 .bookmark__icon.solid {
-    position: relative;
-    fill: royalblue;
+  position: relative;
+  fill: royalblue;
 }

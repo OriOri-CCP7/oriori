@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
-import HomePageHeader from "../components/HomePageHeader"
+import Header from "../components/Header"
 import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
+import prefs from "../data/prefectures.json";
 
 import axios from "axios";
 
@@ -12,6 +13,9 @@ export default function Home() {
   
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
+  const [loadComplete, setLoadComplete] = useState(false);
+  const location: number = Number(auth?.user.location);
+  const prefectureName: string = prefs[location - 1].name;
   
   useEffect(() => {
     let headers = {
@@ -27,26 +31,28 @@ export default function Home() {
       console.log('🏠 HOME: ', response);
       setProducts(response.data);
     })
-    .catch((err) => console.log('😈', err));
+    .catch((err) => console.log('😈', err))
+    .finally(() => setLoadComplete(true));;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-  <>
-    <div className='page__wrapper'>
-      <HomePageHeader />
+    <>
+      <Header mainText="Home"/>
+      <div className='page__wrapper'>
         {
           products.length > 0
-          ? <ProductGrid productArray={ products }/>
-          : <>
-              <p>
-                These are the products currently available in your selected location!
-              </p>
-            </>
+          ? <>
+                <h2 className="subtitle underlined">
+                  { `Products Available in ${ prefectureName }` }
+                </h2>
+                <ProductGrid productArray={ products }/>
+              </>
+            : loadComplete && <h2 className="subtitle">
+                No products could be found in your Home Prefecture.
+              </h2>
         }
-    </div>
-    <div className='navbar__wrapper'>
+      </div>
       <Navbar/>
-    </div>
-  </>
+    </>
 )}

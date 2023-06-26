@@ -1,45 +1,10 @@
 button {
-  padding: 6pt 10pt;
+  width: 180pt;
+  height: 30pt;
+  font-size: medium;
+  color: #000;
   background-color:#F5C6AA;
   border-radius: 4pt;
   border: none;
-  color: #000000;
-}
-
-.setting__save-button {
-  width: 250px;
-  height: 40px;
-  font-size: medium;
-  margin-top: 10px;
-}
-
-.logout__button {
-  width: 250px;
-  height: 40px;
-  font-size: medium;
-  margin-top: 50px;
-}
-
-.setting__icon.back {
-  width: 10%;
-  margin-left: 10pt;
-  margin-top: 10pt;
-}
-
-.navButton {
-  width: 250px;
-  height: 40px;
-  font-size: medium;
-  margin-top: 20px;
-}
-
-.admin__location-options-button {
-  width: 200px;
-}
-
-.admin__button {
-  width: 250px;
-  height: 40px;
-  font-size: medium;
-  margin-top: 20px;
+  padding: 6pt 10pt;
 }
