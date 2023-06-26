@@ -1,15 +1,14 @@
 import React, { useState, ChangeEvent } from 'react';
-import DropdownMenu from "../components/DropdownMenu";
-import { UserAuth } from "../context/AuthContext";
-import * as ROLES from "../constants/roles";
-import Input from "../components/Input";
-import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-
 import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
-import '../styles/Settings.css';
+import * as ROLES from "../constants/roles";
+import { UserAuth } from "../context/AuthContext";
+import Button from "../components/Button";
+import DropdownMenu from "../components/DropdownMenu";
 import Header from '../components/Header';
+import Input from "../components/Input";
+import '../styles/Settings.css';
 
 function Settings() {
   const auth  = UserAuth();
@@ -71,14 +70,14 @@ function Settings() {
   return (
     <>
       <Header mainText='Settings'/>
+      <div className="settings__back-button">
+        <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
+      </div>
       <div className="page__wrapper center">
-        <div className="setting__button back">
-          <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
-        </div>
         <form>
           <label>
             Username:
-            <Input className="setting__input" placeholder="username" type="text" value={username} onChange={handleUsernameInput}/>
+            <Input className="settings__input" placeholder="username" type="text" value={username} onChange={handleUsernameInput}/>
           </label>
 
           {/* <br /> */}
@@ -93,29 +92,23 @@ function Settings() {
           <DropdownMenu labelName={ 'Home Prefecture:' } setPrefecture={ setLocation } prefill={ location }/>
           
           <Button 
-            className="setting__button" 
+            className="settings__save-button" 
             type="submit" 
             text="Save"
             onClick={ handleSubmit }
             disabled={ location === "" ? true : false }/>
-          
-          {/* <Button
-            className="logout__button"
-            text="Log Out"
-            type="button"
-          onClick={ handleLogout } /> */}
 
         { auth?.role === ROLES.ADMIN
           ? <Button
-          className="setting__button"
-          type="button"
-          text="Add Products"
-          onClick={ () => navigate("/admin-addProduct")}
-          />
+              className="settings__button"
+              type="button"
+              text="Add Products"
+              onClick={ () => navigate("/admin-addProduct")}
+              />
           : null
         }
           <Button
-            className="setting__button logout__button"
+            className="settings__logout-button"
             text="Log Out"
             type="button"
             onClick={ handleLogout } />

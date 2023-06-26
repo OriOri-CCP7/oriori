@@ -112,6 +112,7 @@ export default function MUITransferList({ options, setSelected }: Props) {
       <Grid item xs={12}>
         <Grid container direction="column" alignItems="center">
           <Button
+            className='admin__location-options-button'
             sx={{ my: 0.5 }}
             variant="outlined"
             size="small"
@@ -122,6 +123,7 @@ export default function MUITransferList({ options, setSelected }: Props) {
             Add All
           </Button>
           <Button
+            className='admin__location-options-button'
             sx={{ my: 0.5 }}
             variant="outlined"
             size="small"
@@ -132,6 +134,7 @@ export default function MUITransferList({ options, setSelected }: Props) {
             Add Checked
           </Button>
           <Button
+            className='admin__location-options-button'
             sx={{ my: 0.5 }}
             variant="outlined"
             size="small"
@@ -142,6 +145,7 @@ export default function MUITransferList({ options, setSelected }: Props) {
             Remove Checked
           </Button>
           <Button
+            className='admin__location-options-button'
             sx={{ my: 0.5 }}
             variant="outlined"
             size="small"

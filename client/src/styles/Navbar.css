@@ -13,9 +13,9 @@
 .nav__button-wrapper {
   list-style: none;
   display: flex;
+  gap: 2rem;
   width: 100%;
   max-width: 380pt;
-  gap: 2rem;
   margin: 0;
   padding: 8pt 8pt max(8pt, env(safe-area-inset-bottom));
 }
@@ -27,14 +27,16 @@
   border-radius: 100px;
   display: flex;
   align-items: stretch;
+  max-width: 200px;
+}
+
+.nav__icon {
+  min-width: 18pt;
+  max-width: 26pt;
 }
 
 .unselected {
   fill: #fdf6f0;
-}
-
-.nav__icon {
-  height: 18pt;
 }
 
 .nav__icon.home {

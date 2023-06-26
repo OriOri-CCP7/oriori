@@ -50,7 +50,7 @@
 .onboarding__submit-button {
   opacity: 0;
   animation: 2s ease-in 4s fade-in forwards;
-  margin-bottom: 30pt;
+  margin: 16pt auto;
 }
 
 @keyframes fade-in {

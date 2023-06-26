@@ -1,5 +1,6 @@
 .product__card {
 	max-width: 360pt;
+	min-width: 300px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;

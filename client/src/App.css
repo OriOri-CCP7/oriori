@@ -10,6 +10,7 @@
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   max-width: 75%;
   margin: 4pt auto;
@@ -31,13 +32,16 @@ a:visited {
 .page__wrapper {
   padding-bottom: 120px;
   margin-bottom: auto;
+  max-width: 800pt;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .page__wrapper.center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto 0;
+  margin: auto;
   padding: 0;
 }
 
@@ -52,4 +56,9 @@ a:visited {
 
 .subtitle.underlined {
   border-bottom: 1pt solid black;
+  max-width: 800pt;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,4 +1,6 @@
 button {
+  width: 180pt;
+  height: 30pt;
   font-size: medium;
   color: #000;
   background-color:#F5C6AA;

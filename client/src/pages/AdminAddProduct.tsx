@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 import { UserAuth } from '../context/AuthContext';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
@@ -157,12 +158,14 @@ function AdminAddProduct() {
       <Header
         mainText='OriOri Admin'
         secondaryText='Submit New Product'/>
+      <div className='admin__back-button'>
+        <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
+      </div>
       <div className='page__wrapper center'>
-        <Button className="admin__button" type="button" onClick={ () => navigate('/home') } text="Back"/>
         <form
           onSubmit = { handleSubmit }>
           
-          <label>
+          <label className='admin__label'>
             { 'Product Name: ' }
             <Input 
               className = 'admin__input'
@@ -174,7 +177,7 @@ function AdminAddProduct() {
               />
           </label>
 
-          <label>
+          <label className='admin__label'>
             { 'Link URL: ' }
             <Input 
               className = 'admin__input'
@@ -186,7 +189,7 @@ function AdminAddProduct() {
               />
           </label>
 
-          <label>
+          <label className='admin__label'>
             { 'Image: ' }
             <Input 
               className = 'admin__input'
@@ -201,7 +204,7 @@ function AdminAddProduct() {
               />
           </label>
           
-          <label>
+          <label className='admin__label'>
             { 'Start Date: ' }
             <Input 
               className = 'admin__input'
@@ -212,7 +215,7 @@ function AdminAddProduct() {
               />
           </label>
 
-          <label>
+          <label className='admin__label'>
             { 'End Date: ' }
             <Input 
               className = 'admin__input'

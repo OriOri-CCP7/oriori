@@ -1,14 +1,16 @@
 .dropdown__container {
-  width: 100%;
+  width: max-content;
 }
 
 .dropdown__select {
-  height: 42px;
+  width: 180pt;
+  height: 30pt;
   color: #000;
   background-color: #FCD8D4;
   border-radius: 4pt;
   border: none;
   font-size: large;
+  text-align: left;
   padding: 6pt 10pt;
   margin-bottom: 14pt;
 }

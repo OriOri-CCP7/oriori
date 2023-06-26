@@ -18,22 +18,22 @@ function ProductGrid({ productArray }: Props) {
 
   return (
     <>
-    <div className="Grid">
-      <Grid container style={{ margin: '-1px' }} spacing={0} columnGap={0}>
-        {(!isLoadingBkmarks && !isLoadingLogs)
-          ? productArray.map((product) => (
-              <Grid xs={12} style={{ padding: '1px',  marginBottom: 'auto' }} key={product.product_name}>
-                <ProductCard 
-                  product={product}
-                  bookmark={bookmarks[product.id!.toString()]}
-                  log={logs[product.id!.toString()]}
-                  />
-              </Grid>
-            ))
-          : 'Loading...'
-        }
-      </Grid>
-    </div>
+      <div className="Grid">
+        <Grid container spacing={0} columnGap={0}>
+          {(!isLoadingBkmarks && !isLoadingLogs)
+            ? productArray.map((product) => (
+                <Grid xs={12} md={6} key={product.product_name}>
+                  <ProductCard 
+                    product={product}
+                    bookmark={bookmarks[product.id!.toString()]}
+                    log={logs[product.id!.toString()]}
+                    />
+                </Grid>
+              ))
+            : 'Loading...'
+          }
+        </Grid>
+      </div>
     </>
   );
 }

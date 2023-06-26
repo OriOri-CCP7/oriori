@@ -1,14 +1,17 @@
-.setting__button {
-  height: 40px;
+.settings__back-button {
+  width: 30pt;
+  margin-top: 16pt;
+  margin-left: 8pt;
+}
+
+.settings__button {
   margin-top: 20px;
 }
 
-.setting__button.back {
-  width: 10%;
-  margin-left: 10pt;
-  margin-top: 10pt;
+.settings__save-button {
+  margin-top: 10px;
 }
 
-.logout__button {
+.settings__logout-button {
   margin-top: 50px;
 }
