@@ -8,7 +8,9 @@ import Header from '../components/Header';
 import Input from '../components/Input';
 import MUITransferList from '../components/MUITransferList';
 import prefectureList from '../data/prefectures.json';
-import '../styles/Login.css';
+
+import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
+import '../styles/AdminAddProduct.css';
 
 function AdminAddProduct() {
   const navigate = useNavigate();
@@ -153,16 +155,21 @@ function AdminAddProduct() {
   }, [imageUrl]);
 
   return (
-    <>
+    <div className='admin__wrapper'>
+      <div className='admin__icon back'>
+        <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
+      </div>
       <Header
         mainText='OriOri Admin'
         secondaryText='Submit New Product'/>
-      <Button className="backButton" type="button" onClick={ () => navigate('/home') } text="Back"/>
+      {/* <Button className="backButton" type="button" onClick={ () => navigate('/home') } text="Back"/> */}
+      
+      
+      <div className='admin__form'>
       <form
         onSubmit = { handleSubmit }>
         
-        <label>
-          { 'Product Name: ' }
+        <label>Product Name:</label>
           <Input 
             className = 'admin__input'
             placeholder = 'Product Name'
@@ -171,10 +178,8 @@ function AdminAddProduct() {
             onChange = { (e) => setProductName(e.target.value) }
             required
             />
-        </label>
 
-        <label>
-          { 'Link URL: ' }
+        <label>Link URL:</label>
           <Input 
             className = 'admin__input'
             placeholder = 'Link URL'
@@ -183,10 +188,8 @@ function AdminAddProduct() {
             onChange = { (e) => setProductUrl(e.target.value) }
             required
             />
-        </label>
 
-        <label>
-          { 'Image: ' }
+        <label> Image:</label>
           <Input 
             className = 'admin__input'
             placeholder = ''
@@ -198,10 +201,8 @@ function AdminAddProduct() {
             }}
             required
             />
-        </label>
         
-        <label>
-          { 'Start Date: ' }
+        <label>Start Date:</label>
           <Input 
             className = 'admin__input'
             placeholder = ''
@@ -209,10 +210,8 @@ function AdminAddProduct() {
             value = { startDate }
             onChange = { (e) => setStartDate(e.target.value) }
             />
-        </label>
 
-        <label>
-          { 'End Date: ' }
+        <label>End Date:</label>
           <Input 
             className = 'admin__input'
             placeholder = ''
@@ -220,7 +219,6 @@ function AdminAddProduct() {
             value = { endDate }
             onChange = { (e) => setEndDate(e.target.value) }
             />
-        </label>
 
         <MUITransferList options={ prefectureList } setSelected={ setSelectedPrefs }/>
         
@@ -235,7 +233,8 @@ function AdminAddProduct() {
       </form>
 
       <Footer/>
-    </>
+      </div>
+    </div>
   );
 };
 
