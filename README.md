@@ -36,24 +36,19 @@
       - [5. Initialize a Development Database](#5-initialize-a-development-database)
       - [6. Create your `.env` Files](#6-create-your-env-files)
       - [7. Local PostgreSQL Only Run Migrations Seed Data](#7-local-postgresql-only-run-migrationsseed-data)
-3. [.env](#env)
-   - [.env at folder oriori](#env-at-folder-oriori)
-     - [SECRET_KEY](#secret_key)
-     - [DEBUG](#debug)
-     - [DATABASE_URL](#database_url)
-   - [.env at folder oriori/client](#env-at-folder-orioriclient)
-   - [Docker](#for-docker)
-4. [How to Use the Project](#how-to-use-the-project)
-   - [Development](#development)
-     - [Installation](#installation)
-     - [Running the App](#running-the-app)
-       - [Normal User](#normal-user)
-       - [Admin User](#admin-user)
-   - [App](#app) (WIP -someone please take over)
-     - [Server](#server)
-     - [Client](#client)
-5. [Credits](#credits)
-6. [License](#license)
+    - [Running the Server](#running-the-server)
+      - [Using Docker](#using-docker)
+      - [Using Local PostgreSQL](#using-local-postgresql)
+    - [Using the App](#using-the-app)
+      - [Sign Up](#sign-up)
+      - [Log In](#log-in)
+      - [Navbar](#navbar)
+      - [Product Cards](#product-cards)
+      - [Settings](#settings)
+      - [Admin Features](#admin-features)
+        - [Add Products](#add-products)
+3. [Credits](#credits)
+4. [License](#license)
 
 </details>
 <br/>
@@ -243,108 +238,98 @@ Duplicate the `.env.example` files in each directory, rename them to `.env` and 
 
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
-## For Docker
+## Running the Server
 
-Install Docker in your respective desktop environment (MacOs, Windows, Linux, etc).  
+### Using Docker
 
-Download [Docker](https://www.docker.com/).   
+- To start the Docker containers:
 
-Run the following command to make oriori start in a virtual environment provided by docker:-    
+  ```bash
+  docker compose up
+  ```
 
-```bash
-docker compose up
-```
+- To stop the Docker containers (use a separate terminal window in the project directory):
 
-Once your codes are updated, you will wanted to purge the previous image, run this:-    
+  ```bash
+  docker compose down
+  ```
 
-```bash
-docker compose down --rmi all
-```
+- To update the server Docker container after making changes to the code:
 
-Re-run the following:-    
+  ```bash
+  docker compose build server
+  ```
 
-```bash
-docker compose up
-```
+### Using Local PostgreSQL
 
+- To start the server:
 
+  ```bash
+  sh rundev.sh
+  ```
 
-## Running the App
-### Normal User
-[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)  
-#### Sign up
-When you are in the app, you needed to create a user account if you are a user. 
+- To stop the server press `Ctrl+C` in the terminal window while it is running.
 
-Click to Sign up.
+[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
-Fill in your `username` `password` `confirm password` and `email`. Press submit or Enter.
+## Using the App
 
-You will be directed to the boarding page and you are all set.
+### Sign Up
+A user account is required to access the app.
 
-#### Login
-When you have a user account, enter your credential `email` and `password`, then press Log in.
+Creating an account will create a Firebase user record and a user record in the app database. You will be directed to the Onboarding page to select your Home Prefecture.
 
-You can reset your password by click `reset password`.
+### Log In
+Log in with a user account to access the app.
 
-#### Navbar
+An error will occur if you attempt to log in with an account that does not exist in the app database.
+
+### Navbar
 The Navbar is how you navigate the app.
 
 | Nav Icon | Description |
 | -------- | ----------- |
-| Home | Home page that show all the products the app found in the prefecture user is based. |
-| Bookmark | Bookmark page that show all the product user has bookmarked |
-| Ticked | The products you have tried are present here |
-| Hot | The products that is **HOT** Available right now |
-| Search | Search other prefecture for seasonal products | 
+| Home | Shows all the products found in the user's Home Prefecture |
+| Bookmarks | Shows all the products bookmarked by the user |
+| Tried Products | Shows all the products logged as 'tried' by the user |
+| Popular | Shows the products with the most 'likes' in the app database |
+| Search | Shows all the products available in the selected prefecture | 
 
-#### Menu
-The Menu next to the product has the following features:
+### Product Cards
+Buttons are displayed next to a product's image with the following functions:
 
-| product icon | Description |
+| Button | Description |
 | ------------ | ----------- |
-| Bookmark | Click to save the seasonal products user wanted into the user bookmark page |
-| Plus Circle | Click if the user has tried the Icon, and a thumb up icon will appear |
-| Thumb up | Refer to Plus Circle Icon. Click if user like or enjoy the product. |
-| Share | Call device's share function if available |
+| Bookmark ribbon | Marks a product as 'bookmarked' |
+| Checkmark | Marks a product as 'tried'; displays Like button if active |
+| Thumbs up | Marks a product as 'liked' |
+| Share icon | Invokes the device's share function if available; copies permalink to clipboard otherwise |
 
-#### Setting 
-| component | Description |
+### Settings 
+| Setting | Description |
 | --------- | ----------- |
-| <- | Back arrow will bring you back to Home page |
-| Log out | Log user out from the app |
+| Username | Allows user to change Username | 
+| Select Prefecture | Allows user to change Home Prefecture |
 
-| component | Description |
-| --------- | ----------- |
-| Select Prefecture | You can change your prefecture base from the drop down menu |
-| Username | If user wish to change their username | 
+Clicking 'Save' will save changes and redirect the user back to Home.  
 
-Click Save will save the change and will direct you back to Home page.  
+### Admin Features
 
-### Admin User
-#### Setting
-You can input custom products and remove them. If your account is an admin account, an Add Product Button will be accessable for you. Press it and you will navigate to an add Product Page.
+Users with the role 'ADMIN' set in the Firebase Realtime Database will have access to the following features:
 
-#### Product Page
-##### Interface
-| Interface | Explaination |
+#### Add Products
+Products can be added to the app database on this page.
+
+| Field | Description |
 | --------- | ------------ |
-| Back | Navigate back to Home Page |
-| Input: Product Name | Add Product's Name |
-| Input: Link URL | Add Product's URL |
-| Input: Image URL | Add Product's Image URL |
-| Input: Start Date | Add Product Available Date |
-| Input: End Date | Add Product Available End Date |
-| MUITransferList | Choose the available prefecture |
-| Submit Button | submit your input |
-
-##### Remove Products
-WIP
-
-## App
-
-### Server
-
-### Client
+| Product Name | Product name displayed on Product Card |
+| Link URL | Link accessible by tapping on Product Card |
+| Image | Upload an image to display in app |
+| Start Date (optional) | The date the product will become available |
+| End Date (optional) | The date the product will no longer be available |
+| Location Options | Prefectures to choose from when setting product's available locations |
+| Add & Remove Buttons | These buttons move Prefecture options between the Location Options and Selected Locations lists |
+| Selected Locations | Prefectures selected as the product's availability |
 
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
