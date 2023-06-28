@@ -21,12 +21,21 @@
 <summary>Click here to expand</summary>
 
 1. [Project Description](#project-description)
-   - [What is oriori?](#what-is-oriori)
-   - [Why use oriori?](#why-use-oriori)
-   - [Tech Stack](#tech-used-and-why)
-   - [Roadmap](#future-implementation)
-   - [Contribution](#contribution-wip)
-2. [How to Install and Run the Project](#How-to-Install-and-Run-the-Project)
+    - [What is oriori?](#what-is-oriori)
+    - [Why use oriori?](#why-use-oriori)
+    - [Tech Stack](#tech-stack)
+    - [Roadmap](#roadmap)
+    - [Contribution](#contribution)
+2. [For Developers: How to Use This Project](#For-Developers-How-to-Use-This-Project)
+    - [Installation](#installation)
+      - [Prerequisites](#prerequisites)
+      - [1. Setup a Firebase Project for Development](#1-setup-a-firebase-project-for-development)
+      - [2. Clone the Repository](#2-clone-the-repository)
+      - [3. Setup a Python Virtual Environment](#3-setup-a-python-virtual-environment)
+      - [4. Install Dependencies](#4-install-dependencies)
+      - [5. Initialize a Development Database](#5-initialize-a-development-database)
+      - [6. Create your `.env` Files](#6-create-your-env-files)
+      - [7. Local PostgreSQL Only Run Migrations Seed Data](#7-local-postgresql-only-run-migrationsseed-data)
 3. [.env](#env)
    - [.env at folder oriori](#env-at-folder-oriori)
      - [SECRET_KEY](#secret_key)
@@ -71,7 +80,8 @@ Have you ever wondered when the Sakura-themed drinks are gonna drop this year? O
 | ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  | Used to implement Django :) |  
 | ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | Responsive framework to manage the client DOM |
 | ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  | Type-safe coding with the familiarity of JavaScript |
-| ![docker](https://img.shields.io/badge/Docker-384D54?style=for-the-badge&logo=docker&logoColor=0DB7ED) | Used for a consistent dev. environment and for containerized deployment
+| ![docker](https://img.shields.io/badge/Docker-384D54?style=for-the-badge&logo=docker&logoColor=0DB7ED) | Used for a consistent dev. environment and for containerized deployment |
+| ![firebase](https://img.shields.io/badge/Firebase-1A73E8?style=for-the-badge&logo=firebase&logoColor=FFA000) | User authentication and user metadata |
 
 ## Roadmap
 See [GitHub Issues](/issues) for this repository.
@@ -83,110 +93,155 @@ You can contribute by:
 - reporting bugs 
 - submitting pull requests (with our without resolving an existing issue)
 
-Be sure to read our [Contributing Guidelines](./CONTRIBUTING.md)
+Be sure to read our [Contribution Guidelines](./CONTRIBUTING.md)
 
-# How to Install and Run the Project 
-
-Run the following essential seeds for the apps to run:
-
-```bash
-python3 manage.py loaddata 001_Locations.json 
-python3 manage.py loaddata 004_Products.json
-```
-
-Alternatively, you can open `runseed.sh` in the root directory and edit skipindices to omit some entry in the list, just **DO NOT RUN** it yet.  
-
-For the above cases, at `skipindices`, remove `0` and `3` for the script to run `001_Locations.json` and `004_Products.json`:    
-
-```bash
-./runseed.sh
-``` 
-
-For linux user, be sure to run `chmod u+x runseed.sh` first.
-
-Beside `sh runseed.sh` and the above, you can try to run the `runseed.sh` by:-
-
-```bash
-source runseed.sh
-```
-
-OR
-
-```bash
-bash runseed.sh
-```
-
-# .env
-
-- You needed two `.env` file in the following locations:
-
-- in the `oriori` root directory
-- in the `oriori/client` directory  
-
-**NB**: Make sure you exclude both `.env` file from your `.gitignore`, this data should be keep off from your git pull. 
-
-## .env at folder oriori
-
-The `.env.example` located at the root folder gives you the necessary variable for the project to run, use it for the `.env` in your root directory.
-
-The content of your `.env` in the root directory should looks something like this:-  
-
-```
-SECRET_KEY=
-DEBUG=
-DATABASE_URL=
-```
-
-### SECRET_KEY
-You needed to create a secret key for your team or yourself if you are working solo and copy it to SECRET_KEY:-  
-
-https://codinggear.blog/django-generate-secret-key/#generate-secret-key-in-django-using-getrandomsecretkeynbspfunction
-
-### DEBUG 
-Set it to equal to `True` or `False`
-
-### DATABASE_URL
-
-The `DATABASE_URL` consist of `YOUR_USERNAME`, `YOUR_PASS` and `YOUR_DB_NAME` variables, each required to be replaced with your respective `username`, `password` and `database name` in `postgresql`.  
-
-```
-DATABASE_URL=postgres://[YOUR_USERNAME]:[YOUR_PASS]@localhost:5432/[YOUR_DB_NAME]
-```
-
-1. The oriori project required `postgresql` database to run. 
-1. If you did not have `postgresql` installed in your system, please install it, refer to their homepage for your respective computing system. 
-1. Once you have `postgresql` installed, enter by using:-  
-
-```
-psql -U
-```
-
-At `postgresql` create a database:-  
-
-```psql
-CREATE DATABASE oriori;
-``` 
-
-exit `postgresql` by `\q`.  
-
-## .env at folder oriori/client
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
-`.env` at `oriori/client`  
+# For Developers: How to Use This Project
 
-You will needed to register your project in firebase at [firebase.com](https://firebase.google.com/) and create necessary API KEY for this to run, you will be given the following details to fill out the below required fields. A `.env.example` file has already prepared inside `oriori/client` folder:-
+## Installation
 
-```
-REACT_APP_API_KEY=
-REACT_APP_FB_AUTH_DOMAIN=
-REACT_APP_FB_PROJECT_ID=
-REACT_APP_FB_STORAGE_BUCKET=
-REACT_APP_FB_MESSAGING_SENDER_ID=
-REACT_APP_FB_APP_ID=
-REACT_APP_FB_DB_URL=
-```
+### Prerequisites
 
-**NB**: Make sure you exclude both `.env` file from your `.gitignore`, this data should be keep off from your git pull. 
+Please make sure the following technologies are installed on your system before starting development on Oriori:
+1. [Python](https://www.python.org/)
+2. [NodeJS](https://nodejs.org/)
+3. Either [Docker](https://www.docker.com/) or [PostgreSQL](https://www.postgresql.org/)
+    - We recommend using Docker to keep your local environment clean, however, for reduced build times, it is also possible to use a local PostgreSQL installation.
+4. A [Firebase](https://firebase.google.com/) account
+
+### 1. Setup a Firebase Project for Development
+
+Firebase is required to handle user authentication and certain user metadata.
+
+1. Create a Firebase project for your use. (Google Analytics is not required.)
+2. Register a Web App to the project.
+    - Don't include Firebase hosting
+    - Skip 'Add Firebase SDK'
+3. Add Authentication with Email/Password sign-in.
+    - Email link is not currently enabled
+3. Add a Realtime Database.
+    - Select a location convenient for you
+    - Start in test mode
+    - Update the Rules to match the following:
+      ```json
+      {
+        "rules": {
+          "users": {
+            "$userId": {
+              // Grants read/write access to the owner of the user account
+              // whose uid must exactly match the key ($userId)
+              ".read": "$userId === auth.uid",
+              ".write": "$userId === auth.uid"
+            }
+          }
+        }
+      }
+      ```
+
+### 2. Clone the Repository
+
+Clone the repository into a working directory on your computer.
+
+- [How to Clone a GitHub Repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+
+### 3. Setup a Python Virtual Environment
+
+- In the project's root directory, run this command in the terminal:
+    ```bash
+    python -m venv venv
+    ```
+    (You may need to use `python3` instead of `python` depending on your installation.)
+- **IMPORTANT:** Please ensure you are **always** inside the virtual enviromnent whenever working on Oriori. To activate the virtual environment run this command in the terminal:
+    ```bash
+    source venv/bin/activate
+    ```
+    To close the virtual environment, run this command in the terminal:
+    ```bash
+    deactivate
+    ```
+
+### 4. Install Dependencies
+
+- Run the following command in the terminal:
+    ```bash
+    pip install -r requirements.txt
+    ```
+- After the Python requirements have been properly installed, run this command next:
+    ```bash
+    cd client && npm install && cd ..
+    ```
+
+### 5. Initialize a Development Database
+
+#### Option A: Docker
+  - Make sure Docker is running
+
+#### Option B: PostgreSQL
+  - Create a database to use with Oriori
+      - Make sure to take note of the database's name and a username and password combination with read/write access to the database
+      - [PostgreSQL: CREATE DATABASE](https://www.postgresql.org/docs/current/sql-createdatabase.html)
+
+### 6. Create your `.env` Files
+
+Two `.env` files are used the following locations:
+  - in the `oriori` project directory
+  - in the `oriori/client` subdirectory
+
+Duplicate the `.env.example` files in each directory, rename them to `.env` and fill out the missing information:
+
+#### `.env`
+
+- `SECRET_KEY`
+
+  Generate a new Django Secret Key and copy + paste it here.
+  - [How to Generate a Django Secret Key](https://codinggear.blog/django-generate-secret-key/#generate-secret-key-in-django-using-getrandomsecretkeynbspfunction)
+  - Follow steps 1-3 at the above link. At step 4, paste the secret key into `.env` instead of `config/settings.py`.
+
+- `DEBUG`
+
+  This can be either `True` or `False` - we recommend setting this as `False` in almost every circumstance
+
+- `DATABASE_URL` - Required when using PostgreSQL for development
+
+  The PostgreSQL URL consists of your username, password, and the database name. Replace the respective square-bracketed sections in the line below and set it as the value for `DATABASE_URL`:
+
+  ```
+  postgres://[USERNAME]:[PASSWORD]@localhost:5432/[DB_NAME]
+  ```
+
+#### `client/.env`
+
+- Firebase Config
+
+  In your Firebase Project Settings, on the General tab, scroll down to the section titled 'Your apps'. You should see a code snippet with an object named `firebaseConfig`. Set the values to the following environment variables with the corresponding information:
+
+  ```
+  REACT_APP_API_KEY=
+  REACT_APP_FB_AUTH_DOMAIN=
+  REACT_APP_FB_PROJECT_ID=
+  REACT_APP_FB_STORAGE_BUCKET=
+  REACT_APP_FB_MESSAGING_SENDER_ID=
+  REACT_APP_FB_APP_ID=
+  ```
+
+- `REACT_APP_FB_DB_URL`
+
+  To find your Firebase Realtime Database URL, go to the Realtime Database dashboard in your Firebase project and on the Data tab, click the link icon to copy the URL to set for this variable.
+
+### 7. (Local PostgreSQL Only) Run Migrations/Seed Data
+
+- These steps are not required when using Docker.
+1. Run the following command in the terminal:
+    ```bash
+    python manage.py migrate
+    ```
+2. You can load seed product data to immediately display when running the app. Run the following command to load the data:
+    ```bash
+    python manage.py loaddata 004_Products.json
+    ```
+
+[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
 ## For Docker
 
@@ -212,42 +267,7 @@ Re-run the following:-
 docker compose up
 ```
 
-# How to Use the Project  
-[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
-## For development
-### Installation
-- To run it locally, in the oriori root folder, you needed to create a virtual environment in python3:  
 
-```bash
-python3 -m venv venv
-```
-
-- Run the environment:   
-
-```bash
-source venv/bin/activate
-```
-
-- Install your necessary project requirements
-```bash
-pip install -r requirements.txt
-```
-
-To start the project, run the following command:   
-
-```bash
-sh rundev.sh
-```
-
-If the app has no error, it will run the app at [localhost:8080](http://localhost:8080). If there is errors, try to resolve it.
-
-If it still does not work, try to repeat the above steps, or maybe try some other troubleshooting, for example:-  
-
-```bash
-python3 manage.py makemigrations
-```
-
-(More suggestion to come)
 
 ## Running the App
 ### Normal User
@@ -326,10 +346,9 @@ WIP
 
 ### Client
 
-
-# *Credits*  
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
+# *Credits*  
 
 | Name | Title / Position | GitHub or Social Media  |
 | ---- | ---------------- | ----------------------  |
@@ -339,9 +358,9 @@ WIP
 | Chadwick Au | -Fullstack Engineer  <br> -Client Page <br> -UI Components | https://github.com/SirrorsMoore1975 |
 
 
+[![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
 # License
-
 
 MIT License
 
