@@ -70,7 +70,11 @@ function ProductCard ({ product, bookmark, log }: Props) {
     if (daysBeforeEnd >= 0) {
       if (daysBeforeEnd < 6) {
         availModifier += ' ending';
-        availabilityMsg = `Only available for ${daysBeforeEnd} days!`;
+        if (daysBeforeEnd === 1) {
+          availabilityMsg = 'Only available for one more day!';
+        } else {
+          availabilityMsg = `Only available for ${daysBeforeEnd} more days!`;
+        }
       } else {
         availModifier += ' midlife';
         availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
