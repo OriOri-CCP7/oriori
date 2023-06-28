@@ -23,10 +23,9 @@
 1. [Project Description](#project-description)
    - [What is oriori?](#what-is-oriori)
    - [Why use oriori?](#why-use-oriori)
-   - [Tech used and why?](#tech-used-and-why)
-   - [Challenges face and how we over come them](#challenges-faced-and-how-we-over-come-them)
-   - [Future implementation](#future-implementation)
-   - [Contribution (WIP)](#contribution-wip)
+   - [Tech Stack](#tech-used-and-why)
+   - [Roadmap](#future-implementation)
+   - [Contribution](#contribution-wip)
 2. [How to Install and Run the Project](#How-to-Install-and-Run-the-Project)
 3. [.env](#env)
    - [.env at folder oriori](#env-at-folder-oriori)
@@ -51,50 +50,40 @@
 <br/>
 
 # Project Description
-<u>四季折々 'しきおりおり' - (SHIKI)ORIORI</u> 
 
-## What is Oriori?  
+## What is Oriori?
+<h3><b><ruby>
+  <rp>(</rp>四<rt>し</rt>季<rt>き</rt>折<rt>おり</rt>々<rt>おり</rt><rp>)</rp>
+</ruby></b> - <i>shikioriori</i></h3>
+<br/>
 Oriori is a tracking tool for seasonal and regional goods in Japan.
 The name comes from the Japanese phrase <i>shikioriori</i>, which means ‘<i>from season to season</i>.’
 
 ## Why use Oriori?  
-Have you ever wondered what different seasonal products there are, when are they available, and if they are available in your neighbourhood? Did you ever have some seasonal products that you wanted to share with your friends? Have you planned on going further away from your home town to look for some seasonal products only available in a particular area? Look no further, we got you covered!
+Have you ever wondered when the Sakura-themed drinks are gonna drop this year? Or have you gone somewhere and wondered what yummy things you can try that you can't find in another prefecture? Look no further, Oriori's got you covered!
 
-## Tech used and why?  
+## Tech Stack  
 
-| Tech name | Reasons |  
+| Tech | Usage |  
 | --------- | ------- |  
-| ![postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)   | Provides a secure, scalable database  |
-| ![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)  | Allows managing the PostgreSQL database with ease and precision  |
-| ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  | To be able to use Django :) |  
-| ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | Responsive framework to manage the DOM using components and pages |
-| ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  | Allows type-safe coding with the familiarity of JavaScript |
-| ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  | Allows responsive styling with controllable behaviour |  
+| ![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)  | Used to manage PostgreSQL database for product data  |
+| ![postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)   | A secure, scalable database  |
+| ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  | Used to implement Django :) |  
+| ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | Responsive framework to manage the client DOM |
+| ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  | Type-safe coding with the familiarity of JavaScript |
+| ![docker](https://img.shields.io/badge/Docker-384D54?style=for-the-badge&logo=docker&logoColor=0DB7ED) | Used for a consistent dev. environment and for containerized deployment
 
-## Challenges faced and how we over come them
-- RSS data scraping 
--  
-
-## Future implementation
-- [ ] Light Mode / Dark Mode / Color Mode
-- [ ] User choices for a Left or Right Hand Sided Products Menus 
-- [ ] Advanced Seach with Filters / Keywords
-- [ ] User Products Submission
-- [ ] Store Locations
-- [ ] Stamp Ralley / Promotional Campaigns
+## Roadmap
+See [GitHub Issues](/issues) for this repository.
 
 ## Contribution
-You can contribute by:-  
-- provide feedback   
-- give suggestions  
-- create new issues  
-- share your idea  
-- suggest us a better service / libraries / languages to use
-- pull request your new features for review  
-- mirror it or clone the [repo](https://github.com/OriOri-CCP7/oriori) 
-- become a contributor, etc  
-Be sure to read the [CONTRIBUTING.md](./CONTRIBUTING.md)
+You can contribute by:
+- providing feedback   
+- making suggestions/sharing ideas
+- reporting bugs 
+- submitting pull requests (with our without resolving an existing issue)
 
+Be sure to read our [Contributing Guidelines](./CONTRIBUTING.md)
 
 # How to Install and Run the Project 
 
