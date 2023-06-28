@@ -333,15 +333,14 @@ Products can be added to the app database on this page.
 
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
-# *Credits*  
+# Credits
 
 | Name | Title / Position | GitHub or Social Media  |
 | ---- | ---------------- | ----------------------  |
-| Joe V. | -TechLeader <br> -DevOps/CI <br> -Team Support | https://github.com/kappanjoe |
-| Nicole Boci  | -Product Owner <br> -Fullstack Engineer  <br> -Server  <br> -Data Sourcing | https://github.com/nikobatzi1990 |
-| Ikuno Kanasugi  | -Fullstack Engineer  <br> -Data Sourcing  <br> -Database | https://github.com/ikuno815 |
-| Chadwick Au | -Fullstack Engineer  <br> -Client Page <br> -UI Components | https://github.com/SirrorsMoore1975 |
-
+| Joe V. | - Tech Lead <br> - DevOps & CI/CD <br> - Support | https://github.com/kappanjoe |
+| Nicole Boci  | - Product Owner <br> - Fullstack Engineer  <br> - Server  <br> - Data Sourcing | https://github.com/nikobatzi1990 |
+| Ikuno Kanasugi  | - Fullstack Engineer  <br> - Data Sourcing  <br> - Database | https://github.com/ikuno815 |
+| Chadwick Au | - Fullstack Engineer  <br> - Client Pages <br> - UI Components | https://github.com/SirrorsMoore1975 |
 
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
