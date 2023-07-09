@@ -1,13 +1,13 @@
 # Changes Made:
 
-<!-- Describe your pull request and the related issue here. Include motivations and context, and list any dependencies that may be required. -->
+<!-- Describe your Pull Request and the related Issue here. Include motivations and context, and list any dependencies that may be required. -->
 
 ## Issue No(s).:
 
 Resolves #
 
 # Before Submitting:
-- [ ] I have included a clear description of the contents of my pull request.
+- [ ] I have included a clear description of the contents of my Pull Request.
 - [ ] I have linked the associated Issue(s) above.
   - "Resolves #[Issue No.]"
   - Include a new line for each Issue if more than one is covered.
