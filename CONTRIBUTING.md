@@ -11,6 +11,8 @@ If you encounter any bugs in the code, please [create an Issue](https://github.c
 Discuss your ideas, suggestions, feedback, features you wish to implement, etc., by creating a [new Issue](https://github.com/OriOri-CCP7/oriori/issues/new).
 
 ## Contributing Code
-Please fork your own copy of this repository and create a new branch before committing any code to contribue to oriori. When making commits, please follow [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines. Once your code is finished, [submit a Pull Request](https://github.com/OriOri-CCP7/oriori/pulls) from the feature branch on your forked repository to the main branch on the official repository, and attach the associated Issue.
+Issues that are available to work on will be marked with the "help wanted" label and will not be currently assigned to anyone. Please comment on an Issue you would like to work on and ask an Oriori team member to assign you. **Issues that do not have the "help wanted" label are only available to official Oriori contributors.**
+
+Fork your own copy of this repository and create a new feature branch before committing any code to contribue to oriori. When making commits, please follow [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines. Once your code is finished, [submit a Pull Request](https://github.com/OriOri-CCP7/oriori/pulls) between the feature branch on your forked repository and the main branch on the official repository, and follow the instructions in the template.
 
 [![Back to repo](https://img.shields.io/badge/Back%20to%20repo-lightgrey?style=flat-square)](https://github.com/OriOri-CCP7/oriori)
