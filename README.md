@@ -79,7 +79,7 @@ Have you ever wondered when the Sakura-themed drinks are gonna drop this year? O
 | ![firebase](https://img.shields.io/badge/Firebase-1A73E8?style=for-the-badge&logo=firebase&logoColor=FFA000) | User authentication and user metadata |
 
 ## Roadmap
-See [GitHub Issues](/issues) for this repository.
+See the [GitHub Issues](https://github.com/OriOri-CCP7/oriori/issues) for this repository.
 
 ## Contribution
 You can contribute by:
