@@ -23,5 +23,4 @@ urlpatterns = [
     path('products/<int:id>/deletion/', views.deleteProductData),
     path('locations/newLocation/', views.addLocation),
     path('locations/<int:prefId>/products/', views.getProductDataByPrefecture),
-    path('locations/<str:prefecture>/stores/', views.getStoreDatabyPrefecture),
 ]
