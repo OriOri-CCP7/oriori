@@ -31,8 +31,8 @@ body:
       label: Are you willing to contribute this feature?
       multiple: false
       options:
-        - Yes, I will Contribute
-        - No, I cannot Contribute
+        - "Yes, I will Contribute"
+        - "No, I cannot Contribute"
     validations:
       required: true
   - type: textarea
@@ -45,5 +45,5 @@ body:
       label: Contributing Guidelines
       description: By submitting this issue, you agree that you have read and will follow our [Contributing Guidelines](/CONTRIBUTING.md)
       options:
-        - label: I agree to follow this project's Contributing Guidelines
+        - label: "I agree to follow this project's Contributing Guidelines"
           required: true
