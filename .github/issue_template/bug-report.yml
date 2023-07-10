@@ -12,7 +12,7 @@ body:
     attributes:
       label: Contact Details
       description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      placeholder: "ex. email@example.com"
     validations:
       required: false
   - type: textarea
@@ -71,5 +71,5 @@ body:
       label: Contributing Guidelines
       description: By submitting this issue, you agree that you have read and will follow our [Contributing Guidelines](/CONTRIBUTING.md)
       options:
-        - label: I agree to follow this project's Contributing Guidelines
+        - label: "I agree to follow this project's Contributing Guidelines"
           required: true
