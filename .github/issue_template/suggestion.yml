@@ -46,4 +46,5 @@ body:
       description: By submitting this issue, you agree that you have read and will follow our [Contributing Guidelines](/CONTRIBUTING.md)
       options:
         - label: "I agree to follow this project's Contributing Guidelines"
-          required: true
+    validations:
+      required: true
