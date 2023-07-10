@@ -1,0 +1,49 @@
+name: Feature or Enhancement
+description: Suggest a feature or enhancement
+title: "[Idea]: "
+labels: ["suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to contribute!
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Please describe the problem to be solved by the new feature.
+      placeholder: Tell us what you think should be improved!
+      value: "Doing X is difficult/not possible!"
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Feature Description
+      description: Please describe the feature you are suggesting.
+      placeholder: Tell us how you think the problem can be solved!
+      value: "If I could do Y, X would be much easier/possible!"
+    validations:
+      required: true
+  - type: dropdown
+    id: will-contribute
+    attributes:
+      label: Are you willing to contribute this feature?
+      multiple: false
+      options:
+        - Yes, I will Contribute
+        - No, I cannot Contribute
+    validations:
+      required: true
+  - type: textarea
+    id: comments
+    attributes:
+      label: Additional Comments
+  - type: checkboxes
+    id: guidelines
+    attributes:
+      label: Contributing Guidelines
+      description: By submitting this issue, you agree that you have read and will follow our [Contributing Guidelines](/CONTRIBUTING.md)
+      options:
+        - label: I agree to follow this project's Contributing Guidelines
+          required: true

@@ -1,14 +1,18 @@
-# Constributing to oriori
+# Contributing to oriori
 
 ![Updated](https://img.shields.io/static/v1?label=updated&message=June%2025th%202023&color=388E3C&style=flat-square) 
 
+Thank you for considering contributing to oriori! Here are ways you can help out:
 
-Thank you for considering contributing to oriori. Please read the following:-
+## Reporting Bugs
+If you encounter any bugs in the code, please [create an Issue](https://github.com/OriOri-CCP7/oriori/issues/new) to report it.
 
-Discuss your ideas, suggestions, feedback, feature you wish to implement, bug reports, submit issues, etc, by providing the above in [new issue](https://github.com/OriOri-CCP7/oriori/issues/new). 
+## Suggesting Features/Enhancements
+Discuss your ideas, suggestions, feedback, features you wish to implement, etc., by creating a [new Issue](https://github.com/OriOri-CCP7/oriori/issues/new).
 
-Provide new features for approval, make a pull request. Be sure to create an issue first and link that issue with the repo branch. Check out the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) guidelines.
+## Contributing Code
+Issues that are available to work on will be marked with the "help wanted" label and will not be currently assigned to anyone. Please comment on an Issue you would like to work on and ask an Oriori team member to assign you. **Issues that do not have the "help wanted" label are only available to official Oriori contributors.**
 
-Be sure not to edit the README.md or this CONTRIBUTING.md unless explicit permission were given by team ORIORI-CCP7[https://github.com/OriOri-CCP7]
+Fork your own copy of this repository and create a new feature branch before committing any code to contribue to oriori. When making commits, please follow [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines. Once your code is finished, [submit a Pull Request](https://github.com/OriOri-CCP7/oriori/pulls) between the feature branch on your forked repository and the main branch on the official repository, and follow the instructions in the template.
 
-[Back to repo](https://github.com/OriOri-CCP7/oriori)
+[![Back to repo](https://img.shields.io/badge/Back%20to%20repo-lightgrey?style=flat-square)](https://github.com/OriOri-CCP7/oriori)

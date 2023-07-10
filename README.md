@@ -79,16 +79,16 @@ Have you ever wondered when the Sakura-themed drinks are gonna drop this year? O
 | ![firebase](https://img.shields.io/badge/Firebase-1A73E8?style=for-the-badge&logo=firebase&logoColor=FFA000) | User authentication and user metadata |
 
 ## Roadmap
-See [GitHub Issues](/issues) for this repository.
+See the [GitHub Issues](https://github.com/OriOri-CCP7/oriori/issues) for this repository.
 
 ## Contribution
 You can contribute by:
 - providing feedback   
 - making suggestions/sharing ideas
 - reporting bugs 
-- submitting pull requests (with our without resolving an existing issue)
+- submitting Pull Requests (must be associated w/ an Issue)
 
-Be sure to read our [Contribution Guidelines](./CONTRIBUTING.md)
+Be sure to read our [Contribution Guidelines](CONTRIBUTING.md)
 
 [![Back to top](https://img.shields.io/badge/Back%20to%20top-lightgrey?style=flat-square)](#index)
 
@@ -124,8 +124,6 @@ Firebase is required to handle user authentication and certain user metadata.
         "rules": {
           "users": {
             "$userId": {
-              // Grants read/write access to the owner of the user account
-              // whose uid must exactly match the key ($userId)
               ".read": "$userId === auth.uid",
               ".write": "$userId === auth.uid"
             }
@@ -136,7 +134,7 @@ Firebase is required to handle user authentication and certain user metadata.
 
 ### 2. Clone the Repository
 
-Clone the repository into a working directory on your computer.
+Clone the repository (use a personal fork if contributing) into a working directory on your computer.
 
 - [How to Clone a GitHub Repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
