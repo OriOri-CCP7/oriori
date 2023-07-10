@@ -1,10 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@App/*": ["src/*"],
-      "lib/*": ["common/*"]
-    },
     "target": "ES2018",
     "lib": [
       "dom",
