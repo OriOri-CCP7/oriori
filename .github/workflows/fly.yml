@@ -29,6 +29,7 @@ jobs:
       - name: Install Dependencies & Build Client
         working-directory: ./client
         run: |
+          npm pkg delete scripts.prepare
           npm ci
           npm run build
       
