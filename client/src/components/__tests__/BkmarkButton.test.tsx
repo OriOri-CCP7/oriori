@@ -17,5 +17,5 @@ test('is outline when not bookmarked', async () => {
   // ACT
   await screen.findByRole('img', {hidden: true});
   // ASSERT
-  expect(screen.getByRole('img', {hidden: true})).toHaveClass('bookmark__icon  outline');
+  expect(screen.getByRole('img', {hidden: true})).toHaveClass('bookmark__icon outline');
 });
