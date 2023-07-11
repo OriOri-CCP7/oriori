@@ -23,6 +23,7 @@
   },
   "include": [
     "src",
-    "pages"
-, "fileTransformer.js"  ]
+    "pages",
+    "fileTransformer.js"
+  ]
 }
