@@ -12,7 +12,7 @@
   ![GitHub watchers](https://img.shields.io/github/watchers/oriori-ccp7/oriori?style=flat-square)
 <hr/>
 
-# Live Deployment: [https://oriori.fly.dev](https://oriori.fly.dev)  
+# Visit oriori: [https://oriori.app](https://oriori.app)  
 </div>
 <br/>
 
