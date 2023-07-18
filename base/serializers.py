@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Location, Store, Product, Bookmark, Log
+from .models import User, Location, Product, Bookmark, Log
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
