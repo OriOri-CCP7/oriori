@@ -96,6 +96,13 @@ def removeBookmark(request, uuid, bkmark_id):
 
 # Views for Product data
 @api_view(['GET'])
+def getAllProducts(request):
+  product = Product.objects.all()
+  serializer = ProductSerializer(product, many=True)
+  return Response(serializer.data)
+
+
+@api_view(['GET'])
 def getProductDataById(request, id):
   try:
     product = Product.objects.get(pk=id)

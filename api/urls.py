@@ -16,6 +16,7 @@ urlpatterns = [
     path('users/<str:uuid>/bookmarks/products/', views.getProductDataByUser),
     path('users/<str:uuid>/bookmarks/new/', views.addNewBookmark),
     path('users/<str:uuid>/bookmarks/<int:bkmark_id>/deletion/', views.removeBookmark),
+    path('products/', views.getAllProducts),
     path('products/popular/', views.getProductDataByPopularity),
     path('products/newProduct/', views.addNewProduct),
     path('products/<int:id>/', views.getProductDataById),
