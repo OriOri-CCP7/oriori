@@ -11,8 +11,8 @@ type Props = {
 const ShareButton = ( { hasShared, clickHandler }: Props ) => {
 
   return (
-    <div className='product__button share' onClick={ clickHandler }>
-      <ShareIcon className='product__icon share__icon'/>
+    <div role="button" className='product__button share' onClick={ clickHandler }>
+      <ShareIcon role="img" className='product__icon share__icon'/>
       { hasShared ? 'Link Copied' : null }
     </div>
   );
