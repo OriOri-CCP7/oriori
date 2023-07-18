@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ShareButton from '../ShareButton';
 
-test('is solid when bookmarked', async () => {
+test('displays "Link Copied" text if shared', async () => {
   // ARRANGE
   render(<ShareButton hasShared={true} clickHandler={() => {}}/>);
   // ACT
@@ -13,7 +13,7 @@ test('is solid when bookmarked', async () => {
   expect(screen.getByRole('img', {hidden: true})).toHaveClass('share__icon');
 });
 
-test('is outline when not bookmarked', async () => {
+test('does not display "Link Copied" text if not shared', async () => {
   // ARRANGE
   render(<ShareButton hasShared={false} clickHandler={() => {}}/>);
   // ACT
