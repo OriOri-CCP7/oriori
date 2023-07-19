@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
@@ -14,12 +14,24 @@ function AdminDeleteProduct() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
 
-  axios.get('api/products/')
-    .then((result) => {
-      console.log(result.data);
-      setProducts(result.data);
-    })
-    .catch((error) => console.log('🥲', error));
+  const handleProductList = useCallback(async () => {
+    const fetchedData = await axios.get('/api/products/')
+      .then(result => result.data)
+      .catch((error) => console.log('🥲', error));
+      console.log("DATA: ", fetchedData);
+      setProducts(fetchedData);
+  }, [])
+
+  useEffect(() => {
+    handleProductList();
+    console.log("PRODUCTS: ", products);
+  }, [handleProductList]);
+
+  const handleDeletion = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
+    event.preventDefault();
+    console.log('🌭', event.target);
+    // await axios.delete('api/products/<int:id>/deletion/')
+  }
 
   return (
     <>
@@ -31,7 +43,19 @@ function AdminDeleteProduct() {
         <ArrowSmallLeftIcon onClick={() => navigate('/home')}/>
       </div>
       
-      <ProductGrid productArray={ products } />
+      <div>
+        {(products.length > 0)
+        ? products.map((product) => (
+          <div className="product-list-item">
+            <p>Product ID: { product.id }</p>
+            <p>Product Name: { product.product_name }</p>
+            <p>Start Data: { product.start_date }</p>
+            <p>End Date: { product.end_date }</p>
+          </div>
+        ))
+        : "Loading..."
+        }
+      </div>
 
       <Footer/> 
     </>
