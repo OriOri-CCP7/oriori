@@ -4,8 +4,8 @@ import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import TrashButton from '../components/TrashButton';
 import '../styles/AdminDeleteProduct.css';
-import ProductGrid from '../components/ProductGrid';
 import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 
 function AdminDeleteProduct() {
@@ -51,10 +51,13 @@ function AdminDeleteProduct() {
             <p>Product Name: { product.product_name }</p>
             <p>Start Data: { product.start_date }</p>
             <p>End Date: { product.end_date }</p>
+            
           </div>
         ))
         : "Loading..."
         }
+
+        <TrashButton clickHandler={ handleDeletion }/>
       </div>
 
       <Footer/> 
