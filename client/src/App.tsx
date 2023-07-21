@@ -32,7 +32,6 @@ function App() {
                 <Route path='/' element={<Login/>}></Route>
                 <Route path='/signup' element={<Signup/>}></Route>
                 <Route path='/new-password' element={<PasswordReset/>}></Route>
-                <Route path='/admin-deleteProduct' element={<AdminDeleteProduct/>}></Route>
                 
                 <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
                 <Route path='/bookmarks' element={<ProtectedRoute><Bookmarks/></ProtectedRoute>}></Route>
@@ -43,7 +42,7 @@ function App() {
                 <Route path='/onboarding' element={<ProtectedRoute><Onboarding/></ProtectedRoute>}></Route>
 
                 <Route path='/admin-addProduct' element={<AdminRoute><AdminAddProduct/></AdminRoute>}></Route>
-                {/* <Route path='/admin-deleteProduct' element={<AdminRoute><AdminDeleteProduct/></AdminRoute>}></Route> */}
+                <Route path='/admin-deleteProduct' element={<AdminRoute><AdminDeleteProduct/></AdminRoute>}></Route>
               </Routes>
             </BrowserRouter>
           </LogContextProvider>

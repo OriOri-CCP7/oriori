@@ -18,20 +18,18 @@ function AdminDeleteProduct() {
     const fetchedData = await axios.get('/api/products/')
       .then(result => result.data)
       .catch((error) => console.log('🥲', error));
-      console.log("DATA: ", fetchedData);
       setProducts(fetchedData);
   }, [])
 
   useEffect(() => {
     handleProductList();
-    console.log("PRODUCTS: ", products);
   }, [handleProductList]);
 
   const handleDeletion = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
     event.preventDefault();
     const productId = event.currentTarget.parentElement?.dataset.productId;
-    await axios.delete(`api/products/${productId}/deletion/`)
-      
+    await axios.delete(`api/products/${productId}/deletion/`);
+    handleProductList();
   }
 
   return (
@@ -45,7 +43,7 @@ function AdminDeleteProduct() {
       </div>
       
       <div>
-        {(products.length > 0)
+        { products.length > 0
         ? products.map((product) => (
           <div key={ product.id } className="product-list-item" data-product-id={ product.id }>
             <p>Product ID: { product.id }</p>
@@ -57,7 +55,6 @@ function AdminDeleteProduct() {
         ))
         : "Loading..."
         }
-
       </div>
 
       <Footer/> 
