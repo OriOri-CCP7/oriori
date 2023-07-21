@@ -29,8 +29,9 @@ function AdminDeleteProduct() {
 
   const handleDeletion = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
     event.preventDefault();
-    console.log('🌭', event.target);
-    // await axios.delete('api/products/<int:id>/deletion/')
+    const productId = event.currentTarget.parentElement?.dataset.productId;
+    await axios.delete(`api/products/${productId}/deletion/`)
+      
   }
 
   return (
@@ -46,18 +47,17 @@ function AdminDeleteProduct() {
       <div>
         {(products.length > 0)
         ? products.map((product) => (
-          <div className="product-list-item">
+          <div key={ product.id } className="product-list-item" data-product-id={ product.id }>
             <p>Product ID: { product.id }</p>
             <p>Product Name: { product.product_name }</p>
             <p>Start Data: { product.start_date }</p>
             <p>End Date: { product.end_date }</p>
-            
+            <TrashButton clickHandler={ handleDeletion }/>
           </div>
         ))
         : "Loading..."
         }
 
-        <TrashButton clickHandler={ handleDeletion }/>
       </div>
 
       <Footer/> 
