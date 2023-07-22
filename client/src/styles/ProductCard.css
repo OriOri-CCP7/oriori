@@ -1,5 +1,5 @@
 .product__card {
-	max-width: 360pt;
+	max-width: 330pt;
 	min-width: 225pt;
 	display: flex;
 	flex-direction: column;
