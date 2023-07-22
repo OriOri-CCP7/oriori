@@ -1,15 +1,9 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from base.models import User, Location, Store, Product, Bookmark, Log
-from base.serializers import UserSerializer, LocationSerializer, StoreSerializer, ProductSerializer, BookmarkSerializer, LogSerializer
+from base.models import User, Location, Product, Bookmark, Log
+from base.serializers import UserSerializer, LocationSerializer, ProductSerializer, BookmarkSerializer, LogSerializer
 from django.db.models import Count, When, Case, Q
 from datetime import date
-
-# Create your views here.
-
-@api_view(['GET'])
-def hello(request):
-  return Response('Hello World 🌎')
 
 # Views for User data
 @api_view(['GET'])
@@ -192,14 +186,11 @@ def editProductData(request, id):
   try:
     product = Product.objects.get(pk=id)
     product.product_name = request.data.get('product_name', product.product_name)
-    store = request.data.get('store')
-    if store:
-      store = Store.objects.get(store=store)
-      product.store_id = store.id
     product.start_date = request.data.get('start_date', product.start_date)
     product.end_date = request.data.get('end_date', product.end_date)
     product.img_url = request.data.get('img_url', product.img_url)
     product.link_url = request.data.get('link_url', product.link_url)
+    product.location = request.data.get('location', product.location)
     product.save()
     serializer = ProductSerializer(product)
     return Response(serializer.data)
@@ -212,55 +203,7 @@ def deleteProductData(request, id):
   product.delete()
   return Response("Product Deleted")
 
-# Views for Store data
-@api_view(['GET'])
-def getStoreDatabyId(request, id):
-  try:
-    store = Store.objects.get(pk=id)
-    serializer = StoreSerializer(store)
-    return Response(serializer.data)
-  except:   
-    return Response(serializer.errors)
-  
-@api_view(['GET'])
-def getStoreDatabyPrefecture(request, prefecture):
-  try:
-    stores = Store.objects.filter(location__prefecture=prefecture)
-    serializer = StoreSerializer(stores, many=True)
-    return Response(serializer.data)
-  except:   
-    return Response(serializer.errors)
-
-@api_view(['POST'])
-def addNewStore(request):
-  serializer = StoreSerializer(data=request.data)
-  if serializer.is_valid():
-    serializer.save()
-    return Response(serializer.data)
-  else: 
-    return Response(serializer.errors)
-
-@api_view(['PATCH'])
-def editStoreData(request, id):
-  try:
-    store = Store.objects.get(pk=id)
-    store.name = request.data.get('name', store.name)
-    prefecture = request.data.get('prefecture')
-    if prefecture:
-      location = Location.objects.get(prefecture=prefecture)
-      store.location_id = location.id
-    store.save()
-    serializer = StoreSerializer(store)
-    return Response(serializer.data)
-  except Exception as e:
-    return Response({'error': str(e)})
-
-@api_view(['DELETE'])
-def deleteStoreData(request, id):
-  store = Store.objects.get(pk=id)
-  store.delete()
-  return Response("Store Deleted")
-
+# Views for Location Data
 @api_view(['POST'])
 def addLocation(request):
   serializer = LocationSerializer(data=request.data)
