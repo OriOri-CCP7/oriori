@@ -1,0 +1,6 @@
+.trash__button {
+  align-self: flex-end;
+  margin: 3px;
+  width: 36pt;
+  cursor: pointer;
+}
