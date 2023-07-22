@@ -161,4 +161,10 @@
 		margin: 20pt 12pt 0;
 		height: 225pt;
 	}
+
+	.product__img-container {
+		background: white;
+		width: 225pt;
+		justify-content: center;
+	}
 }
