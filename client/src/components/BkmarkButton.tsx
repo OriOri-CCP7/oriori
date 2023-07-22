@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { BookmarkIcon as BkmarkSolid } from '@heroicons/react/24/solid';
 import { BookmarkIcon as BkmarkOutline } from '@heroicons/react/24/outline';
 
@@ -12,11 +12,11 @@ interface Props {
 function BkmarkButton({ isBookmark, clickHandler }: Props) {
   
   return (
-    <div className='bookmark__button' onClick={ clickHandler }>
+    <div role="switch" aria-checked={isBookmark} className='bookmark__button' onClick={clickHandler}>
       {
         isBookmark
-          ? <BkmarkSolid className="bookmark__icon solid"/>
-          : <BkmarkOutline className="bookmark__icon outline"/>
+          ? <BkmarkSolid role="img" className="bookmark__icon solid"/>
+          : <BkmarkOutline role="img" className="bookmark__icon outline"/>
       }
     </div>
   );

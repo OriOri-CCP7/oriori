@@ -26,19 +26,18 @@ function ProductCard ({ product, bookmark, log }: Props) {
   const [hasShared, setHasShared] = useState<boolean>(false);
 
   let availabilityMsg = 'Now Available!';
+  let availModifier = '';
   
   const currentDate: Date = new Date();
   const currentDateNum = currentDate.getTime();
   const oneDay: number = 24 * 60 * 60 * 1000;
-  let availModifier = '';
 
-  if (product.start_date) {
-    const offerStartDate: Date = new Date(product.start_date);
+  const setStartDate = (date: string) => {
+    const offerStartDate: Date = new Date(date);
     const offerStartNum = offerStartDate.getTime();
     const daysSinceStart: number = Math.floor((currentDateNum - offerStartNum) / oneDay);
     
     availabilityMsg = `Available on ${offerStartDate.toLocaleDateString()}`;
-  
     
     if (daysSinceStart >= 0) {
       if (daysSinceStart < 4) {
@@ -57,19 +56,25 @@ function ProductCard ({ product, bookmark, log }: Props) {
         } else {
           availabilityMsg = `While supplies last!\n(released ${weeks} weeks ago)`;
         }
+      } else if (product.end_date) {
+        setEndDate(product.end_date);
       }
     }
-  }
+  };
 
-  if (product.end_date) {
-    const offerEndDate: Date = new Date(product.end_date);
+  const setEndDate = (date: string) => {
+    const offerEndDate: Date = new Date(date);
     const offerEndNum = offerEndDate.getTime();
     const daysBeforeEnd: number = Math.ceil((offerEndNum - currentDateNum) / oneDay);
 
     if (daysBeforeEnd >= 0) {
       if (daysBeforeEnd < 6) {
         availModifier += ' ending';
-        availabilityMsg = `Only available for ${daysBeforeEnd} days!`;
+        if (daysBeforeEnd === 1) {
+          availabilityMsg = 'Only available for one more day!';
+        } else {
+          availabilityMsg = `Only available for ${daysBeforeEnd} more days!`;
+        }
       } else {
         availModifier += ' midlife';
         availabilityMsg = `Available until ${offerEndDate.toLocaleDateString()}`;
@@ -78,6 +83,12 @@ function ProductCard ({ product, bookmark, log }: Props) {
       availModifier += ' ended';
       availabilityMsg = 'No longer available.';
     }
+  };
+
+  if (product.start_date) {
+    setStartDate(product.start_date);
+  } else if (product.end_date) {
+    setEndDate(product.end_date);
   }
 
   const headers = {
