@@ -153,6 +153,10 @@
 		justify-content: center;
 		position: absolute;
 	}
+	
+	.product__avail-text {
+		margin-bottom: 4pt;
+	}
 
 	.product__content {
 		margin: 20pt 12pt 0;
