@@ -11,3 +11,12 @@ test('renders mainText prop correctly', () => {
   // Assert
   expect(testText).toBeInTheDocument();
 });
+
+test('renders secondaryText prop if provided', () => {
+  // Arrange
+  render(<BrowserRouter><Header mainText="Home" secondaryText='Hello World'/></BrowserRouter>);
+  // Act
+  const testText = screen.getByText('Hello World');
+  // Assert
+  expect(testText).toBeInTheDocument();
+});
