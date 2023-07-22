@@ -90,7 +90,6 @@
 	display: flex;
 	overflow: hidden;
 	margin-right: auto;
-	margin-left: auto;
 }
 
 .product__img-container.left{
@@ -161,6 +160,5 @@
 	.product__content {
 		margin: 20pt 12pt 0;
 		height: 225pt;
-		object-fit: cover;
 	}
 }
