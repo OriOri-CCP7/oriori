@@ -2,7 +2,7 @@
   <img src="./client/public/oriori-logo.svg" width="360pt" alt="Oriori Logo"/>
   <br/><br/>
 
-  ![Updated](https://img.shields.io/static/v1?label=updated&message=June%2025th%202023&color=388E3C&style=flat-square)  
+  ![Updated](https://img.shields.io/static/v1?label=updated&message=July%2022nd%202023&color=388E3C&style=flat-square)  
 
   ![GitHub](https://img.shields.io/github/license/oriori-ccp7/oriori?style=flat-square)
   ![GitHub stars](https://img.shields.io/github/stars/oriori-ccp7/oriori?style=flat-square)
@@ -202,6 +202,10 @@ Duplicate the `.env.example` files in each directory, rename them to `.env` and 
   ```
   postgres://[USERNAME]:[PASSWORD]@localhost:5432/[DB_NAME]
   ```
+
+- `HOSTNAMES`
+
+  For development use, it's okay to set this as a wildcard (i.e., `"*"`), but for production, you should set this to the URL(s) where the app will be hosted. The values should be wrapped in double-quotes, and multiple URLs should be separated by a space.
 
 #### `client/.env`
 
