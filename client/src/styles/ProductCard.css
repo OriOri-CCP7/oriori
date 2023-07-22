@@ -98,6 +98,7 @@
 	display: flex;
 	overflow: hidden;
 	margin-right: auto;
+	margin-left: auto;
 }
 
 .product__img-container.left{
