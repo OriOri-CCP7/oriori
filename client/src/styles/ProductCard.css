@@ -132,17 +132,6 @@
 }
 
 @media (min-width: 675pt) {
-	.product__card {
-		max-width: 360pt;
-		min-width: 300pt;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-items: center;
-		align-content: center;
-		margin: 4pt auto;
-	}
-
 	.product__title {
 		margin: 14pt 12pt 15pt;
 		padding: 6pt 6pt 15pt;
@@ -154,8 +143,6 @@
 	}
 
 	.product__avail-container {
-		background-color: #E5E5E5;
-		border-radius: 6pt;
 		margin-left: 12pt;
 		margin-right: 12pt;
 		bottom: -15px;
@@ -167,14 +154,7 @@
 		position: absolute;
 	}
 
-	.product__avail-text {
-		white-space: pre-line;
-		font-size: medium;
-	}
-
 	.product__content {
-		display: flex;
-		flex-direction: row;
 		margin: 20pt 12pt 0;
 		height: 225pt;
 		object-fit: cover;
