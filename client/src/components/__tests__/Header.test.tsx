@@ -20,3 +20,12 @@ test('renders secondaryText prop if provided', () => {
   // Assert
   expect(testText).toBeInTheDocument();
 });
+
+test('does not render secondaryText prop if not provided', () => {
+  // Arrange
+  render(<BrowserRouter><Header mainText="Home"/></BrowserRouter>);
+  // Act
+  const testText = screen.queryByText('Hello World');
+  // Assert
+  expect(testText).toBeNull();
+});
