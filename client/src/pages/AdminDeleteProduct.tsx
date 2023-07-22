@@ -48,7 +48,7 @@ function AdminDeleteProduct() {
           <div key={ product.id } className="product-list-item" data-product-id={ product.id }>
             <p><strong>Product ID:</strong> { product.id }</p>
             <p><strong>Product Name:</strong> { product.product_name }</p>
-            <p><strong>Start Data:</strong> { product.start_date }</p>
+            <p><strong>Start Date:</strong> { product.start_date }</p>
             <p><strong>End Date:</strong> { product.end_date }</p>
             <TrashButton clickHandler={ handleDeletion }/>
           </div>
