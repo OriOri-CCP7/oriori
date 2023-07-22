@@ -133,7 +133,7 @@
 @media (min-width: 675pt) {
 	.product__title {
 		margin: 14pt 12pt 15pt;
-		padding: 6pt 6pt 15pt;
+		padding: 6pt 6pt 20pt;
 		height: 50pt;
 		display: flex;
 		align-items: center;
