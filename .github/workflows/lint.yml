@@ -1,7 +1,8 @@
 name: Pull Request Lint
 on:
-  pull_request
-
+  pull_request:
+    branches:
+      - main
 jobs:
   pr-lint:
     name: PR Lint
@@ -16,7 +17,7 @@ jobs:
           cache: npm
           cache-dependency-path: client/package-lock.json
       
-      - name: Run Tests & Lint
+      - name: Build, Lint, & Test
         working-directory: ./client
         run: |
           npm pkg delete scripts.prepare
