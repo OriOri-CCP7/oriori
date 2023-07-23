@@ -1,15 +1,9 @@
 from django.db import models
-# from django.contrib.gis.db import models
 # Create your models here.
 
 class Location(models.Model):
     country = models.CharField(max_length=255)
     prefecture = models.CharField(max_length=255)
-
-class Store(models.Model):
-    name = models.CharField(max_length=255)
-    location = models.ForeignKey(Location, on_delete=models.PROTECT)
-    # coordinates = models.PointField(srid=4326) # ID for goggle 4326 PointField(srid=4326)
 
 class User(models.Model):
     username = models.CharField(max_length=255)
