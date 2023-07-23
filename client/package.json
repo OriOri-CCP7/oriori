@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "postbuild": "sh postbuild.sh",
     "test": "jest --passWithNoTests",
-    "test:staged": "jest --bail --findRelatedTests",
+    "test:staged": "jest --bail --findRelatedTests --passWithNoTests",
     "eject": "react-scripts eject",
     "prepare": "cd .. && husky install client/.husky"
   },

@@ -11,7 +11,6 @@ import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 function AdminDeleteProduct() {
 
   const navigate = useNavigate();
-  const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
 
   const handleProductList = useCallback(async () => {
