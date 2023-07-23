@@ -26,18 +26,18 @@ test('is outline when isLogged prop has value false', async () => {
 
 test('displays text "Tried it!" when isLogged is true', async () => {
   // ARRANGE
-
+  render(<LogButton isLogged={true} clickHandler={() => {}}/>);
   // ACT
- 
+  await screen.findByRole('switch');
   // ASSERT
-  
+  expect(screen.getByRole('switch')).toHaveTextContent('Tried it!');
 });
 
 test('displays text "Tried it?" when isLogged is false', async () => {
   // ARRANGE
-
+  render(<LogButton isLogged={false} clickHandler={() => {}}/>);
   // ACT
- 
+  await screen.findByRole('switch');
   // ASSERT
-  
+  expect(screen.getByRole('switch')).toHaveTextContent('Tried it?');
 });
