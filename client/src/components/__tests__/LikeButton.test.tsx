@@ -26,16 +26,18 @@ test('is outline when isLiked prop has value false', async () => {
 
 test('displays text "Liked it!" when isLiked is true', async () => {
   // Arrange
-
+  render(<LikeButton isLiked={true} clickHandler={() => {}}/>)
   // Act
-
+  await screen.findByRole('switch');
   // Assert
+  expect(screen.getByRole('switch')).toHaveTextContent('Liked it!');
 });
 
 test('displays text "Liked it?" when isLiked is false', async () => {
   // Arrange
-
+  render(<LikeButton isLiked={false} clickHandler={() => {}}/>)
   // Act
-
+  await screen.findByRole('switch');
   // Assert
+  expect(screen.getByRole('switch')).toHaveTextContent('Like');
 });
