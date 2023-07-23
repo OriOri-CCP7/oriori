@@ -6,6 +6,7 @@ import { LogContextProvider } from './context/LogContext';
 import AdminRoute from './context/AdminRoute';
 import ProtectedRoute from './context/ProtectedRoute'
 import AdminAddProduct from './pages/AdminAddProduct';
+import AdminDeleteProduct from './pages/AdminDeleteProduct';
 import Bookmarks from './pages/Bookmarks';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -41,6 +42,7 @@ function App() {
                 <Route path='/onboarding' element={<ProtectedRoute><Onboarding/></ProtectedRoute>}></Route>
 
                 <Route path='/admin-addProduct' element={<AdminRoute><AdminAddProduct/></AdminRoute>}></Route>
+                <Route path='/admin-deleteProduct' element={<AdminRoute><AdminDeleteProduct/></AdminRoute>}></Route>
               </Routes>
             </BrowserRouter>
           </LogContextProvider>

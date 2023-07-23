@@ -8,6 +8,7 @@ services:
       - SECRET_KEY=${SECRET_KEY}
       - DEBUG=False
       - DATABASE_URL=postgres://postgres:devpostgres@dev-db:5432/oriori
+      - HOSTNAMES=${HOSTNAMES}
     depends_on:
       dev-db:
         condition: service_healthy
