@@ -11,11 +11,11 @@ interface Props {
 
 function LogButton({ isLogged, clickHandler }: Props) {
   return (
-    <div className='product__button' onClick={ clickHandler }>
+    <div role="switch" aria-checked={isLogged} className='product__button' onClick={ clickHandler }>
       {
         isLogged
-          ? <CheckSolid className="product__icon log__icon solid"/>
-          : <CheckOutline className="product__icon log__icon outline"/>
+          ? <CheckSolid role="img" className="product__icon log__icon solid"/>
+          : <CheckOutline role="img" className="product__icon log__icon outline"/>
           
       }
       {
