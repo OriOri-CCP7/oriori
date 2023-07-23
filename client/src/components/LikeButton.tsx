@@ -12,11 +12,11 @@ interface Props {
 function LikeButton({ isLiked, clickHandler }: Props) {
   
   return (
-    <div className='product__button' onClick={ clickHandler }>
+    <div role="switch" aria-checked={isLiked} className='product__button' onClick={ clickHandler }>
       {
         isLiked
-          ? <LikeSolid className="product__icon like__icon solid"/>
-          : <LikeOutline className="product__icon like__icon outline"/>
+          ? <LikeSolid role="img" className="product__icon like__icon solid"/>
+          : <LikeOutline role="img" className="product__icon like__icon outline"/>
       }
       {
         isLiked
