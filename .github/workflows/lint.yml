@@ -1,0 +1,26 @@
+name: Pull Request Lint
+on:
+  pull_request
+
+jobs:
+  pr-lint:
+    name: PR Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node v20.2.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.2.0
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+      
+      - name: Run Tests & Lint
+        working-directory: ./client
+        run: |
+          npm pkg delete scripts.prepare
+          npm ci
+          npm run build
+          npm test
+
