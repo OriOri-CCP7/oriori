@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
