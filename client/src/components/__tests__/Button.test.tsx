@@ -29,10 +29,11 @@ test('component is disabled when disabled is true', async () => {
   expect(testButton).toBeDisabled();
 });
 
-test('displays text prop as label on button', () => {
+test('displays text prop as label on button', async () => {
   // Arrange
-  
+  render(<Button className='login-button' text="Submit!" type="submit"/>);
   // Act
-  
+  const testButton = await screen.findByRole('button');
   // Assert
+  expect(testButton).toHaveTextContent('Submit!');
 });
