@@ -11,12 +11,14 @@ test('component uses className prop as class name', async () => {
   expect(testButton).toHaveClass('login-button');
 });
 
-test('component uses type prop as type', () => {
+test('component uses type prop as type', async () => {
   // Arrange
-  
+  render(<Button className='login-button' text="Submit!" type="submit"/>);
   // Act
+  const testButton = await screen.findByRole('button');
   
   // Assert
+  expect(testButton).toHaveAttribute('type', 'submit');
 });
 
 test('component is disabled when disabled is true', () => {
