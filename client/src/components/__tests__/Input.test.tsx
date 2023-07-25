@@ -20,13 +20,13 @@ test('component placeholder text matches placeholder prop', async () => {
   expect(testInput).toHaveAttribute('placeholder', "Your email here");
 });
 
-test('component has type matching type prop', () => {
+test('component has type matching type prop', async () => {
   // Arrange
-
+  render(<Input className="email-input" placeholder="Your email here" type="email" value="email@email.com" onChange={() => {}}/>);
   // Act
-  
+  const testInput = await screen.getByDisplayValue("email@email.com");
   // Assert
-
+  expect(testInput).toHaveAttribute('type', 'email');
 });
 
 test('component has auto-complete type matching autoComplete prop', () => {
@@ -38,12 +38,13 @@ test('component has auto-complete type matching autoComplete prop', () => {
 
 });
 
-test('component has value matching value prop', () => {
+test('component has value matching value prop', async () => {
   // Arrange
-
+  render(<Input className="email-input" placeholder="Your email here" type="email" value="email@email.com" onChange={() => {}}/>);
   // Act
-  
+  const testInput = await screen.getByDisplayValue("email@email.com");
   // Assert
+  expect(testInput).toHaveAttribute('value', "email@email.com");
 
 });
 
