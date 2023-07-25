@@ -11,13 +11,13 @@ test('component class name matches className prop', async () => {
   expect(testInput).toHaveClass("email-input");
 });
 
-test('component placeholder text matches placeholder prop', () => {
+test('component placeholder text matches placeholder prop', async () => {
   // Arrange
-
+  render(<Input className="email-input" placeholder="Your email here" type="email" value="email@email.com" onChange={() => {}}/>);
   // Act
-  
+  const testInput = await screen.getByDisplayValue("email@email.com");
   // Assert
-
+  expect(testInput).toHaveAttribute('placeholder', "Your email here");
 });
 
 test('component has type matching type prop', () => {
