@@ -2,13 +2,13 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Input from '../Input';
 
-test('component class name matches className prop', () => {
+test('component class name matches className prop', async () => {
   // Arrange
-
+  render(<Input className="email-input" placeholder="Your email here" type="email" value="email@email.com" onChange={() => {}}/>);
   // Act
-  
+  const testInput = await screen.getByDisplayValue("email@email.com");
   // Assert
-
+  expect(testInput).toHaveClass("email-input");
 });
 
 test('component placeholder text matches placeholder prop', () => {
