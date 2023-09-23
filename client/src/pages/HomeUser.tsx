@@ -9,7 +9,7 @@ import axios from "axios";
 
 import "../styles/Home.css";
 
-export default function Home() {
+export default function HomeUser() {
   
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
