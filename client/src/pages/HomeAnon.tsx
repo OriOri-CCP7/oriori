@@ -5,7 +5,6 @@ import Header from "../components/Header"
 import ProductGrid from "../components/ProductGrid";
 // TODO: Hide navbar or hide page icons which require login
 import Navbar from "../components/Navbar";
-import prefs from "../data/prefectures.json";
 
 import axios from "axios";
 
@@ -16,8 +15,6 @@ export default function HomeUser() {
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
   const [loadComplete, setLoadComplete] = useState(false);
-  const location: number = Number(auth?.user.location);
-  const prefectureName: string = prefs[location - 1].name;
   
   useEffect(() => {
     let headers = {
@@ -26,8 +23,7 @@ export default function HomeUser() {
       'X-CSRFToken': auth?.csrftoken ?? ""
     };
     
-    // TODO: Default location? Or show all?
-    axios.get(`/api/locations/${auth?.user.location}/products/`, {
+    axios.get(`/api/products/`, {
       headers: headers
     })
     .then((response) => {
@@ -46,14 +42,14 @@ export default function HomeUser() {
         {
           products.length > 0
           ? <>
-                <h2 className="subtitle underlined">
-                  { `Products Available in ${ prefectureName }` }
-                </h2>
-                <ProductGrid productArray={ products }/>
-              </>
-            : loadComplete && <h2 className="subtitle">
-                No products could be found in your Home Prefecture.
+              <h2 className="subtitle underlined">
+                { `All Products` }
               </h2>
+              <ProductGrid productArray={ products }/>
+            </>
+          : loadComplete && <h2 className="subtitle">
+              No products could be found.
+            </h2>
         }
       </div>
       {/* <Navbar/> */}
