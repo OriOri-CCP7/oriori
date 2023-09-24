@@ -18,7 +18,7 @@ const BkmarkContext = createContext<BkmarkList>({ bookmarks: {}, addBkmark: () =
 export const BkmarkContextProvider = ({ children }: { children: ReactNode }) => {
   const auth = UserAuth();
   const [bookmarks, setBookmarks] = useState<BookmarksDict>({});
-  const [isLoadingBkmarks, setIsLoadingBkmarks] = useState(true);
+  const [isLoadingBkmarks, setIsLoadingBkmarks] = useState(false);
   
   const fetchBkmarks = () => {
     if (!auth?.user.uuid) return;

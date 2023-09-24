@@ -18,6 +18,7 @@ export default function HomeUser() {
   const [loadComplete, setLoadComplete] = useState(false);
   
   useEffect(() => {
+    // TODO: Redirect to HomeUser when user is logged in
     let headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',

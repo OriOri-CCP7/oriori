@@ -19,7 +19,7 @@ const LogContext = createContext<LogList>({ logs: {}, addLog: () => {}, editLog:
 export const LogContextProvider = ({ children }: { children: ReactNode }) => {
   const auth = UserAuth();
   const [logs, setLogs] = useState<LogsDict>({});
-  const [isLoadingLogs, setIsLoadingLogs] = useState(true);
+  const [isLoadingLogs, setIsLoadingLogs] = useState(false);
   
   const fetchLogs = () => {
     if (!auth?.user.uuid) return;
