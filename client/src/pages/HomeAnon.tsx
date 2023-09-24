@@ -4,6 +4,7 @@ import Header from "../components/Header"
 // TODO: Disable or hide log/like buttons or have them redirect to signup or login
 import ProductGrid from "../components/ProductGrid";
 // TODO: Hide navbar or hide page icons which require login
+// TODO: Display Login button in header
 import Navbar from "../components/Navbar";
 
 import axios from "axios";

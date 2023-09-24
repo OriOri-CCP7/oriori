@@ -8,6 +8,7 @@ import ProtectedRoute from './context/ProtectedRoute'
 import AdminAddProduct from './pages/AdminAddProduct';
 import AdminDeleteProduct from './pages/AdminDeleteProduct';
 import Bookmarks from './pages/Bookmarks';
+import HomeAnon from './pages/HomeAnon';
 import HomeUser from './pages/HomeUser';
 import Login from './pages/Login';
 import Onboarding from './pages/Onboarding';
@@ -29,7 +30,8 @@ function App() {
           <LogContextProvider>
             <BrowserRouter>
               <Routes>
-                <Route path='/' element={<Login/>}></Route>
+                <Route path='/' element={<HomeAnon/>}></Route>
+                <Route path='/login' element={<Login/>}></Route>
                 <Route path='/signup' element={<Signup/>}></Route>
                 <Route path='/new-password' element={<PasswordReset/>}></Route>
                 
