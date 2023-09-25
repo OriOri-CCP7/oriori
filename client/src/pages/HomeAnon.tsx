@@ -39,6 +39,7 @@ export default function HomeUser() {
       navigate('/home');
       return;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth]);
 
   return (
