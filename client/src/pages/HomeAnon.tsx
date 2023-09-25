@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import Header from "../components/Header"
-// TODO: Disable or hide log/like buttons or have them redirect to signup or login
 import ProductGrid from "../components/ProductGrid";
 
 import axios from "axios";
