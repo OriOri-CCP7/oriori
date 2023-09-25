@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import Header from "../components/Header"
 // TODO: Disable or hide log/like buttons or have them redirect to signup or login
@@ -13,12 +14,12 @@ import "../styles/Home.css";
 
 export default function HomeUser() {
   
+  const navigate = useNavigate();
   const auth = UserAuth();
   const [products, setProducts] = useState<Product[]>([]);
   const [loadComplete, setLoadComplete] = useState(false);
   
   useEffect(() => {
-    // TODO: Redirect to HomeUser when user is logged in
     let headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -36,6 +37,13 @@ export default function HomeUser() {
     .finally(() => setLoadComplete(true));;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (auth?.user?.uuid) {
+      navigate('/home');
+      return;
+    }
+  }, [auth]);
 
   return (
     <>
