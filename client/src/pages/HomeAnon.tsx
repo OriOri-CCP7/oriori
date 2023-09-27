@@ -22,7 +22,7 @@ export default function HomeUser() {
       'X-CSRFToken': auth?.csrftoken ?? ""
     };
     
-    axios.get(`/api/products/`, {
+    axios.get(`/api/products/popular/`, {
       headers: headers
     })
     .then((response) => {
@@ -44,13 +44,13 @@ export default function HomeUser() {
 
   return (
     <>
-      <Header mainText="Home"/>
+      <Header mainText="Seasonal Product Tracker"/>
       <div className='page__wrapper'>
         {
           products.length > 0
           ? <>
               <h2 className="subtitle underlined">
-                { `All Products` }
+                The Most-Liked Products in Japan
               </h2>
               <ProductGrid productArray={ products }/>
             </>
