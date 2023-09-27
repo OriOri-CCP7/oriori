@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { UserAuth } from '../context/AuthContext';
 import { UserBkmarks } from '../context/BkmarkContext';
@@ -17,6 +18,7 @@ type  Props = {
 };
 
 function ProductCard ({ product, bookmark, log }: Props) {
+  const navigate = useNavigate();
   const auth = UserAuth();
   const { addBkmark, removeBkmark } = UserBkmarks();
   const { addLog, editLog, removeLog } = UserLogs();
@@ -119,6 +121,10 @@ function ProductCard ({ product, bookmark, log }: Props) {
   };
   
   const clickBkmarkHandler: React.MouseEventHandler<HTMLDivElement> = () => {
+    if (!auth?.user?.uuid) {
+      navigate('/login');
+      return;
+    }
     if (isBookmark) {
       deleteBkmarkHandler();
     } else {
@@ -150,6 +156,10 @@ function ProductCard ({ product, bookmark, log }: Props) {
   };
 
   const clickLogHandler: React.MouseEventHandler<HTMLDivElement> = () => {
+    if (!auth?.user?.uuid) {
+      navigate('/login');
+      return;
+    }
     if (isLogged) {
       deleteLogHandler();
     } else {

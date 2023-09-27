@@ -8,7 +8,7 @@ function ProtectedRoute({children} : { children: JSX.Element }){
    
     let location = useLocation();
     return loadComplete
-        ? (user.uuid ? children : <Navigate to='/' state={{ from: location }} replace/>)
+        ? (user.uuid ? children : <Navigate to='/login' state={{ from: location }} replace/>)
         : null;
 }
 

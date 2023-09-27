@@ -8,7 +8,8 @@ import ProtectedRoute from './context/ProtectedRoute'
 import AdminAddProduct from './pages/AdminAddProduct';
 import AdminDeleteProduct from './pages/AdminDeleteProduct';
 import Bookmarks from './pages/Bookmarks';
-import Home from './pages/Home';
+import HomeAnon from './pages/HomeAnon';
+import HomeUser from './pages/HomeUser';
 import Login from './pages/Login';
 import Onboarding from './pages/Onboarding';
 import PasswordReset from './pages/PasswordReset';
@@ -29,11 +30,12 @@ function App() {
           <LogContextProvider>
             <BrowserRouter>
               <Routes>
-                <Route path='/' element={<Login/>}></Route>
+                <Route path='/' element={<HomeAnon/>}></Route>
+                <Route path='/login' element={<Login/>}></Route>
                 <Route path='/signup' element={<Signup/>}></Route>
                 <Route path='/new-password' element={<PasswordReset/>}></Route>
                 
-                <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
+                <Route path='/home' element={<ProtectedRoute><HomeUser/></ProtectedRoute>}></Route>
                 <Route path='/bookmarks' element={<ProtectedRoute><Bookmarks/></ProtectedRoute>}></Route>
                 <Route path='/popular' element={<ProtectedRoute><Popular/></ProtectedRoute>}></Route>
                 <Route path='/logs' element={<ProtectedRoute><Logs/></ProtectedRoute>}></Route>
