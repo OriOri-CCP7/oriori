@@ -20,13 +20,16 @@ const Header: React.FC<Props> = ({ mainText, secondaryText }: Props) => {
         { location.pathname === '/home' && <SettingsButton/> }
         {
           location.pathname === '/'
-          && <div className='circular-icon'>
+          && <div className='circular-icon__wrapper'>
+            <span>Log In</span>
+            <div className='circular-icon'>
               <UserCircleIcon 
                 className='login-icon'
                 onClick={() => {
                   navigate('/login');
                 }}/>
             </div>
+          </div>
         }
       </div>
       { mainText && <h1 className='header__h1'> { mainText } </h1> }

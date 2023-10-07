@@ -28,16 +28,23 @@
   font-size: large;
 }
 
-.circular-icon {
+.circular-icon__wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:center;
+  position: absolute;
+  right: 0;
+}
+
+.circular-icon__wrapper > span {
+  padding-right: 6pt;
+}
+
+.circular-icon {
   width: 26pt;
-  height: 26pt; /* adjust as needed */
+  height: 26pt;
   border-radius: 50%;
   border: 2pt solid #fdf6f0;
-  position: absolute;
-  right: 0; /* right-aligned with position: absolute */
 }
 
 .settings-icon, .login-icon {
